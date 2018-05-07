@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# calculate battery %
+cur_power=`ioreg -w0 -l | grep CurrentCapacity | awk '{print $5}'`
+max_power=`ioreg -w0 -l | grep MaxCapacity | awk '{print $5}'`
+bat_percent=`echo "scale=2;$cur_power / $max_power" | bc`
+bat_percent=`echo "$bat_percent * 100" | bc | sed 's/.00//'`
+
+# time remaining to charge || until depletion
+minutesRemaining=$(ioreg -l | grep -i 'TimeRemaining' | sed 's/[^0-9]//g')
+fhrs=$(($minutesRemaining / 60))
+fmins=$(($minutesRemaining % 60))
+if [[ ${#fmins} -eq 1 ]]; then
+    fmins="0$fmins"
+fi
+timeLeft="$fhrs:$fmins"
+
+
+echo "$bat_percent% / $timeLeft"

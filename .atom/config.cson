@@ -1,0 +1,16 @@
+"*":
+  editor:
+    invisibles: {}
+    fontFamily: "Source Code Pro"
+    scrollPastEnd: true
+  core:
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
+  "tree-view":
+    showOnRightSide: true
+  "exception-reporting":
+    userId: "c8a012f8-2dc2-ba94-b02e-7b18a4c89fcd"
+  welcome:
+    showOnStartup: false

@@ -1,0 +1,38 @@
+[user]
+  name = Sean Henderson
+  email = mail@sean.sh
+[github]
+	user = musophob
+[push]
+  default = current
+[color]
+    ui = auto
+[diff]
+    submodule = log
+[column]
+    ui = auto,dense
+[core]
+	excludesfile = ~/.gitignore
+[credential]
+	helper = osxkeychain
+[alias]
+  a = add
+  aa = add --all
+  ap = add --patch
+  ca = commit --amend
+  cv = commit -v
+  co = checkout
+  st = status
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  mkbranch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  rmbranch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  mergebranch = !git checkout master && git merge @{-1}
+  up = !git fetch origin && git rebase origin/master
+[gitsh]
+	defaultCommand = status -s -b
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

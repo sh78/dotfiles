@@ -1,0 +1,120 @@
+
+################################
+###  OSX
+################################
+
+# quick switch to dirs
+alias desk="cd ~/Desktop"
+alias down="cd ~/Downloads"
+alias drive="cd ~/Google\ Drive"
+
+# quick edits
+alias osx='vim ~/.bin/osx/'
+alias installers='vim ~/.bin/osx/installers.bash'
+
+# copy current path to system clipboard
+alias cwd="pwd | pbcopy"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# Empty the Trash
+alias nuketrash="rm -rfv ~/.Trash"
+
+# Lock Screen (Fast User Switching)
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Save $40
+function cleanmymac
+  echo "Checking available disk space..."
+  set before_bits (df -h / | tail -1 | awk '{print $4}')
+  set before_percent (df -h / | tail -1 | awk '{print $5}')
+  echo
+  echo "Please enter your password:"
+  sudo -v
+  echo
+  echo "Clearing Caches..."
+  sudo rm -rfv ~/Library/Caches /Library/Caches
+  echo "Done!"
+  echo
+  echo "Flushing Directory Service Cache..."
+  dscacheutil -flushcache
+  echo "Done!"
+  echo "Running System Maintenance tasks..."
+  sudo periodic daily weekly monthly
+  echo "Done!"
+  echo
+  echo "Emptying Trash..."
+  sudo rm -rfv ~/.Trash
+  echo "Done!"
+  echo
+  echo "All clean!"
+  echo
+  set after_bits (df -h / | tail -1 | awk '{print $4}')
+  set after_percent (df -h / | tail -1 | awk '{print $5}')
+  echo "Before:" $before_bits "("$before_percent")" available
+  echo "After: " $after_bits "("$after_percent")" available!
+end
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Show/hide hidden files in Finder
+alias findershow="defaults write com.apple.Finder AppleShowAllFiles -bool true and killall Finder"
+alias finderhide="defaults write com.apple.Finder AppleShowAllFiles -bool false and killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false and killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true and killall Finder"
+
+function prepend_create_date --description 'Prepend creation date to file name (OSX)'
+  for file in $argv;
+    set new_filename (date -jf "%m/%d/%Y" (GetFileInfo -d $file | cut -c 1-10) +%Y-%m-%d) $file
+    mv $file "$new_filename"
+  end
+end
+
+function dictation_mute --description 'Enable/Disable audio ducking while dictation is recording.'
+  if test $argv
+    if test $argv[1] = "on"
+      defaults delete com.apple.SpeechRecognitionCore AllowAudioDucking
+      defaults delete com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMAllowAudioDucking
+    else if test $argv[1] = "off"
+      defaults write com.apple.SpeechRecognitionCore AllowAudioDucking -bool NO
+      defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMAllowAudioDucking -bool NO
+    else
+      echo "Please choose <on> or <off>"
+    end
+  else
+    echo "Enter <on> or <off>"
+  end
+end
+
+################
+###  Programs (OSX)
+################
+
+alias backup="yes | mackup backup"
+
+function nosleep --description "Turn NoSleep app on or off for both ac and battery modes"
+  if test $argv
+    if test $argv[1] = "on"
+      NoSleepCtrl -a -s 1
+      NoSleepCtrl -b -s 1
+    else if test $argv[1] = "off"
+      NoSleepCtrl -a -s 0
+      NoSleepCtrl -b -s 0
+    else
+      echo "Please choose <on> or <off>"
+    end
+  else
+    echo "Enter <on> or <off>"
+  end
+end
+
+################
+###  Workflows (OSX)
+################
+
+alias gtd='open "https://drive.google.com/drive/my-drive" "https://keep.google.com/#home" "https://mail.google.com/mail/u/0/#inbox" "https://calendar.google.com/calendar/r/agenda"'
+alias perf='open "https://tools.pingdom.com/" "https://gtmetrix.com/" "https://developers.google.com/speed/pagespeed/insights/"'

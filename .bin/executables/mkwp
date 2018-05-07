@@ -1,0 +1,735 @@
+#!/bin/bash
+
+################################################################################
+## Check for dependencies
+################################################################################
+
+# create an array of packages depended on
+declare -a DEPENDENCIES=(
+  'wp' 'git' 'rsync'
+  )
+ 
+# loop through each dependency. if it doesn't exist, 
+# recomend a package control install based on what's available
+# or, at the very least, echo "Please install $PACKAGE"
+for PACKAGE in ${DEPENDENCIES[@]}; do
+  if [ "$(which "$PACKAGE")" = "" ]; then
+    echo
+    echo "Please install $PACKAGE!"
+    echo
+    echo -n "Try:"
+ 
+    if [ "$(which brew)" ]; then
+      echo "  $ brew install $PACKAGE"      
+    elif [ "$(which port)" ]; then
+      echo "  $ port install $PACKAGE"  
+    elif [ "$(which apt-get)" ]; then
+      echo "  $ apt-get install $PACKAGE"  
+    elif [ "$(which yum)" ]; then
+      echo "  $ yum install $PACKAGE"
+    elif [ "$(which rpm)" ]; then
+      echo "  $ rpm --install $PACKAGE"
+    else
+      echo
+    fi
+    exit 1 # if your name's not on the list, we can't let you in buddy.
+  fi  
+done
+
+
+################################################################################
+## set vars/args
+################################################################################
+
+client_name_pretty="Some Company"
+read -e -p "Enter the client's name, with nice formatting. ($client_name_pretty) `echo $'\n\e[1m=>\e[0m '`" input
+client_name_pretty="${input:-$client_name_pretty}"
+echo
+
+client_name="somecompany"
+read -e -p "Enter the client's name, with no caps or spaces. ($client_name) `echo $'\n\e[1m=>\e[0m '`" input
+client_name="${input:-$client_name}"
+echo
+
+the_password="Sup3rS3cr3tPa55w0rd"\!
+read -e -p "Choose a password. ($the_password) `echo $'\n\e[1m=>\e[0m '`" input
+the_password="${input:-$the_password}"
+echo
+
+local_db_name=$client_name"_wp"
+read -e -p "Choose a local database name. ($local_db_name) `echo $'\n\e[1m=>\e[0m '`" input
+local_db_name="${input:-$local_db_name}"
+echo
+
+local_db_user="root"
+read -e -p "What's the local mysql user? ($local_db_user) `echo $'\n\e[1m=>\e[0m '`" input
+local_db_user="${input:-$local_db_user}"
+echo
+
+local_db_pass=""
+read -e -p "What's the local mysql user's password? ($local_db_pass) `echo $'\n\e[1m=>\e[0m '`" input
+local_db_pass="${input:-$local_db_pass}"
+echo
+
+staging_db_name=$local_db_name
+read -e -p "Different name for the staging database? ($staging_db_name) `echo $'\n\e[1m=>\e[0m '`" input
+staging_db_name="${input:-$staging_db_name}"
+echo
+
+staging_db_user=$client_name
+read -e -p "Choose a user name for the staging database. ($staging_db_user) `echo $'\n\e[1m=>\e[0m '`" input
+staging_db_user="${input:-$staging_db_user}"
+echo
+
+staging_db_pass="$the_password"
+read -e -p "Choose a staging database password. ($staging_db_pass) `echo $'\n\e[1m=>\e[0m '`" input
+staging_db_pass="${input:-$staging_db_pass}"
+echo
+
+production_db_name=$staging_db_name
+read -e -p "Different name for the production database? ($production_db_name) `echo $'\n\e[1m=>\e[0m '`" input
+production_db_name="${input:-$production_db_name}"
+echo
+
+production_db_user="$staging_db_user"
+read -e -p "Choose a user name for the production database. ($production_db_user) `echo $'\n\e[1m=>\e[0m '`" input
+production_db_user="${input:-$production_db_user}"
+echo
+
+production_db_pass="$the_password"
+read -e -p "Choose a production database password. ($production_db_pass) `echo $'\n\e[1m=>\e[0m '`" input
+production_db_pass="${input:-$production_db_pass}"
+echo
+
+local_wp_url="http://$client_name.local"
+read -e -p "Choose a local WordPress URL ($local_wp_url) `echo $'\n\e[1m=>\e[0m '`" input
+local_wp_url="${input:-$local_wp_url}"
+echo
+
+staging_wp_url="http://${client_name:0:1}.hentech.co"
+read -e -p "Choose a WordPress URL for staging. ($staging_wp_url) `echo $'\n\e[1m=>\e[0m '`" input
+staging_wp_url="${input:-$staging_wp_url}"
+echo
+
+production_wp_url="http://$client_name.com"
+read -e -p "What's the production URL. ($production_wp_url) `echo $'\n\e[1m=>\e[0m '`" input
+production_wp_url="${input:-$production_wp_url}"
+echo
+
+wp_site_title="$client_name_pretty"
+read -e -p "Choose a WordPress site title. ($wp_site_title) `echo $'\n\e[1m=>\e[0m '`" input
+wp_site_title="${input:-$wp_site_title}"
+echo
+
+wp_admin_username="$client_name"_admin
+read -e -p "Enter the WordPress admin's user name. ($wp_admin_username) `echo $'\n\e[1m=>\e[0m '`" input
+wp_admin_username="${input:-$wp_admin_username}"
+echo
+
+wp_admin_password="$the_password"
+read -e -p "Enter the WordPress admin's password. ($wp_admin_password) `echo $'\n\e[1m=>\e[0m '`" input
+wp_admin_password="${input:-$wp_admin_password}"
+echo
+
+wp_admin_email="sean@hendersontechnologies.com"
+read -e -p "Enter the WordPress admin's email. ($wp_admin_email) `echo $'\n\e[1m=>\e[0m '`" input
+wp_admin_email="${input:-$wp_admin_email}"
+echo
+
+wp_client_display_name="$client_name_pretty"
+read -e -p "Enter the WordPress editor's display name. ($wp_client_display_name) `echo $'\n\e[1m=>\e[0m '`" input
+wp_client_display_name="${input:-$wp_client_display_name}"
+echo
+
+wp_client_username="$client_name"
+read -e -p "Enter the WordPress editor's user name. ($wp_client_username) `echo $'\n\e[1m=>\e[0m '`" input
+wp_client_username="${input:-$wp_client_username}"
+echo
+
+wp_client_password="$the_password"
+read -e -p "Enter the WordPress editor's password. ($wp_client_password) `echo $'\n\e[1m=>\e[0m '`" input
+wp_client_password="${input:-$wp_client_password}"
+echo
+
+wp_client_email="sean@hentech.co"
+read -e -p "Enter the WordPress editor's email. ($wp_client_email) `echo $'\n\e[1m=>\e[0m '`" input
+wp_client_email="${input:-$wp_client_email}"
+echo
+
+staging_sub_domain="${client_name:0:1}"
+read -e -p "Choose a subdomain. ($staging_sub_domain) `echo $'\n\e[1m=>\e[0m '`" input
+staging_sub_domain="${input:-$staging_sub_domain}"
+echo
+
+staging_domain="hentech.co"
+read -e -p "Choose a domain for the subdomain. ($staging_domain) `echo $'\n\e[1m=>\e[0m '`" input
+staging_domain="${input:-$staging_domain}"
+echo
+
+staging_ssh="htadmin@hentech.co"
+read -e -p "Add SSH credentials for staging: ($staging_ssh) `echo $'\n\e[1m=>\e[0m '`" input
+staging_ssh="${input:-$staging_ssh}"
+echo
+
+staging_dir="/var/www/vhosts/hendersontechnologies.com/$staging_sub_domain.hentech.co"
+read -e -p "Full path to staging directory: ($staging_dir) `echo $'\n\e[1m=>\e[0m '`" input
+staging_dir="${input:-$staging_dir}"
+echo
+
+staging_port="7890"
+read -e -p "SSH port for staging: ($staging_port) `echo $'\n\e[1m=>\e[0m '`" input
+staging_port="${input:-$staging_port}"
+echo
+
+staging_webspace_domain="hendersontechnologies.com"
+read -e -p "Staging Webspace Domain: ($staging_webspace_domain) `echo $'\n\e[1m=>\e[0m '`" input
+staging_webspace_domain="${input:-$staging_webspace_domain}"
+echo
+
+production_domain="$client_name.com"
+read -e -p "Choose a domain for production. ($production_domain) `echo $'\n\e[1m=>\e[0m '`" input
+production_domain="${input:-$production_domain}"
+echo
+
+production_ssh="$staging_ssh"
+read -e -p "Add SSH credentials for production: ($production_ssh) `echo $'\n\e[1m=>\e[0m '`" input
+production_ssh="${input:-$production_ssh}"
+echo
+
+production_dir="/var/www/vhosts/hendersontechnologies.com/$production_domain"
+read -e -p "Full path to production directory: ($production_dir) `echo $'\n\e[1m=>\e[0m '`" input
+production_dir="${input:-$production_dir}"
+echo
+
+production_port="$staging_port"
+read -e -p "SSH port for production: ($production_port) `echo $'\n\e[1m=>\e[0m '`" input
+production_port="${input:-$production_port}"
+echo
+
+production_webspace_domain="hendersontechnologies.com"
+read -e -p "Production Webspace Domain: ($production_webspace_domain) `echo $'\n\e[1m=>\e[0m '`" input
+production_webspace_domain="${input:-$production_webspace_domain}"
+echo
+
+
+
+
+################################################################################
+## Download the most recent WordPress version to your directory
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mFetching WP Core..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp core download
+
+
+################################################################################
+## Create a wp-config.php file
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCreating wp-config.php..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp core config --dbname="$local_db_name" --dbuser="$local_db_user" # --dbpass="$local_db_pass"
+
+
+################################################################################
+## Create a new database using the parameters from the config file
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCreating Local Database..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp db create
+
+
+################################################################################
+## And finally, install your WordPress site
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mInstalling WordPress Locally..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp core install --url="$local_wp_url" --title="$wp_site_title" --admin_user="$wp_admin_username" --admin_password="$wp_admin_password" --admin_email="$wp_admin_email"
+
+
+###############################################################################
+# Fix wp permissions for local install (osx)
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mAssigning unix permissions for WordPress core files to local _www user..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+sudo chown -R _www wp-content
+sudo chmod -R g+w wp-content
+sudo chown -R _www wp-admin
+sudo chmod -R g+w wp-admin
+sudo chown -R _www wp-includes
+sudo chmod -R g+w wp-includes
+
+
+###############################################################################
+# Install/update/activate plugins from git repo
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mPulling plugins from our private stash..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+scp -r git@bitbucket.org:thetateal/wp-plugins.git .
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mInstalling plugins..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+for f in ./wp-plugins/*.zip
+do
+  wp plugin install $f
+done
+
+rm -rf wp-plugins
+
+wp plugin install ag-custom-admin
+wp plugin install backwpup
+wp plugin install exploit-scanner
+wp plugin install underconstruction
+wp plugin install w3-total-cache
+wp plugin install better-wp-security
+wp plugin install cloudflare
+wp plugin install post-content-shortcodes
+wp plugin install wp-gallery-custom-links
+wp plugin install black-studio-tinymce-widget
+wp plugin install wordpress-importer
+wp plugin install widget-importer-exporter
+wp plugin install wordpress-seo
+wp plugin install duplicator
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mUpdating plugins..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp plugin update-all
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mActivating plugins..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp plugin activate ag-custom-admin
+wp plugin activate backwpup
+wp plugin activate exploit-scanner
+wp plugin activate underconstruction
+wp plugin activate better-wp-security
+wp plugin activate cloudflare
+wp plugin activate post-content-shortcodes
+wp plugin activate wp-gallery-custom-links
+wp plugin activate black-studio-tinymce-widget
+wp plugin activate wordpress-seo
+wp plugin activate duplicator
+
+git add . --all
+git commit -m "Add plugins from our git repo"
+
+
+###############################################################################
+# Add the client's WordPress user
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mAdding user with Editor role..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+wp user create "$wp_client_username" "$wp_client_email" --role=editor --user_pass="$wp_client_password" --display_name="$wp_client_display_name"
+
+
+
+################################################################################
+## Create local-config & prepend to wp-config.php
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCreating local-config.php..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+cat >> ./local-config.php << EOF
+<?php
+if (!defined('DB_NAME')) {
+	define('DB_NAME', '$local_db_name');
+}
+if (!defined('DB_USER')) {
+	define('DB_USER', '$local_db_user');
+}
+if (!defined('DB_PASSWORD')) {
+	define('DB_PASSWORD', '$local_db_pass');
+}
+if (!defined('DB_HOST')) {
+	define('DB_HOST', 'localhost');
+}
+EOF
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mRewiting wp-config with local-config and staging credentials..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# chop the first <?php and extra breaks
+tail -n +13 wp-config.php > wp-config.tmp && mv wp-config.tmp wp-config.php
+
+# append local config statement to tmp file
+cat > wp-config.tmp << "EOF"
+<?php
+
+// Include local configuration
+if (file_exists(dirname(__FILE__) . '/local-config.php')) {
+	include(dirname(__FILE__) . '/local-config.php');
+}
+
+// ** MySQL settings ** //
+/** The name of the database for WordPress */
+EOF
+cat >> wp-config.tmp << EOF
+define('DB_NAME', '$staging_db_name');
+
+EOF
+cat >> wp-config.tmp << "EOF"
+/** MySQL database username */
+EOF
+cat >> wp-config.tmp << EOF
+define('DB_USER', '$staging_db_user');
+
+EOF
+cat >> wp-config.tmp << "EOF"
+/** MySQL database password */
+EOF
+cat >> wp-config.tmp << EOF
+define('DB_PASSWORD', '$staging_db_pass');
+
+EOF
+
+# append chopped wp-config file to tmp file and overwrite wp-config.php
+cat wp-config.php >> wp-config.tmp
+mv wp-config.tmp wp-config.php
+
+
+###############################################################################
+# Git init & commit
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mChecking in to git..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# create the .gitignore
+cat >> .gitignore << EOF
+wp-snapshots/
+EOF
+
+
+git init
+git add . --all
+git commit -m "Fresh WordPress"
+
+
+###############################################################################
+# Cleanup
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCleaning up default junk from WordPress core...."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+rm wp-config-sample.php license.txt readme.html
+rm -rf wp-content/themes/twentythirteen wp-content/themes/twentytwelve
+rm -rf wp-content/plugins/hello.php
+
+git add . --all
+git commit -m "WordPress core cleanup"
+
+
+###############################################################################
+# Fix wp permissions for local install (osx)
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mAssigning unix permissions for WordPress core files to local _www user..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+sudo chown -R _www wp-content
+sudo chmod -R g+w wp-content
+sudo chown -R _www wp-admin
+sudo chmod -R g+w wp-admin
+sudo chown -R _www wp-includes
+sudo chmod -R g+w wp-includes
+
+
+###############################################################################
+# Create new local vhosts and domain alias (osx)
+###############################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mAliasing ${local_wp_url:7:100} on localhost\'s apache..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+dir_name=$(basename `pwd`)
+
+sudo sh -c "cat << EOF >> /etc/apache2/extra/httpd-vhosts.conf
+
+<VirtualHost *:80>
+    ServerName ${local_wp_url:7:100}
+    DocumentRoot \"/Users/sean/www/$dir_name\"
+</VirtualHost>
+EOF"
+
+sudo sh -c "cat << EOF >> /etc/hosts
+
+127.0.0.1 ${local_wp_url:7:100}
+EOF"
+
+sudo apachectl restart
+
+
+################################################################################
+## make deploy
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCreating deploy script..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# make a dossier of rsync exlclusions
+cat >> rsync_exclude.txt << EOF
+rsync_exclude.txt
+.git/
+.gitignore
+deploy
+local-config.php
+wp-snapshots/
+EOF
+
+# and ignore the production wp-config
+cat >> rsync_exclude-prod.txt << EOF
+rsync_exclude.txt
+.git/
+.gitignore
+deploy
+local-config.php
+wp-config.php
+wp-snapshots/
+EOF
+
+# create the deployer
+cat > ./deploy << "EOF"
+#!/bin/bash
+
+# $1 = place, $2 = dry/go
+
+$ERRORSTRING = "Error. Please make sure you've indicated correct parameters"
+if [ $# -eq 0 ]
+    then
+        echo $ERRORSTRING;
+elif [ $1 == "staging" ]
+    then
+        if [[ $2 == "dry" ]]
+            then
+                echo "Running dry-run"
+EOF
+
+cat >> ./deploy << EOF
+                rsync --dry-run -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$staging_port" ./. $staging_ssh:$staging_dir
+EOF
+
+cat >> ./deploy << "EOF"
+        elif [ $2 == "go" ]
+            then
+                echo "Running actual deploy"
+EOF
+
+cat >> ./deploy << EOF
+                rsync -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$staging_port" ./. $staging_ssh:$staging_dir
+EOF
+
+cat >> ./deploy << "EOF"
+        else
+            echo $ERRORSTRING;
+        fi
+elif [ $1 == "production" ]
+    then
+        if [[ $2 == "dry" ]]
+            then
+                echo "Running dry-run"
+EOF
+
+cat >> ./deploy << EOF
+                rsync --dry-run -az --force --delete --progress --exclude-from=rsync_exclude-prod.txt -e "ssh -p$production_port" ./. $production_ssh:$production_dir
+EOF
+
+cat >> ./deploy << "EOF"
+        elif [ $2 == "go" ]
+            then
+                echo "Running actual deploy"
+EOF
+
+cat >> ./deploy << EOF
+                rsync -az --force --delete --progress --exclude-from=rsync_exclude-prod.txt -e "ssh -p$production_port" ./. $production_ssh:$production_dir
+EOF
+
+cat >> ./deploy << "EOF"
+        else
+            echo $ERRORSTRING;
+        fi
+fi
+EOF
+
+chmod +x ./deploy
+
+git add . --all
+git commit -m "Add deploy script"
+
+
+################################################################################
+## init git repo w/remote
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mCreating git repo at g@dev.hentech.co/home/g/$repo_name"
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+repo_name=$(basename `pwd`)
+test -z $repo_name && echo "Repo name required." 1>&2 && exit 1
+
+ssh g@dev.hentech.co -p7890 << EOF
+    mkdir -p $repo_name
+    cd $repo_name
+    git init --bare
+EOF
+
+git remote add origin "ssh://g@dev.hentech.co/home/g/$repo_name"
+git add . --all
+git push -u origin master
+
+
+
+################################################################################
+## provision staging environment & deploy
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mProvisioning staging server..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# call up plesk on the (mt) server
+ssh root@hentech.co -p$staging_port << EOF
+  cd /usr/local/psa/bin
+	./subdomain --create $staging_sub_domain -domain $staging_domain -www-root "$staging_sub_domain.$staging_domain" -php true
+	./database --create $staging_db_name -domain $staging_webspace_domain -type mysql -add_user "$staging_db_user" -passwd "$staging_db_pass"
+EOF
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mDeploying to staging..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# rsync the local wordpress instance to staging
+./deploy staging go
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mInstalling WordPress on staging server..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+ssh $staging_ssh -p$staging_port << EOF
+  cd $staging_dir
+  rm wp-config.php
+  wp core config --dbname="$staging_db_name" --dbuser="$staging_db_user" --dbpass="$staging_db_pass"
+  wp core install --url="$staging_wp_url" --title="$wp_site_title" --admin_user="$wp_admin_username" --admin_password="$wp_admin_password" --admin_email="$wp_admin_email"
+EOF
+
+
+################################################################################
+## provision production environment
+################################################################################
+
+echo
+echo
+echo -e "\033[1m-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_"
+echo -e "\033[1mProvisioning production server..."
+echo -e "\033[1m_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-"
+echo
+
+# call up plesk on the (mt) server
+ssh production_ssh -p$production_port << EOF
+  cd /usr/local/psa/bin
+  ./subdomain --create $production_sub_domain -domain $production_domain -www-root "$production_sub_domain.$production_domain" -php true
+  ./database --create $production_db_name -domain $production_webspace_domain -type mysql -add_user "$production_db_user" -passwd "$production_db_pass"
+EOF
+
+###############################################################################
+# open local and staging in browser
+###############################################################################
+
+open "$local_wp_url/wp-login.php" && open "$staging_wp_url/wp-login.php"

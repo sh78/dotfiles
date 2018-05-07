@@ -1,0 +1,9 @@
+#!/bin/bash
+
+IP=$(curl ipecho.net/plain; echo)
+
+if [ $(which cfcli) ]; then
+  cfcli -d sean.sh --ttl 1 editrecord hesap "$IP"
+else
+  echo "Cloudflare CLI not detected! Exiting..."
+fi

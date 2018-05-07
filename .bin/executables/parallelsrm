@@ -1,0 +1,4 @@
+#! /bin/bash
+
+# purchase Parallels Desktop :)
+rm -rf /Library/Preferences/Parallels/licenses.xml

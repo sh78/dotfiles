@@ -1,0 +1,33 @@
+#!/bin/sh
+
+protecteddir=$(pwd)
+user=$1
+shift
+description="$*"
+
+
+echo "Creating .htaccess in $protecteddir..."
+echo
+echo >> .htaccess
+echo "##### Start Password Protection #####" >> .htaccess
+echo "AuthUserFile $protecteddir" >> .htaccess
+echo "AuthType Basic" >> .htaccess
+echo "AuthName \"$description\"" >> .htaccess
+echo "Require $user" >> .htaccess
+echo "##### End Password Protection #####" >> .htaccess
+echo "Created .htaccess in $protecteddir for user $user."
+echo 
+#.htpasswd
+echo "Generating htpasswd..."
+if [ -f $protecteddir/.htpasswd ]
+then
+  htpasswd $protecteddir/.htpasswd $user
+  # host prompts for password
+else
+  htpasswd -c $protecteddir/.htpasswd $user
+  # host prompts for password
+fi
+
+# persmissions
+chmod 0644 $protecteddir/.htaccess
+chmod 0644 $protecteddir/.htpasswd

@@ -1,0 +1,476 @@
+#######
+# UNIX - General
+####################
+
+alias v='vim'
+alias h='history'
+alias x='exit'
+alias p="pwd"
+alias c='clear'
+
+# quick edits
+alias dots='vim ~/Google\ Drive/dotfiles/'
+alias vimrc='vim ~/.vimrc'
+alias aliases='vim ~/.config/omf/'
+alias osx='vim ~/.bin/osx/'
+
+function ls --description "custom ls with color output and directory markers by default"
+    command ls -FG $argv
+end
+
+function cd --description "auto ls for each cd"
+  if [ -n $argv[1] ]
+    builtin cd $argv[1]
+    and ls -AF
+  else
+    builtin cd ~
+    and ls -AF
+  end
+end
+
+function cdc --description "change dir then clear output"
+    command cd $argv; clear
+end
+
+function ccl --description "change directory, clear output, then list contents"
+    command cd $argv; clear; ls
+end
+alias ..='cd ..' # up one
+alias ...='cd ../..' # up two
+alias ....='cd ../../..' # up three (that's enough)
+alias cdd='cd -' # back
+alias l="tree -C -L 1" # show a quick tree of files
+alias la='tree -C -a -L 1' # also list hidden files (think "list all")
+function ll --description "show permissions, filesize, name"
+  ls -lhFG $argv | cut -c 1-11,27-34,48-
+end
+
+function lla --description "show permissions, filesize, name for all files"
+  ls -AlhFG $argv | cut -c 1-11,28-34,48-
+end
+
+function llt --description "show permissions, filesize, modified, and name sorted by time"
+  ls -lhFGt $argv | cut -c 1-11,27-
+end
+
+function lls --description "show permissions, filesize, modified, and name sorted by size"
+  ls -lhFGS $argv | cut -c 1-11,27-
+end
+
+function lsg --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      ls | grep $argv[1];
+    else
+      ls $argv[1] | grep $argv[2];
+    end
+end
+
+function lslg --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      ls -lh | grep $argv;
+    else
+      ls $argv[1] -lh | grep $argv[2];
+    end
+end
+
+function lsag --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      ls -lAh | grep $argv;
+    else
+      ls $argv[1] -lAh | grep $argv[2];
+    end
+end
+
+function lg --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      l | grep $argv;
+    else
+      l $argv[1] | grep $argv[2];
+    end
+end
+
+function llg --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      ll | grep $argv;
+    else
+      ll $argv[1] | grep $argv[2];
+    end
+end
+
+function lag --description "pass in string to get specific ls results"
+    set args (count $argv)
+    if math "$args < 2" > /dev/null
+      lla | grep $argv;
+    else
+      lla $argv[1] | grep $argv[2];
+    end
+end
+alias lns="ln -s" # symlink in 2 less characters
+alias cl="clear; tree -C -L 1" # clear and show a quick tree
+alias cla="clear; tree -C -a -L 1" # clear and show a quick tree of all files
+alias op="open ./" # open your current dir in Finder and accept defeat
+alias rmrf="rm -rf" # as if bricking your machine wasn't easy enough
+alias rmrfp="rm -rfp" # you could say that again
+alias mkdirp='mkdir -p' # auto nesting
+function take
+    command mkdir -p $argv; cd $argv
+end
+alias cpp='cp -p' # preserve attributes
+alias cpr='cp -R' # recursive
+alias cppr='cp -pR' # preserve attributes and recursive
+alias scpr='scp -r' # recursive
+alias df='df -h' # uses abbreviated size formats rather than bits
+alias duh='du -h' # list disk usage for all files in ./
+alias dush='du -sh' # list total disk usage of ./
+alias chx='chmod +x' # make it executable
+alias chR='chmod -R' # recursive
+
+# archives
+alias zp='zip'
+alias zpr='zip -r' # recursive
+alias uz='unzip'
+alias uzd='unzip -d' # unzip to specific dir
+alias tgz='tar -xvzf' # extract .tar.gz
+alias tbz='tar -xvjf' # extract .tar.bz2
+
+# system aliases()
+alias zzz='sudo shutdown -s now'
+alias reboot='sudo shutdown -r now'
+alias off='sudo shutdown -h now'
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
+
+# misc
+alias lmk="say 'Process complete.'" # pin to the tail of long commands
+alias nameservers='host -t ns'
+
+
+####################
+# Fish Shell
+####################
+
+alias m="math" # quick calculations in the terminal
+
+####################
+# Bling
+####################
+
+#if hash lolcat 2>/dev/null
+    #alias cat="lolcat"
+#end
+
+alias starwars="telnet towel.blinkenlights.nl"
+
+
+####################
+# CLI's
+####################
+
+# sublime text
+alias sub='subl -n' # alias the alias
+
+# todo.txt
+alias t='todo.sh'
+
+# git
+alias gs='git status -sb'
+alias gi='git init'
+alias gib='git init --bare'
+alias gcl='git clone'
+alias gd='git diff -M --word-diff'
+alias gdc='git diff --cached -M'
+alias ga='git add . --all'
+alias gau='git add -u'
+alias gac='git add --all; git commit -v'
+alias gc='git commit -v'
+alias gcm='git commit -m'
+alias gca='git commit --amend -v'
+alias gcma='git commit -a -m'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcoB='git checkout -B' # auto branch name from ref
+alias gp='git push'
+alias gpu='git push -u' # push and set the following remote branch as default push location
+alias gpom='git push origin master'
+alias gpa="git push --all" # push all branches
+alias gpar="git remote | xargs -L1 git push --all" # push all branches to all remotes
+alias gpl='git pull'
+alias gplom='git pull origin master'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gfo='git fetch origin'
+alias gfom='git fetch origin master'
+alias greb='git rebase'
+alias gst='git stash'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+alias gstl='git stash list'
+alias gsta='git stash apply'
+alias gssc='git stash clear'
+alias grmc='git rm --cached'
+alias gbr='git branch -v'
+alias gbra='git branch -v -a'
+alias gbrd='git branch -d'
+alias gbrD='git branch -D'
+alias gbrt='git branch --track'
+alias grbc='git rebase --continue'
+alias grbi='git rebase -i'
+alias grb='git rebase -p'
+alias grm='git remote -v'
+alias grma='git remote add'
+alias grms='git remote show'
+alias grmsu='git remote set-url'
+alias grmd='git remote -d'
+alias gm='git merge'
+alias grs='git reset'
+alias grsh='git reset --hard' # undo all staged and unstaged changes
+alias grsho='git reset --hard ORIG_HEAD' # undo merge
+alias gk='gitk'
+alias gka='gitk --all'
+alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
+alias gla='gl --all'
+alias glp='git log -p'
+alias gls='git log --stat'
+alias glps='git log -p --stat'
+alias glpo='git log --pretty=oneline'
+alias glg='git log --graph'
+alias glpsg='git log -p --stat --graph'
+alias glpsgo='git log -p --stat --graph --pretty=oneline'
+alias gig="$EDITOR .gitignore"
+function gacm --description "git add/status/commit with message argv"
+  git add --all
+  git status
+  git commit -v -m "$argv"
+end
+
+function gacmp --description "git add/status/commit/push with message argv to default remote branch"
+  git add --all
+  git status
+  git commit -v -m "$argv"
+  git push
+end
+
+function gacmp --description "git add/status/commit/push with message argv to default remote branch"
+  git add --all
+  git status
+  git commit -v -m "$argv"
+  git push
+end
+
+alias gitrdone="gacmp" # a new mantra for productivity...
+
+# git-flow
+alias gfi='git flow init'
+alias gff='git flow feature'
+alias gffs='git flow feature start'
+alias gffs='git flow feature finish'
+alias gfh='git flow hotfix'
+alias gfhs='git flow hotfix finish'
+
+# svn
+alias svnignore='svn propset svn:ignore'
+
+# bitbucket
+alias bbcreate='bb create_from_local --private --protocol=ssh'
+
+# homebrew
+alias bud='brew update'
+alias bug='brew upgrade'
+alias bi='brew install'
+alias bd='brew doctor'
+alias bs='brew search'
+alias bl='brew list'
+
+#alias bc='brew cask'
+alias bci='brew cask install'
+function bcs --description "search the cask"
+  brew cask search /$argv/
+end
+alias bcia='brew cask install --appdir="/Applications"'
+alias getapp='brew cask install --appdir="/Applications"'
+
+# Rails
+alias rn='rails new'
+alias rgs='rails generate scaffold'
+alias r='rake'
+alias rdbm='rake db:migrate'
+alias rs='rails server'
+alias b='bundle'
+alias be='bundle exec'
+alias bl='bundle --local'
+alias ror='ruby -v; rails -v'
+
+
+# Sass / Compass
+alias sassw='sass --watch'
+alias compc='compass create'
+alias compw='compass watch'
+
+
+# CoffeeScript
+alias cof='coffee'
+alias cofc='coffee --compile'
+alias cofw='coffee --watch'
+alias cofwc='coffee --watch --compile'
+alias cofp='coffee --print'
+
+
+# Foreman
+alias fms='foreman start'
+
+
+# Vagrant
+alias vag='vagrant'
+alias vagba='vagrant box add'
+alias vagi='vagrant init'
+alias vagu='vagrant up'
+alias vags='vagrant ssh'
+alias vagus='vagrant up; vagrant ssh'
+alias vagh='vagrant halt'
+alias vagr='vagrant reload'
+alias vagd='vagrant destroy'
+
+
+# jekyll
+alias jek='jekyll'
+alias jekb='jekyll build'
+alias jekbw='jekyll build --watch'
+alias jeks='jekyll serve'
+alias jeksw='jekyll serve --watch'
+
+
+# pianobar (pandora cli)
+alias pb='pianobar'
+
+
+# gmailjitsu | https://github.com/thetateal/gmailjitsu
+alias gj='gmailjitsu'
+
+
+# youtube-dl | http://rg3.github.io/youtube-dl/
+alias ytdl='youtube-dl'
+alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
+alias ytaudio='youtube-dl --extract-audio'
+function ytmp3liked --description "get audio from youtube vid or playlist. pass email and url."
+  youtube-dl --download-archive ~/.youtube-dl-history --username $argv[1] --extract-audio --audio-format mp3 $argv[2]
+end
+
+
+# mps youtube
+alias mpsyt='youtube'
+
+
+# tmux
+alias tm='tmux'
+alias tml='tmux ls'
+alias tma='tmux attach'
+alias tmat='tmux attach -t'
+alias tmk='tmux kill-session -t'
+alias tmn='tmux new -s'
+# tmnsn() { tmux new -s $1 -n $2 }
+# tmf() { tmux -f $1 attach }
+
+# tmuxinator
+alias mux='tmuxinator'
+alias muxn='tmuxinator new'
+alias muxo='tmuxinator open'
+alias muxl='tmuxinator list'
+alias muxc='tmuxinator copy'
+
+
+# IRB
+alias irb='irb --simple-prompt'
+
+
+# irssi
+alias ir='irssi'
+
+
+# postgresql
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+
+# # mysql
+# mysqlc() { mysql -u root -p -e "create database $1" }
+# mysqld() { mysql -u root -p -e "drop database $1" }
+
+
+# grunt
+alias grus='grunt serve'
+alias grusf='grunt serve --force'
+alias grub='grunt build'
+alias grubf='grunt build --force'
+
+
+# bower
+alias bi='bower install'
+function bis
+  bower install $argv --save
+end
+
+
+# wp-cli
+alias wpcc="wp core config" # Generate a wp-config.php file.
+alias wpcd="wp core download" # Download core WordPress files.
+alias wpci="wp core install" # Create the WordPress tables in the database.
+alias wpcii="wp core is-installed" # Determine if the WordPress tables are installed.
+alias wpcmc="wp core multisite-convert" # Transform a single-site install into a multi-site install.
+alias wpcmi="wp core multisite-install" # Install multisite from scratch.
+alias wpcu="wp core update" # Update WordPress.
+alias wpcudb="wp core update-db" # Update the WordPress database.
+alias wpcv="wp core version" # Display the WordPress version.
+
+alias wpdbcli="wp db cli" # Open a mysql console using the WordPress credentials.
+alias wpdbc="wp db create" # Create the database, as specified in wp-config.php
+alias wpdbd="wp db drop" # Delete the database.
+alias wpdbe="wp db export" # Exports the database to a file or to STDOUT.
+alias wpdbi="wp db import" # Import database from a file or from STDIN.
+alias wpdbo="wp db optimize" # Optimize the database.
+alias wpdbq="wp db query" # Execute a query against the database.
+alias wpdbrp="wp db repair" # Repair the database.
+alias wpdbrs="wp db reset" # Remove all tables from the database.
+alias wpdbt="wp db tables" # List the database tables.
+
+alias wppa="wp plugin activate" # Activate a plugin.
+alias wppda="wp plugin deactivate" # Deactivate a plugin.
+alias wppd="wp plugin delete" # Delete plugin files.
+alias wppg="wp plugin get" # Get a plugin.
+alias wppi="wp plugin install" # Install a plugin.
+alias wppii="wp plugin is-installed" # Check if the plugin is installed.
+alias wppl="wp plugin list" # Get a list of plugins.
+alias wppp="wp plugin path" # Get the path to a plugin or to the plugin directory.
+alias "wppsearch"="wp plugin search" # Search the wordpress.org plugin repository.
+alias wpps="wp plugin status" # See the status of one or all plugins.
+alias wppt="wp plugin toggle" # Toggle a plugin's activation state.
+alias wppu="wp plugin uninstall" # Uninstall a plugin.
+alias wppu="wp plugin update" # Update one or more plugins.
+
+alias wpta="wp theme activate" # Activate a theme.
+alias wptd="wp theme delete" # Delete a theme.
+alias wptda="wp theme disable" # Disable a theme in a multisite install.
+alias wpte="wp theme enable" # Enable a theme in a multisite install.
+alias wptg="wp theme get" # Get a theme
+alias wpti="wp theme install" # Install a theme.
+alias wptii="wp theme is-installed" # Check if the theme is installed.
+alias wptl="wp theme list" # Get a list of themes.
+alias wptm="wp theme mod" # Manage theme mods.
+alias wptp="wp theme path" # Get the path to a theme or to the theme directory.
+alias "wptsearch"="wp theme search" # Search the wordpress.org theme repository.
+alias wpts="wp theme status" # See the status of one or all themes.
+alias wptu="wp theme update" # Update one or more themes.
+alias wpmig="wp wpmdb migrate" # wp migrate db pro cli
+
+alias wpsalt="curl 'https://api.wordpress.org/secret-key/1.1/salt/' | pbcopy; echo 'Keys copied to clipboard!'"
+
+# exiftool
+alias exiftime="exiftool -time:all -s" # show all time attrs
+alias exifval="exiftool -s -s -s" # just print value(s)
+
+# midnight-commander
+alias mc='mc --nocolor'

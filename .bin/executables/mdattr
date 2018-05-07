@@ -1,0 +1,115 @@
+#!/bin/zsh -f
+
+# Function mdattr
+
+# Create or revise an existing Apple-type metadata AttributeName of the form kMDItemAttributeName
+
+
+version="0.0.2"
+
+
+###############################################################################
+ 
+#  Created by  W . G. Scott   on   22 January 2009.
+#  Copyright (c) . All rights reserved.
+
+
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+#    USA
+#    
+#    cf. URL:   http://www.fsf.org/licensing/licenses/gpl.html
+#
+###############################################################################
+
+
+
+
+function _mdattr_usage {
+    print ""
+    print "\e[1m mdattr\e[0m is a function that can create, delete or revise Apple-style metadata attributes" 
+    print " of the form \e[1mkMDItem\e[0m\e[36mAttributeName\e[0m and assign each to a value of \e[35mAttributeValue\e[0m "
+    print ""
+    print " eg: \e[1m kMDItem\e[0m\e[36mKind\e[0m\e[1m  = \"\e[35mDocument\e[0m\e[1m\" \e[0m "
+    print ""
+    print ""
+    print " Usage: \e[1m  mdattr   \e[0m<\e[36mAttributeName\e[0m>   <\e[35mAttributeValue\e[0m>   \e[1mfilename(s) \e[0m "
+    print ""
+    print "        \e[1m  mdattr  -d  \e[0m<\e[36mAttributeName\e[0m> \e[1mfilename(s) \e[0m "
+    print ""
+}
+
+FirstArg="$1"
+SecondArg="$2"
+CountArgs="$#" 
+
+if [[ "$CountArgs" -lt 3 ]]; then
+   _mdattr_usage
+   return 42
+fi
+
+shift 2  2>/dev/null
+
+
+if [[ "$FirstArg" == "-d" ]]; then
+
+    # Delete the AttributeName entry
+    mdAttributeName="${SecondArg}"
+    if [[ ! -O "$1" ]];then
+    	sudo xattr -d com.apple.metadata:kMDItem"${mdAttributeName}"  "$@"
+    else
+    	xattr -d com.apple.metadata:kMDItem"${mdAttributeName}"  "$@"
+    fi
+
+	
+else
+
+    # Over-write or append the AttributeName and AttributeValue entries
+	mdAttributeName="${FirstArg}"
+	mdAttributeValue="${SecondArg}"
+	if [[ ! -O "$1" ]];then
+	    sudo xattr -w com.apple.metadata:kMDItem"${mdAttributeName}" \"$mdAttributeValue\"  "$@"
+	else
+		xattr -w com.apple.metadata:kMDItem"${mdAttributeName}" \"$mdAttributeValue\"  "$@"
+	fi
+fi
+
+ 
+
+
+# Feedback loop to assure the user it has worked.
+
+    # Pause to let metadata database update
+    sleep 3
+
+foreach mdfilemod in "$@"
+    print ""
+    print "\e[1m The metadata of the file\e[0m "$mdfilemod" \e[1mhave been modified as follows: \e[0m" 
+    mdls "$mdfilemod"  | grep "${mdAttributeName}"
+    print ""
+end
+
+
+
+
+# Cleanup:
+
+    mdAttributeName=""
+    mdAttributeValue=""
+    mdfilemod=""
+    1=""
+    2=""
+	FirstArg=""
+	SecondArg=""
+	CountArgs=""

@@ -1,0 +1,70 @@
+#################################
+### Network
+#################################
+
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
+alias myip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+function server --description "Start an HTTP server from a directory"
+  open http://localhost:8080/
+  and python -m SimpleHTTPServer 8080
+end
+
+function digga --description "All the dig info"
+  dig +nocmd $argv[1] any +multiline +noall +answer
+end
+
+alias getheaders="curl --head"
+
+
+
+################################
+###  Nifties / Personal
+################################
+
+function explain --description "Lookup command on explainshell.com"
+    set -l URL_ENCODE (python -c 'import urllib, sys; print urllib.quote_plus(sys.argv[1])' "$argv")
+    open "http://explainshell.com/explain?cmd=$URL_ENCODE"
+end
+
+function wait --description "Run a command after some time: wait <minutes> <"command">"
+  set minutes $argv[1]
+  set time_in_seconds (math "$minutes*60")
+  sleep $time_in_seconds; and eval $argv[2]
+end
+
+# '!! sudo' will prepend sudo to your most recent command
+# Running !! with anything other than sudo will append the argument to your most recent command
+# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
+function !!;
+  set var (history | head -n 1)
+  if test $argv
+    if test $argv = "sudo"        #; or "any other command you want to prepend"
+        eval $argv $var
+    else
+        eval $var $argv
+    end
+  else
+    eval $var
+  end
+end
+
+# URL encode/decode
+alias urlencode='python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
+alias urldecode='python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
+
+function capture --description 'capture new inbox item'
+  set now (date +%Y-%m-%d-%H-%M-%S)
+  set file "$HOME/Dropbox/notes/inbox/$now.txt"
+  echo $file
+  if test $argv[1]
+    echo "$argv[1..-1]" >> $file
+  else
+    cat >> $file
+  end
+end

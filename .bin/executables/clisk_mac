@@ -1,0 +1,3 @@
+#! /bin/sh
+export VERSIONER_PYTHON_PREFER_32_BIT=yes
+exec /usr/bin/python -u clisk.py "$@"

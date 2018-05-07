@@ -1,0 +1,106 @@
+#!/bin/bash
+
+ldir="./"
+read -e -p "Which directory has the distribution? ($ldir) " input
+ldir="${input:-$ldir}"
+
+stagehost="user@server.com"
+read -e -p "Staging box: ($stagehost) " input
+stagehost="${input:-$stagehost}"
+
+stagedir="/var/www/vhosts/server.com/stage.server.com"
+read -e -p "Staging www directory: ($stagedir) " input
+stagedir="${input:-$stagedir}"
+
+stageport="22"
+read -e -p "Staging ssh port: ($stageport) " input
+stageport="${input:-$stageport}"
+
+livehost="user@server.com"
+read -e -p "Live box: ($livehost) " input
+livehost="${input:-$livehost}"
+
+livedir="/var/www/vhosts/server.com/httpdocs"
+read -e -p "Live www directory: ($livedir) " input
+livedir="${input:-$livedir}"
+
+liveport="22"
+read -e -p "Live ssh port: ($liveport) " input
+liveport="${input:-$liveport}"
+
+
+cat >> ./deploy << "EOF"
+#!/bin/bash
+
+# adapted from https://coderwall.com/p/moabdw
+
+# $1 = place, $2 = dry/go
+
+$ERRORSTRING = "Error. Please make sure you've indicated correct parameters"
+if [ $# -eq 0 ]
+    then
+        echo $ERRORSTRING;
+elif [ $1 == "staging" ]
+    then
+        if [[ $2 == "dry" ]]
+            then
+                echo "Running dry-run"
+EOF
+
+cat >> ./deploy << EOF
+                rsync --dry-run -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$stageport" $ldir. $stagehost:$stagedir
+EOF
+
+cat >> ./deploy << "EOF"
+        elif [ $2 == "go" ]
+            then
+                echo "Running actual deploy"
+EOF
+
+cat >> ./deploy << EOF
+                rsync -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$stageport" $ldir. $stagehost:$stagedir
+EOF
+
+cat >> ./deploy << "EOF"
+        else
+            echo $ERRORSTRING;
+        fi
+elif [ $1 == "production" ]
+    then
+        if [[ $2 == "dry" ]]
+            then
+                echo "Running dry-run"
+EOF
+
+cat >> ./deploy << EOF
+                rsync --dry-run -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$liveport" $ldir. $livehost:$livedir
+EOF
+
+cat >> ./deploy << "EOF"
+        elif [ $2 == "go" ]
+            then
+                echo "Running actual deploy"
+EOF
+
+cat >> ./deploy << EOF
+                rsync -az --force --delete --progress --exclude-from=rsync_exclude.txt -e "ssh -p$liveport" $ldir. $livehost:$livedir
+EOF
+
+cat >> ./deploy << "EOF"
+        else
+            echo $ERRORSTRING;
+        fi
+fi
+EOF
+
+
+cat >> ./rsync_exclude.txt << "EOF"
+.DS_Store
+deploy
+rsync_exclude.txt
+.git/
+.gitignore
+.sass-cache/
+EOF
+
+chmod +x ./deploy

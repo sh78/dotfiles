@@ -1,0 +1,28 @@
+#!/bin/bash
+
+projectname=$1
+dbname=$2
+dbuser=$3
+dbpass=$4
+echo
+
+echo "Fetching lastest press and unpacking..."
+wget http://wordpress.org/latest.zip
+unzip latest.zip
+rm -rf latest.zip
+mv wordpress $projectname
+echo
+
+echo "Creating a mysql database..."
+mysql -u $dbuser -p$dbpass -e "create database $dbname"
+echo 
+
+echo "Updating the wp-config..."
+cd $projectname
+sed -e "s/database_name_here/$dbname/g" -e "s/username_here/$dbuser/g" -e "s/password_here/$dbpass/g" wp-config-sample.php > wp-config.php
+
+
+echo "Firing up a git repo..."
+git init
+git add --all
+git commit -m 'First commit.'

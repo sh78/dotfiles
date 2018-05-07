@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# get the current mac addr
+backup=`ifconfig en1 | grep ether`
+echo -n "Old MAC address: "
+echo $backup
+
+# generate one at random
+echo "Generating a random value with openssl..."
+rand=`openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//'`
+
+# spoof it
+echo "Writing new value to ifconfig..."
+sudo ifconfig en1 ether "$rand"
+
+# echo the newly spoofed one
+echo -n "New MAC address: "
+ifconfig en1 | grep ether
+
+echo
+echo "To reset back to original, enter:"
+echo "sudo ifconfig en1 ether $backup"

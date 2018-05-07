@@ -1,0 +1,11 @@
+[ui]
+username = sean <mail@sean.sh>
+tweakdefaults = true
+interface = curses
+[diff]
+git = true
+showfunc = true
+[extensions]
+histedit = 
+rebase = 
+blackbox = 

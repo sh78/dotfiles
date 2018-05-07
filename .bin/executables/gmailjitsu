@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+
+ARGS="${*}"
+
+PROMPT="\n\xe2\x9e\x94"
+
+JITSURC="/Users/sean/.jitsurc"
+
+function settings () {
+    echo
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo "☯ ☯ ☯ ☯ ☯ ☯     settings     ☯ ☯ ☯ ☯ ☯ ☯"
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"    
+    echo
+    echo "WARNING: These preferences will save whatever you type into a hidden file on your "
+    echo "computer that someone could potentially read. gmailjitsu and its contributors "
+    echo "are not responsible for any bad things that might happen."
+    echo
+
+    echo -ne "To store your user name, type it here (without @gmail.com). " $PROMPT " "
+    read C57b5e065a
+    if [ "$C57b5e065a" != "" ]; then
+      echo
+      echo "Got it!"
+      echo
+      echo
+    else
+      echo
+      echo "No user name, no problem."
+      echo
+      echo
+    fi
+
+    echo -ne "To store your password, type it here. " $PROMPT " "
+    read -s B44e7c17ed
+    echo
+    if [ "$C57b5e065a" != "" ]; then
+      echo
+      echo "Roger"
+      echo
+      echo
+    else
+      echo
+      echo "No password, no cry."
+      echo
+      echo
+    fi
+    
+
+    if [ $C57b5e065a ] || [ $B44e7c17ed ]; then
+        
+        >| $JITSURC
+
+        if [ $C57b5e065a ]; then
+        echo "$C57b5e065a" >> $JITSURC
+        fi
+
+        if [ $B44e7c17ed ]; then
+            echo "$B44e7c17ed" >> $JITSURC
+        fi
+    fi
+  exit 1
+}
+
+function man_page () {
+    echo
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo "☯ ☯ ☯ ☯ ☯ ☯   help / usage   ☯ ☯ ☯ ☯ ☯ ☯"
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    echo
+    echo
+    echo "'gmailjitsu' - run in standard mode."
+    echo
+    echo "'gmailjitsu --settings' - add or update permanent login credentials."
+    echo
+    echo
+    exit 1
+}
+
+
+if [ "$ARGS" == "--settings" ]; then
+  settings
+elif [ "$ARGS" == "--help" ]; then
+  man_page
+fi
+
+echo
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "☯ ☯ ☯ ☯ ☯ ☯    gmailjitsu    ☯ ☯ ☯ ☯ ☯ ☯"
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo
+echo -ne "Enter your search, or press enter to see all messages." $PROMPT " "
+read QUERY
+
+
+set -o errtrace
+set -o errexit
+set -o nounset
+
+parent=$(dirname -- "$BASH_SOURCE")
+source "$parent/bash-xml.bash"
+source "$parent/bash-stack.bash"
+
+gmail_parse_feed () {
+    bash_xml_sax_parse gmail_parse_feed_element_start gmail_parse_feed_element_end gmail_parse_feed_characters
+}
+gmail_parse_feed_element_start () {
+    [ "$2" != "entry" ] || (gmail_entry_name="" && gmail_entry_title="" && gmail_entry_date="")
+    stack_push "$2"
+}
+gmail_parse_feed_element_end () {
+    [ "$2" != "entry" ] || printf "%20s | %-25s | %s\n" "$gmail_entry_date" "$gmail_entry_name" "$gmail_entry_title"
+    stack_pop
+}
+gmail_parse_feed_characters () {
+    case "$(stack_list)" in
+        "feed entry title")       gmail_entry_title="$1" ;;
+        "feed entry issued")      gmail_entry_date="$1"  ;;
+        "feed entry author name") gmail_entry_name="$1"  ;;
+    esac
+}
+
+gmail_fetch_feed () {
+    curl -u $C57b5e065a --silent 'https://mail.google.com/mail/feed/atom'
+}
+
+gmail_inbox () {
+    C57b5e065a=$(sed -n '1p' "$JITSURC")
+    B44e7c17ed=$(sed -n '2p' "$JITSURC")
+    gmail_fetch_feed $C57b5e065a "!b597e1c9Goog" | gmail_parse_feed
+}
+
+
+if [ $QUERY ]; then
+    echo
+    RESULTS=$(gmail_inbox | grep "$QUERY")
+    if [ -z "$RESULTS" ]; then
+      echo "NO MATCH"
+    else
+      echo "$RESULTS"
+    fi
+elif [ -z "$QUERY" ]; then
+    echo
+    INBOX=$(gmail_inbox)
+    echo "$INBOX"
+fi
+
+
+echo
+echo -ne "Go to Gmail? (enter 'y' or press enter to exit)" $PROMPT " "
+read GO_TO_GMAIL
+if [ "$GO_TO_GMAIL" == "y" ]; then
+    open "https://mail.google.com/mail/u/0/#search/in%3Ainbox+$QUERY"
+fi
+
+
+echo
+
+exit 1
+
+
+

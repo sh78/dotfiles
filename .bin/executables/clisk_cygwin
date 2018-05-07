@@ -1,0 +1,20 @@
+#! /bin/sh
+#
+# Clisk launcher for Cygwin
+#
+# Use this when you want to run Clisk from within a Cygwin shell.
+# By default, this opens Clisk inside the current Cygwin shell window, without opening a new window.
+# Specify "w" as the first argument if you want Clisk to open a new console window instead.
+# You may run a single Clisk command with or without the w--
+# e.g., `clisk_cygwin.sh calls."
+#
+# Author:  Doug Lee
+
+launcher="/cygdrive/c/python26/pythonw -u"
+if [[ -n "$1" ]]; then
+	if [[ "$1" == "w" ]]; then
+		launcher="cygstart /cygdrive/c/python26/python -u"
+		shift
+	fi
+fi
+$launcher clisk.py "$@"

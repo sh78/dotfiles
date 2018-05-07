@@ -1,0 +1,8 @@
+#!/bin/bash
+
+clisk_mac << ANSWERS
+call "$1"
+exit
+ANSWERS
+
+exit
