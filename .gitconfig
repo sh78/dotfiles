@@ -2,7 +2,7 @@
   name = Sean Henderson
   email = mail@sean.sh
 [github]
-	user = musophob
+	user = sh78
 [push]
   default = current
 [color]
@@ -12,7 +12,7 @@
 [column]
     ui = auto,dense
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore_global
 [credential]
 	helper = osxkeychain
 [alias]

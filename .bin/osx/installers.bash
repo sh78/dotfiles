@@ -28,6 +28,7 @@ user_brews=(
   cmus
   composer
   cowsay
+  ctags
   dnsmasq
   exiftool
   ffmpeg
@@ -54,6 +55,7 @@ user_brews=(
   rename
   rigrep
   ruby-build
+  selecta
   sloccount
   speedtest_cli
   spidermonkey
