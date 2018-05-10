@@ -300,15 +300,15 @@ alias bcia='brew cask install --appdir="/Applications"'
 alias getapp='brew cask install --appdir="/Applications"'
 
 # Rails
-alias rn='rails new'
-alias rgs='rails generate scaffold'
-alias r='rake'
-alias rdbm='rake db:migrate'
-alias rs='rails server'
-alias b='bundle'
-alias be='bundle exec'
-alias bl='bundle --local'
 alias ror='ruby -v; rails -v'
+alias ran='rails new'
+alias rags='rails generate scaffold'
+alias ra='rake'
+alias radbm='rake db:migrate'
+alias ras='rails server'
+alias bua='bundle'
+alias bue='bundle exec'
+alias bul='bundle --local'
 
 
 # Sass / Compass
@@ -479,3 +479,10 @@ alias exifval="exiftool -s -s -s" # just print value(s)
 
 # midnight-commander
 alias mc='mc --nocolor'
+
+# ranger
+alias r="ranger"
+
+# terminal velocity
+alias notes="terminal_velocity"
+alias .note="terminal_velocity ."

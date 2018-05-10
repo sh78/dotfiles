@@ -31,6 +31,7 @@ user_brews=(
   ctags
   dnsmasq
   exiftool
+  feh
   ffmpeg
   figlet
   fortune
@@ -62,6 +63,7 @@ user_brews=(
   ssh-copy-id
   the_silver_searcher
   tmux
+  todo-txt
   tor
   trash
   wp-cli
@@ -122,6 +124,7 @@ pip_packages=(
   python-dateutil
   requests
   neovim
+  terminal_velocity
 )
 
 pip3_packages=(

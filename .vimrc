@@ -1,3 +1,6 @@
+" This file is hard-linked!
+"" ~/.config/nvim/init.vim > ~/.vimrc
+
 " just in case your're fishing
 set shell=/bin/sh
 
@@ -5,27 +8,20 @@ set shell=/bin/sh
 
 filetype plugin indent off     "" required!
 
-"" brief help
-"" :bundlelist          - list configured bundles
-"" :bundleinstall(!)    - install (update) bundles
-"" :bundlesearch(!) foo - search (or refresh cache first) for foo
-"" :bundleclean(!)      - confirm (or auto-approve) removal of unused bundles
-
-"" see :h vundle for more details or wiki for faq
-"" note: comments after bundle commands are not allowed. repos on github
-
 "" setting up vundle - the vim plugin bundler
 let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/Vundle/README.md') " there must be a better way... nah.
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
-    echo "installing vundle.."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  let iCanHazVundle=0
 endif
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
+
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'alvan/vim-closetag'
@@ -33,26 +29,18 @@ Plugin 'AndrewRadev/switch.vim'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'garbas/vim-snipmate'
-"Plugin 'gmarik/vundle' " 'gmarik/Vundle.vim' is now 'VundleVim/Vundle.vim'
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'groenewege/vim-less'
-Plugin 'kien/ctrlp.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
-Plugin 'sjl/gundo.vim'
-Plugin 'slim-template/vim-slim'
+Plugin 'mbbill/undotree'
 "Plugin 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 Plugin 'tomtom/tlib_vim'
  "  _______ _____ __  __     _____   ____  _____  ______             _____  ______
@@ -110,27 +98,36 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-repeat'
  " ______ _   _ _____       _____   ____  _____  ______            _____  ______
  " |  ____| \ | |  __ \     |  __ \ / __ \|  __ \|  ____|     /\   |  __ \|  ____|   /\
  " | |__  |  \| | |  | |    | |__) | |  | | |__) | |__       /  \  | |__) | |__     /  \
  " |  __| | . ` | |  | |    |  ___/| |  | |  ___/|  __|     / /\ \ |  _  /|  __|   / /\ \
  " | |____| |\  | |__| |    | |    | |__| | |    | |____   / ____ \| | \ \| |____ / ____ \
  " |______|_| \_|_____/     |_|     \____/|_|    |______| /_/    \_\_|  \_\______/_/    \_\
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/SearchComplete'
-"Plugin 'beyondwords/vim-twig'
-"Plugin 'lumiliet/vim-twig'
-Plugin 'qbbr/vim-twig'
-Plugin 'junegunn/fzf'
-" Plugin 'yuttie/comfortable-motion.vim'
+Plugin 'lumiliet/vim-twig'
+Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'mileszs/ack.vim'
-
+Plugin 'Shougo/denite.nvim'
+Plugin 'easymotion/vim-easymotion'
 
 if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
+  echo "Installing Bundles, please ignore key map error messages"
+  echo ""
+  :PluginInstall
 endif
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto - approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 "" Vundler end
 
@@ -198,10 +195,13 @@ set expandtab                    "" Use spaces instead of tabs
 set laststatus=2                  "" Show the status line all the time
 
 set undofile                      " Maintain undo history between sessions
-set undodir=~/.vim/undodir        " Keep all unod in one place
+set undodir=~/.vim/undodir        " Keep all undo in one place
 
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+let &colorcolumn="80,".join(range(100,999),",")
+"highlight ColorColumn ctermbg=0 guibg=LightGrey
 
 "" Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
@@ -367,7 +367,7 @@ cmap w!! w !sudo tee % >/dev/null
 "" endif
 
 "" toggle invisibles
-nnoremap <Leader>l :set list!<CR>
+nnoremap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:⌐
 
 
@@ -466,7 +466,7 @@ endif
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "" Mapping and settings for emmet
-let g:user_emmet_expandabbr_key = '<Leader><Leader>'
+let g:user_emmet_expandabbr_key = '<Leader><Tab>'
 let g:user_emmet_next_key = '<Leader>n'
 let g:user_emmet_prev_key = '<Leader>N'
 
@@ -542,3 +542,30 @@ nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impu
 nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+
+" tabularize
+nnoremap <Leader>aa :Tabularize <CR>
+nnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>a: :Tabularize /:\zs<CR>
+nnoremap <Leader>a- :Tabularize /-<CR>
+nnoremap <Leader>a, :Tabularize /,<CR>
+nnoremap <Leader>a< :Tabularize /\<<CR>
+nnoremap <Leader>a\| :Tabularize /\|<CR>
+
+" undotree - undo tree visualizer
+nnoremap <c-z> :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 4
+let g:undotree_ShortIndicators = 1
+let g:undotree_DiffpanelHeight = 12
+let g:undotree_HelpLine = 0
+
+" fzf - fuzzy finder
+set rtp+=/usr/local/opt/fzf
+
+" Gist (snippets)
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
+let g:gist_get_multiplefile = 1
+let g:gist_list_vsplit = 0
+let g:gist_namelength = 40

@@ -25,3 +25,4 @@ plugins/ta/data/*
 .youtube-dl-history
 Library/*
 !Scripts/
+.todo
