@@ -20,6 +20,7 @@ alias aliases='vim +NERDTreeFind ~/.config/omf/aliases.load'
 alias osxi='vim +NERDTreeFind ~/.bin/osx/installers.bash'
 alias osxp='vim +NERDTreeFind ~/.bin/osx/prefs.bash'
 
+# basic commands & overrides
 function ls --description "custom ls with color output and directory markers by default"
     command ls -FG $argv
 end
@@ -41,6 +42,7 @@ end
 function ccl --description "change directory, clear output, then list contents"
     command cd $argv; clear; ls
 end
+
 alias ..='cd ..' # up one
 alias ...='cd ../..' # up two
 alias ....='cd ../../..' # up three (that's enough)
@@ -116,6 +118,8 @@ function lag --description "pass in string to get specific ls results"
       lla $argv[1] | grep $argv[2];
     end
 end
+
+alias less="less -MNi" # file info/position, line #'s, smart case
 alias lns="ln -s" # symlink in 2 less characters
 alias cl="clear; tree -C -L 1" # clear and show a quick tree
 alias cla="clear; tree -C -a -L 1" # clear and show a quick tree of all files
@@ -181,7 +185,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 alias sub='subl -n' # alias the alias
 
 # todo.txt
-alias t='todo.sh'
+alias to='todo.sh'
 
 # git
 alias gs='git status -sb'
