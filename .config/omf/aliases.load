@@ -2,6 +2,7 @@
 # UNIX - General
 ####################
 
+alias vim='nvim'
 alias v='vim'
 function vf --description "jump to pattern on open"
     command vim +\/$argv[2] $argv[1]
