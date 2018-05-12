@@ -26,9 +26,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'alvan/vim-closetag'
 Plugin 'AndrewRadev/switch.vim'
-Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'mattn/emmet-vim'
@@ -113,6 +111,10 @@ Plugin 'yuttie/comfortable-motion.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'Shougo/denite.nvim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'edkolev/tmuxline.vim'
+
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -139,7 +141,7 @@ runtime macros/matchit.vim
 
 " # General settings
 
-let mapleader = ","
+let mapleader = "\\"
 set backspace=indent,eol,start    "" Intuitive backspacing.
 
 "" Controversial...swap colon and semicolon for easier commands
@@ -150,6 +152,8 @@ vnoremap : ;
 
 set nocompatible                  "" Must come first because it changes other options.
 set hidden                        "" Keep buffers open.
+
+set encoding=utf-8
 
 set showcmd                       "" Display incomplete commands.
 set showmode                      "" Display the mode youre in.
@@ -164,6 +168,9 @@ set nonumber!                     "" Show line numbers.
 set relativenumber                "" hybrid number mode
 set ruler                         "" Show cursor position.
 set numberwidth=4                 "" Make some room.
+
+let &colorcolumn="80,".join(range(100,999),",")
+"highlight ColorColumn ctermbg=0 guibg=LightGrey
 
 set incsearch                     "" Highlight matches as you type.
 set hlsearch                      "" Highlight matches.
@@ -192,27 +199,28 @@ set tabstop=2                    "" Global tab width.
 set shiftwidth=2                 "" And again, related.
 set shiftround                   "" use multiple of shiftwidth when indenting with '<' and '>'
 set expandtab                    "" Use spaces instead of tabs
-set laststatus=2                  "" Show the status line all the time
+" set laststatus=2                  "" Show the status line all the time
 
 set undofile                      " Maintain undo history between sessions
 set undodir=~/.vim/undodir        " Keep all undo in one place
 
+"" natural cursor movement between lines
+nnoremap j gj
+nnoremap k gk
+
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-let &colorcolumn="80,".join(range(100,999),",")
-"highlight ColorColumn ctermbg=0 guibg=LightGrey
-
 "" Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 
 " # Autocompletion
 
 " set complete =
 set complete+=kspell
-imap <Tab> <C-N>
-imap <S><Tab> <C-P>
+imap <Tab> <C-P>
+imap <S><Tab> <C-N>
 
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -221,11 +229,13 @@ function! InsertTabWrapper()
     if !col || getline('.')[col - 1] !~ '\k'
         return "\<tab>"
     else
-        return "\<c-n>"
+        return "\<C-n>"
     endif
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <c-p>
+inoremap <s-tab> <C-n>
+
+nnoremap QQ :q!<CR>
 
 
 " # File Navigation
@@ -239,11 +249,9 @@ set wildmenu
 "set wildmode=list:longest         "" Complete files like a shell.
 
 " Don't offer to open certain files/directories
+"" respected by :Denite file/rec
 set wildignore+=.git,.svn,.DS_Store,.npm,.vagrant,*.zip,*.tgz,*.pdf,*.psd,*.ai,*.mp3,*.mp4,*.bmp,*.ico,*.jpg,*.png,*.gif,*.epub,.hg,.dropbox,.config,.cache,*.pyc
 set wildignore+=node_modules/*,bower_components/*,*.min.*
-
-" quick find
-nnoremap <Leader>ff :find  <Left>
 
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
@@ -257,6 +265,7 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
 
 
 " # Quick Toggles
@@ -273,8 +282,12 @@ nnoremap <leader>sn :set nonumber! norelativenumber!<CR>
 nnoremap <leader>si :set incsearch!<CR>
 nnoremap <leader>sh :set hlsearch!<CR>
 
+"" toggle invisibles
+nnoremap <Leader>sl :set list!<CR>
+set listchars=tab:▸\ ,eol:⌐
 
-" # Color-Scheming
+
+" # Theme
 
 syntax enable
 colorscheme solarized
@@ -289,11 +302,12 @@ else
 endif
 
 "" Toggle light/dark color
-nnoremap <leader>b :let &background=(&background == "dark"?"light":"dark")<CR>
+nnoremap <Leader>' :let &background=(&background == "dark"?"light":"dark")<CR>
 
 "" crosshair cursor
 set cursorline
 set cursorcolumn
+
 
 " # Tabs Windows & Beyond
 
@@ -316,7 +330,7 @@ map <Leader>tm :tabmove
 " # Functions
 
 "" Quickly edit/reload the vimrc file
-map <Leader>rv :source $MYVIMRC<cr>
+map <Leader>rv :source ~/.vimrc<cr>
 
 "" substitute all occurrences of the word under the cursor
 :nnoremap <Leader>fw :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -347,10 +361,6 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 :nnoremap <Leader>dc :RemoveFancyCharacte<CR>
 
 
-"" natural cursor movement between lines
-nnoremap j gj
-nnoremap k gk
-
 " Get off my lawn (disables mouse support, which is too fancy to quit)
 " nnoremap <Left> :echoe "Use h"<CR>
 " nnoremap <Right> :echoe "Use l"<CR>
@@ -360,15 +370,13 @@ nnoremap k gk
 "" su-DOH
 cmap w!! w !sudo tee % >/dev/null
 
+"" reduce mistakes
+:map Q <Nop>
 
 "" kick vim into recognising moderm terminal color handling
 "" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
 ""   set t_Co=256
 "" endif
-
-"" toggle invisibles
-nnoremap <Leader>sl :set list!<CR>
-set listchars=tab:▸\ ,eol:⌐
 
 
 "" # Syntax-specifics
@@ -400,9 +408,6 @@ augroup END
 
 "" # Plugins
 
-"" use powerline patched fonts for airline
-let g:airline_powerline_fonts = 0
-
 "" inherit line column color for vim-gitgutter
 highlight clear SignColumn
 
@@ -411,59 +416,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"" CTRLP plugin, set some mappings and defaults, courtesy
-" http://statico.github.io/vim.html
-" https://robots.thoughtbot.com/faster-grepping-in-vim
-" :let g:ctrlp_cmd = 'CtrlP'
-" :let g:ctrlp_map = '<C-t>'
-" ":let g:ctrlp_working_path_mode = 'ra' "set dir to first vcs parent
-" :let g:ctrlp_working_path_mode = 0 "set dir to dir that vim started with
-" :let g:ctrlp_match_window_bottom = 0
-" :let g:ctrlp_match_window_reversed = 0
-" :let g:ctrlp_dotfiles = 1
-" :let g:ctrlp_show_hidden = 1
-
-" rigrep or The Silver Searcher
-
-" rigrep and ag are fast enough that CtrlP doesn't need to cache
-" if executable("rg") || executable("ag")
-    " let g:ctrlp_use_caching = 0
-" endif
-
-" if executable("rg")
-  " set grepprg=rg\ --vimgrep\ --no-heading
-  " set grepformat=%f:%l:%c:%m,%f:%l:%m
-" elseif executable('ag')
-  " " Use ag over grep
-  " set grepprg=ag\ --nogroup\ --nocolor
-"
-  " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " :let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --skip-vcs-ignores
-    " \ --ignore .git
-    " \ --ignore .svn
-    " \ --ignore .DS_Store
-    " \ --ignore .npm
-    " \ --ignore .vagrant
-    " \ --ignore "*.zip"
-    " \ --ignore "*.tgz"
-    " \ --ignore "*.pdf"
-    " \ --ignore "*.mp3"
-    " \ --ignore "*.mp4"
-    " \ --ignore "*.jpg"
-    " \ --ignore "*.png"
-    " \ --ignore "*.gif"
-    " \ --ignore "*.epub"
-    " \ --ignore .hg
-    " \ --ignore .dropbox
-    " \ --ignore .config
-    " \ --ignore .cache
-    " \ --ignore "**/*.pyc"
-    " \ -g ""'
-" endif
-"
-
-" bind K to grep word under cursor
-"nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "" Mapping and settings for emmet
 let g:user_emmet_expandabbr_key = '<Leader><Tab>'
@@ -487,7 +439,7 @@ let g:user_emmet_prev_key = '<Leader>N'
 ":au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
 "" Marked build
-:nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
+:nnoremap <leader>b :silent !open -a Marked\ 2.app '%:p'<cr>
 
 "" NERDTree
 :nnoremap <Leader>t :NERDTreeToggle<CR>
@@ -525,13 +477,6 @@ let g:switch_mapping = "-"
 "" vim mustache handlebars
 let g:mustache_abbreviations = 1
 
-" multiple cursors custom mapping to avoid conflicts with builtins
-" let g:multi_cursor_use_default_mapping=0
-" let g:multi_cursor_next_key='<C-n>'
-" let g:multi_cursor_prev_key='<C-p>'
-" let g:multi_cursor_skip_key='<C-x>'
-" let g:multi_cursor_quit_key='<Esc>'
-
 " comfortable-motion.vim - smooth scrolling
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
@@ -553,14 +498,41 @@ nnoremap <Leader>a< :Tabularize /\<<CR>
 nnoremap <Leader>a\| :Tabularize /\|<CR>
 
 " undotree - undo tree visualizer
-nnoremap <c-z> :UndotreeToggle<CR>
+nnoremap <C-z> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
 let g:undotree_HelpLine = 0
 
+
 " fzf - fuzzy finder
 set rtp+=/usr/local/opt/fzf
+
+
+" denite
+call denite#custom#option('default', 'prompt', '>')
+
+call denite#custom#var('file/rec', 'command',
+	\ ['ag', '--follow', '--nogroup', '-g', ''])
+
+call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+call denite#custom#map(
+				\ 'insert',
+				\ '<C-k>',
+				\ '<denite:move_to_previous_line>',
+				\ 'noremap'
+				\)
+
+nnoremap <Leader><Leader> :Denite
+nnoremap <Leader>p :Denite buffer file/rec<CR>
+nnoremap <Leader>P :Denite command<CR>
+nnoremap <Leader>k :DeniteCursorWord line<CR>
+nnoremap <Leader>K :DeniteCursorWord tags<CR>
 
 " Gist (snippets)
 let g:gist_detect_filetype = 1
@@ -569,3 +541,66 @@ let g:gist_post_private = 1
 let g:gist_get_multiplefile = 1
 let g:gist_list_vsplit = 0
 let g:gist_namelength = 40
+
+nnoremap gil :Gist --list<CR>
+nnoremap gip :Gist -public<CR>
+nnoremap gid :Gist --delete<CR>
+nnoremap gia :Gist --anonymous<CR>
+
+" airline
+set laststatus=2
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#empty_message='☓'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#whitespace#enabled=1
+
+let g:airline_powerline_fonts = 1
+
+" " uncomment if not using powerline patched font
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
+
+" " unicode symbols
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.whitespace = 'Ξ'
+
+" " airline symbols
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+
+
+" tmuxline
+" let g:tmuxline_preset = 'full'
+let g:tmuxline_preset = {
+	\'a'       : '#S:#I',
+	\'b disabled'       : '',
+	\'c disabled'       : '',
+	\'win'     : ['#I', '#W'],
+	\'cwin'    : ['#I', '#W'],
+	\'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
+	\'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
+  \'z disabled'       : '',
+	\'options' : {'status-justify': 'left'}}
+
+
+" closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.twig,*.php'
+let g:closetag_emptyTags_caseSensitive = 1
+let closetag_close_shortcut = '<leader>>'
+

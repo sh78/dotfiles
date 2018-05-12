@@ -40,3 +40,7 @@ bash ./misc.bash
 echo "opening some apps..."
 sleep 1
 bash ./apps.bash
+
+echo "for chunkwm tiling window manager, run:"
+echo "brew services start khd"
+echo "brew services start chunkwm"

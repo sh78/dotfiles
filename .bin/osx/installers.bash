@@ -14,16 +14,19 @@ git config --global credential.helper osxkeychain
 
 # define app arrays
 
-user_brew_taps=(
+brew_taps=(
   "homebrew/dupes"
   "homebrew/services"
   "thoughtbot/formulae"
   "homebrew/php"
+  "risidev/homebrew-chunkwm"
+  "koekeishiya/formulae"
 )
 
 user_brews=(
   ack
   cheat
+  chumkwm
   cmatrix
   cmus
   composer
@@ -42,6 +45,7 @@ user_brews=(
   httrack
   hub
   imagemagick
+  khd
   mackup
   mercurial
   mplayer
@@ -173,6 +177,7 @@ user_apps=(
 user_fonts=(
   font-anonymous-pro
   font-source-code-pro
+  font-source-code-pro-for-powerline
   font-source-sans-pro
   font-source-serif-pro
 )
@@ -188,10 +193,9 @@ fi
 echo "Setting up homebrew..."
 brew doctor
 brew update
-# Tap dupes to install more recent versions of some OS X tools
-brew tap homebrew/dupes
-brew tap thoughtbot/formulae
-brew tap homebrew/php
+
+# What's on tap?
+brew install ${brew_taps[@]}
 
 # echo "Installing system brews & dupes - GNU utils, dupes, cmake..."
 brew install ${system_brews[@]}
