@@ -25,6 +25,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'alvan/vim-closetag'
+Plugin 'ap/vim-css-color'
+Plugin 'junegunn/goyo.vim'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/tabular'
@@ -416,24 +418,30 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+"" Goyo
+" let g:goyo_width = 100
+" let g:goyo_height = 90%
 
 "" Mapping and settings for emmet
 let g:user_emmet_expandabbr_key = '<Leader><Tab>'
 let g:user_emmet_next_key = '<Leader>n'
 let g:user_emmet_prev_key = '<Leader>N'
 
-"" let g:user_emmet_settings = {
-""   'php' : {
-""     'extends' : 'html',
-""     'filters' : 'c',
-""   },
-""   'xml' : {
-""     'extends' : 'html',
-""   },
-""   'haml' : {
-""     'extends' : 'html',
-""   },
-"" }
+let g:user_emmet_settings = {
+  'php' : {
+    'extends' : 'html',
+    'filters' : 'c',
+  },
+  'xml' : {
+    'extends' : 'html',
+  },
+  'haml' : {
+    'extends' : 'html',
+  },
+  'twig' : {
+    'extends' : 'html',
+  },
+}
 
 "" closetag.vim
 ":au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
