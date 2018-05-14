@@ -221,7 +221,7 @@ nnoremap k gk
 " set complete =
 set complete+=kspell
 imap <Tab> <C-P>
-imap <S><Tab> <C-N>
+imap <S-Tab> <C-N>
 
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
