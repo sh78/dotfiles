@@ -701,10 +701,16 @@
 	<string>F86782B0-2BF8-4DAC-8082-E4554A22D5B6</string>
 	<key>DimOnlyText</key>
 	<false/>
+	<key>DoubleClickPerformsSmartSelection</key>
+	<true/>
+	<key>FocusFollowsMouse</key>
+	<false/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>IRMemory</key>
+	<integer>64</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
@@ -760,9 +766,9 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>187 406 928 394 0 0 1280 800 </string>
+	<string>202 325 928 394 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 19 1250 762 0 0 1280 800 </string>
+	<string>15 18 1250 764 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>15 24 620 361 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -991,13 +997,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.21176470816135406</real>
+				<real>0.89019608497619629</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.16862745583057404</real>
+				<real>0.96470588445663452</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.99215686321258545</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -1025,13 +1031,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.45882353186607361</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.43137255311012268</real>
 				<key>Red Component</key>
-				<real>0.57647061347961426</real>
+				<real>0.34509804844856262</real>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -1048,18 +1054,18 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.89019608497619629</real>
+				<real>0.25882354378700256</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.96470588445663452</real>
+				<real>0.21176470816135406</real>
 				<key>Red Component</key>
-				<real>0.99215686321258545</real>
+				<real>0.027450980618596077</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
 				<key>Alpha Component</key>
-				<real>0.082916259765625</real>
+				<real>0.25</real>
 				<key>Blue Component</key>
 				<real>1</real>
 				<key>Color Space</key>
@@ -1074,13 +1080,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.25882354378700256</real>
+				<real>0.83529412746429443</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470816135406</real>
+				<real>0.90980392694473267</real>
 				<key>Red Component</key>
-				<real>0.027450980618596077</real>
+				<real>0.93333333730697632</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>0</integer>
@@ -1101,13 +1107,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.58823531866073608</real>
+				<real>0.51372551918029785</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.58039218187332153</real>
+				<real>0.48235294222831726</real>
 				<key>Red Component</key>
-				<real>0.51372551918029785</real>
+				<real>0.3960784375667572</real>
 			</dict>
 			<key>Guid</key>
 			<string>F86782B0-2BF8-4DAC-8082-E4554A22D5B6</string>
@@ -1487,26 +1493,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.45882353186607361</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.43137255311012268</real>
 				<key>Red Component</key>
-				<real>0.57647061347961426</real>
+				<real>0.34509804844856262</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.25882354378700256</real>
+				<real>0.83529412746429443</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470816135406</real>
+				<real>0.90980392694473267</real>
 				<key>Red Component</key>
-				<real>0.027450980618596077</real>
+				<real>0.93333333730697632</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2396,9 +2402,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-10T23:39:14Z</date>
+	<date>2018-05-12T23:39:19Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SavePasteHistory</key>
+	<true/>
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TabViewType</key>

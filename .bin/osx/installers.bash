@@ -180,6 +180,7 @@ user_fonts=(
   font-source-code-pro-for-powerline
   font-source-sans-pro
   font-source-serif-pro
+  font-hack-nerd-font
 )
 
 
