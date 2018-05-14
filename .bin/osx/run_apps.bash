@@ -3,7 +3,6 @@
 apps=(
     "1Password"
     "Bartender 3"
-    "Flux"
     "Chrome"
     "iTerm"
     "mac2imgur"
@@ -19,3 +18,6 @@ for app in ${apps[@]}; do
 done
 
 open "https://packagecontrol.io/installation"
+
+echo "opening chunkwm tiling window manager:"
+brew services start khd chunkwm

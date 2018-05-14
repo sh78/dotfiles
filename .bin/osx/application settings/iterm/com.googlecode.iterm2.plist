@@ -14,7 +14,7 @@
 	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
-		<key>Solarized Dark - Light Cursor</key>
+		<key>Solarized Dark v2</key>
 		<dict>
 			<key>Ansi 0 Color</key>
 			<dict>
@@ -333,29 +333,29 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.21176470816135406</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.63137257099151611</real>
+				<real>0.16862745583057404</real>
 				<key>Red Component</key>
-				<real>0.57647061347961426</real>
+				<real>0.0</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.25882354378700256</real>
+				<real>0.89019608497619629</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470816135406</real>
+				<real>0.96470588445663452</real>
 				<key>Red Component</key>
-				<real>0.027450980618596077</real>
+				<real>0.99215686321258545</real>
 			</dict>
 		</dict>
-		<key>Solarized Light - Dark Cursor</key>
+		<key>Solarized Light v2</key>
 		<dict>
 			<key>Ansi 0 Color</key>
 			<dict>
@@ -674,45 +674,168 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.45882353186607361</real>
+				<real>0.89019608497619629</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.43137255311012268</real>
+				<real>0.96470588445663452</real>
 				<key>Red Component</key>
-				<real>0.34509804844856262</real>
+				<real>0.99215686321258545</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.83529412746429443</real>
+				<real>0.21176470816135406</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.90980392694473267</real>
+				<real>0.16862745583057404</real>
 				<key>Red Component</key>
-				<real>0.93333333730697632</real>
+				<real>0.0</real>
 			</dict>
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>F86782B0-2BF8-4DAC-8082-E4554A22D5B6</string>
 	<key>DimOnlyText</key>
-	<false/>
+	<true/>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
 	<key>FocusFollowsMouse</key>
 	<false/>
+	<key>GlobalKeyMap</key>
+	<dict>
+		<key>0x19-0x60000</key>
+		<dict>
+			<key>Action</key>
+			<integer>39</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x27-0x140000</key>
+		<dict>
+			<key>Action</key>
+			<integer>40</integer>
+			<key>Text</key>
+			<string>Solarized Light v2</string>
+		</dict>
+		<key>0x3b-0x140000</key>
+		<dict>
+			<key>Action</key>
+			<integer>40</integer>
+			<key>Text</key>
+			<string>Solarized Dark v2</string>
+		</dict>
+		<key>0x9-0x40000</key>
+		<dict>
+			<key>Action</key>
+			<integer>32</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf700-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>7</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf701-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>6</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>2</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>33</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>0</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>34</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf729-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>5</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72b-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>4</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+	</dict>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
 	<integer>64</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
+	<key>NSColorPanelMode</key>
+	<string>6</string>
+	<key>NSColorPanelMode.modal</key>
+	<integer>6</integer>
+	<key>NSColorPanelToolbarIsShown.modal</key>
+	<integer>1</integer>
+	<key>NSColorPanelVisibleSwatchRows.modal</key>
+	<integer>2</integer>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
@@ -729,6 +852,11 @@
 	<false/>
 	<key>NSScrollViewShouldScrollUnderTitlebar</key>
 	<false/>
+	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
+	<array>
+		<string>0.000000, 0.000000, 224.000000, 263.000000, NO, NO</string>
+		<string>0.000000, 264.000000, 224.000000, 43.000000, NO, NO</string>
+	</array>
 	<key>NSTableView Columns v2 KeyBingingTable</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -757,6 +885,10 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>0 78 224 280 0 0 1280 800 </string>
+	<key>NSWindow Frame NSColorPanel.modal</key>
+	<string>528 413 224 280 0 0 1280 800 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>751 110 623 270 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
@@ -766,11 +898,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>202 325 928 394 0 0 1280 800 </string>
+	<string>232 144 1018 447 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 18 1250 764 0 0 1280 800 </string>
+	<string>15 223 810 529 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>15 24 620 361 0 0 1280 800 </string>
+	<string>15 20 620 760 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>15 20 620 760 0 0 1280 800 </string>
 	<key>New Bookmarks</key>
@@ -1156,13 +1288,6 @@
 			</array>
 			<key>Keyboard Map</key>
 			<dict>
-				<key>0x27-0x140000</key>
-				<dict>
-					<key>Action</key>
-					<integer>40</integer>
-					<key>Text</key>
-					<string>Solarized Dark - Light Cursor</string>
-				</dict>
 				<key>0x2d-0x40000</key>
 				<dict>
 					<key>Action</key>
@@ -1218,13 +1343,6 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
-				</dict>
-				<key>0x3b-0x140000</key>
-				<dict>
-					<key>Action</key>
-					<integer>40</integer>
-					<key>Text</key>
-					<string>Solarized Light - Dark Cursor</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -1493,26 +1611,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.45882353186607361</real>
+				<real>0.89019608497619629</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.43137255311012268</real>
+				<real>0.96470588445663452</real>
 				<key>Red Component</key>
-				<real>0.34509804844856262</real>
+				<real>0.99215686321258545</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.83529412746429443</real>
+				<real>0.21176470816135406</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.90980392694473267</real>
+				<real>0.16862745583057404</real>
 				<key>Red Component</key>
-				<real>0.93333333730697632</real>
+				<real>0.0</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -1940,13 +2058,6 @@
 			</array>
 			<key>Keyboard Map</key>
 			<dict>
-				<key>0x27-0x140000</key>
-				<dict>
-					<key>Action</key>
-					<integer>40</integer>
-					<key>Text</key>
-					<string>Solarized Dark - Light Cursor</string>
-				</dict>
 				<key>0x2d-0x40000</key>
 				<dict>
 					<key>Action</key>
@@ -2002,13 +2113,6 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
-				</dict>
-				<key>0x3b-0x140000</key>
-				<dict>
-					<key>Action</key>
-					<integer>40</integer>
-					<key>Text</key>
-					<string>Solarized Light - Dark Cursor</string>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -2290,13 +2394,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.25882354378700256</real>
+				<real>0.8901960784313725</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470816135406</real>
+				<real>0.96470588235294119</real>
 				<key>Red Component</key>
-				<real>0.027450980618596077</real>
+				<real>0.99215686274509807</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -2402,11 +2506,15 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-12T23:39:19Z</date>
+	<date>2018-05-13T23:39:23Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
 	<true/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.31475610977564106</real>
+	<key>SwitchTabModifier</key>
+	<integer>4</integer>
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>TabViewType</key>

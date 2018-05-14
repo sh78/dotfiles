@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "running prefs..."
+echo "setting preferences..."
 sleep 1
 bash ./prefs.bash
 
@@ -12,7 +12,7 @@ echo "running installers..."
 sleep 1
 bash ./installers.bash
 
-echo "opening Drive, start sync process now..."
+echo "opening Drive, start sync process now and press [Enter] key when fully syned..."
 open /Applications/Google \ Drive.app
 
 echo "setting up fish..."
@@ -27,20 +27,15 @@ echo "setting up mysql..."
 sleep 1
 bash ./mysql.bash
 
-read -p "Set up up dropbox. Press [Enter] key when fully synced..."
-
-echo "restoring from mackup..."
+read -p "restoring from mackup backup (sym links). press [Enter] to continue when Google Drive is fully synced..."
 sleep 1
 bash ./mackup.bash
 
-echo "running misc..."
+echo "opening some apps for manual setup..."
+sleep 1
+bash ./run_apps.bash
+
+echo "running some miscellany..."
 sleep 1
 bash ./misc.bash
 
-echo "opening some apps..."
-sleep 1
-bash ./apps.bash
-
-echo "for chunkwm tiling window manager, run:"
-echo "brew services start khd"
-echo "brew services start chunkwm"

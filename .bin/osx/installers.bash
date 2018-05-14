@@ -50,6 +50,7 @@ user_brews=(
   mercurial
   mplayer
   mysql
+  neofetch
   neovim
   ngrep
   nmap
@@ -145,7 +146,6 @@ user_apps=(
   cyberduck
   firefox
   flash
-  flux
   gas-mask
   google-chrome
   google-drive
@@ -160,7 +160,7 @@ user_apps=(
   # nvalt
   # parallels-desktop
   qutebrowser
-  skype
+  # skype
   slack
   spectacle
   sublime-text

@@ -15,7 +15,7 @@ chsh -s /usr/local/bin/fish
 # curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install > install_omf
 
-# remove line in sucecss block that starts a fish shell and interrupts the remaining processes
+# remove line in success block that starts a fish shell and interrupts the remaining processes
 sed -i '.original' 's/.*or exec fish.*/\# removed line that starts fish on tty./' install_omf
 fish install_omf
 
