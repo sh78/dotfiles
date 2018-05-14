@@ -24,6 +24,7 @@ call vundle#rc()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'lifepillar/vim-solarized8'
 Plugin 'alvan/vim-closetag'
 Plugin 'ap/vim-css-color'
 Plugin 'junegunn/goyo.vim'
@@ -32,8 +33,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/tabular'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'mattn/emmet-vim'
-Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
+Plugin 'lambdalisue/vim-gista'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
@@ -171,9 +172,6 @@ set relativenumber                "" hybrid number mode
 set ruler                         "" Show cursor position.
 set numberwidth=4                 "" Make some room.
 
-let &colorcolumn="80,".join(range(100,999),",")
-"highlight ColorColumn ctermbg=0 guibg=LightGrey
-
 set incsearch                     "" Highlight matches as you type.
 set hlsearch                      "" Highlight matches.
 
@@ -227,12 +225,12 @@ imap <S><Tab> <C-N>
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<C-n>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<C-n>"
+  endif
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <C-n>
@@ -275,7 +273,6 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 "" paste mode
 nnoremap <Leader>sp :set invpaste paste?<CR>
 set pastetoggle=<Leader>sp
-set showmode
 
 "" line numbers
 nnoremap <leader>sn :set nonumber! norelativenumber!<CR>
@@ -288,12 +285,16 @@ nnoremap <leader>sh :set hlsearch!<CR>
 nnoremap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:⌐
 
+"" toggle spell check
+nnoremap <Leader>ss :set spell!
+
 
 " # Theme
 
 syntax enable
-colorscheme solarized
 hi Normal ctermbg=NONE
+" set termguicolors
+colorscheme solarized
 
 "" change background based on time
 "" big ups to Garrett Oreilly @ https://coderwall.com/p/1b30wg
@@ -309,6 +310,9 @@ nnoremap <Leader>' :let &background=(&background == "dark"?"light":"dark")<CR>
 "" crosshair cursor
 set cursorline
 set cursorcolumn
+
+let &colorcolumn="80,".join(range(100,999),",")
+"highlight ColorColumn ctermbg=0 guibg=LightGrey
 
 
 " # Tabs Windows & Beyond
@@ -349,15 +353,15 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " RemoveFancyCharacters - smart quotes, etc.
 function! RemoveFancyCharacters()
-    let typo = {}
-    let typo["“"] = '"'
-    let typo["”"] = '"'
-    let typo["‘"] = "'"
-    let typo["’"] = "'"
-    let typo["–"] = '--'
-    let typo["—"] = '---'
-    let typo["…"] = '...'
-    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
+  let typo = {}
+  let typo["“"] = '"'
+  let typo["”"] = '"'
+  let typo["‘"] = "'"
+  let typo["’"] = "'"
+  let typo["–"] = '--'
+  let typo["—"] = '---'
+  let typo["…"] = '...'
+  :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 :nnoremap <Leader>dc :RemoveFancyCharacte<CR>
@@ -410,7 +414,7 @@ augroup END
 
 "" # Plugins
 
-"" inherit line column color for vim-gitgutter
+"" vim-gitgutter inherit line column color
 highlight clear SignColumn
 
 "" Ack
@@ -427,21 +431,21 @@ let g:user_emmet_expandabbr_key = '<Leader><Tab>'
 let g:user_emmet_next_key = '<Leader>n'
 let g:user_emmet_prev_key = '<Leader>N'
 
-let g:user_emmet_settings = {
-  'php' : {
-    'extends' : 'html',
-    'filters' : 'c',
-  },
-  'xml' : {
-    'extends' : 'html',
-  },
-  'haml' : {
-    'extends' : 'html',
-  },
-  'twig' : {
-    'extends' : 'html',
-  },
-}
+" let g:user_emmet_settings = {
+"   'php' : {
+"     'extends' : 'html',
+"     'filters' : 'c',
+"   },
+"   'xml' : {
+"     'extends' : 'html',
+"   },
+"   'haml' : {
+"     'extends' : 'html',
+"   },
+"   'twig' : {
+"     'extends' : 'html',
+"   },
+" }
 
 "" closetag.vim
 ":au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
@@ -453,23 +457,19 @@ let g:user_emmet_settings = {
 :nnoremap <Leader>t :NERDTreeToggle<CR>
 :nnoremap <Leader>T :NERDTreeFind<CR>
 
-"" mapping for NERDtree and autoclose
+" mapping for NERDtree and autoclose
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"" show hidden files in nerdtree
+" show hidden files in nerdtree
 let NERDTreeShowHidden=1
-"" auto delete buffer of deleted files
+" auto delete buffer of deleted files
 let NERDTreeAutoDeleteBuffer = 1
-"" look nice
+" look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-"" open nerdtree on start
-"" autocmd VimEnter * NERDTree | wincmd p
-
-" NERDCommenter
-let g:NERDSpaceDelims = 1
-let g:NERDCommentEmptyLines = 1
+" open nerdtree on start
+" autocmd VimEnter * NERDTree | wincmd p
 
 "" fix youcompleteme freezing vim after pressing dot
 let g:pymode_rope_complete_on_dot = 0
@@ -496,7 +496,7 @@ nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impu
 nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
 
-" tabularize
+"" tabularize
 nnoremap <Leader>aa :Tabularize <CR>
 nnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:\zs<CR>
@@ -505,70 +505,84 @@ nnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a< :Tabularize /\<<CR>
 nnoremap <Leader>a\| :Tabularize /\|<CR>
 
-" undotree - undo tree visualizer
+"" undotree - undo tree visualizer
 nnoremap <C-z> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
 let g:undotree_HelpLine = 0
 
-
-" fzf - fuzzy finder
+"" fzf - fuzzy finder
 set rtp+=/usr/local/opt/fzf
 
-
-" denite
+"" denite
 call denite#custom#option('default', 'prompt', '>')
 
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nogroup', '-g', ''])
 
 call denite#custom#map(
-        \ 'insert',
-        \ '<C-j>',
-        \ '<denite:move_to_next_line>',
-        \ 'noremap'
-        \)
+  \ 'insert',
+  \ '<C-j>',
+  \ '<denite:move_to_next_line>',
+  \ 'noremap'
+  \)
 call denite#custom#map(
-				\ 'insert',
-				\ '<C-k>',
-				\ '<denite:move_to_previous_line>',
-				\ 'noremap'
-				\)
+  \ 'insert',
+  \ '<C-k>',
+  \ '<denite:move_to_previous_line>',
+  \ 'noremap'
+  \)
 
+" these are mapped to avoid the leader/ctrl for ease
+" attempting to follow vim convention of 'g' going or jumping
 nnoremap <Leader><Leader> :Denite
-nnoremap <Leader>p :Denite buffer file/rec<CR>
-nnoremap <Leader>P :Denite command<CR>
-nnoremap <Leader>k :DeniteCursorWord line<CR>
-nnoremap <Leader>K :DeniteCursorWord tags<CR>
+" (don't need to paste a register multiple times at once)
+nnoremap gp :Denite buffer file/rec<CR>
+" gP (don't need cursor moving after paste)
+" g; (don't need to go to a change from memory, and using :Denite change is nicer)
+nnoremap ;; :Denite command<CR>
+" gk (already remapped k to do gk)
+nnoremap gk :DeniteCursorWord line<CR>
+" gK (unmapped by default)
+nnoremap gK :DeniteCursorWord tags<CR>
+" maybe eunuch :Find?" gF (unmapped by default)
+" gh (who TF uses select mode anyway)
+" gH (who TF uses select line mode anyway)
+" gn (don't need to visually select search patterns
 
-" Gist (snippets)
-let g:gist_detect_filetype = 1
-let g:gist_show_privates = 1
-let g:gist_post_private = 1
-let g:gist_get_multiplefile = 1
-let g:gist_list_vsplit = 0
-let g:gist_namelength = 40
+"" Gista (snippets)
+let g:gista#command#post#default_public = 0
+let g:gista#command#post#allow_empty_description = 1
+" Always request updated gists in :Gista list
+let g:gista#command#list#default_options = {
+  \ 'cache': 0,
+\}
 
-nnoremap gil :Gist --list<CR>
-nnoremap gip :Gist -public<CR>
-nnoremap gid :Gist --delete<CR>
-nnoremap gia :Gist --anonymous<CR>
+nnoremap <Leader>gl :Gista list<CR>
+nnoremap <Leader>gb :Gista browse
+nnoremap <Leader>gpr :Gista post --private<CR>
+nnoremap <Leader>gpu :Gista post --public<CR>
+nnoremap <Leader>ga :Gista post --anonymous<CR>
+nnoremap <Leader>gd :Gista --delete<CR>
+nnoremap <Leader>gs :Gista star<CR>
+nnoremap <Leader>gu :Gista unstar<CR>
 
-" airline
+
+"" airline
 set laststatus=2
 let g:airline_theme='solarized'
+let g:airline_powerline_fonts = 1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch#empty_message='☓'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#whitespace#enabled=1
 
-let g:airline_powerline_fonts = 1
-
 " " uncomment if not using powerline patched font
 " if !exists('g:airline_symbols')
-"     let g:airline_symbols = {}
+"   let g:airline_symbols = {}
 " endif
 
 " " unicode symbols
@@ -592,8 +606,7 @@ let g:airline_powerline_fonts = 1
 " let g:airline_symbols.readonly = ''
 " let g:airline_symbols.linenr = ''
 
-
-" tmuxline
+"" tmuxline
 " let g:tmuxline_preset = 'full'
 let g:tmuxline_preset = {
 	\'a'       : '#S:#I',
@@ -604,10 +617,10 @@ let g:tmuxline_preset = {
 	\'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
 	\'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
   \'z disabled'       : '',
-	\'options' : {'status-justify': 'left'}}
+	\'options' : {'status-justify': 'left'}
+}
 
-
-" closetag
+"" closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.twig,*.php'
 let g:closetag_emptyTags_caseSensitive = 1
 let closetag_close_shortcut = '<leader>>'
