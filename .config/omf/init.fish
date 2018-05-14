@@ -11,3 +11,6 @@ if test (date +%H) -gt 8; and test (date +%H) -lt 18
 else
   set -gx COLOR dark
 end
+
+# vi mode!
+fish_vi_key_bindings
