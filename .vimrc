@@ -117,6 +117,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'gabrielelana/vim-markdown'
 
 
 if iCanHazVundle == 0
@@ -191,7 +192,7 @@ set nowritebackup                 "" And again.
 set noswapfile
 set directory=/.vim/tmp
 
-" Set spellfile location
+setlocal spell spelllang=en_us
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 "" tab settings
@@ -208,14 +209,14 @@ set undodir=~/.vim/undodir        " Keep all undo in one place
 nnoremap j gj
 nnoremap k gk
 
-" Disable automatic comment insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 "" Useful status information at bottom of screen
 " set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 
-" # Autocompletion
+" # File Types: Syntax-specific settings
+
+
+" # Auto completion
 
 " set complete =
 set complete+=kspell
@@ -286,7 +287,10 @@ nnoremap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:⌐
 
 "" toggle spell check
-nnoremap <Leader>ss :set spell!
+nnoremap <Leader>ss :set spell!<CR>
+
+"" change file type (not really a toggle but who's counting)
+nnoremap <Leader>sf :set filetype=
 
 
 " # Theme
@@ -344,12 +348,10 @@ map <Leader>rv :source ~/.vimrc<cr>
 "" quick find/replace
 :nnoremap <Leader>fg :%s//g<Left><Left>
 
-"" Automatic fold settings for specific files. Uncomment to use.
+"" Automatic fold settings for specific files
 "" autocmd FileType ruby setlocal foldmethod=syntax
 "" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
 
-"" commit messages | http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
-autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " RemoveFancyCharacters - smart quotes, etc.
 function! RemoveFancyCharacters()
@@ -387,30 +389,28 @@ cmap w!! w !sudo tee % >/dev/null
 
 "" # Syntax-specifics
 
-augroup vimrcEx
-  autocmd!
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  "autocmd BufReadPost *
-  "  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-  "  \   exe "normal g`\"" |
-  "  \ endif
+" Disable automatic comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-  " Set syntax type for markdown and txt
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-  autocmd BufRead,BufNewFile *.txt set filetype=text
+" commit messages | http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
-  " Enable spellchecking for Markdown and txt
-  autocmd FileType markdown setlocal spell
-  autocmd FileType txt setlocal spell
+"  markdown
+" autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
+autocmd FileType markdown,text setlocal spell textwidth=80
+autocmd FileType markdown,text Goyo
+let g:markdown_fenced_languages = ['javascript', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
+let g:markdown_syntax_conceal = 1
 
-  " Automatically wrap at 80 characters for Markdown and txt
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-  autocmd BufRead,BufNewFile *.txt setlocal textwidth=80
+" When editing a file, always jump to the last known cursor position.
+" Don't do it for commit messages, when the position is invalid, or when
+" inside an event handler (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
 
-augroup END
 
 "" # Plugins
 
@@ -423,8 +423,9 @@ if executable('ag')
 endif
 
 "" Goyo
-" let g:goyo_width = 100
-" let g:goyo_height = 90%
+let g:goyo_width = 80
+let g:goyo_margin_top = 3
+let g:goyo_margin_bottom = 3
 
 "" Mapping and settings for emmet
 let g:user_emmet_expandabbr_key = '<Leader><Tab>'
@@ -609,16 +610,15 @@ let g:airline#extensions#whitespace#enabled=1
 "" tmuxline
 " let g:tmuxline_preset = 'full'
 let g:tmuxline_preset = {
-	\'a'       : '#S:#I',
-	\'b disabled'       : '',
-	\'c disabled'       : '',
-	\'win'     : ['#I', '#W'],
-	\'cwin'    : ['#I', '#W'],
-	\'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
-	\'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
-  \'z disabled'       : '',
-	\'options' : {'status-justify': 'left'}
-}
+    \'a'       : '#S:#I',
+    \'b disabled'       : '',
+    \'c disabled'       : '',
+    \'win'     : ['#I', '#W'],
+    \'cwin'    : ['#I', '#W'],
+    \'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
+    \'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
+    \'z disabled'       : '',
+    \'options' : {'status-justify': 'left'}}
 
 "" closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.twig,*.php'
