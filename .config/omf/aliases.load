@@ -274,7 +274,6 @@ alias bd='brew doctor'
 alias bs='brew search'
 alias bl='brew list'
 
-alias bc='brew cask' # don't need the calculator `bc`
 alias bci='brew cask install'
 function bcs --description "search the cask"
   brew cask search /$argv/

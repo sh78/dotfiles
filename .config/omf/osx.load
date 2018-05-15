@@ -9,8 +9,11 @@ alias down="cd ~/Downloads"
 alias drive="cd ~/Google\ Drive"
 
 # quick edits
-alias osx='vim ~/.bin/osx/'
-alias installers='vim ~/.bin/osx/installers.bash'
+alias osx='eval $EDITOR ~/.bin/osx/'
+alias installers='eval $EDITOR ~/.bin/osx/installers.bash'
+alias dots='$eval EDITOR ~/Google\ Drive/dotfiles/'
+alias osxi='eval $EDITOR +NERDTreeFind ~/.bin/osx/installers.bash'
+alias osxp='eval $EDITOR +NERDTreeFind ~/.bin/osx/prefs.bash'
 
 # copy current path to system clipboard
 alias cwd="pwd | pbcopy"
