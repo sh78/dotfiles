@@ -14,12 +14,9 @@ alias p="pwd"
 alias c='clear'
 
 # quick edits
-alias dots='vim ~/Google\ Drive/dotfiles/'
 alias vr='vim ~/.vimrc'
 alias vp='vim +/Plugin ~/.vimrc'
 alias aliases='vim +NERDTreeFind ~/.config/omf/aliases.load'
-alias osxi='vim +NERDTreeFind ~/.bin/osx/installers.bash'
-alias osxp='vim +NERDTreeFind ~/.bin/osx/prefs.bash'
 
 # basic commands & overrides
 function ls --description "custom ls with color output and directory markers by default"
