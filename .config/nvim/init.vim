@@ -145,7 +145,10 @@ runtime macros/matchit.vim
 
 " # General settings
 
-let mapleader = "\\"
+" let mapleader = "\\"
+" make space the <Leader> but keep visual indication that <Leader> was pressed
+:map <Space> \ 
+
 set backspace=indent,eol,start    "" Intuitive backspacing.
 
 "" Controversial...swap colon and semicolon for easier commands
@@ -295,6 +298,12 @@ nnoremap <Leader>sf :set filetype=
 
 " # Theme
 
+"" TODO: better terminal awareness
+"" kick vim into recognising moderm terminal color handling
+"" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
+""   set t_Co=256
+"" endif
+
 syntax enable
 hi Normal ctermbg=NONE
 " set termguicolors
@@ -338,21 +347,16 @@ map <Leader>tl :tablast<cr>
 map <Leader>tm :tabmove
 
 
-" # Functions
+" # Functions / Macros
 
 "" Quickly edit/reload the vimrc file
-map <Leader>rv :source ~/.vimrc<cr>
+:nnoremap <Leader>rv :source ~/.vimrc<cr>
 
 "" substitute all occurrences of the word under the cursor
 :nnoremap <Leader>fw :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 "" quick find/replace
 :nnoremap <Leader>fg :%s//g<Left><Left>
-
-"" Automatic fold settings for specific files
-"" autocmd FileType ruby setlocal foldmethod=syntax
-"" autocmd FileType css  setlocal foldmethod=indent shiftwidth=2 tabstop=2
-
 
 " RemoveFancyCharacters - smart quotes, etc.
 function! RemoveFancyCharacters()
@@ -369,27 +373,24 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 :nnoremap <Leader>dc :RemoveFancyCharacte<CR>
 
-
 " Get off my lawn (disables mouse support, which is too fancy to quit)
 " nnoremap <Left> :echoe "Use h"<CR>
 " nnoremap <Right> :echoe "Use l"<CR>
 " nnoremap <Up> :echoe "Use k"<CR>
 " nnoremap <Down> :echoe "Use j"<CR>
 
-"" su-DOH
+" su-DOH
 cmap w!! w !sudo tee % >/dev/null
 
-"" reduce mistakes
+" reduce mistakes
 :map Q <Nop>
 
-"" kick vim into recognising moderm terminal color handling
-"" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
-""   set t_Co=256
-"" endif
+" yank all the things, and persist the cursor location
+nnoremap <Leader>y ylpxggyGg;h
+nnoremap <Leader>Y ylpxgg"*yGg;h
 
 
-"" # Syntax-specifics
-
+" # Syntax-specifics
 
 " Disable automatic comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -399,7 +400,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "  markdown
 " autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-autocmd FileType markdown,text setlocal spell textwidth=80
+autocmd FileType markdown,text setlocal spell
 autocmd FileType markdown,text Goyo
 let g:markdown_fenced_languages = ['javascript', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
 let g:markdown_syntax_conceal = 1
@@ -424,6 +425,7 @@ if executable('ag')
 endif
 
 "" Goyo
+noremap <Leader>G :Goyo<CR>
 let g:goyo_width = 80
 let g:goyo_margin_top = 3
 let g:goyo_margin_bottom = 3
