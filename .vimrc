@@ -300,9 +300,10 @@ hi Normal ctermbg=NONE
 " set termguicolors
 colorscheme solarized
 
-"" change background based on time
-"" big ups to Garrett Oreilly @ https://coderwall.com/p/1b30wg
-if strftime("%H") > 8 && strftime("%H") < 18
+"" change background based on env variable
+" alternate -
+" if strftime("%H") > 8 && strftime("%H") < 18
+if $COLOR == "light"
   set background=light
 else
   set background=dark
@@ -429,8 +430,8 @@ let g:goyo_margin_bottom = 3
 
 "" Mapping and settings for emmet
 let g:user_emmet_expandabbr_key = '<Leader><Tab>'
-let g:user_emmet_next_key = '<Leader>n'
-let g:user_emmet_prev_key = '<Leader>N'
+let g:user_emmet_next_key = '<Leader>]'
+let g:user_emmet_prev_key = '<Leader>['
 
 " let g:user_emmet_settings = {
 "   'php' : {
