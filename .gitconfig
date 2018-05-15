@@ -15,19 +15,6 @@
 	excludesfile = ~/.gitignore_global
 [credential]
 	helper = osxkeychain
-[alias]
-  a = add
-  aa = add --all
-  ap = add --patch
-  ca = commit --amend
-  cv = commit -v
-  co = checkout
-  st = status
-  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  mkbranch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
-  rmbranch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
-  mergebranch = !git checkout master && git merge @{-1}
-  up = !git fetch origin && git rebase origin/master
 [gitsh]
 	defaultCommand = status -s -b
 [difftool "sourcetree"]
@@ -36,3 +23,66 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[alias]
+  ec = config --global -e
+  ig = !sh -c '$EDITOR .gitignore'
+  s = status -sb
+  l = log --color --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset %s %Cblue<%an>%Creset' --abbrev-commit
+  ll = log --color --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen%ci (%cr)%Creset %Cblue<%an>%Creset%n%s' --abbrev-commit
+  ls = log --color --graph --stat --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen%ci (%cr)%Creset %Cblue%an <%ce>%Creset%n%B' --abbrev-commit
+  lp = log --color --graph --stat -p --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen%ci (%cr)%Creset %Cblue<%an>%Creset%n%B' --abbrev-commit
+  a = add
+  aa = add . --all
+  ap = add --patch
+  c = commit -v
+  ca = commit --amend -v
+  co = checkout
+  i = init
+  ib = init --bare
+  cl = clone
+  d = diff -M --word-diff
+  dc = diff --cached -M
+  au = add -u
+  cm = commit -m
+  cob = checkout -b
+  coB = checkout -B ; auto branch name from ref
+  p = push
+  pu = push -u ; push and set the following remote branch as default push location
+  pom = push origin master
+  pa = push --all ; push all branches
+  par = !sh -c 'git remote | xargs -L1 git push --all' ; push all branches to all remotes
+  pl = pull
+  plom = pull origin master
+  f = fetch --all
+  fo = fetch origin
+  st = stash
+  stp = stash pop
+  sts = stash save
+  stl = stash list
+  sta = stash apply
+  stc = stash clear
+  br = branch -av
+  brd = branch -d
+  brD = branch -D
+  brt = branch --track
+  rb = rebase
+  rbc = rebase --continue
+  rbi = rebase -i
+  rb = rebase -p
+  rm = remote -v
+  rma = remote add
+  rms = remote show
+  rmsu = remote set-url
+  m = merge
+  rs = reset
+  rss = reset --soft ; unstage working changes
+  rsh = reset --hard ; discard working changes
+  rsho = reset --hard ORIG_HEAD ; undo merge
+  mkbranch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  rmbranch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  mergebranch = !sh -c 'git checkout master && git merge @{-1}'
+  up = !sh -c 'git fetch origin && git rebase origin/master'
+  nuke = !sh -c 'git filter-branch --index-filter 'git rm --cached --ignore-unmatch $*' -- --all'
+  acm = !sh -c 'git add . --all && git status -sb && git commit -mv "$@"'
+  acmp = !sh -c 'git add . --all && git status -sb && git commit -mv "$@" && git push'
+  rdone = !sh -c 'git add . --all && git status -sb && git commit -mv "$@" && git push'

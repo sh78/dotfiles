@@ -1,0 +1,49 @@
+# proxy garbage
+
+function cloroxproxy --description "automatically set proxy env vars based on network location"
+  set -l location (scselect | grep "\*"| tail -1)
+  switch $location
+    case "*Away*" or "*Automatic*"
+      set -x -g http_proxy http://104.129.192.34:10204
+      set -x -g https_proxy http://104.129.192.34:10204
+      set -x -g no_proxy localhost,127.0.0.1,127.0.0.2,localaddress,.localdomain.com
+  end
+end
+#cloroxproxy
+
+
+function clx --description "Open all things CLX/CDL/CCS"
+    # Network
+    networksetup -switchtolocation "Clorox"
+
+    # MAMP
+    # open /Applications/MAMP\ PRO/MAMP\ PRO.app/
+    # can't start becuase it's PRO, no MAMP/bin...
+    ## http://stackoverflow.com/questions/17570010/how-start-stop-mamp-pro-using-command-line
+
+    # Coms
+    open /Applications/Outlook.app
+    open ~/Applications/Chrome\ Apps.localized/Default\ eifdbcbnlahelniokpkpdlhaocgjdcje.app
+
+    # Web
+    /Applications/Safari.app/Contents/MacOS/Safari & sleep 2; osascript -e 'tell application "Safari" to open location "https://cloroxcreative.unfuddle.com/a#/ticket_reports/4"'
+
+    # Etc
+    open /Applications/nvALT.app
+    cd ~/clorox/
+end
+
+# folder path & workflow aliases
+
+# from within a branch of a brand
+alias clxtheme="cd site/www/wp-content/themes/ccl-default; svn status; svn up; subl ./"
+alias clxgrunt="cd site/tools; grunt build; grunt watch; cd ../.."
+alias clxsetup="cd site/tools; php setup.php --env=ENV_SHENDER; cd ../.."
+
+# brand roots
+alias clxtcc="cd ~/clorox/TheCloroxCompany"
+alias clxtccrainbow="cd ~/clorox/TheCloroxCompany/branches/rainbow.thecloroxcompany.com"
+alias clxsv="cd ~/clorox/soyvay"
+alias clxsvmarinate="cd ~/clorox/soyvay/trunk/soyvay.com-marinate"
+alias clxlp="cd ~/clorox/liquidplumr"
+alias clxlptrunk="cd ~/clorox/liquidplumr/trunk/liquidplumr.com"

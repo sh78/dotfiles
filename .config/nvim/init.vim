@@ -221,7 +221,7 @@ nnoremap k gk
 " set complete =
 set complete+=kspell
 imap <Tab> <C-P>
-imap <S><Tab> <C-N>
+imap <S-Tab> <C-N>
 
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
@@ -303,6 +303,7 @@ colorscheme solarized
 "" change background based on time
 "" big ups to Garrett Oreilly @ https://coderwall.com/p/1b30wg
 if strftime("%H") > 8 && strftime("%H") < 18
+" if $COLOR = "light"
   set background=light
 else
   set background=dark

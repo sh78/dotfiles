@@ -4,6 +4,7 @@
 
 alias vim='nvim'
 alias v='vim'
+alias g='git'
 function vf --description "jump to pattern on open"
     command vim +\/$argv[2] $argv[1]
 end
@@ -157,7 +158,12 @@ alias tm='top -o vsize' # memory
 
 # misc
 alias lmk="say 'Process complete.'" # pin to the tail of long commands
-alias nameservers='host -t ns'
+
+function wait --description "Run a command after some time: wait <minutes> <"command">"
+  set minutes $argv[1]
+  set time_in_seconds (math "$minutes*60")
+  sleep $time_in_seconds; and eval $argv[2]
+end
 
 
 ####################
@@ -177,102 +183,73 @@ alias m="math" # quick calculations in the terminal
 alias starwars="telnet towel.blinkenlights.nl"
 
 
+
+#################################
+### Utilities/Misc
+#################################
+
+function server --description "Start an HTTP server from a directory"
+  open http://localhost:8080/
+  and python -m SimpleHTTPServer 8080
+end
+
+function explain --description "Lookup command on explainshell.com"
+    set -l URL_ENCODE (python -c 'import urllib, sys; print urllib.quote_plus(sys.argv[1])' "$argv")
+    open "http://explainshell.com/explain?cmd=$URL_ENCODE"
+end
+
+function wait --description "Run a command after some time: wait <minutes> <"command">"
+  set minutes $argv[1]
+  set time_in_seconds (math "$minutes*60")
+  sleep $time_in_seconds; and eval $argv[2]
+end
+
+# '!! sudo' will prepend sudo to your most recent command
+# Running !! with anything other than sudo will append the argument to your most recent command
+# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
+function !!;
+  set var (history | head -n 1)
+  if test $argv
+    if test $argv = "sudo"        #; or "any other command you want to prepend"
+        eval $argv $var
+    else
+        eval $var $argv
+    end
+  else
+    eval $var
+  end
+end
+
+
 ####################
-# CLI's
+# Network Info
 ####################
+
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
+alias myip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+alias nameservers='host -t ns'
+
+function digga --description "All the dig info"
+  dig +nocmd "$argv[1..-1]" any +multiline +noall +answer
+end
+
+####################
+# extra
+####################
+
+# URL encode/decode
+alias urlencode='python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
+alias urldecode='python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
 
 # sublime text
 alias sub='subl -n' # alias the alias
 
 # todo.txt
 alias to='todo.sh'
-
-# git
-alias gs='git status -sb'
-alias gi='git init'
-alias gib='git init --bare'
-alias gcl='git clone'
-alias gd='git diff -M --word-diff'
-alias gdc='git diff --cached -M'
-alias ga='git add . --all'
-alias gau='git add -u'
-alias gac='git add --all; git commit -v'
-alias gc='git commit -v'
-alias gcm='git commit -m'
-alias gca='git commit --amend -v'
-alias gcma='git commit -a -m'
-alias gco='git checkout'
-alias gcob='git checkout -b'
-alias gcoB='git checkout -B' # auto branch name from ref
-alias gp='git push'
-alias gpu='git push -u' # push and set the following remote branch as default push location
-alias gpom='git push origin master'
-alias gpa="git push --all" # push all branches
-alias gpar="git remote | xargs -L1 git push --all" # push all branches to all remotes
-alias gpl='git pull'
-alias gplom='git pull origin master'
-alias gf='git fetch'
-alias gfa='git fetch --all'
-alias gfo='git fetch origin'
-alias gfom='git fetch origin master'
-alias greb='git rebase'
-alias gst='git stash'
-alias gstp='git stash pop'
-alias gsts='git stash save'
-alias gstl='git stash list'
-alias gsta='git stash apply'
-alias gssc='git stash clear'
-alias grmc='git rm --cached'
-alias gbr='git branch -v'
-alias gbra='git branch -v -a'
-alias gbrd='git branch -d'
-alias gbrD='git branch -D'
-alias gbrt='git branch --track'
-alias grbc='git rebase --continue'
-alias grbi='git rebase -i'
-alias grb='git rebase -p'
-alias grm='git remote -v'
-alias grma='git remote add'
-alias grms='git remote show'
-alias grmsu='git remote set-url'
-alias grmd='git remote -d'
-alias gm='git merge'
-alias grs='git reset'
-alias grsh='git reset --hard' # undo all staged and unstaged changes
-alias grsho='git reset --hard ORIG_HEAD' # undo merge
-alias gk='gitk'
-alias gka='gitk --all'
-alias gl='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
-alias gla='gl --all'
-alias glp='git log -p'
-alias gls='git log --stat'
-alias glps='git log -p --stat'
-alias glpo='git log --pretty=oneline'
-alias glg='git log --graph'
-alias glpsg='git log -p --stat --graph'
-alias glpsgo='git log -p --stat --graph --pretty=oneline'
-alias gig="$EDITOR .gitignore"
-function gacm --description "git add/status/commit with message argv"
-  git add --all
-  git status
-  git commit -v -m "$argv"
-end
-
-function gacmp --description "git add/status/commit/push with message argv to default remote branch"
-  git add --all
-  git status
-  git commit -v -m "$argv"
-  git push
-end
-
-function gacmp --description "git add/status/commit/push with message argv to default remote branch"
-  git add --all
-  git status
-  git commit -v -m "$argv"
-  git push
-end
-
-alias gitrdone="gacmp" # a new mantra for productivity...
 
 # git-flow
 alias gfi='git flow init'
@@ -292,46 +269,18 @@ alias bbcreate='bb create_from_local --private --protocol=ssh'
 alias bud='brew update'
 alias bug='brew upgrade'
 alias bi='brew install'
+alias get='brew install'
 alias bd='brew doctor'
 alias bs='brew search'
 alias bl='brew list'
 
-#alias bc='brew cask'
+alias bc='brew cask' # don't need the calculator `bc`
 alias bci='brew cask install'
 function bcs --description "search the cask"
   brew cask search /$argv/
 end
 alias bcia='brew cask install --appdir="/Applications"'
 alias getapp='brew cask install --appdir="/Applications"'
-
-# Rails
-alias ror='ruby -v; rails -v'
-alias ran='rails new'
-alias rags='rails generate scaffold'
-alias ra='rake'
-alias radbm='rake db:migrate'
-alias ras='rails server'
-alias bua='bundle'
-alias bue='bundle exec'
-alias bul='bundle --local'
-
-
-# Sass / Compass
-alias sassw='sass --watch'
-alias compc='compass create'
-alias compw='compass watch'
-
-
-# CoffeeScript
-alias cof='coffee'
-alias cofc='coffee --compile'
-alias cofw='coffee --watch'
-alias cofwc='coffee --watch --compile'
-alias cofp='coffee --print'
-
-
-# Foreman
-alias fms='foreman start'
 
 
 # Vagrant
@@ -356,10 +305,6 @@ alias jeksw='jekyll serve --watch'
 
 # pianobar (pandora cli)
 alias pb='pianobar'
-
-
-# gmailjitsu | https://github.com/thetateal/gmailjitsu
-alias gj='gmailjitsu'
 
 
 # youtube-dl | http://rg3.github.io/youtube-dl/
@@ -421,7 +366,7 @@ alias grubf='grunt build --force'
 # bower
 alias bi='bower install'
 function bis
-  bower install $argv --save
+  bower install "$argv[1..-1]" --save
 end
 
 
@@ -481,9 +426,6 @@ alias wpsalt="curl 'https://api.wordpress.org/secret-key/1.1/salt/' | pbcopy; ec
 # exiftool
 alias exiftime="exiftool -time:all -s" # show all time attrs
 alias exifval="exiftool -s -s -s" # just print value(s)
-
-# midnight-commander
-alias mc='mc --nocolor'
 
 # ranger
 alias r="ranger"
