@@ -109,6 +109,7 @@ npm_packages=(
   bower
   csslint
   ember-cli
+  fb-messenger-cli
   generator-assemble
   generator-reveal
   generator-webapp
@@ -146,6 +147,7 @@ user_apps=(
   cyberduck
   firefox
   flash
+  franz
   gas-mask
   google-chrome
   google-drive
