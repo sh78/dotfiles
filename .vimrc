@@ -147,15 +147,15 @@ runtime macros/matchit.vim
 
 " let mapleader = "\\"
 " make space the <Leader> but keep visual indication that <Leader> was pressed
-:map <Space> \ 
+:map <Space> <Leader>
 
 set backspace=indent,eol,start    "" Intuitive backspacing.
 
 "" Controversial...swap colon and semicolon for easier commands
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+:nnoremap ; :
+:nnoremap : ;
+:vnoremap ; :
+:vnoremap : ;
 
 set nocompatible                  "" Must come first because it changes other options.
 set hidden                        "" Keep buffers open.
@@ -184,10 +184,9 @@ autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
 set wrap                          "" Turn on line wrapping.
-set scrolloff=3                   "" Show 3 lines of context around the cursor.
+set scrolloff=2                   "" Show 3 lines of context around the cursor.
 
 set title                         "" Set the terminal's title
-
 set visualbell                    "" No beeping.
 
 set nobackup                      "" Don't make a backup before overwriting a file.
@@ -202,15 +201,15 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 set tabstop=2                    "" Global tab width.
 set shiftwidth=2                 "" And again, related.
 set shiftround                   "" use multiple of shiftwidth when indenting with '<' and '>'
-set expandtab                    "" Use spaces instead of tabs
+set expandtab                    "" Use space          of tabs
 " set laststatus=2                  "" Show the status line all the time
 
 set undofile                      " Maintain undo history between sessions
 set undodir=~/.vim/undodir        " Keep all undo in one place
 
 "" natural cursor movement between lines
-nnoremap j gj
-nnoremap k gk
+:nnoremap j gj
+:nnoremap k gk
 
 "" Useful status information at bottom of screen
 " set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
@@ -239,7 +238,7 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <C-n>
 
-nnoremap QQ :q!<CR>
+:nnoremap QQ :q!<CR>
 
 
 " # File Navigation
@@ -260,7 +259,7 @@ set wildignore+=node_modules/*,bower_components/*,*.min.*
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
 
-nnoremap <leader>. :MakeTags<CR>
+:nnoremap <leader>. :MakeTags<CR>
 
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -275,25 +274,25 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " # Quick Toggles
 
 "" paste mode
-nnoremap <Leader>sp :set invpaste paste?<CR>
+:nnoremap <Leader>sp :set invpaste paste?<CR>
 set pastetoggle=<Leader>sp
 
 "" line numbers
-nnoremap <leader>sn :set nonumber! norelativenumber!<CR>
+:nnoremap <leader>sn :set nonumber! norelativenumber!<CR>
 
 "" toggle search highlights
-nnoremap <leader>si :set incsearch!<CR>
-nnoremap <leader>sh :set hlsearch!<CR>
+:nnoremap <leader>si :set incsearch!<CR>
+:nnoremap <leader>sh :set hlsearch!<CR>
 
 "" toggle invisibles
-nnoremap <Leader>sl :set list!<CR>
+:nnoremap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:⌐
 
 "" toggle spell check
-nnoremap <Leader>ss :set spell!<CR>
+:nnoremap <Leader>ss :set spell!<CR>
 
 "" change file type (not really a toggle but who's counting)
-nnoremap <Leader>sf :set filetype=
+:nnoremap <Leader>sf :set filetype=
 
 
 " # Theme
@@ -319,7 +318,7 @@ else
 endif
 
 "" Toggle light/dark color
-nnoremap <Leader>' :let &background=(&background == "dark"?"light":"dark")<CR>
+:nnoremap <Leader>' :let &background=(&background == "dark"?"light":"dark")<CR>
 
 "" crosshair cursor
 set cursorline
@@ -349,9 +348,6 @@ map <Leader>tm :tabmove
 
 " # Functions / Macros
 
-"" Quickly edit/reload the vimrc file
-:nnoremap <Leader>rv :source ~/.vimrc<cr>
-
 "" substitute all occurrences of the word under the cursor
 :nnoremap <Leader>fw :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -371,13 +367,13 @@ function! RemoveFancyCharacters()
   :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
-:nnoremap <Leader>dc :RemoveFancyCharacte<CR>
+:nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 
 " Get off my lawn (disables mouse support, which is too fancy to quit)
-" nnoremap <Left> :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up> :echoe "Use k"<CR>
-" nnoremap <Down> :echoe "Use j"<CR>
+" :nnoremap <Left> :echo "Use h"<CR>
+" :nnoremap <Right> :echo "Use l"<CR>
+" :nnoremap <Up> :echo "Use k"<CR>
+" :nnoremap <Down> :echo "Use j"<CR>
 
 " su-DOH
 cmap w!! w !sudo tee % >/dev/null
@@ -385,9 +381,12 @@ cmap w!! w !sudo tee % >/dev/null
 " reduce mistakes
 :map Q <Nop>
 
+" quick save
+:nnoremap S :w!<CR>
+
 " yank all the things, and persist the cursor location
-nnoremap <Leader>y ylpxggyGg;h
-nnoremap <Leader>Y ylpxgg"*yGg;h
+:nnoremap <Leader>y ylpxggyGg;h
+:nnoremap <Leader>Y ylpxgg"*yGg;h
 
 
 " # Syntax-specifics
@@ -400,7 +399,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "  markdown
 " autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-autocmd FileType markdown,text setlocal spell
+autocmd FileType markdown,text setlocal spell textwidth=80
 autocmd FileType markdown,text Goyo
 let g:markdown_fenced_languages = ['javascript', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
 let g:markdown_syntax_conceal = 1
@@ -495,22 +494,22 @@ noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 
 let g:comfortable_motion_no_default_key_mappings = 1
 let g:comfortable_motion_impulse_multiplier = 1  " Feel free to increase/decrease this value.
-nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+:nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+:nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+:nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+:nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
 
 "" tabularize
-nnoremap <Leader>aa :Tabularize <CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>a: :Tabularize /:\zs<CR>
-nnoremap <Leader>a- :Tabularize /-<CR>
-nnoremap <Leader>a, :Tabularize /,<CR>
-nnoremap <Leader>a< :Tabularize /\<<CR>
-nnoremap <Leader>a\| :Tabularize /\|<CR>
+:nnoremap <Leader>aa :Tabularize <CR>
+:nnoremap <Leader>a= :Tabularize /=<CR>
+:nnoremap <Leader>a: :Tabularize /:\zs<CR>
+:nnoremap <Leader>a- :Tabularize /-<CR>
+:nnoremap <Leader>a, :Tabularize /,<CR>
+:nnoremap <Leader>a< :Tabularize /\<<CR>
+:nnoremap <Leader>a\| :Tabularize /\|<CR>
 
 "" undotree - undo tree visualizer
-nnoremap <C-z> :UndotreeToggle<CR>
+:nnoremap <C-z> :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
@@ -540,16 +539,16 @@ call denite#custom#map(
 
 " these are mapped to avoid the leader/ctrl for ease
 " attempting to follow vim convention of 'g' going or jumping
-nnoremap <Leader><Leader> :Denite
+:nnoremap <Leader><Leader> :Denite
 " (don't need to paste a register multiple times at once)
-nnoremap gp :Denite buffer file/rec<CR>
+:nnoremap gp :Denite buffer file/rec<CR>
 " gP (don't need cursor moving after paste)
 " g; (don't need to go to a change from memory, and using :Denite change is nicer)
-nnoremap ;; :Denite command<CR>
+:nnoremap ;; :Denite command<CR>
 " gk (already remapped k to do gk)
-nnoremap gk :DeniteCursorWord line<CR>
+:nnoremap gk :DeniteCursorWord line<CR>
 " gK (unmapped by default)
-nnoremap gK :DeniteCursorWord tags<CR>
+:nnoremap gK :DeniteCursorWord tags<CR>
 " maybe eunuch :Find?" gF (unmapped by default)
 " gh (who TF uses select mode anyway)
 " gH (who TF uses select line mode anyway)
@@ -563,14 +562,14 @@ let g:gista#command#list#default_options = {
   \ 'cache': 0,
 \}
 
-nnoremap <Leader>gl :Gista list<CR>
-nnoremap <Leader>gb :Gista browse
-nnoremap <Leader>gpr :Gista post --private<CR>
-nnoremap <Leader>gpu :Gista post --public<CR>
-nnoremap <Leader>ga :Gista post --anonymous<CR>
-nnoremap <Leader>gd :Gista --delete<CR>
-nnoremap <Leader>gs :Gista star<CR>
-nnoremap <Leader>gu :Gista unstar<CR>
+:nnoremap <Leader>gl :Gista list<CR>
+:nnoremap <Leader>gb :Gista browse
+:nnoremap <Leader>gpr :Gista post --private<CR>
+:nnoremap <Leader>gpu :Gista post --public<CR>
+:nnoremap <Leader>ga :Gista post --anonymous<CR>
+:nnoremap <Leader>gd :Gista --delete<CR>
+:nnoremap <Leader>gs :Gista star<CR>
+:nnoremap <Leader>gu :Gista unstar<CR>
 
 
 "" airline
