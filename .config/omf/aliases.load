@@ -238,6 +238,12 @@ end
 # extra
 ####################
 
+# facebook messenger cli
+alias fbm='facebook-messenger-cli'
+
+# fzf
+alias f='fzf'
+
 # URL encode/decode
 alias urlencode='python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
 alias urldecode='python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
