@@ -156,6 +156,7 @@ user_apps=(
   iterm2
   java
   # karabiner
+  keyboard-maestro
   mac2imgur
   # marked
   nosleep
