@@ -20,15 +20,14 @@ chunkc core::log_level warn
 #       loading a plugin. '~' expansion is supported.
 #
 
-# chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
-chunkc core::plugin_dir ~/sean/Google\ Drive/dotfiles/chunkwm_plugins
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
 #       and automatically reload any '.so' file that is changed.
 #
 
-chunkc core::hotload 1
+chunkc core::hotload 0
 
 #
 # NOTE: the following are config variables for the chunkwm-tiling plugin.
