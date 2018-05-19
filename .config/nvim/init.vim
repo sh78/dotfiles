@@ -288,6 +288,9 @@ set pastetoggle=<Leader>sp
 :nnoremap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:⌐
 
+"" toggle conceal levels
+:nnoremap <Leader>sc :set conceallevel=
+
 "" toggle spell check
 :nnoremap <Leader>ss :set spell!<CR>
 
@@ -405,9 +408,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 "  markdown
 " autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
-autocmd FileType markdown,text setlocal spell textwidth=80
+autocmd FileType markdown,text setlocal spell textwidth=80 conceallevel=2
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'bash=shell', 'javascript=js', 'php=php', 'html=html', 'css=css']
-let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_new_list_item_indent = 0
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
