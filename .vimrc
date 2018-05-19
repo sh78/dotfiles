@@ -119,7 +119,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'gabrielelana/vim-markdown'
 
-
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
   echo ""
@@ -196,6 +195,7 @@ set directory=/.vim/tmp
 
 setlocal spell spelllang=en_us
 set spellfile=$HOME/.vim-spell-en.utf-8.add
+set thesaurus+=$HOME/.vim/thesaurus/mthesaur.txt
 
 "" tab settings
 set tabstop=2                    "" Global tab width.
@@ -388,6 +388,7 @@ cmap w!! w !sudo tee % >/dev/null
 :nnoremap <Leader>y ylpxggyGg;h
 :nnoremap <Leader>Y ylpxgg"*yGg;h
 
+:vnoremap Y "*y
 
 " # Syntax-specifics
 
