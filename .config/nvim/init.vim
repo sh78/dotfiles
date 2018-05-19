@@ -117,7 +117,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'gabrielelana/vim-markdown'
+Plugin 'sheerun/vim-polyglot'
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -298,13 +298,15 @@ set listchars=tab:▸\ ,eol:⌐
 " # Theme
 
 "" TODO: better terminal awareness
-"" kick vim into recognising moderm terminal color handling
+"" kick vim into recognising modern terminal color handling
 "" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
 ""   set t_Co=256
 "" endif
 
 syntax enable
 hi Normal ctermbg=NONE
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 " set termguicolors
 colorscheme solarized
 
@@ -326,6 +328,9 @@ set cursorcolumn
 
 let &colorcolumn="80,".join(range(100,999),",")
 "highlight ColorColumn ctermbg=0 guibg=LightGrey
+
+" italic comments
+highlight Comment cterm=italic
 
 
 " # Tabs Windows & Beyond
@@ -401,9 +406,8 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 "  markdown
 " autocmd BufNewFile,BufReadPost *.md,*.markdown set filetype=markdown
 autocmd FileType markdown,text setlocal spell textwidth=80
-autocmd FileType markdown,text Goyo
-let g:markdown_fenced_languages = ['javascript', 'ruby', 'sh', 'yaml', 'html', 'vim', 'json', 'diff']
-let g:markdown_syntax_conceal = 1
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'bash=shell', 'javascript=js', 'php=php', 'html=html', 'css=css']
+let g:vim_markdown_new_list_item_indent = 2
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
@@ -429,6 +433,27 @@ noremap <Leader>G :Goyo<CR>
 let g:goyo_width = 80
 let g:goyo_margin_top = 3
 let g:goyo_margin_bottom = 3
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
 
 "" Mapping and settings for emmet
 let g:user_emmet_expandabbr_key = '<Leader><Tab>'
