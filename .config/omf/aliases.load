@@ -13,6 +13,10 @@ alias x='exit'
 alias p="pwd"
 alias c='clear'
 
+# https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+alias ssh='TERM=xterm-256color ssh'
+
+
 # quick edits
 alias vr='vim ~/.vimrc'
 alias vp='vim +/Plugin ~/.vimrc'
