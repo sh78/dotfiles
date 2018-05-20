@@ -155,7 +155,7 @@ user_apps=(
   imageoptim
   iterm2
   java
-  # karabiner
+  karabiner-elements
   keyboard-maestro
   mac2imgur
   # marked
