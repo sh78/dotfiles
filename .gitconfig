@@ -23,6 +23,8 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[init]
+	templatedir = ~/.git_template
 [alias]
   ec = config --global -e
   ig = !sh -c '$EDITOR .gitignore'
@@ -37,6 +39,7 @@
   c = commit -v
   ca = commit --amend -v
   co = checkout
+  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
   i = init
   ib = init --bare
   cl = clone

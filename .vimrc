@@ -119,6 +119,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'machakann/vim-highlightedyank'
+" add plugins here ^
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -257,10 +258,8 @@ set wildmenu
 set wildignore+=.git,.svn,.DS_Store,.npm,.vagrant,*.zip,*.tgz,*.pdf,*.psd,*.ai,*.mp3,*.mp4,*.bmp,*.ico,*.jpg,*.png,*.gif,*.epub,.hg,.dropbox,.config,.cache,*.pyc
 set wildignore+=node_modules/*,bower_components/*,*.min.*
 
-" Create the `tags` file (may need to install ctags first)
-command! MakeTags !ctags -R .
-
-:nnoremap <leader>. :MakeTags<CR>
+" look more common places for ctags file than just ./tags,tags
+set tags+=./.git/tags,./.tags
 
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner
@@ -379,10 +378,10 @@ command! RemoveFancyCharacters :call RemoveFancyCharacters()
 :nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 
 " Get off my lawn (disables mouse support, which is too fancy to quit)
-" :nnoremap <Left> :echo "Use h"<CR>
-" :nnoremap <Right> :echo "Use l"<CR>
-" :nnoremap <Up> :echo "Use k"<CR>
-" :nnoremap <Down> :echo "Use j"<CR>
+:nnoremap <Left> :echo "Use h"<CR>
+:nnoremap <Right> :echo "Use l"<CR>
+:nnoremap <Up> :echo "Use k"<CR>
+:nnoremap <Down> :echo "Use j"<CR>
 
 " su-DOH
 cmap w!! w !sudo tee % >/dev/null
@@ -397,7 +396,20 @@ cmap w!! w !sudo tee % >/dev/null
 :nnoremap <Leader>y ylpxggyGg;h
 :nnoremap <Leader>Y ylpxgg"*yGg;h
 
+" shortcut to system clipboard
+:nnoremap Y "*y
 :vnoremap Y "*y
+
+" source vimrc
+:nnoremap <Leader>% :source $MYVIMRC<CR>
+
+" source vimrc and install vundle plugins
+:nnoremap <Leader>^ :source $MYVIMRC <BAR> :BundleInstall<CR>
+
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
+:nnoremap <leader>. :MakeTags<CR>
+
 
 " # Syntax-specifics
 
@@ -659,3 +671,4 @@ let closetag_close_shortcut = '<leader>>'
 
 "" highlighted yank
 let g:highlightedyank_highlight_duration = 700
+
