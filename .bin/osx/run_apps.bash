@@ -19,5 +19,6 @@ done
 
 open "https://packagecontrol.io/installation"
 
-echo "opening chunkwm tiling window manager:"
-brew services start khd chunkwm
+echo "opening chunkwm tiling window manager and khd..."
+brew services start crisidev/chunkwm/chunkwm
+brew services start koekeishiya/formulae/khd
