@@ -118,6 +118,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'machakann/vim-highlightedyank'
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
@@ -300,11 +301,11 @@ set listchars=tab:▸\ ,eol:⌐
 
 " # Theme
 
-"" TODO: better terminal awareness
+"" TODO: better terminal awareness... needed?
 "" kick vim into recognising modern terminal color handling
-"" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
-""   set t_Co=256
-"" endif
+" if $TERM == "xterm-256color"" || $TERM == "screen-256color"" || $COLORTERM == "gnome-terminal"
+"   set t_Co=256
+" endif
 
 syntax enable
 hi Normal ctermbg=NONE
@@ -656,3 +657,5 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.twig,*.php'
 let g:closetag_emptyTags_caseSensitive = 1
 let closetag_close_shortcut = '<leader>>'
 
+"" highlighted yank
+let g:highlightedyank_highlight_duration = 700
