@@ -18,8 +18,15 @@ end
 # >
 set -gx __fish_prompt_char ""
 
-# vi mode!
+# enable vi mode!
 fish_vi_key_bindings
+# and now restore ctrl+f for autocomplete
+# https://github.com/fish-shell/fish-shell/issues/3541
+function fish_user_key_bindings
+	for mode in insert default visual
+		bind -M $mode \cf forward-char
+	end
+end
 
 # export a color scheme var based on time of day
 if test (date +%H) -gt 8; and test (date +%H) -lt 18
