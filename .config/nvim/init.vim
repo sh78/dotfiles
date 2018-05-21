@@ -38,8 +38,8 @@ Plugin 'lambdalisue/vim-gista'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'mbbill/undotree'
 "Plugin 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
@@ -119,6 +119,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'machakann/vim-highlightedyank'
+Plugin 'rafaqz/ranger.vim'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -501,10 +502,6 @@ let g:user_emmet_prev_key = '<Leader>['
 "" NERDTree
 :nnoremap <Leader>t :NERDTreeToggle<CR>
 :nnoremap <Leader>T :NERDTreeFind<CR>
-
-" mapping for NERDtree and autoclose
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
 " show hidden files in nerdtree
 let NERDTreeShowHidden=1
 " auto delete buffer of deleted files
@@ -513,6 +510,8 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" mapping for NERDtree and autoclose
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " open nerdtree on start
 " autocmd VimEnter * NERDTree | wincmd p
 
@@ -672,3 +671,11 @@ let closetag_close_shortcut = '<leader>>'
 "" highlighted yank
 let g:highlightedyank_highlight_duration = 700
 
+"" ranger.vim
+map <leader>rr :RangerEdit<cr>
+map <leader>rv :RangerVSplit<cr>
+map <leader>rs :RangerSplit<cr>
+map <leader>rt :RangerTab<cr>
+map <leader>ri :RangerInsert<cr>
+map <leader>ra :RangerAppend<cr>
+map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
