@@ -68,6 +68,7 @@ user_brews=(
   ssh-copy-id
   the_silver_searcher
   tmux
+  tmuxinator-completion
   todo-txt
   tor
   trash
