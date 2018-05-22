@@ -38,8 +38,6 @@ Plugin 'lambdalisue/vim-gista'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'mbbill/undotree'
 "Plugin 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
@@ -391,7 +389,7 @@ cmap w!! w !sudo tee % >/dev/null
 :map Q <Nop>
 
 " quick save
-:nnoremap S :w!<CR>
+:nnoremap W :w!<CR>
 
 " yank all the things, and persist the cursor location
 :nnoremap <Leader>y ylpxggyGg;h
@@ -399,10 +397,10 @@ cmap w!! w !sudo tee % >/dev/null
 
 " shortcut to system clipboard
 :nnoremap Y "*y
-:vnoremap Y "*y
+:vnoremap y "*y
 
 " source vimrc
-:nnoremap <Leader>% :source $MYVIMRC<CR>
+:nnoremap <leader>% :source $MYVIMRC<cr>
 
 " source vimrc and install vundle plugins
 :nnoremap <Leader>^ :source $MYVIMRC <BAR> :BundleInstall<CR>
@@ -500,15 +498,15 @@ let g:user_emmet_prev_key = '<Leader>['
 :nnoremap <leader>b :silent !open -a Marked\ 2.app '%:p'<cr>
 
 "" NERDTree
-:nnoremap <Leader>t :NERDTreeToggle<CR>
-:nnoremap <Leader>T :NERDTreeFind<CR>
-" show hidden files in nerdtree
-let NERDTreeShowHidden=1
-" auto delete buffer of deleted files
-let NERDTreeAutoDeleteBuffer = 1
-" look nice
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+" :nnoremap <Leader>t :NERDTreeToggle<CR>
+" :nnoremap <Leader>T :NERDTreeFind<CR>
+" " show hidden files in nerdtree
+" let NERDTreeShowHidden=1
+" " auto delete buffer of deleted files
+" let NERDTreeAutoDeleteBuffer = 1
+" " look nice
+" let NERDTreeMinimalUI = 1
+" let NERDTreeDirArrows = 1
 
 " mapping for NERDtree and autoclose
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
