@@ -1,6 +1,6 @@
 
 ################################
-###  OSX
+###  macOS
 ################################
 
 # quick switch to dirs
@@ -9,11 +9,11 @@ alias down="cd ~/Downloads"
 alias drive="cd ~/Google\ Drive"
 
 # quick edits
-alias osx='eval $EDITOR ~/.bin/osx/'
-alias installers='eval $EDITOR ~/.bin/osx/installers.bash'
+alias mac='eval $EDITOR ~/.macos/'
+alias installers='eval $EDITOR ~/.macos/installers.bash'
 alias dots='cd ~/Google\ Drive/dotfiles/'
-alias osxi='eval $EDITOR +NERDTreeFind ~/.bin/osx/installers.bash'
-alias osxp='eval $EDITOR +NERDTreeFind ~/.bin/osx/prefs.bash'
+alias maci='eval $EDITOR +RangerEdit ~/.macos/installers.bash'
+alias macp='eval $EDITOR +RangerEdit ~/.macos/prefs.bash'
 
 # copy current path to system clipboard
 alias cwd="pwd | pbcopy"
@@ -70,7 +70,7 @@ alias finderhide="defaults write com.apple.Finder AppleShowAllFiles -bool false 
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false and killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true and killall Finder"
 
-function prepend_create_date --description 'Prepend creation date to file name (OSX)'
+function prepend_create_date --description 'Prepend creation date to file name'
   for file in $argv;
     set new_filename (date -jf "%m/%d/%Y" (GetFileInfo -d $file | cut -c 1-10) +%Y-%m-%d) $file
     mv $file "$new_filename"
@@ -94,7 +94,7 @@ function dictation_mute --description 'Enable/Disable audio ducking while dictat
 end
 
 ################
-###  Programs (OSX)
+###  Programs (macOS)
 ################
 
 alias backup="yes | mackup backup"
@@ -116,7 +116,7 @@ function nosleep --description "Turn NoSleep app on or off for both ac and batte
 end
 
 ################
-###  Workflows (OSX)
+###  Workflows (macOS)
 ################
 
 alias gtd='open "https://drive.google.com/drive/my-drive" "https://keep.google.com/#home" "https://mail.google.com/mail/u/0/#inbox" "https://calendar.google.com/calendar/r/agenda"'
