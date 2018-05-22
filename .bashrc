@@ -144,7 +144,7 @@ export GREP_COLOR="33" # yellow
  alias c="clear" # easier on the thumb vs cmd+k
  alias x='exit'
 
- alias tails="tail -F $(find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+ alias tails='tail -F $(find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')'
 
  alias lmk="say 'Process complete.'" # pin to the tail of long commands
 
