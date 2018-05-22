@@ -20,7 +20,7 @@ alias ssh='TERM=xterm-256color ssh'
 # quick edits
 alias vr='vim ~/.vimrc'
 alias vp='vim +/Plugin ~/.vimrc'
-alias aliases='vim +NERDTreeFind ~/.config/omf/aliases.load'
+alias aliases='vim +RangerEdit ~/.config/omf/aliases.load'
 
 # basic commands & overrides
 function ls --description "custom ls with color output and directory markers by default"
