@@ -20,7 +20,8 @@ alias ssh='TERM=xterm-256color ssh'
 # quick edits
 alias vr='vim ~/.vimrc'
 alias vt='vim ~/.tmux.conf'
-alias vp='vim +/add\ plugins ~/.vimrc'
+alias vp='vim +silent\ /add\ plugins\
+O ~/.vimrc'
 alias aliases='vim +RangerEdit ~/.config/omf/aliases.load'
 
 # basic commands & overrides
