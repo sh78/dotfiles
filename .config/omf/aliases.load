@@ -142,6 +142,9 @@ alias dush='du -sh' # list total disk usage of ./
 alias chx='chmod +x' # make it executable
 alias chR='chmod -R' # recursive
 
+# find and tail all logs in ./
+alias tails="tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+
 # archives
 alias zp='zip'
 alias zpr='zip -r' # recursive
