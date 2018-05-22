@@ -48,18 +48,18 @@ windows:
     - git fetch --all
     - git status -sb
   - edit:
-    - vim .
+    - $EDITOR .
   - file:
     - ranger
   - watch:
       layout: main-horizontal
       panes:
         - logs:
-          - tail -F (find . -type f -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')
+          - tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')
         - server:
           - python -m http.server; and open http://localhost:8000
-  - remote:
-      panes:
-        - logs:
-          - ssh remote@host.com
-          - tail --follow=name --retry "/etc/apache2/*.log"
+  # - remote:
+  #     panes:
+  #       - logs:
+  #         - ssh remote@host.com
+  #         - tail -F "/etc/apache2/*.log"
