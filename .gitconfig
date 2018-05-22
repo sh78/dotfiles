@@ -85,7 +85,7 @@
   rmbranch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
   mergebranch = !sh -c 'git checkout master && git merge @{-1}'
   up = !sh -c 'git fetch origin && git rebase origin/master'
-  nuke = !sh -c 'git filter-branch --index-filter 'git rm --cached --ignore-unmatch $*' -- --all'
+  nuke = !sh -c 'git filter-branch --index-filter 'git rm --cached --ignore-unmatch "$*"' --prune-empty --tag-name-filter cat -- --all'
   acm = !sh -c 'git add . --all && git status -sb && git commit -mv "$@"'
   acmp = !sh -c 'git add . --all && git status -sb && git commit -mv "$@" && git push'
   rdone = !sh -c 'git add . --all && git status -sb && git commit -mv "$@" && git push'
