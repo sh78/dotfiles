@@ -1,0 +1,16 @@
+{
+    "enabled": false,
+    "themes":
+    [
+        {
+            "theme": "Packages/Theme - Lyte/Lyte-Solarized/Lyte-Solarized.tmTheme",
+            "ui_theme": "Lyte-Solarized.sublime-theme",
+            "time": "18:00"
+        },
+        {
+            "theme": "Packages/Theme - Lyte/Lyte-Solarized-Light/Lyte-Solarized-Light.tmTheme",
+            "ui_theme": "Lyte-Solarized-Light.sublime-theme",
+            "time": "8:00"
+        }
+    ]
+}

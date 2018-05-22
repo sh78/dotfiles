@@ -19,10 +19,13 @@ plugins/ta/data/*
 .ssh/
 .subversion/
 !.subversion/config
+.todo
 .vim/
 .vimperator
 .wp-cli/
 .youtube-dl-history
 Library/*
-!Scripts/
-.todo
+!Library/Scripts
+!/Library/Application\ Support
+Library/Application\ Support/*
+!Library/Application\ Support/Sublime\ Text\ 3
