@@ -65,9 +65,17 @@ mkdirs() { for dir in "$@"; do mkdir "$dir"; done }
 # match filenames containing given string and move into a new dir of that name
 mvm() { mkdir ./mvmtemp; mv ./*"$@"* ./mvmtemp; mv ./mvmtemp ./"$@" }
 # remove matched files recursively
-rmvm() { for pattern in $@; do find . -type f -name "$pattern" -exec rm -r {} \ ; done }
+rmvm() { 
+    for pattern in $@; do 
+	find . -type f -name "$pattern" -exec rm -r {} \ ; 
+    done 
+}
 # remove unmatched files recursively
-rmvm!() { for pattern in $@; do find . -type f ! \( -name "$pattern" \) -exec rm -r {} \ ; done }
+rmvm!() { 
+    for pattern in $@; do
+	find . -type f ! \( -name "$pattern" \) -exec rm -r {} \ ; 
+    done 
+}
 alias cpp='cp -p' # preserve attributes
 alias cpr='cp -R' # recursive
 alias cppr='cp -pR' # preserve attributes and recursive
