@@ -36,9 +36,11 @@ else
 end
 
 # set iterm color scheme (iterm shell integration must be loaded)
-if type -q it2setcolor; and test $COLOR = "light"
-  it2setcolor preset "Solarized Light v2"
-else
-  it2setcolor preset "Solarized Dark v2"
+if type -q it2setcolor
+  if test $COLOR = "light"
+    it2setcolor preset "Solarized Light v2"
+  else
+    it2setcolor preset "Solarized Dark v2"
+  end
 end
 
