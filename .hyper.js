@@ -9,10 +9,10 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 12,
+    fontSize: 18,
 
     // font family with optional fallbacks
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Dank Mono", "Fira Code", "Source Code Pro", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -30,7 +30,7 @@ module.exports = {
     cursorShape: 'BLOCK',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
     foregroundColor: '#fff',
@@ -49,16 +49,16 @@ module.exports = {
     css: '',
 
     // custom CSS to embed in the terminal window
-    termCSS: '',
+    termCSS: ``,
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
-    showHamburgerMenu: '',
+    showHamburgerMenu: 'false',
 
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
     // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-    showWindowControls: '',
+    showWindowControls: 'true',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
     padding: '12px 14px',
@@ -97,7 +97,7 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '',
+    shell: '/usr/bin/fish',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -110,7 +110,7 @@ module.exports = {
     bell: 'SOUND',
 
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
-    copyOnSelect: false,
+    copyOnSelect: true,
 
     // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
     defaultSSHApp: true,
@@ -123,7 +123,21 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-  },
+    
+    // Plugins
+    hyperTabs: {
+      tabIconsColored: true,
+    },
+    hyperBorder: {
+      //hyperBorder: {
+        //borderColors: ['random','random'],
+        //borderWidth: '8px'
+      //},
+      animate: {
+        duration: '1s',  // default is 16s
+      },
+    },
+ },
 
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
@@ -131,7 +145,8 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyper-search", "hyperpower", "hyper-material-theme"],
+  plugins: [//'hyperterm-visor',
+  'hypercwd', 'hyperterm-tabs', 'hyperlinks', 'hyperdocs', 'hyper-search', "hyper-solarized-dark", "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-hover-header", "hyperminimal", "hyper-tab-icons", "hyperborder", "hyperpower"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
