@@ -145,6 +145,7 @@ user_apps=(
   bartender3
   carbon-copy-cloner
   coconutbattery
+  cool-retro-term
   cyberduck
   firefox
   flash
