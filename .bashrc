@@ -8,6 +8,9 @@ PATH=~/.bin/executables:/usr/local/bin:$PATH
 # Use the new iMproved vi
 export EDITOR="vim"
 
+# easy checking for OS type
+export OSNAME=$(uname)
+
 # load fasd if lives nearby
 # eval "$(fasd --init auto)"
 
@@ -28,6 +31,11 @@ alias fishc="$EDITOR ~/.config/fish/config.fish" # fish
 alias vimr="$EDITOR ~/.vimrc && reload"
 alias Rb="source ~/.bashrc" # reload bash config
 alias Rz="source ~/.zshrc" # reload zsh config
+
+alias v='vim'
+alias h='history'
+alias c="clear" # easier on the thumb vs cmd+k
+alias x='exit'
 
 alias p='pwd'
 alias ..='cd ..' # up one
@@ -75,94 +83,89 @@ alias chR='chmod -R' # recursive
 export GREP_OPTIONS="--color=auto -E" # use color and regex extended
 export GREP_COLOR="33" # yellow
 
- alias gimg="grep -i '\.png|\.gif|\.jpg|\.jpeg|\.ico|\.tiff'"
- alias gvid="grep -i '\.avi|\.mov|\.mpg|\.wmv|\.mp4|\.m4v'"
- alias gaud="grep -i '\.aiff|\.aac|\.alac|\.flac|\.mp3|\.m4a'"
- alias gtxt="grep -i '\.txt|\.md|\.mdown|\.markdown|\.textile'"
- alias gdoc="grep -i '\.doc|\.docx|\.pdf|\.pages|\.rtf|\.ppt|\.pptx|\.xls|\.xlsx'|\.csv|\.tsv"
- alias gcode="grep -i '\.html|\.css|\.js|\.rb|\.py|\.xml|\.bash|\.sh|\.sass|\.scss|\.less|\.coffee|\.php|\.json|\.erb|\.haml|\.slim'"
- alias gfont="grep -i '\.eot|\.ttf|\.woff|\.svg'"
+alias gimg="grep -i '\.png|\.gif|\.jpg|\.jpeg|\.ico|\.tiff'"
+alias gvid="grep -i '\.avi|\.mov|\.mpg|\.wmv|\.mp4|\.m4v'"
+alias gaud="grep -i '\.aiff|\.aac|\.alac|\.flac|\.mp3|\.m4a'"
+alias gtxt="grep -i '\.txt|\.md|\.mdown|\.markdown|\.textile'"
+alias gdoc="grep -i '\.doc|\.docx|\.pdf|\.pages|\.rtf|\.ppt|\.pptx|\.xls|\.xlsx'|\.csv|\.tsv"
+alias gcode="grep -i '\.html|\.css|\.js|\.rb|\.py|\.xml|\.bash|\.sh|\.sass|\.scss|\.less|\.coffee|\.php|\.json|\.erb|\.haml|\.slim'"
+alias gfont="grep -i '\.eot|\.ttf|\.woff|\.svg'"
 
- alias zp='zip'
- alias zpr='zip -r' # recursive
- alias uz='unzip'
- alias uzd='unzip -d' # unzip to specific dir
- alias tgz='tar -xvzf' # extract .tar.gz
- alias tbz='tar -xvjf' # extract .tar.bz2
- # unzip all to self-titled dirs
- uza() { for f in ./*.zip; do unzip ${f%.zip}; done }
- # unzip all to self-titled dirs, then remove .zip's
- uzar() { for f in ./*.zip; do unzip ${f%.zip}; rm -rf ${f}; done }
- # extract (almost) anything
- extract() {
-   if [ -f $1 ] ; then
-      case $1 in
-         *.tar.bz2)
-             tar xvjf $1
-             ;;
-         *.tar.gz)
-             tar xvzf $1
-             ;;
-         *.bz2)
-             bunzip2 $1
-             ;;
-         *.rar)
-             unrar x $1
-             ;;
-         *.gz)
-             gunzip $1
-             ;;
-         *.tar)
-             tar xvf $1
-             ;;
-         *.tbz2)
-             tar xvjf $1
-             ;;
-         *.tgz)
-             tar xvzf $1
-             ;;
-         *.zip)
-             unzip $1
-             ;;
-         *.Z)
-             uncompress $1
-             ;;
-         *.7z)
-             7z x $1
-             ;;
-         *)
-             echo "'$1' cannot be extracted via extract"
-             ;;
-     esac
-   else
-       echo "'$1' is not a valid file"
-   fi
- }
+alias zp='zip'
+alias zpr='zip -r' # recursive
+alias uz='unzip'
+alias uzd='unzip -d' # unzip to specific dir
+alias tgz='tar -xvzf' # extract .tar.gz
+alias tbz='tar -xvjf' # extract .tar.bz2
+# unzip all to self-titled dirs
+uza() { for f in ./*.zip; do unzip ${f%.zip}; done }
+# unzip all to self-titled dirs, then remove .zip's
+uzar() { for f in ./*.zip; do unzip ${f%.zip}; rm -rf ${f}; done }
+# extract (almost) anything
+extract() {
+  if [ -f $1 ] ; then
+    case $1 in
+        *.tar.bz2)
+            tar xvjf $1
+            ;;
+        *.tar.gz)
+            tar xvzf $1
+            ;;
+        *.bz2)
+            bunzip2 $1
+            ;;
+        *.rar)
+            unrar x $1
+            ;;
+        *.gz)
+            gunzip $1
+            ;;
+        *.tar)
+            tar xvf $1
+            ;;
+        *.tbz2)
+            tar xvjf $1
+            ;;
+        *.tgz)
+            tar xvzf $1
+            ;;
+        *.zip)
+            unzip $1
+            ;;
+        *.Z)
+            uncompress $1
+            ;;
+        *.7z)
+            7z x $1
+            ;;
+        *)
+            echo "'$1' cannot be extracted via extract"
+            ;;
+    esac
+  else
+      echo "'$1' is not a valid file"
+  fi
+}
 
- alias v='vim'
- alias h='history'
- alias c="clear" # easier on the thumb vs cmd+k
- alias x='exit'
+alias tails='tail -F $(find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')'
 
- alias tails='tail -F $(find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')'
+alias lmk="say 'Process complete.'" # pin to the tail of long commands
 
- alias lmk="say 'Process complete.'" # pin to the tail of long commands
+# system aliases()
+zzz() { sudo shutdown -s ${1:-now} }
+reboot() { sudo shutdown -r ${1:-now} }
+off() { sudo shutdown -h ${1:-now} }
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
 
- # system aliases()
- zzz() { sudo shutdown -s ${1:-now} }
- reboot() { sudo shutdown -r ${1:-now} }
- off() { sudo shutdown -h ${1:-now} }
- alias tu='top -o cpu' # cpu
- alias tm='top -o vsize' # memory
-
- # Color manpages (Arch style)
- export LESS_TERMCAP_mb=$'\E[01;31m'
- export LESS_TERMCAP_md=$'\E[01;38;5;74m'
- export LESS_TERMCAP_me=$'\E[0m'
- export LESS_TERMCAP_se=$'\E[0m'
- export LESS_TERMCAP_so=$'\E[38;5;246m'
- export LESS_TERMCAP_ue=$'\E[0m'
- export LESS_TERMCAP_us=$'\E[04;38;5;146m'
+# Color manpages (Arch style)
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[38;5;246m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
 ####################
 # CLI's

@@ -1,19 +1,6 @@
-
 ################################
 ###  macOS
 ################################
-
-# quick switch to dirs
-alias desk="cd ~/Desktop"
-alias down="cd ~/Downloads"
-alias drive="cd ~/Google\ Drive"
-
-# quick edits
-alias mac='eval $EDITOR ~/.macos/'
-alias installers='eval $EDITOR ~/.macos/installers.bash'
-alias dots='cd ~/Google\ Drive/dotfiles/'
-alias maci='eval $EDITOR +RangerEdit ~/.macos/installers.bash'
-alias macp='eval $EDITOR +RangerEdit ~/.macos/prefs.bash'
 
 # copy current path to system clipboard
 alias cwd="pwd | pbcopy"

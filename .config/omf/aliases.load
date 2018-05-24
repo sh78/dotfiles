@@ -2,6 +2,20 @@
 # UNIX - General
 ####################
 
+# quick switch to dirs
+alias desk="cd ~/Desktop"
+alias down="cd ~/Downloads"
+alias drive="cd ~/Drive"
+alias dots='cd ~/Drive/dotfiles/'
+
+# quick edits
+alias aliases='vim ~/.config/omf/aliases.load'
+alias vr='vim ~/.vimrc'
+alias vt='vim ~/.tmux.conf'
+alias vp='vim +silent\ /add\ plugins ~/.vimrc'
+alias omf='vim +RangerEdit ~/.config/omf'
+
+# abbreviations
 alias vim='nvim'
 alias v='vim'
 alias g='git'
@@ -14,15 +28,7 @@ alias p="pwd"
 alias c='clear'
 
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
-alias ssh='TERM=xterm-256color ssh'
-
-
-# quick edits
-alias aliases='vim ~/.config/omf/aliases.load'
-alias vr='vim ~/.vimrc'
-alias vt='vim ~/.tmux.conf'
-alias vp='vim +silent\ /add\ plugins ~/.vimrc'
-alias omf='vim +RangerEdit ~/.config/omf'
+alias ssh='env TERM=xterm-256color ssh'
 
 # basic commands & overrides
 function ls --description "custom ls with color output and directory markers by default"
