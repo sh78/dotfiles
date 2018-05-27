@@ -108,21 +108,28 @@ qlexts=(
 
 npm_packages=(
   bower
+  css-loader
   csslint
   ember-cli
+  extract-loader
   fb-messenger-cli
+  file-loader
   generator-assemble
   generator-reveal
   generator-webapp
   grunt-cli
   gulp
   http-server
-  lighthouse
   jshint
+  lighthouse
+  node-sass
   sass-lint
+  sass-loader
   sloc
   spot
   surge
+  webpack-dev-server@2
+  webpack@3
   yo
 )
 
