@@ -18,10 +18,10 @@ alias omf='vim +RangerEdit ~/.config/omf'
 # abbreviations
 alias vim='nvim'
 alias v='vim'
-alias g='git'
 function vf --description "jump to pattern on open"
     command vim +\/$argv[2] $argv[1]
 end
+alias g='git'
 alias h='history'
 alias x='exit'
 alias p="pwd"
@@ -57,6 +57,10 @@ alias ..='cd ..' # up one
 alias ...='cd ../..' # up two
 alias ....='cd ../../..' # up three (that's enough)
 alias cdd='cd -' # back
+
+# copy current path to system clipboard
+alias cwd="pwd | eval $CLIPBOARD"
+
 alias l="tree -C -L 1" # show a quick tree of files
 alias la='tree -C -a -L 1' # also list hidden files (think "list all")
 function ll --description "show permissions, filesize, name"
@@ -199,6 +203,10 @@ alias starwars="telnet towel.blinkenlights.nl"
 #################################
 ### Utilities/Misc
 #################################
+
+function clip --description "Substitute (eval) the right clipboard for this OS"
+  eval $CLIPBOARD
+end
 
 function server --description "Start an HTTP server from a directory"
   open http://localhost:8080/
@@ -437,8 +445,7 @@ alias "wptsearch"="wp theme search" # Search the wordpress.org theme repository.
 alias wpts="wp theme status" # See the status of one or all themes.
 alias wptu="wp theme update" # Update one or more themes.
 alias wpmig="wp wpmdb migrate" # wp migrate db pro cli
-
-alias wpsalt="curl 'https://api.wordpress.org/secret-key/1.1/salt/' | pbcopy; echo 'Keys copied to clipboard!'"
+alias wpsalt="curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
 
 # exiftool
 alias exiftime="exiftool -time:all -s" # show all time attrs

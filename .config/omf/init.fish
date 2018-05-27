@@ -8,9 +8,14 @@ function fish_greeting
 end
 
 # load user confs
-for file in $HOME/.config/omf/*.load
-    source $file
+source $HOME/.config/omf/env.load
+source $HOME/.config/omf/aliases.load
+if test $OSTYPE = "Darwin"
+  source $HOME/.config/omf/macos.load
 end
+# for file in $HOME/.config/omf/*.load
+#     source $file
+# end
 # Monday, May 14 2018 19:24
 ## not much slower than one giant file. it's what's inside that counts
 ## 3 files, 2015 MBP i3 8GB
@@ -44,3 +49,11 @@ if type -q it2setcolor
   end
 end
 
+# set some useful environment variables
+set -gx $OSTYPE (uname)
+switch $OSTYPE
+  case "Linux"
+    set -gx $CLIPBOARD xclip -selection clipboard
+  case "Darwin"
+    set -gx $CLIPBOARD pbcopy
+end
