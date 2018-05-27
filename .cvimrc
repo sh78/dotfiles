@@ -3,59 +3,79 @@
 let barposition = "bottom"
 let hintcharacters = "hujikolp"
 set smoothscroll
-set scrollduration  = 200
+let scrollduration = 200
+let scrollstep = 120
 
 
 " # Search Engines
 
 " If you leave out the '%s' at the end of the URL, your query will be
 " appended to the link.  Otherwise, your query will replace the '%s'.
-let searchengine Hookr  = "http://hookr.io/all/#index=a&search=%s"
-let searchengine Wordpress  = "https://developer.wordpress.org/?s=%s"
-let searchengine Gmail = "https://mail.google.com/mail/u/0/#search/%s"
-let searchengine Google = "https://www.google.com/search?q=%s"
-let searchengine GoogleDrive = "https://drive.google.com/drive/search/?q=%s"
-let searchengine GoogleMaps = "https://www.google.com/maps/search/%s"
-let searchengine GooglePhotos = "https://photos.google.com/search/%s"
-let searchengine GoogleShopping = "https://www.google.com/search?q=%s&tbm=shop"
-let searchengine GoogleVideos = "https://www.google.com/search?q=%s&tbm=vid"
-let searchengine GoogleKeep = "https://keep.google.com/?pli=1#search/text%253D%s"
-let searchengine GoogleCalendar = "https://calendar.google.com/calendar/r/search?q=%s"
-let searchengine StackExchange = "https://stackexchange.com/search?q=%s"
-let searchengine StackOverflow = "https://stackoverflow.com/search?q=%s"
-let searchengine GitHub = "https://github.com/search?q=%s"
+let searchalias i = "google-image"
+let searchalias img = "google-image"
+
+let searchengine gmail = "https://mail.google.com/mail/u/0/#search/%s"
+let searchalias mail = "gmail"
+
+let searchengine googledrive = "https://drive.google.com/drive/search/?q=%s"
+let searchalias f = "googledrive"
+let searchalias drive = "googledrive"
+
+let searchengine googlemaps = "https://www.google.com/maps/search/%s"
+let searchalias map = "googlemaps"
+
+let searchengine googlephotos = "https://photos.google.com/search/%s"
+let searchalias p = "googlephotos"
+let searchalias photos = "googlephotos"
+
+let searchengine googleshopping = "https://www.google.com/search?q=%s&tbm=shop"
+let searchalias shop = "googleshopping"
+
+let searchengine googlevideos = "https://www.google.com/search?q=%s&tbm=vid"
+let searchalias vid = "googlevideos"
+let searchalias v = "googlevideos"
+
+let searchengine googlekeep = "https://keep.google.com/?pli=1#search/text%253d%s"
+let searchalias k = "googlekeep"
+let searchalias keep = "googlekeep"
+
+let searchengine googlecalendar = "https://calendar.google.com/calendar/r/search?q=%s"
+let searchalias cal = "googlecalendar"
 
 let searchalias a = "amazon"
-let searchalias drive = "GoogleDrive"
-let searchalias f = "GoogleDrive"
-let searchalias g = "Google"
-let searchalias img = "google-image"
-let searchalias i = "google-image"
-let searchalias mail = "Gmail"
-let searchalias cal = "GoogleCalendar"
-let searchalias keep = "GoogleKeep"
-let searchalias k = "GoogleKeep"
-let searchalias map = "GoogleMaps"
-let searchalias photos = "GooglePhotos"
-let searchalias p = "GooglePhotos"
-let searchalias shop = "GoogleShopping"
-let searchalias vid = "GoogleVideos"
-let searchalias v = "GoogleVideos"
-let searchalias w = "wikipedia"
-let searchalias wp = "Wordpress"
-let searchalias hook = "Hookr"
-let searchalias y = "youtube"
-let searchalias se = "StackExchange"
-let searchalias so = "StackOverflow"
-let searchalias gh = "GitHub"
 
+let searchalias w = "wikipedia"
+
+let searchengine wordpress = "https://developer.wordpress.org/?s=%s"
+let searchalias wp = "wordpress"
+
+let searchengine hookr = "http://hookr.io/all/#index=a&search=%s"
+let searchalias hook = "hookr"
+
+let searchengine stackexchange = "https://stackexchange.com/search?q=%s"
+let searchalias se = "stackexchange"
+
+let searchengine stackoverflow = "https://stackoverflow.com/search?q=%s"
+let searchalias so = "stackoverflow"
+
+let searchalias gh = "github"
+
+let searchalias y = "youtube"
 
 " # Show only these engines in the command bar
-let completionengines = ['Google', 'google-image', 'youtube', 'amazon', 'wikipedia', 'urbandictionary']
+let completionengines = ["google", "wikipedia", "youtube", "amazon", "github", "google-image"]
+
+
+" # Marks
+
+" Open all of these in a tab with `gnb` or open one of these with <N>goa where <N>
+" TODO: add bookmark folders, or can do this already?
+" let qmark a = ["http://www.reddit.com", "http://www.google.com", "http://twitter.com"]
+
 
 " # Mappings
 
-let mapleader = ","
+" let mapleader = "\"
 
 map ; :
 
@@ -67,7 +87,6 @@ map <Leader>x :restore<Space>
 
 " blacklists prefixed by '@' act as a whitelist
 let blacklists = ["*://*shortcutfoo.com*", "*://*.google.com*", "@https://www.google.com*"]
-
 
 " site '*://domain.com*' {}
 
@@ -85,7 +104,7 @@ map ci :call getIP<CR>
 " default options page in chrome
 " As long as localconfig is set in the .cvimrc file. cVim will continue to read
 " settings from there
-let configpath = '/Users/sean/.cvimrc'
+let configpath = '/home/sean/.cvimrc'
 set localconfig
 
 " # TODO:
