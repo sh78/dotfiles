@@ -28,7 +28,7 @@ chunkc core::log_level warn
 # NOTE: specify the absolutepath to the directory to use when loading a plugin.
 #
 
-chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
+chunkc core::plugin_dir /Users/sean/.chunkwm_plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
