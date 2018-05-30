@@ -578,20 +578,19 @@ call denite#custom#map(
 
 " these are mapped to avoid the leader/ctrl for ease
 " attempting to follow vim convention of 'g' going or jumping
-:nnoremap <Leader><Leader> :Denite
-" (don't need to paste a register multiple times at once)
-:nnoremap gp :Denite buffer file/rec<CR>
-" gP (don't need cursor moving after paste)
-" g; (don't need to go to a change from memory, and using :Denite change is nicer)
-:nnoremap ;; :Denite command<CR>
-" gk (already remapped k to do gk)
-:nnoremap gk :DeniteCursorWord line<CR>
-" gK (unmapped by default)
-:nnoremap gK :DeniteCursorWord tags<CR>
-" maybe eunuch :Find?" gF (unmapped by default)
-" gh (who TF uses select mode anyway)
-" gH (who TF uses select line mode anyway)
+:nnoremap g<Space> :Denite buffer file/rec<CR>
+:nnoremap ;; :Denite command<CR> " search commands
+:nnoremap gk :DeniteCursorWord line<CR> " gk (already remapped k to do gk)
+:nnoremap gK :DeniteCursorWord grep:. -mode=normal<CR> " gK (unmapped by default)
+:nnoremap gc :DeniteCursorWord tags -mode=normal<CR> " gK (unmapped by default)
+:nnoremap gh :Denite help<CR> " gh (who TF uses select mode anyway)
+:nnoremap gH :DeniteCursorWord help<CR> " gH (who TF uses select line mode anyway)
+:nnoremap g; :Denite change -mode=normal<CR> " g; (don't need to go to a change from memory, and using :Denite change is nicer)
+
+" :nnoremap <Leader><Leader>
 " gn (don't need to visually select search patterns
+" maybe eunuch :Find?" gF (unmapped by default)
+" gP (don't need cursor moving after paste)
 
 "" Gista (snippets)
 let g:gista#command#post#default_public = 0
