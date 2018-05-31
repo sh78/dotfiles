@@ -38,6 +38,7 @@ user_brews=(
   ffmpeg
   figlet
   fortune
+  gifsicle
   git
   git-flow
   gitsh
@@ -158,6 +159,7 @@ user_apps=(
   flash
   franz
   gas-mask
+  gifrocket
   google-chrome
   google-drive
   iexplorer
