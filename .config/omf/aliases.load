@@ -261,6 +261,39 @@ function gitrdone --description "Build up a commit message incrementally"
   end
 end
 
+# make a .gif from a .mov
+function mkgif --description "Create a GIF file from a QuickTime Movie"
+  set args (count $argv)
+
+  if math "$args < 3" > /dev/null
+    echo "USAGE: mkgif 000x000 in.mov out.gif [delay=4]"
+  else
+    if test -n $argv[4]
+      set delay $argv[4]
+    else
+      set delay 4
+    end
+    ffmpeg -i $argv[2] -s $argv[1] -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=$delay > $argv[3]
+  end
+end
+
+function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
+  set file $argv
+  set name (echo $file|cut -d '.' -f1)
+  set extension (echo $file|cut -d '.' -f2)
+  set outfile (echo $name"_converted."$extension)
+
+  if [ "$extension" = "jpeg" ]
+    convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
+  else if [ "$extension" = "jpg" ]
+    convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
+  else if [ "$extension" = "png" ]
+    convert $file -strip $outfile
+  else if [ "$extension" = "gif" ]
+    gifsicle -O3 $file -o $outfile
+  end
+end
+
 
 ####################
 # Network Info
