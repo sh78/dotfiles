@@ -73,6 +73,7 @@ user_brews=(
   todo-txt
   tor
   trash
+  bradp/vv/vv
   wp-cli
   youtube-dl
   zsh
@@ -169,12 +170,8 @@ user_apps=(
   karabiner-elements
   keyboard-maestro
   mac2imgur
-  # marked
   nosleep
-  # nvalt
-  # parallels-desktop
   qutebrowser
-  # skype
   slack
   spectacle
   sublime-text
@@ -185,7 +182,6 @@ user_apps=(
   vagrant
   virtualbox
   vlc
-  # xld
 )
 
 user_fonts=(
