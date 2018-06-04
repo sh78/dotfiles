@@ -40,3 +40,8 @@ Thumbs.db
 ######################
 tags
 gems.tags
+
+# modules #
+######################
+node_modules
+bower_components
