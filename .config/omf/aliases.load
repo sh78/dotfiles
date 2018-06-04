@@ -294,6 +294,10 @@ function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
   end
 end
 
+function cpgem --description "copy a gem's source files to current directory"
+  cp -R (bundle show $argv) ./
+end
+
 
 ####################
 # Network Info
