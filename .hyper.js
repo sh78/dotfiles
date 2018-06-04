@@ -40,7 +40,7 @@ module.exports = {
     backgroundColor: '#000',
 
     // terminal selection color
-    selectionColor: 'rgba(248,28,229,0.3)',
+    selectionColor: 'rgba(248,28,229,0.4)',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -131,7 +131,7 @@ module.exports = {
     hyperBorder: {
       hyperBorder: {
         borderColors: ['random','random'],
-        borderWidth: '8px'
+        borderWidth: '7px'
       },
       animate: {
         duration: '1s',  // default is 16s
@@ -146,21 +146,21 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    // 'hypercwd',
-    // // 'hyperterm-tabs',
-    // 'hyperlinks',
-    // 'hyperdocs',
-    // 'hyper-search',
-    // "hyper-solarized-dark",
-    // "space-pull",
-    // "hypergravity",
-    // "gitrocket",
-    // "hyper-command-gifs",
-    // // "hyper-hover-header",
-    // // "hyperminimal",
-    // "hyper-tab-icons",
-    // "hyperborder",
-    // "hyper-cat"
+    'hypercwd',
+    // 'hyperterm-tabs',
+    'hyperlinks',
+    'hyperdocs',
+    'hyper-search',
+    "hyper-solarized-dark",
+    "space-pull",
+    "hypergravity",
+    "gitrocket",
+    "hyper-command-gifs",
+    // "hyper-hover-header",
+    // "hyperminimal",
+    "hyper-tab-icons",
+    "hyperborder",
+    // "hyper-cat",
   ],
 
   // in development, you can create a directory under
