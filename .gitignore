@@ -10,6 +10,7 @@ plugins/ta/data/*
 .cfcli.yml
 .config/mps-youtube/playlist_v2
 .config/omf/clorox.load
+.config/ranger/history
 .composer/
 .gist-vim
 .local/
