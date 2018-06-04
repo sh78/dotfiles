@@ -124,6 +124,7 @@ npm_packages=(
   http-server
   jshint
   lighthouse
+  live-server
   node-sass
   sass-lint
   sass-loader
@@ -132,6 +133,7 @@ npm_packages=(
   surge
   webpack-dev-server@2
   webpack@3
+  yarn
   yo
 )
 
@@ -139,7 +141,6 @@ pip_packages=(
   bitbucket-cli
   python-dateutil
   requests
-  neovim
   terminal_velocity
 )
 
@@ -190,6 +191,7 @@ user_fonts=(
   font-source-code-pro-for-powerline
   font-source-sans-pro
   font-source-serif-pro
+  font-spacemono-nerd-font
   font-hack-nerd-font
 )
 
