@@ -92,3 +92,4 @@
   acm = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F -; }; f"
   acmp = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
   rdone = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
+	update = !git pull && git submodule update --init --recursive
