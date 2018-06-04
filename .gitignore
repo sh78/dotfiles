@@ -30,3 +30,5 @@ Library/*
 Library/Application\ Support/*
 !Library/Application\ Support/Sublime\ Text\ 3
 Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Gist.sublime-settings
+Library/Application Support/Sublime Text 3/Packages/User/Package Control.cache*
+Library/Application Support/Sublime Text 3/Packages/User/Package Control.last-run
