@@ -104,8 +104,9 @@
 # chunkwm
 ##
 
-# open a terminal
+# open apps
 ctrl - return : open -na /Applications/iTerm.app
+ctrl + shift - return : open -na /Applications/Google\ Chrome.app
 
 # use switcher mode as a tmux-like prefix
 ctrl - space : khd -e "mode activate switcher"
@@ -116,58 +117,57 @@ switcher - escape : khd -e "mode activate default"
 # https://github.com/koekeishiya/chunkwm/blob/master/src/plugins/tiling/README.md#window-commands
 
 # focus window
+ctrl + shift - h : chunkc tiling::window --focus west
+ctrl + shift - j : chunkc tiling::window --focus south
+ctrl + shift - k : chunkc tiling::window --focus north
+ctrl + shift - l : chunkc tiling::window --focus east
 switcher - h : chunkc tiling::window --focus west
 switcher - j : chunkc tiling::window --focus south
 switcher - k : chunkc tiling::window --focus north
 switcher - l : chunkc tiling::window --focus east
 
-switcher - o : chunkc tiling::window --focus prev
-switcher - p : chunkc tiling::window --focus next
+switcher - tab : chunkc tiling::window --focus prev
+switcher + shift - tab : chunkc tiling::window --focus next
 
-# toggle window fullscreen
-switcher - return : chunkc tiling::window --toggle fullscreen
-
-# toggle window native fullscreen
-switcher + ctrl - return : chunkc tiling::window --toggle native-fullscreen
-
-# toggle window split type with \
-switcher - 0x2A : chunkc tiling::window --toggle split
-
-# equalize size of windows with '
-switcher - 0x27 : chunkc tiling::desktop --equalize
-
-# float / unfloat window with `
-switcher - 0x32 : chunkc tiling::window --toggle float
-
-# toggle sticky, float and resize to picture-in-picture size
-# alt - s : chunkc tiling::window --toggle sticky;\
-          # chunkc tiling::window --warp-floating pip-right
-
-# swap window
+# swap (move) window
 switcher + ctrl - h : chunkc tiling::window --swap west
 switcher + ctrl - j : chunkc tiling::window --swap south
 switcher + ctrl - k : chunkc tiling::window --swap north
 switcher + ctrl - l : chunkc tiling::window --swap east
 
-# move window
-switcher + ctrl + shift - h : chunkc tiling::window --warp west
-switcher + ctrl + shift - j : chunkc tiling::window --warp south
-switcher + ctrl + shift - k : chunkc tiling::window --warp north
-switcher + ctrl + shift - l : chunkc tiling::window --warp east
+# close window
+switcher - q : chunkc tiling::window --close
+
+# toggle window fullscreen
+switcher - return : chunkc tiling::window --toggle fullscreen
+
+# toggle window native (macOS) fullscreen
+switcher + shift - return : chunkc tiling::window --toggle native-fullscreen
+
+# toggle window split type with \
+switcher - 0x31 : chunkc tiling::window --toggle split
+
+# equalize size of windows with =
+switcher - 0x18 : chunkc tiling::desktop --equalize
+
+# float / unfloat window with `
+switcher - 0x32 : chunkc tiling::window --toggle float
 
 # move floating windows / windows on a floating space
-switcher - up : chunkc tiling::window --warp-floating fullscreen
-switcher - left : chunkc tiling::window --warp-floating left
-switcher - right : chunkc tiling::window --warp-floating right
-switcher + shift - left : chunkc tiling::window --warp-floating top-left
-switcher + shift - up : chunkc tiling::window --warp-floating top-right
-switcher + shift - down : chunkc tiling::window --warp-floating bottom-left
-switcher + shift - right : chunkc tiling::window --warp-floating bottom-right
+# TODO: not working. is this even that useful?
+## these will conflict with current adjust-window-edge
+# switcher - up : chunkc tiling::window --warp-floating fullscreen
+# switcher - left : chunkc tiling::window --warp-floating left
+# switcher - right : chunkc tiling::window --warp-floating right
+# switcher + shift - left : chunkc tiling::window --warp-floating top-left
+# switcher + shift - up : chunkc tiling::window --warp-floating top-right
+# switcher + shift - down : chunkc tiling::window --warp-floating bottom-left
+# switcher + shift - right : chunkc tiling::window --warp-floating bottom-right
 
 # send window to desktop
 # shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
-switcher + cmd + shift - tab : chunkc tiling::window --send-to-desktop prev
-switcher + cmd - tab : chunkc tiling::window --send-to-desktop next
+switcher + cmd - left : chunkc tiling::window --send-to-desktop prev
+switcher + cmd - right : chunkc tiling::window --send-to-desktop next
 switcher + cmd - 1 : chunkc tiling::window --send-to-desktop 1
 switcher + cmd - 2 : chunkc tiling::window --send-to-desktop 2
 switcher + cmd - 3 : chunkc tiling::window --send-to-desktop 3
@@ -175,8 +175,8 @@ switcher + cmd - 4 : chunkc tiling::window --send-to-desktop 4
 switcher + cmd - 5 : chunkc tiling::window --send-to-desktop 5
 
 # focus monitor
-switcher - tab  : chunkc tiling::monitor -f next
-switcher + shift - tab  : chunkc tiling::monitor -f prev
+switcher + ctrl - tab  : chunkc tiling::monitor -f next
+switcher + ctrl + shift - tab  : chunkc tiling::monitor -f prev
 switcher - 1  : chunkc tiling::monitor -f 1
 switcher - 2  : chunkc tiling::monitor -f 2
 switcher - 3  : chunkc tiling::monitor -f 3
@@ -189,16 +189,16 @@ switcher - 3  : chunkc tiling::monitor -f 3
 # ctrl + cmd - 3  : chunkc tiling::window --send-to-monitor 3; chunkc tiling::monitor -f 3
 
 # # increase region size
-# shift + alt - a : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
-# shift + alt - s : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
-# shift + alt - w : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
-# shift + alt - d : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
+switcher - u : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge west
+switcher - i : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge south
+switcher - o : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge north
+switcher - p : chunkc tiling::window --use-temporary-ratio 0.1 --adjust-window-edge east
 
-# # decrease region size
-# shift + cmd - a : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
-# shift + cmd - s : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
-# shift + cmd - w : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
-# shift + cmd - d : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
+# # decrease region size - m , . /
+switcher - m : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge west
+switcher - 0x2B : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge south
+switcher - 0x2F : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge north
+switcher - 0x2C : chunkc tiling::window --use-temporary-ratio -0.1 --adjust-window-edge east
 
 # # set insertion point for focused container
 # ctrl + alt - f : chunkc tiling::window --use-insertion-point cancel
@@ -207,7 +207,7 @@ switcher - 3  : chunkc tiling::monitor -f 3
 # ctrl + alt - k : chunkc tiling::window --use-insertion-point north
 # ctrl + alt - l : chunkc tiling::window --use-insertion-point east
 
-# rotate tree
+# rotate tree with { and }
 switcher - 0x1E : chunkc tiling::desktop --rotate 90
 switcher - 0x21 : chunkc tiling::desktop --rotate -90
 
@@ -218,12 +218,18 @@ switcher - 0x21 : chunkc tiling::desktop --rotate -90
 # alt - x : chunkc tiling::desktop --mirror horizontal
 
 # # toggle desktop offset
-# alt - a : chunkc tiling::desktop --toggle offset
+switcher - m : chunkc tiling::desktop --toggle offset
 
 # # float next window to be tiled
-# shift + alt - t : chunkc set window_float_next 1
+# TODO: not working
+ctrl + shift - space : chunkc set window_float_next 1
 
 # # change layout of desktop
 # ctrl + alt - a : chunkc tiling::desktop --layout bsp
 # ctrl + alt - s : chunkc tiling::desktop --layout monocle
 # ctrl + alt - d : chunkc tiling::desktop --layout float
+
+# toggle sticky, float and resize to picture-in-picture size
+# alt - s : chunkc tiling::window --toggle sticky;\
+          # chunkc tiling::window --warp-floating pip-right
+
