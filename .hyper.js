@@ -97,7 +97,7 @@ module.exports = {
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '/usr/bin/fish',
+    // shell: '/usr/bin/fish',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -123,16 +123,16 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    
+
     // Plugins
     hyperTabs: {
       tabIconsColored: true,
     },
     hyperBorder: {
-      //hyperBorder: {
-        //borderColors: ['random','random'],
-        //borderWidth: '8px'
-      //},
+      hyperBorder: {
+        borderColors: ['random','random'],
+        borderWidth: '8px'
+      },
       animate: {
         duration: '1s',  // default is 16s
       },
@@ -145,16 +145,31 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [//'hyperterm-visor',
-  'hypercwd', 'hyperterm-tabs', 'hyperlinks', 'hyperdocs', 'hyper-search', "hyper-solarized-dark", "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-hover-header", "hyperminimal", "hyper-tab-icons", "hyperborder", "hyperpower"],
+  plugins: [
+    // 'hypercwd',
+    // // 'hyperterm-tabs',
+    // 'hyperlinks',
+    // 'hyperdocs',
+    // 'hyper-search',
+    // "hyper-solarized-dark",
+    // "space-pull",
+    // "hypergravity",
+    // "gitrocket",
+    // "hyper-command-gifs",
+    // // "hyper-hover-header",
+    // // "hyperminimal",
+    // "hyper-tab-icons",
+    // "hyperborder",
+    // "hyper-cat"
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
-  localPlugins: [],
+  // localPlugins: [],
 
   keymaps: {
     // Example
-    // 'window:devtools': 'cmd+alt+o',
+    'window:devtools': 'command+alt+i',
   },
 };
