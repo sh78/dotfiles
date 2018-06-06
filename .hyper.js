@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
@@ -21,13 +23,13 @@ module.exports = {
     fontWeightBold: 'bold',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
+    cursorColor: 'rgba(211,54,130,0.8)',
 
     // terminal text color under BLOCK cursor
     cursorAccentColor: '#000',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'BEAM',
 
     // set to `true` (without backticks and without quotes) for blinking cursor
     cursorBlink: true,
@@ -58,10 +60,10 @@ module.exports = {
     // set to `false` (without backticks and without quotes) if you want to hide the minimize, maximize and close buttons
     // additionally, set to `'left'` if you want them on the left, like in Ubuntu
     // default: `true` (without backticks and without quotes) on Windows and Linux, ignored on macOS
-    showWindowControls: 'true',
+    showWindowControls: 'false',
 
     // custom padding (CSS format, i.e.: `top right bottom left`)
-    padding: '12px 14px',
+    padding: '0',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
@@ -125,6 +127,11 @@ module.exports = {
     // for advanced config flags please refer to https://hyper.is/#cfg
 
     // Plugins
+    solarized: {
+      lightTheme: false,
+      light: '08:00',
+      dark: '20:00',
+    },
     hyperTabs: {
       tabIconsColored: true,
     },
@@ -146,27 +153,12 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hypercwd',
-    // 'hyperterm-tabs',
-    'hyperlinks',
-    'hyperdocs',
-    'hyper-search',
-    "hyper-solarized-dark",
-    "space-pull",
-    "hypergravity",
-    "gitrocket",
-    "hyper-command-gifs",
-    // "hyper-hover-header",
-    // "hyperminimal",
-    "hyper-tab-icons",
-    "hyperborder",
-    // "hyper-cat",
+    'hypercwd', 'hyperlinks', 'hyperdocs', 'hyper-search', "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-tab-icons", "hyperborder", "hyper-solarized-one"
   ],
-
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
-  // localPlugins: [],
+  // localPlugins: ["hyper-solarized"],
 
   keymaps: {
     // Example
