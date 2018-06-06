@@ -118,6 +118,9 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'machakann/vim-highlightedyank'
 Plugin 'rafaqz/ranger.vim'
+Plugin 'kana/vim-textobj-user'
+Plugin 'whatyouhide/vim-textobj-xmlattr'
+Plugin 'jasonlong/vim-textobj-css'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -437,6 +440,11 @@ autocmd BufReadPost *
 
 "" vim-gitgutter inherit line column color
 highlight clear SignColumn
+"" prevent conflict w/ vim-textobj-css
+omap ih <Plug>GitGutterTextObjectInnerPending
+omap ah <Plug>GitGutterTextObjectOuterPending
+xmap ih <Plug>GitGutterTextObjectInnerVisual
+xmap ah <Plug>GitGutterTextObjectOuterVisual
 
 "" Ack
 if executable('ag')
@@ -471,25 +479,22 @@ autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
 "" Mapping and settings for emmet
-let g:user_emmet_expandabbr_key = '<Leader><Tab>'
-let g:user_emmet_next_key = '<Leader>]'
-let g:user_emmet_prev_key = '<Leader>['
-
-" let g:user_emmet_settings = {
-"   'php' : {
-"     'extends' : 'html',
-"     'filters' : 'c',
-"   },
-"   'xml' : {
-"     'extends' : 'html',
-"   },
-"   'haml' : {
-"     'extends' : 'html',
-"   },
-"   'twig' : {
-"     'extends' : 'html',
-"   },
-" }
+let g:user_emmet_expandabbr_key = '<C-y>y'
+let g:user_emmet_settings = {
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'c',
+  \  },
+  \  'xml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'haml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'twig' : {
+  \    'extends' : 'html',
+  \  },
+  \}
 
 "" closetag.vim
 ":au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
