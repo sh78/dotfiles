@@ -153,7 +153,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hypercwd', 'hyperlinks', 'hyperdocs', 'hyper-search', "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-tab-icons", "hyperborder", "hyper-solarized-one"
+    'hypercwd', 'hyperlinks', 'hyperdocs', 'hyper-search', "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-tab-icons", "hyperborder", "hyper-solarized"
   ],
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
