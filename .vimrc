@@ -120,7 +120,10 @@ Plugin 'machakann/vim-highlightedyank'
 Plugin 'rafaqz/ranger.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
+Plugin 'kana/vim-textobj-line'
 Plugin 'jasonlong/vim-textobj-css'
+Plugin 'jceb/vim-textobj-uri'
+Plugin 'kana/vim-textobj-entire'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -682,3 +685,9 @@ map <leader>rt :RangerTab<cr>
 map <leader>ri :RangerInsert<cr>
 map <leader>ra :RangerAppend<cr>
 map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+
+"" titlecase
+" let g:titlecase_map_keys = 0
+" nmap <leader>gt <Plug>Titlecase
+" vmap <leader>gt <Plug>Titlecase
+" nmap <leader>gT <Plug>TitlecaseLine
