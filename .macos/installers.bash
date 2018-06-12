@@ -125,6 +125,7 @@ npm_packages=(
   jshint
   lighthouse
   live-server
+  livedown
   node-sass
   sass-lint
   sass-loader
