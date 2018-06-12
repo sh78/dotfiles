@@ -157,6 +157,7 @@ user_apps=(
   coconutbattery
   cool-retro-term
   cyberduck
+  docker
   firefox
   flash
   franz
