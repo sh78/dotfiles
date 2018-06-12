@@ -13,6 +13,7 @@
     ui = auto,dense
 [core]
 	excludesfile = ~/.gitignore_global
+	autocrlf = input
 [credential]
 	helper = cache --timeout 64800
 [gitsh]
