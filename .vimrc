@@ -124,6 +124,7 @@ Plugin 'kana/vim-textobj-line'
 Plugin 'jasonlong/vim-textobj-css'
 Plugin 'jceb/vim-textobj-uri'
 Plugin 'kana/vim-textobj-entire'
+Plugin 'shime/vim-livedown'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -691,3 +692,6 @@ map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
 " nmap <leader>gt <Plug>Titlecase
 " vmap <leader>gt <Plug>Titlecase
 " nmap <leader>gT <Plug>TitlecaseLine
+
+"" livedown (markdown)
+nmap gm :LivedownToggle<CR>
