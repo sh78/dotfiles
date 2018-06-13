@@ -1,6 +1,3 @@
-" This file is hard-linked!
-"" ~/.config/nvim/init.vim > ~/.vimrc
-
 " just in case your're fishing
 set shell=/bin/sh
 
@@ -100,6 +97,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-vinegar'
  " ______ _   _ _____       _____   ____  _____  ______            _____  ______
  " |  ____| \ | |  __ \     |  __ \ / __ \|  __ \|  ____|     /\   |  __ \|  ____|   /\
  " | |__  |  \| | |  | |    | |__) | |  | | |__) | |__       /  \  | |__) | |__     /  \
