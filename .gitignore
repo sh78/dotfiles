@@ -12,6 +12,7 @@ plugins/ta/data/*
 .config/omf/clorox.load
 .config/ranger/history
 .composer/
+.gem/credentials
 .gist-vim
 .local/
 .netrc
