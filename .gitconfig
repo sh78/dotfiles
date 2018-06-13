@@ -89,7 +89,7 @@
   rmbranch = "!f() { git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1; }; f"
   mergebranch = "!f() { git checkout master && git merge @{-1}; }; f"
   up = "!f() { git fetch origin && git rebase origin/master; }; f"
-  nuke = "!f() { git filter-branch --force --index-filter "git rm --cached --ignore-unmatch "$@"" --prune-empty --tag-name-filter cat -- --all; }; f"
+  nuke = "!f() { git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch "$@"' --prune-empty --tag-name-filter cat -- --all; }; f"
   acm = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F -; }; f"
   acmp = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
   rdone = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
