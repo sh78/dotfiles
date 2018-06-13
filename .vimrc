@@ -115,7 +115,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'machakann/vim-highlightedyank'
-Plugin 'rafaqz/ranger.vim'
+" Plugin 'rafaqz/ranger.vim'
+Plugin 'rbgrouleff/bclose.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
 Plugin 'kana/vim-textobj-line'
@@ -270,6 +271,7 @@ let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
+let g:netrw_winsize = 25    " set width like a standard file drawer
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
@@ -684,6 +686,7 @@ map <leader>rt :RangerTab<cr>
 map <leader>ri :RangerInsert<cr>
 map <leader>ra :RangerAppend<cr>
 map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+let g:ranger_replace_netrw = 0
 
 "" titlecase
 " let g:titlecase_map_keys = 0
