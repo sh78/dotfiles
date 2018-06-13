@@ -10,6 +10,7 @@ end
 # load user confs
 source $HOME/.config/omf/env.load
 source $HOME/.config/omf/aliases.load
+source $HOME/.config/omf/clorox.load
 if test $OSTYPE = "Darwin"
   source $HOME/.config/omf/macos.load
 end
