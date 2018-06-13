@@ -518,3 +518,7 @@ alias r="ranger"
 # terminal velocity
 alias notes="terminal_velocity"
 alias .note="terminal_velocity ."
+
+# docker
+alias docker-clean-all="docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+alias whale:bomb="docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
