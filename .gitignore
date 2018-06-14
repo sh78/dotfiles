@@ -11,7 +11,7 @@ plugins/ta/data/*
 .config/mps-youtube/playlist_v2
 .config/omf/clorox.load
 .config/ranger/history
-.config/nvim/netrwhist
+.config/nvim/.netrwhist
 .composer/
 .gem/credentials
 .gist-vim

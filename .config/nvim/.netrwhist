@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/sean/Drive/dotfiles/.composer'
-let g:netrw_dirhist_2='/Users/sean/Drive/dotfiles/.macos'
-let g:netrw_dirhist_3='/Users/sean/Drive/dotfiles/.macos/extra'
-let g:netrw_dirhist_4='/Users/sean/clorox/cloroxprofessional/trunk/cloroxprofessional.com/site/www'
-let g:netrw_dirhist_5='/Users/sean/clorox/cloroxprofessional/trunk/cloroxprofessional.com/site/www/cloroxprofessionalModule'
-let g:netrw_dirhist_6='/Users/sean/clorox/cloroxprofessional/trunk/cloroxprofessional.com/site/www/cloroxprofessionalModule/js'
-let g:netrw_dirhist_7='/Users/sean/clorox/hiddenvalley/branches/hiddenvalley.com-reciplease/site/www/wp-content/themes/ccl-default'
