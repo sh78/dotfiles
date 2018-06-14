@@ -347,6 +347,7 @@ alias gfh='git flow hotfix'
 alias gfhs='git flow hotfix finish'
 
 # svn
+alias s='svn'
 alias svnignore='svn propset svn:ignore'
 
 # bitbucket
