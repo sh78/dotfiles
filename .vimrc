@@ -589,7 +589,7 @@ call denite#custom#map(
 " attempting to follow vim convention of 'g' going or jumping
 :nnoremap g<Space> :Denite buffer file/rec<CR>
 :nnoremap ;; :Denite command<CR> " search commands
-:nnoremap gr :Denite grep:. -mode=normal<CR> " gr unmapped by default
+:nnoremap gr :DeniteBufferDir grep:. -mode=normal<CR> " gr unmapped by default
 :nnoremap gk :DeniteCursorWord line<CR> " gk (already remapped k to do gk)
 :nnoremap gK :DeniteCursorWord grep:. -mode=normal<CR> " gK (unmapped by default)
 :nnoremap gn :DeniteCursorWord tags -mode=normal<CR> " (don't need to visually select search patterns
