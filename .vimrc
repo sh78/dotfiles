@@ -115,7 +115,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'machakann/vim-highlightedyank'
-" Plugin 'rafaqz/ranger.vim'
+Plugin 'francoiscabrol/ranger.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
@@ -680,13 +680,13 @@ let g:highlightedyank_highlight_duration = 700
 
 "" ranger.vim
 map <leader>rr :RangerEdit<cr>
-map <leader>rv :RangerVSplit<cr>
-map <leader>rs :RangerSplit<cr>
-map <leader>rt :RangerTab<cr>
-map <leader>ri :RangerInsert<cr>
-map <leader>ra :RangerAppend<cr>
-map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-let g:ranger_replace_netrw = 0
+" map <leader>rv :RangerVSplit<cr>
+" map <leader>rs :RangerSplit<cr>
+" map <leader>rt :RangerTab<cr>
+" map <leader>ri :RangerInsert<cr>
+" map <leader>ra :RangerAppend<cr>
+" map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+let g:ranger_replace_netrw = 1
 
 "" titlecase
 " let g:titlecase_map_keys = 0
