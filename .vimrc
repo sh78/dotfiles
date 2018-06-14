@@ -644,15 +644,15 @@ let g:airline#extensions#whitespace#enabled=1
 "" tmuxline
 " let g:tmuxline_preset = 'full'
 let g:tmuxline_preset = {
-    \'a'       : '#S:#I',
-    \'b disabled'       : '',
-    \'c disabled'       : '',
-    \'win'     : ['#I', '#W'],
-    \'cwin'    : ['#I', '#W'],
-    \'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
-    \'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
-    \'z disabled'       : '',
-    \'options' : {'status-justify': 'left'}}
+  \'a'       : '#S:#I',
+  \'b disabled'       : '',
+  \'c disabled'       : '',
+  \'win'     : ['#I', '#W'],
+  \'cwin'    : ['#I', '#W'],
+  \'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
+  \'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
+  \'z disabled'       : '',
+  \'options' : {'status-justify': 'left'}}
 
 "" closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.twig,*.php'
@@ -683,3 +683,9 @@ nmap gm :LivedownToggle<CR>
 
 "" easy motion
 map <C-m> <Plug>(easymotion-prefix)
+
+"" switch
+let g:switch_custom_definitions =
+  \ [
+  \   ['foo', 'bar', 'baz']
+  \ ]
