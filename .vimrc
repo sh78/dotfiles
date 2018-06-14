@@ -18,27 +18,6 @@ endif
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'alvan/vim-closetag'
-Plugin 'ap/vim-css-color'
-Plugin 'junegunn/goyo.vim'
-Plugin 'AndrewRadev/switch.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'godlygeek/tabular'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'lambdalisue/vim-gista'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'mbbill/undotree'
-"Plugin 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
-Plugin 'tomtom/tlib_vim'
  "  _______ _____ __  __     _____   ____  _____  ______             _____  ______
  " |__   __|_   _|  \/  |   |  __ \ / __ \|  __ \|  ____|      /\   |  __ \|  ____|   /\
     " | |    | | | \  / |   | |__) | |  | | |__) | |__        /  \  | |__) | |__     /  \
@@ -104,26 +83,42 @@ Plugin 'tpope/vim-vinegar'
  " |  __| | . ` | |  | |    |  ___/| |  | |  ___/|  __|     / /\ \ |  _  /|  __|   / /\ \
  " | |____| |\  | |__| |    | |    | |__| | |    | |____   / ____ \| | \ \| |____ / ____ \
  " |______|_| \_|_____/     |_|     \____/|_|    |______| /_/    \_\_|  \_\______/_/    \_\
-Plugin 'vim-scripts/SearchComplete'
-Plugin 'lumiliet/vim-twig'
-Plugin 'yuttie/comfortable-motion.vim'
-Plugin 'mileszs/ack.vim'
+"Plugin 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'Shougo/denite.nvim'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ap/vim-css-color'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'machakann/vim-highlightedyank'
 Plugin 'francoiscabrol/ranger.vim'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'kana/vim-textobj-user'
-Plugin 'whatyouhide/vim-textobj-xmlattr'
-Plugin 'kana/vim-textobj-line'
+Plugin 'godlygeek/tabular'
 Plugin 'jasonlong/vim-textobj-css'
 Plugin 'jceb/vim-textobj-uri'
+Plugin 'junegunn/goyo.vim'
 Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-user'
+Plugin 'lambdalisue/vim-gista'
+Plugin 'machakann/vim-highlightedyank'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mbbill/undotree'
+Plugin 'mileszs/ack.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'rbgrouleff/bclose.vim'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'shime/vim-livedown'
+Plugin 'tomtom/tlib_vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/SearchComplete'
+Plugin 'whatyouhide/vim-textobj-xmlattr'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -536,17 +531,6 @@ let g:switch_mapping = "-"
 "" vim mustache handlebars
 let g:mustache_abbreviations = 1
 
-" comfortable-motion.vim - smooth scrolling
-noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
-noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
-
-let g:comfortable_motion_no_default_key_mappings = 1
-let g:comfortable_motion_impulse_multiplier = 1  " Feel free to increase/decrease this value.
-:nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
-:nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
-:nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
-:nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-
 "" tabularize
 :nnoremap <Leader>aa :Tabularize <CR>
 :nnoremap <Leader>a= :Tabularize /=<CR>
@@ -587,7 +571,7 @@ call denite#custom#map(
 
 " these are mapped to avoid the leader/ctrl for ease
 " attempting to follow vim convention of 'g' going or jumping
-:nnoremap g<Space> :Denite buffer file/rec<CR>
+:nnoremap gp :Denite buffer file/rec<CR>
 :nnoremap ;; :Denite command<CR> " search commands
 :nnoremap gr :DeniteBufferDir grep:. -mode=normal<CR> " gr unmapped by default
 :nnoremap gk :DeniteCursorWord line<CR> " gk (already remapped k to do gk)
@@ -696,3 +680,6 @@ let g:ranger_replace_netrw = 1
 
 "" livedown (markdown)
 nmap gm :LivedownToggle<CR>
+
+"" easy motion
+map <C-m> <Plug>(easymotion-prefix)
