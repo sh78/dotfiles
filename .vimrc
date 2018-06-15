@@ -91,6 +91,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ap/vim-css-color'
+Plugin 'christoomey/vim-titlecase'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'edkolev/tmuxline.vim'
@@ -98,6 +99,7 @@ Plugin 'francoiscabrol/ranger.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'jasonlong/vim-textobj-css'
 Plugin 'jceb/vim-textobj-uri'
+Plugin 'jremmen/vim-ripgrep'
 Plugin 'junegunn/goyo.vim'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'kana/vim-textobj-line'
@@ -358,7 +360,7 @@ map <Leader>tm :tabmove
 " # Functions / Macros
 
 "" substitute all occurrences of the word under the cursor
-:nnoremap <Leader>fw :%s/\<<C-r><C-w>\>//g<Left><Left>
+:nnoremap <Leader>fk :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 "" quick find/replace
 :nnoremap <Leader>fg :%s//g<Left><Left>
@@ -410,6 +412,40 @@ cmap w!! w !sudo tee % >/dev/null
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
 :nnoremap <leader>. :MakeTags<CR>
+
+" fix next/prev spelling error
+:nnoremap <Leader>zn ]s1z=
+:nnoremap <Leader>zp [s1z=
+:nnoremap <Leader>zg [szg
+
+" global find/replace inside working directory
+function! FindReplace()
+  " figure out which directory we're in
+	let dir = expand('%:h')
+  " ask for patterns
+  call inputsave()
+  let find = input('Pattern: ')
+  call inputrestore()
+  let replace = input('Replacement: ')
+  call inputrestore()
+  " are you sure?
+  let confirm = input('WARNING: About to replace ' . find . ' with ' . replace . ' in ' . dir . '/**/* (y/n):')
+  " clear echoed message
+  :redraw
+  if confirm == 'y'
+    " find with rigrep (populate quickfix )
+    :silent exe 'Rg ' . find
+    " use cfdo to substitute on all quickfix files
+    :silent exe 'cfdo %s/' . find . '/' . replace . '/g | update'
+    " close quickfix window
+    :silent exe 'cclose'
+    :echom('Replaced ' . find . ' with ' . replace . ' in all files in ' . dir )
+  else
+    :echom('Find/Replace Aborted :(')
+    return
+  endif
+endfunction
+:nnoremap <Leader>fr :call FindReplace()<CR>
 
 
 " # Syntax-specifics
@@ -527,6 +563,20 @@ let g:pymode_rope_completion = 0
 
 "" Switch.vim
 let g:switch_mapping = "-"
+let g:switch_custom_definitions =
+  \ [
+  \   ["foo", "bar", "baz"],
+  \   ["is", "isn't"],
+  \   ["old", "new"],
+  \   ["previous", "next"],
+  \   ["first", "last"],
+  \   ["before", "after"],
+  \   ["dark", "light"],
+  \   ["opaque", "transparent"],
+  \   ["black", "white"],
+  \   ["staging", "production"],
+  \   ["http", "https"],
+  \ ]
 
 "" vim mustache handlebars
 let g:mustache_abbreviations = 1
@@ -555,6 +605,14 @@ call denite#custom#option('default', 'prompt', '>')
 
 call denite#custom#var('file/rec', 'command',
 	\ ['ag', '--follow', '--nogroup', '-g', ''])
+
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+    \ ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 call denite#custom#map(
   \ 'insert',
@@ -684,8 +742,3 @@ nmap gm :LivedownToggle<CR>
 "" easy motion
 map <C-m> <Plug>(easymotion-prefix)
 
-"" switch
-let g:switch_custom_definitions =
-  \ [
-  \   ['foo', 'bar', 'baz']
-  \ ]
