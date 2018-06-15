@@ -71,6 +71,7 @@ user_brews=(
   tmux
   tmuxinator-completion
   todo-txt
+  tokei
   tor
   trash
   bradp/vv/vv
