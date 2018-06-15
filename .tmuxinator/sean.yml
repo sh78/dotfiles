@@ -1,0 +1,13 @@
+# ~/.tmuxinator/sean.yml
+
+name: sean
+root: ~/dev/sh78.github.io/
+
+windows:
+  - edit:
+      layout: main-horizontal
+      panes:
+        - nvim +Vex
+        - yarn run dev
+        - git status
+  - find: ranger
