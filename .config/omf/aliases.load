@@ -16,16 +16,16 @@ alias vp='vim +silent\ /add\ plugins ~/.vimrc'
 alias omf='vim +RangerEdit ~/.config/omf'
 
 # abbreviations
-alias vim='nvim'
-alias v='vim'
+abbr --add vim 'nvim'
+abbr --add v 'vim'
 function vf --description "jump to pattern on open"
     command vim +\/$argv[2] $argv[1]
 end
-alias g='git'
-alias h='history'
-alias x='exit'
-alias p="pwd"
-alias c='clear'
+abbr --add g 'git'
+abbr --add h 'history'
+abbr --add x 'exit'
+abbr --add p "pwd"
+abbr --add c 'clear'
 
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 alias ssh='env TERM=xterm-256color ssh'
@@ -418,11 +418,11 @@ alias tmn='tmux new -s'
 # tmf() { tmux -f $1 attach }
 
 # tmuxinator
-alias mux='tmuxinator'
-alias muxn='tmuxinator new'
-alias muxo='tmuxinator open'
-alias muxl='tmuxinator list'
-alias muxc='tmuxinator copy'
+# alias mux='tmuxinator'
+# alias muxn='tmuxinator new'
+# alias muxo='tmuxinator open'
+# alias muxl='tmuxinator list'
+# alias muxc='tmuxinator copy'
 
 
 # IRB
