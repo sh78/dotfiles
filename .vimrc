@@ -413,10 +413,11 @@ cmap w!! w !sudo tee % >/dev/null
 command! MakeTags !ctags -R .
 :nnoremap <leader>. :MakeTags<CR>
 
-" fix next/prev spelling error
-:nnoremap <Leader>zn ]s1z=
-:nnoremap <Leader>zp [s1z=
-:nnoremap <Leader>zg [szg
+" deal with next/prev spelling error and return to position
+:nnoremap <Leader>zn ]s1z=<C-o>
+:nnoremap <Leader>zp [s1z=<C-o>
+:nnoremap <Leader>zgn ]szg<C-o>
+:nnoremap <Leader>zgp [szg<C-o>
 
 " global find/replace inside working directory
 function! FindReplace()
