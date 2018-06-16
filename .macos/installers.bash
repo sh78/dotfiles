@@ -173,6 +173,7 @@ user_apps=(
   java
   karabiner-elements
   keyboard-maestro
+  keycastr
   mac2imgur
   nosleep
   qutebrowser
