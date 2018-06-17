@@ -87,6 +87,21 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'Shougo/denite.nvim'
+Plugin 'Shougo/deoplete.nvim'
+if !has('nvim')
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plugin 'Shougo/neco-syntax'
+Plugin 'carlitux/deoplete-ternjs'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'lvht/phpcd.vim'
+Plugin 'zchee/deoplete-jedi'
+Plugin 'Shougo/deoplete-clangx'
+" Plugin 'thalesmello/webcomplete.vim'
+Plugin 'fszymanski/deoplete-emoji'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -113,7 +128,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'shime/vim-livedown'
 Plugin 'tomtom/tlib_vim'
@@ -121,6 +136,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
+Plugin 'dag/vim-fish'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -198,7 +214,7 @@ set noswapfile
 set directory=/.vim/tmp
 
 setlocal spell spelllang=en_us
-set spellfile=$HOME/.vim-spell-en.utf-8.add
+set spellfile=$HOME/.vim/spell/en.utf-8.add
 set thesaurus+=$HOME/.vim/thesaurus/mthesaur.txt
 
 "" tab settings
@@ -226,21 +242,21 @@ set undodir=~/.vim/undodir        " Keep all undo in one place
 
 " set complete =
 set complete+=kspell
-imap <Tab> <C-P>
-imap <S-Tab> <C-N>
+" imap <Tab> <C-P>
+" imap <S-Tab> <C-N>
 
 " Multipurpose tab key
 " Indent if we're at the beginning of a line. Else, do completion.
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<C-n>"
-  endif
-endfunction
-inoremap <expr> <tab> InsertTabWrapper()
-inoremap <s-tab> <C-n>
+" function! InsertTabWrapper()
+"   let col = col('.') - 1
+"   if !col || getline('.')[col - 1] !~ '\k'
+"     return "\<tab>"
+"   else
+"     return "\<C-n>"
+"   endif
+" endfunction
+" inoremap <expr> <tab> InsertTabWrapper()
+" inoremap <s-tab> <C-n>
 
 :nnoremap QQ :q!<CR>
 
@@ -745,4 +761,36 @@ nmap gm :LivedownToggle<CR>
 
 "" easy motion
 map <C-m> <Plug>(easymotion-prefix)
+
+"" Ale linter
+let g:ale_sign_error = '🚫 '
+let g:ale_sign_warning = '⚠️ '
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 800"
+nmap <silent> <C-h> <Plug>(ale_previous_wrap)
+nmap <silent> <C-l> <Plug>(ale_next_wrap)
+
+"" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+  \ 'disabled_syntaxes', ['Comment', 'String'])
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+
+"" neosnippet
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
