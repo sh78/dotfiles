@@ -1,0 +1,3 @@
+[submodule ".macos/wallpaper"]
+	path = .macos/wallpaper
+	url = https://github.com/pipwerks/OS-X-Wallpaper-Changer.git
