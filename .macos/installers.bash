@@ -21,15 +21,24 @@ brew_taps=(
   "homebrew/php"
   "risidev/homebrew-chunkwm"
   "koekeishiya/formulae"
+  "rockyluke/devops"
 )
 
 user_brews=(
+  "homebrew/dupes/grep"
+  "php72 --with-pear --with-pcntl --with-httpd --with-thread-safety"
+  "vim --with-features=huge --with-python3 --with-ruby --with-perl"
   ack
+  apple-gcc42
+  bash
+  bradp/vv/vv
   cheat
   chumkwm
+  cmake
   cmatrix
   cmus
   composer
+  coreutils
   cowsay
   ctags
   dnsmasq
@@ -37,12 +46,15 @@ user_brews=(
   feh
   ffmpeg
   figlet
+  findutils
   fortune
   gifsicle
   git
   git-flow
+  gitlint
   gitsh
   gtypist
+  hadolint
   httrack
   hub
   imagemagick
@@ -58,42 +70,33 @@ user_brews=(
   node
   pianobar
   postgresql
+  python
+  python3
   rbenv
   rename
   rigrep
+  rsync
   ruby-build
   selecta
+  shellcheck
   sloccount
   speedtest_cli
   spidermonkey
   ssh-copy-id
   the_silver_searcher
+  tidy-html5
   tmux
   tmuxinator-completion
   todo-txt
   tokei
   tor
   trash
-  bradp/vv/vv
+  tree
+  wget
   wp-cli
   youtube-dl
   zsh
   zsh-completions
-)
-
-system_brews=(
-  "homebrew/dupes/grep"
-  "vim --with-features=huge --with-python3 --with-ruby --with-perl"
-  apple-gcc42
-  bash
-  cmake
-  coreutils
-  findutils
-  python
-  python3
-  rsync
-  tree
-  wget
 )
 
 qlexts=(
@@ -114,6 +117,7 @@ npm_packages=(
   css-loader
   csslint
   ember-cli
+  ember-template-lint
   extract-loader
   fb-messenger-cli
   file-loader
@@ -133,17 +137,25 @@ npm_packages=(
   sloc
   spot
   surge
+  swaglint
+  tern
   webpack-dev-server@2
   webpack@3
+  write-good
   yarn
   yo
 )
 
 pip_packages=(
   bitbucket-cli
+  jedi
+  proselint
   python-dateutil
+  pylint
   requests
+  sass-lint
   terminal_velocity
+  vim-vint
 )
 
 pip3_packages=(
@@ -213,9 +225,6 @@ brew update
 
 # What's on tap?
 brew install ${brew_taps[@]}
-
-# echo "Installing system brews & dupes - GNU utils, dupes, cmake..."
-brew install ${system_brews[@]}
 
 echo "Installing user brews..."
 brew install ${user_brews[@]}
