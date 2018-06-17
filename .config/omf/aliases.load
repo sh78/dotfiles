@@ -45,16 +45,6 @@ alias x 'exit'
 alias p "pwd"
 alias c 'clear'
 
-function cd --description "auto ls for each cd"
-  if [ -n $argv[1] ]
-    builtin cd $argv[1]
-    and ls -F
-  else
-    builtin cd ~
-    and ls -F
-  end
-end
-
 alias .. 'cd ..' # up one
 alias .... 'cd ../..' # up two
 alias ...... 'cd ../../..' # up three (that's enough)
@@ -110,29 +100,14 @@ alias off 'sudo shutdown -h now'
 # misc
 alias lmk "say 'Process complete.'" # pin to the tail of long commands
 
-function wait --description "Run a command after some time: wait <minutes> <command>"
-  set minutes $argv[1]
-  set time_in_seconds (math "$minutes*60")
-  sleep $time_in_seconds; and eval $argv[2]
-end
-
 alias m "math" # quick calculations in the terminal
 
 ####################
 # Bling
 ####################
 
-function cat --description "cat the rainbow"
-  if type -q lolcat
-    lolcat $argv
-  else
-    cat $argv
-  end
-end
-
 alias starwars "telnet towel.blinkenlights.nl"
 alias matrix "cmatrix -a"
-
 
 
 ####################
@@ -188,7 +163,6 @@ abbr --add bcs 'brew cask search'
 abbr --add bcia 'brew cask install --appdir "/Applications"'
 abbr --add getapp 'brew cask install --appdir "/Applications"'
 
-
 # vagrant
 abbr --add vag 'vagrant'
 abbr --add vagba 'vagrant box add'
@@ -213,6 +187,10 @@ alias jekb 'jekyll build'
 alias jekbw 'jekyll build --watch'
 alias jeks 'jekyll serve'
 alias jeksw 'jekyll serve --watch'
+
+# npm & the gang
+abbr --add npr 'npm run'
+abbr --add yar 'yarn run'
 
 # grunt
 abbr --add gr 'grunt'
