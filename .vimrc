@@ -419,6 +419,9 @@ command! MakeTags !ctags -R .
 :nnoremap <Leader>zgn ]szg<C-o>
 :nnoremap <Leader>zgp [szg<C-o>
 
+" tidy up quickly
+:nnoremap <Leader>gq vapgq
+
 " global find/replace inside working directory
 function! FindReplace()
   " figure out which directory we're in
