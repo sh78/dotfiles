@@ -22,3 +22,11 @@ open "https://packagecontrol.io/installation"
 echo "opening chunkwm tiling window manager and khd..."
 brew services start crisidev/chunkwm/chunkwm
 brew services start koekeishiya/formulae/khd
+
+echo "Installing bundles in vim..."
+vim +BundleInstall
+nvim +BundleInstall
+
+echo "Setting up phpcd linting..."
+pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
+pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd
