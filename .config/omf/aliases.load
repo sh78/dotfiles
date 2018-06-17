@@ -45,14 +45,6 @@ alias x 'exit'
 alias p "pwd"
 alias c 'clear'
 
-# https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
-alias ssh 'env TERM=xterm-256color ssh'
-
-# basic commands & overrides
-function ls --description "custom ls with color output and directory markers by default"
-    command ls -FG $argv
-end
-
 function cd --description "auto ls for each cd"
   if [ -n $argv[1] ]
     builtin cd $argv[1]
@@ -63,137 +55,57 @@ function cd --description "auto ls for each cd"
   end
 end
 
-function cdc --description "change dir then clear output"
-    command cd $argv; clear
-end
-
-function ccl --description "change directory, clear output, then list contents"
-    command cd $argv; clear; ls
-end
-
 alias .. 'cd ..' # up one
-alias ... 'cd ../..' # up two
-alias .... 'cd ../../..' # up three (that's enough)
+alias .... 'cd ../..' # up two
+alias ...... 'cd ../../..' # up three (that's enough)
 alias cdd 'cd -' # back
 
 # copy current path to system clipboard
 alias cwd "pwd | eval $CLIPBOARD"
 
-alias l "tree -C -L 1" # show a quick tree of files
-alias la 'tree -C -a -L 1' # also list hidden files (think "list all")
-function ll --description "show permissions, filesize, name"
-  ls -lhFG $argv | cut -c 1-11,27-34,48-
-end
+alias tr "tree -C -L 1" # show a quick tree of files
+alias tra 'tree -C -a -L 1' # also list hidden files (think "list all")
 
-function lla --description "show permissions, filesize, name for all files"
-  ls -AlhFG $argv | cut -c 1-11,28-34,48-
-end
+# https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
+alias ssh 'env TERM=xterm-256color ssh'
 
-function llt --description "show permissions, filesize, modified, and name sorted by time"
-  ls -lhFGt $argv | cut -c 1-11,27-
-end
+# ranger
+alias r "ranger"
 
-function lls --description "show permissions, filesize, modified, and name sorted by size"
-  ls -lhFGS $argv | cut -c 1-11,27-
-end
+# terminal velocity
+alias notes "terminal_velocity"
+alias .note "terminal_velocity ."
 
-function lsg --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      ls | grep $argv[1];
-    else
-      ls $argv[1] | grep $argv[2];
-    end
-end
+# docker
+alias docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+alias whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 
-function lslg --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      ls -lh | grep $argv;
-    else
-      ls $argv[1] -lh | grep $argv[2];
-    end
-end
-
-function lsag --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      ls -lAh | grep $argv;
-    else
-      ls $argv[1] -lAh | grep $argv[2];
-    end
-end
-
-function lg --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      l | grep $argv;
-    else
-      l $argv[1] | grep $argv[2];
-    end
-end
-
-function llg --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      ll | grep $argv;
-    else
-      ll $argv[1] | grep $argv[2];
-    end
-end
-
-function lag --description "pass in string to get specific ls results"
-    set args (count $argv)
-    if math "$args < 2" > /dev/null
-      lla | grep $argv;
-    else
-      lla $argv[1] | grep $argv[2];
-    end
-end
-
-function add_function --description "add a new fish function file"
-  set name $argv
-  eval $EDITOR ~/.config/fish/functions/$name
-end
-
-alias less "less -MNi" # file info/position, line #'s, smart case
-alias lns "ln -s" # symlink in 2 less characters
-alias cl "clear; tree -C -L 1" # clear and show a quick tree
-alias cla "clear; tree -C -a -L 1" # clear and show a quick tree of all files
-alias op "open ./" # open your current dir in Finder and accept defeat
-alias rmrf "rm -rf" # as if bricking your machine wasn't easy enough
-alias rmrfp "rm -rfp" # you could say that again
-alias mkdirp 'mkdir -p' # auto nesting
 function take
     command mkdir -p $argv; cd $argv
 end
-alias cpp 'cp -p' # preserve attributes
-alias cpr 'cp -R' # recursive
-alias cppr 'cp -pR' # preserve attributes and recursive
-alias scpr 'scp -r' # recursive
-alias df 'df -h' # uses abbreviated size formats rather than bits
+
+alias less "less -MNi" # file info/position, line #'s, smart case
+abbr --add lns "ln -s" # symlink in 2 less characters
+abbr --add rmrf "rm -rf" # as if bricking your machine wasn't easy enough
+abbr --add rmrfp "rm -rfp" # you could say that again
+abbr --add mkdirp 'mkdir -p' # auto nesting
+abbr --add cpr 'cp -R' # recursive
 alias duh 'du -h' # list disk usage for all files in ./
 alias dush 'du -sh' # list total disk usage of ./
-alias chx 'chmod +x' # make it executable
-alias chR 'chmod -R' # recursive
+abbr --add chx 'chmod +x' # make it executable
+abbr --add chR 'chmod -R' # recursive
 
 # find and tail all logs in ./
 alias tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
 
 # archives
-alias zp 'zip'
-alias zpr 'zip -r' # recursive
-alias uz 'unzip'
-alias uzd 'unzip -d' # unzip to specific dir
-alias tgz 'tar -xvzf' # extract .tar.gz
-alias tbz 'tar -xvjf' # extract .tar.bz2
+abbr --add tgz 'tar -xvzf' # extract .tar.gz
+abbr --add tbz 'tar -xvjf' # extract .tar.bz2
 
 # system aliases()
 alias zzz 'sudo shutdown -s now'
 alias reboot 'sudo shutdown -r now'
 alias off 'sudo shutdown -h now'
-alias tu 'top -o cpu' # cpu
-alias tm 'top -o vsize' # memory
 
 # misc
 alias lmk "say 'Process complete.'" # pin to the tail of long commands
@@ -204,126 +116,23 @@ function wait --description "Run a command after some time: wait <minutes> <comm
   sleep $time_in_seconds; and eval $argv[2]
 end
 
-
-####################
-# Fish Shell
-####################
-
 alias m "math" # quick calculations in the terminal
 
 ####################
 # Bling
 ####################
 
-#if hash lolcat 2>/dev/null
-    #alias cat "lolcat"
-#end
+function cat --description "cat the rainbow"
+  if type -q lolcat
+    lolcat $argv
+  else
+    cat $argv
+  end
+end
 
 alias starwars "telnet towel.blinkenlights.nl"
+alias matrix "cmatrix -a"
 
-
-
-#################################
-### Utilities/Misc
-#################################
-
-function clip --description "Substitute (eval) the right clipboard for this OS"
-  eval $CLIPBOARD
-end
-
-function server --description "Start an HTTP server from a directory"
-  open http://localhost:8080/
-  and python -m SimpleHTTPServer 8080
-end
-
-function explain --description "Lookup command on explainshell.com"
-    set -l URL_ENCODE (python -c 'import urllib, sys; print urllib.quote_plus(sys.argv[1])' "$argv")
-    open "http://explainshell.com/explain?cmd=$URL_ENCODE"
-end
-
-function wait --description "Run a command after some time: wait <minutes> <command args>"
-  set minutes $argv[1]
-  set time_in_seconds (math "$minutes*60")
-  sleep $time_in_seconds; and eval "$argv[2..-1]"
-end
-
-# '!! sudo' will prepend sudo to your most recent command
-# Running !! with anything other than sudo will append the argument to your most recent command
-# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
-function !!;
-  set var (history | head -n 1)
-  if test $argv
-    if test $argv = "sudo"        #; or "any other command you want to prepend"
-        eval $argv $var
-    else
-        eval $var $argv
-    end
-  else
-    eval $var
-  end
-end
-
-# TODO
-function gitrdone --description "Build up a commit message incrementally"
-  if git status | grep .gitrdone
-    echo ".gitrdone" >> .gitignore
-  end
-  if test -n "$argv[1]"
-    if [ ("$argv[1]" sub -l 1 $i) = "h" ]
-      echo -n "gitrdone - edit entire commit message file with default $EDITOR"
-      echo -n "gitrdone [message (the change you just made)]"
-      echo -n "gitrdone now - commit all staged changes with messages as template"
-      echo -n "gitrdone all - add *all* changes and commit with messages as template"
-    else if [ "$argv[1]" = "now" ]
-      git commit --template=.gitrdone; and rm .gitrdone
-    else
-      echo "$argv" >> .gitrdone
-    end
-  else
-    eval $EDITOR .gitrdone
-  end
-end
-
-# make a .gif from a .mov
-function mkgif --description "Create a GIF file from a QuickTime Movie"
-  set args (count $argv)
-
-  if math "$args < 3" > /dev/null
-    echo "USAGE: mkgif 000x000 in.mov out.gif [delay=4]"
-  else
-    if test -n $argv[4]
-      set delay $argv[4]
-    else
-      set delay 4
-    end
-    ffmpeg -i $argv[2] -s $argv[1] -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=$delay > $argv[3]
-  end
-end
-
-function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
-  for file in $argv
-    # TODO: this will barf on file names with .
-    set name (echo $file|cut -d '.' -f1)
-    set extension (echo $file|cut -d '.' -f2)
-    set outfile (echo $name"_converted."$extension)
-    echo $outfile
-
-    if [ "$extension" = "jpeg" ]
-      # 85 is effectively lossless for human eyes
-      convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -color space sRGB $outfile
-    else if [ "$extension" = "jpg" ]
-      convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
-    else if [ "$extension" = "png" ]
-      convert $file -strip $outfile
-    else if [ "$extension" = "gif" ]
-      gifsicle -O3 $file -o $outfile
-    end
-  end
-end
-
-function cpgem --description "copy a gem's source files to current directory"
-  cp -R (bundle show $argv) ./
-end
 
 
 ####################
@@ -338,26 +147,13 @@ alias httpdump "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 alias nameservers 'host -t ns'
 
-function digga --description "All the dig info"
-  dig +nocmd "$argv[1..-1]" any +multiline +noall +answer
-end
-
 ####################
 # extra
 ####################
 
-# facebook messenger cli
-alias fbm 'facebook-messenger-cli'
-
-# fzf
-alias f 'fzf'
-
 # URL encode/decode
 alias urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
 alias urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
-
-# sublime text
-alias sub 'subl -n' # alias the alias
 
 # todo.txt
 alias to 'todo.sh'
@@ -371,98 +167,69 @@ alias gfh 'git flow hotfix'
 alias gfhs 'git flow hotfix finish'
 
 # svn
-alias s 'svn'
+abbr --add s 'svn'
 alias svnignore 'svn propset svn:ignore'
 
 # bitbucket
 alias bbcreate 'bb create_from_local --private --protocol=ssh'
 
 # homebrew
+abbr --add bi 'brew install'
+abbr --add get 'brew install'
+abbr --add bs 'brew search'
 alias bud 'brew update'
 alias bug 'brew upgrade'
-alias bi 'brew install'
-alias get 'brew install'
 alias bd 'brew doctor'
-alias bs 'brew search'
 alias bl 'brew list'
 
-alias bci 'brew cask install'
-function bcs --description "search the cask"
-  brew cask search /$argv/
-end
-alias bcia 'brew cask install --appdir "/Applications"'
-alias getapp 'brew cask install --appdir "/Applications"'
+# homebrew cask
+abbr --add bci 'brew cask install'
+abbr --add bcs 'brew cask search'
+abbr --add bcia 'brew cask install --appdir "/Applications"'
+abbr --add getapp 'brew cask install --appdir "/Applications"'
 
 
-# Vagrant
-alias vag 'vagrant'
-alias vagba 'vagrant box add'
+# vagrant
+abbr --add vag 'vagrant'
+abbr --add vagba 'vagrant box add'
 alias vagi 'vagrant init'
 alias vagu 'vagrant up'
 alias vags 'vagrant ssh'
-alias vagus 'vagrant up; vagrant ssh'
+alias vagus 'vagrant up; and vagrant ssh'
 alias vagh 'vagrant halt'
 alias vagr 'vagrant reload'
 alias vagd 'vagrant destroy'
 
-
-# jekyll
-alias jek 'jekyll'
-alias jekb 'jekyll build'
-alias jekbw 'jekyll build --watch'
-alias jeks 'jekyll serve'
-alias jeksw 'jekyll serve --watch'
-
-
-# pianobar (pandora cli)
-alias pb 'pianobar'
-
-
-# youtube-dl | http://rg3.github.io/youtube-dl/
-alias ytdl 'youtube-dl'
-alias ytmp3 'youtube-dl --extract-audio --audio-format mp3'
-alias ytaudio 'youtube-dl --extract-audio'
-function ytmp3liked --description "get audio from youtube vid or playlist. pass email and url."
-  youtube-dl --download-archive ~/.youtube-dl-history --username $argv[1] --extract-audio --audio-format mp3 $argv[2]
-end
-
-
-# mps youtube
-alias mpsyt 'youtube'
-
-
 # IRB
 alias irb 'irb --simple-prompt'
-
-
-# irssi
-alias ir 'irssi'
-
 
 # postgresql
 alias pgstart 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop 'pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
-
-# # mysql
-# mysqlc() { mysql -u root -p -e "create database $1" }
-# mysqld() { mysql -u root -p -e "drop database $1" }
-
+# jekyll
+abbr --add jek 'jekyll'
+alias jekb 'jekyll build'
+alias jekbw 'jekyll build --watch'
+alias jeks 'jekyll serve'
+alias jeksw 'jekyll serve --watch'
 
 # grunt
-alias gr 'grunt'
+abbr --add gr 'grunt'
 alias grus 'grunt serve'
-alias grusf 'grunt serve --force'
 alias grub 'grunt build'
-alias grubf 'grunt build --force'
 
+# pianobar (pandora cli)
+alias pandora 'pianobar'
 
-# bower
-abbr --add bi 'bower install'
-function bis
-  bower install "$argv[1..-1]" --save
-end
+# youtube-dl | http://rg3.github.io/youtube-dl/
+abbr --add ytdl 'youtube-dl'
+abbr --add ytmp3 'youtube-dl --extract-audio --audio-format mp3'
+abbr --add ytaudio 'youtube-dl --extract-audio'
 
+# exiftool
+alias exiftime "exiftool -time:all -s" # show all time attrs
+alias exifval "exiftool -s -s -s" # just print value(s)
 
 # wp-cli
 alias wpcc "wp core config" # Generate a wp-config.php file.
@@ -516,17 +283,3 @@ alias wptu "wp theme update" # Update one or more themes.
 alias wpmig "wp wpmdb migrate" # wp migrate db pro cli
 alias wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
 
-# exiftool
-alias exiftime "exiftool -time:all -s" # show all time attrs
-alias exifval "exiftool -s -s -s" # just print value(s)
-
-# ranger
-alias r "ranger"
-
-# terminal velocity
-alias notes "terminal_velocity"
-alias .note "terminal_velocity ."
-
-# docker
-alias docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
-alias whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
