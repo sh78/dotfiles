@@ -3,22 +3,22 @@
 ####################
 
 # quick switch to dirs
-alias desk "cd ~/Desktop"
-alias down "cd ~/Downloads"
-alias drive "cd ~/Drive"
-alias dots 'cd ~/Drive/dotfiles/'
+abbr --add desk "cd ~/Desktop"
+abbr --add down "cd ~/Downloads"
+abbr --add drive "cd ~/Drive"
+abbr --add dots 'cd ~/Drive/dotfiles/'
 
 # quick edits to dot files
-alias aliases 'vim ~/.config/omf/aliases.load'
-alias funcs 'vim ~/.config/fish/functions/'
-alias vr 'vim ~/.vimrc'
-alias vt 'vim ~/.tmux.conf'
-alias vp 'vim +silent\ /add\ plugins ~/.vimrc'
-alias omf 'vim +RangerEdit ~/.config/omf'
+abbr --add aliases 'vim ~/.config/omf/aliases.load'
+abbr --add funcs 'vim ~/.config/fish/functions/'
+abbr --add vr 'vim ~/.vimrc'
+abbr --add vt 'vim ~/.tmux.conf'
+abbr --add vp 'vim +silent\ /add\ plugins ~/.vimrc'
+abbr --add omf 'vim +RangerEdit ~/.config/omf'
 
 # vim
-alias vim 'nvim'
-abbr --add v 'vim'
+abbr --add vim 'nvim'
+abbr --add v 'nvim'
 
 # git
 abbr --add g 'git'
@@ -43,122 +43,118 @@ abbr --add ta 'tmux attach -t'
 abbr --add tk 'tmux kill-session -t'
 
 # unix general abbrevations
-alias h 'history'
-alias x 'exit'
-alias p "pwd"
-alias c 'clear'
+abbr --add h 'history'
+abbr --add x 'exit'
+abbr --add p "pwd"
+abbr --add c 'clear'
 
-alias .. 'cd ..' # up one
-alias .... 'cd ../..' # up two
-alias ...... 'cd ../../..' # up three (that's enough)
-alias cdd 'cd -' # back
+abbr --add .. 'cd ..' # up one
+abbr --add .... 'cd ../..' # up two
+abbr --add ...... 'cd ../../..' # up three (that's enough)
+abbr --add cdd 'cd -' # back
 
 # copy current path to system clipboard
-alias cwd "pwd | eval $CLIPBOARD"
+abbr --add cwd "pwd | eval $CLIPBOARD"
 
-alias tr "tree -C -L 1" # show a quick tree of files
-alias tra 'tree -C -a -L 1' # also list hidden files (think "list all")
+abbr --add tr "tree -C -L 1" # show a quick tree of files
+abbr --add tra 'tree -C -a -L 1' # also list hidden files (think "list all")
 
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
-alias ssh 'env TERM=xterm-256color ssh'
+abbr --add ssh 'env TERM=xterm-256color ssh'
 
 # ranger
-alias r "ranger"
+abbr --add r "ranger"
 
 # terminal velocity
-alias notes "terminal_velocity"
-alias .note "terminal_velocity ."
+abbr --add notes "terminal_velocity"
+abbr --add .note "terminal_velocity ."
 
 # docker
-alias docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
-alias whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+abbr --add docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+abbr --add whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 
-function take
-    command mkdir -p $argv; cd $argv
-end
-
-alias less "less -MNi" # file info/position, line #'s, smart case
+abbr --add less "less -MNi" # file info/position, line #'s, smart case
 abbr --add lns "ln -s" # symlink in 2 less characters
 abbr --add rmrf "rm -rf" # as if bricking your machine wasn't easy enough
 abbr --add rmrfp "rm -rfp" # you could say that again
 abbr --add mkdirp 'mkdir -p' # auto nesting
 abbr --add cpr 'cp -R' # recursive
-alias duh 'du -h' # list disk usage for all files in ./
-alias dush 'du -sh' # list total disk usage of ./
+abbr --add duh 'du -h' # list disk usage for all files in ./
+abbr --add dush 'du -sh' # list total disk usage of ./
 abbr --add chx 'chmod +x' # make it executable
 abbr --add chR 'chmod -R' # recursive
 
 # find and tail all logs in ./
-alias tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+abbr --add tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
 
 # archives
 abbr --add tgz 'tar -xvzf' # extract .tar.gz
 abbr --add tbz 'tar -xvjf' # extract .tar.bz2
 
 # system aliases()
-alias zzz 'sudo shutdown -s now'
-alias reboot 'sudo shutdown -r now'
-alias off 'sudo shutdown -h now'
+abbr --add zzz 'sudo shutdown -s now'
+abbr --add reboot 'sudo shutdown -r now'
+abbr --add off 'sudo shutdown -h now'
 
 # misc
-alias lmk "say 'Process complete.'" # pin to the tail of long commands
+abbr --add lmk "say 'Process complete.'" # pin to the tail of long commands
 
-alias m "math" # quick calculations in the terminal
+abbr --add m "math" # quick calculations in the terminal
 
 ####################
 # Bling
 ####################
 
-alias starwars "telnet towel.blinkenlights.nl"
-alias matrix "cmatrix -a"
+abbr --add starwars "telnet towel.blinkenlights.nl"
+abbr --add matrix "cmatrix -a"
 
 
 ####################
 # Network Info
 ####################
 
-alias localip "ipconfig getifaddr en1"
-alias ips "ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
-alias myip "curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
-alias sniff "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+abbr --add localip "ipconfig getifaddr en1"
+abbr --add ips "ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
+abbr --add myip "curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+abbr --add sniff "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+abbr --add httpdump "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-alias nameservers 'host -t ns'
+abbr --add nameservers 'host -t ns'
 
 ####################
 # extra
 ####################
 
 # URL encode/decode
-alias urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
-alias urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
+abbr --add urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
+abbr --add urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
 
 # todo.txt
-alias to 'todo.sh'
+abbr --add to 'todo.sh'
 
 # git-flow
-alias gfi 'git flow init'
-alias gff 'git flow feature'
-alias gffs 'git flow feature start'
-alias gffs 'git flow feature finish'
-alias gfh 'git flow hotfix'
-alias gfhs 'git flow hotfix finish'
+abbr --add gfi 'git flow init'
+abbr --add gff 'git flow feature'
+abbr --add gffs 'git flow feature start'
+abbr --add gffs 'git flow feature finish'
+abbr --add gfh 'git flow hotfix'
+abbr --add gfhs 'git flow hotfix finish'
 
 # svn
 abbr --add s 'svn'
-alias svnignore 'svn propset svn:ignore'
+abbr --add svnignore 'svn propset svn:ignore'
 
 # bitbucket
-alias bbcreate 'bb create_from_local --private --protocol=ssh'
+abbr --add bbcreate 'bb create_from_local --private --protocol=ssh'
 
 # homebrew
 abbr --add bi 'brew install'
 abbr --add get 'brew install'
 abbr --add bs 'brew search'
-alias bud 'brew update'
-alias bug 'brew upgrade'
-alias bd 'brew doctor'
-alias bl 'brew list'
+abbr --add bud 'brew update'
+abbr --add bug 'brew upgrade'
+abbr --add bd 'brew doctor'
+abbr --add bl 'brew list'
 
 # homebrew cask
 abbr --add bci 'brew cask install'
@@ -169,27 +165,27 @@ abbr --add getapp 'brew cask install --appdir "/Applications"'
 # vagrant
 abbr --add vag 'vagrant'
 abbr --add vagba 'vagrant box add'
-alias vagi 'vagrant init'
-alias vagu 'vagrant up'
-alias vags 'vagrant ssh'
-alias vagus 'vagrant up; and vagrant ssh'
-alias vagh 'vagrant halt'
-alias vagr 'vagrant reload'
-alias vagd 'vagrant destroy'
+abbr --add vagi 'vagrant init'
+abbr --add vagu 'vagrant up'
+abbr --add vags 'vagrant ssh'
+abbr --add vagus 'vagrant up; and vagrant ssh'
+abbr --add vagh 'vagrant halt'
+abbr --add vagr 'vagrant reload'
+abbr --add vagd 'vagrant destroy'
 
 # IRB
-alias irb 'irb --simple-prompt'
+abbr --add irb 'irb --simple-prompt'
 
 # postgresql
-alias pgstart 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop 'pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+abbr --add pgstart 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+abbr --add pgstop 'pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # jekyll
 abbr --add jek 'jekyll'
-alias jekb 'jekyll build'
-alias jekbw 'jekyll build --watch'
-alias jeks 'jekyll serve'
-alias jeksw 'jekyll serve --watch'
+abbr --add jekb 'jekyll build'
+abbr --add jekbw 'jekyll build --watch'
+abbr --add jeks 'jekyll serve'
+abbr --add jeksw 'jekyll serve --watch'
 
 # npm & the gang
 abbr --add npr 'npm run'
@@ -197,11 +193,11 @@ abbr --add yar 'yarn run'
 
 # grunt
 abbr --add gr 'grunt'
-alias grus 'grunt serve'
-alias grub 'grunt build'
+abbr --add grus 'grunt serve'
+abbr --add grub 'grunt build'
 
 # pianobar (pandora cli)
-alias pandora 'pianobar'
+abbr --add pandora 'pianobar'
 
 # youtube-dl | http://rg3.github.io/youtube-dl/
 abbr --add ytdl 'youtube-dl'
@@ -209,58 +205,58 @@ abbr --add ytmp3 'youtube-dl --extract-audio --audio-format mp3'
 abbr --add ytaudio 'youtube-dl --extract-audio'
 
 # exiftool
-alias exiftime "exiftool -time:all -s" # show all time attrs
-alias exifval "exiftool -s -s -s" # just print value(s)
+abbr --add exiftime "exiftool -time:all -s" # show all time attrs
+abbr --add exifval "exiftool -s -s -s" # just print value(s)
 
 # wp-cli
-alias wpcc "wp core config" # Generate a wp-config.php file.
-alias wpcd "wp core download" # Download core WordPress files.
-alias wpci "wp core install" # Create the WordPress tables in the database.
-alias wpcii "wp core is-installed" # Determine if the WordPress tables are installed.
-alias wpcmc "wp core multisite-convert" # Transform a single-site install into a multi-site install.
-alias wpcmi "wp core multisite-install" # Install multisite from scratch.
-alias wpcu "wp core update" # Update WordPress.
-alias wpcudb "wp core update-db" # Update the WordPress database.
-alias wpcv "wp core version" # Display the WordPress version.
+abbr --add wpcc "wp core config" # Generate a wp-config.php file.
+abbr --add wpcd "wp core download" # Download core WordPress files.
+abbr --add wpci "wp core install" # Create the WordPress tables in the database.
+abbr --add wpcii "wp core is-installed" # Determine if the WordPress tables are installed.
+abbr --add wpcmc "wp core multisite-convert" # Transform a single-site install into a multi-site install.
+abbr --add wpcmi "wp core multisite-install" # Install multisite from scratch.
+abbr --add wpcu "wp core update" # Update WordPress.
+abbr --add wpcudb "wp core update-db" # Update the WordPress database.
+abbr --add wpcv "wp core version" # Display the WordPress version.
 
-alias wpdbcli "wp db cli" # Open a mysql console using the WordPress credentials.
-alias wpdbc "wp db create" # Create the database, as specified in wp-config.php
-alias wpdbd "wp db drop" # Delete the database.
-alias wpdbe "wp db export" # Exports the database to a file or to STDOUT.
-alias wpdbi "wp db import" # Import database from a file or from STDIN.
-alias wpdbo "wp db optimize" # Optimize the database.
-alias wpdbq "wp db query" # Execute a query against the database.
-alias wpdbrp "wp db repair" # Repair the database.
-alias wpdbrs "wp db reset" # Remove all tables from the database.
-alias wpdbt "wp db tables" # List the database tables.
+abbr --add wpdbcli "wp db cli" # Open a mysql console using the WordPress credentials.
+abbr --add wpdbc "wp db create" # Create the database, as specified in wp-config.php
+abbr --add wpdbd "wp db drop" # Delete the database.
+abbr --add wpdbe "wp db export" # Exports the database to a file or to STDOUT.
+abbr --add wpdbi "wp db import" # Import database from a file or from STDIN.
+abbr --add wpdbo "wp db optimize" # Optimize the database.
+abbr --add wpdbq "wp db query" # Execute a query against the database.
+abbr --add wpdbrp "wp db repair" # Repair the database.
+abbr --add wpdbrs "wp db reset" # Remove all tables from the database.
+abbr --add wpdbt "wp db tables" # List the database tables.
 
-alias wppa "wp plugin activate" # Activate a plugin.
-alias wppda "wp plugin deactivate" # Deactivate a plugin.
-alias wppd "wp plugin delete" # Delete plugin files.
-alias wppg "wp plugin get" # Get a plugin.
-alias wppi "wp plugin install" # Install a plugin.
-alias wppii "wp plugin is-installed" # Check if the plugin is installed.
-alias wppl "wp plugin list" # Get a list of plugins.
-alias wppp "wp plugin path" # Get the path to a plugin or to the plugin directory.
-alias "wppsearch" "wp plugin search" # Search the wordpress.org plugin repository.
-alias wpps "wp plugin status" # See the status of one or all plugins.
-alias wppt "wp plugin toggle" # Toggle a plugin's activation state.
-alias wppu "wp plugin uninstall" # Uninstall a plugin.
-alias wppu "wp plugin update" # Update one or more plugins.
+abbr --add wppa "wp plugin activate" # Activate a plugin.
+abbr --add wppda "wp plugin deactivate" # Deactivate a plugin.
+abbr --add wppd "wp plugin delete" # Delete plugin files.
+abbr --add wppg "wp plugin get" # Get a plugin.
+abbr --add wppi "wp plugin install" # Install a plugin.
+abbr --add wppii "wp plugin is-installed" # Check if the plugin is installed.
+abbr --add wppl "wp plugin list" # Get a list of plugins.
+abbr --add wppp "wp plugin path" # Get the path to a plugin or to the plugin directory.
+abbr --add "wppsearch" "wp plugin search" # Search the wordpress.org plugin repository.
+abbr --add wpps "wp plugin status" # See the status of one or all plugins.
+abbr --add wppt "wp plugin toggle" # Toggle a plugin's activation state.
+abbr --add wppu "wp plugin uninstall" # Uninstall a plugin.
+abbr --add wppu "wp plugin update" # Update one or more plugins.
 
-alias wpta "wp theme activate" # Activate a theme.
-alias wptd "wp theme delete" # Delete a theme.
-alias wptda "wp theme disable" # Disable a theme in a multisite install.
-alias wpte "wp theme enable" # Enable a theme in a multisite install.
-alias wptg "wp theme get" # Get a theme
-alias wpti "wp theme install" # Install a theme.
-alias wptii "wp theme is-installed" # Check if the theme is installed.
-alias wptl "wp theme list" # Get a list of themes.
-alias wptm "wp theme mod" # Manage theme mods.
-alias wptp "wp theme path" # Get the path to a theme or to the theme directory.
-alias "wptsearch" "wp theme search" # Search the wordpress.org theme repository.
-alias wpts "wp theme status" # See the status of one or all themes.
-alias wptu "wp theme update" # Update one or more themes.
-alias wpmig "wp wpmdb migrate" # wp migrate db pro cli
-alias wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
+abbr --add wpta "wp theme activate" # Activate a theme.
+abbr --add wptd "wp theme delete" # Delete a theme.
+abbr --add wptda "wp theme disable" # Disable a theme in a multisite install.
+abbr --add wpte "wp theme enable" # Enable a theme in a multisite install.
+abbr --add wptg "wp theme get" # Get a theme
+abbr --add wpti "wp theme install" # Install a theme.
+abbr --add wptii "wp theme is-installed" # Check if the theme is installed.
+abbr --add wptl "wp theme list" # Get a list of themes.
+abbr --add wptm "wp theme mod" # Manage theme mods.
+abbr --add wptp "wp theme path" # Get the path to a theme or to the theme directory.
+abbr --add "wptsearch" "wp theme search" # Search the wordpress.org theme repository.
+abbr --add wpts "wp theme status" # See the status of one or all themes.
+abbr --add wptu "wp theme update" # Update one or more themes.
+abbr --add wpmig "wp wpmdb migrate" # wp migrate db pro cli
+abbr --add wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
 
