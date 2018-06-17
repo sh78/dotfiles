@@ -3,32 +3,50 @@
 ####################
 
 # quick switch to dirs
-alias desk="cd ~/Desktop"
-alias down="cd ~/Downloads"
-alias drive="cd ~/Drive"
-alias dots='cd ~/Drive/dotfiles/'
+alias desk "cd ~/Desktop"
+alias down "cd ~/Downloads"
+alias drive "cd ~/Drive"
+alias dots 'cd ~/Drive/dotfiles/'
 
-# quick edits
-alias aliases='vim ~/.config/omf/aliases.load'
-alias vr='vim ~/.vimrc'
-alias vt='vim ~/.tmux.conf'
-alias vp='vim +silent\ /add\ plugins ~/.vimrc'
-alias omf='vim +RangerEdit ~/.config/omf'
+# quick edits to dot files
+alias aliases 'vim ~/.config/omf/aliases.load'
+alias funcs 'vim ~/.config/fish/functions/'
+alias vr 'vim ~/.vimrc'
+alias vt 'vim ~/.tmux.conf'
+alias vp 'vim +silent\ /add\ plugins ~/.vimrc'
+alias omf 'vim +RangerEdit ~/.config/omf'
 
-# abbreviations
-abbr --add vim 'nvim'
+# vim
+alias vim 'nvim'
 abbr --add v 'vim'
-function vf --description "jump to pattern on open"
-    command vim +\/$argv[2] $argv[1]
-end
+
+# git
 abbr --add g 'git'
-abbr --add h 'history'
-abbr --add x 'exit'
-abbr --add p "pwd"
-abbr --add c 'clear'
+abbr --add gs 'git status'
+abbr --add gco 'git checkout'
+abbr --add gp 'git push'
+abbr --add gpl 'git pull'
+abbr --add gcl 'git clone'
+abbr --add gf 'git fetch'
+abbr --add gr 'git remote'
+abbr --add gb 'git branch'
+abbr --add gd 'git diff'
+abbr --add gl 'git log'
+
+# tmux
+abbr --add t 'tmux'
+abbr --add tl 'tmux ls'
+abbr --add ta 'tmux attach -t'
+abbr --add tk 'tmux kill-session -t'
+
+# unix general abbrevations
+alias h 'history'
+alias x 'exit'
+alias p "pwd"
+alias c 'clear'
 
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
-alias ssh='env TERM=xterm-256color ssh'
+alias ssh 'env TERM=xterm-256color ssh'
 
 # basic commands & overrides
 function ls --description "custom ls with color output and directory markers by default"
@@ -53,16 +71,16 @@ function ccl --description "change directory, clear output, then list contents"
     command cd $argv; clear; ls
 end
 
-alias ..='cd ..' # up one
-alias ...='cd ../..' # up two
-alias ....='cd ../../..' # up three (that's enough)
-alias cdd='cd -' # back
+alias .. 'cd ..' # up one
+alias ... 'cd ../..' # up two
+alias .... 'cd ../../..' # up three (that's enough)
+alias cdd 'cd -' # back
 
 # copy current path to system clipboard
-alias cwd="pwd | eval $CLIPBOARD"
+alias cwd "pwd | eval $CLIPBOARD"
 
-alias l="tree -C -L 1" # show a quick tree of files
-alias la='tree -C -a -L 1' # also list hidden files (think "list all")
+alias l "tree -C -L 1" # show a quick tree of files
+alias la 'tree -C -a -L 1' # also list hidden files (think "list all")
 function ll --description "show permissions, filesize, name"
   ls -lhFG $argv | cut -c 1-11,27-34,48-
 end
@@ -133,49 +151,54 @@ function lag --description "pass in string to get specific ls results"
     end
 end
 
-alias less="less -MNi" # file info/position, line #'s, smart case
-alias lns="ln -s" # symlink in 2 less characters
-alias cl="clear; tree -C -L 1" # clear and show a quick tree
-alias cla="clear; tree -C -a -L 1" # clear and show a quick tree of all files
-alias op="open ./" # open your current dir in Finder and accept defeat
-alias rmrf="rm -rf" # as if bricking your machine wasn't easy enough
-alias rmrfp="rm -rfp" # you could say that again
-alias mkdirp='mkdir -p' # auto nesting
+function add_function --description "add a new fish function file"
+  set name $argv
+  eval $EDITOR ~/.config/fish/functions/$name
+end
+
+alias less "less -MNi" # file info/position, line #'s, smart case
+alias lns "ln -s" # symlink in 2 less characters
+alias cl "clear; tree -C -L 1" # clear and show a quick tree
+alias cla "clear; tree -C -a -L 1" # clear and show a quick tree of all files
+alias op "open ./" # open your current dir in Finder and accept defeat
+alias rmrf "rm -rf" # as if bricking your machine wasn't easy enough
+alias rmrfp "rm -rfp" # you could say that again
+alias mkdirp 'mkdir -p' # auto nesting
 function take
     command mkdir -p $argv; cd $argv
 end
-alias cpp='cp -p' # preserve attributes
-alias cpr='cp -R' # recursive
-alias cppr='cp -pR' # preserve attributes and recursive
-alias scpr='scp -r' # recursive
-alias df='df -h' # uses abbreviated size formats rather than bits
-alias duh='du -h' # list disk usage for all files in ./
-alias dush='du -sh' # list total disk usage of ./
-alias chx='chmod +x' # make it executable
-alias chR='chmod -R' # recursive
+alias cpp 'cp -p' # preserve attributes
+alias cpr 'cp -R' # recursive
+alias cppr 'cp -pR' # preserve attributes and recursive
+alias scpr 'scp -r' # recursive
+alias df 'df -h' # uses abbreviated size formats rather than bits
+alias duh 'du -h' # list disk usage for all files in ./
+alias dush 'du -sh' # list total disk usage of ./
+alias chx 'chmod +x' # make it executable
+alias chR 'chmod -R' # recursive
 
 # find and tail all logs in ./
-alias tails="tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+alias tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
 
 # archives
-alias zp='zip'
-alias zpr='zip -r' # recursive
-alias uz='unzip'
-alias uzd='unzip -d' # unzip to specific dir
-alias tgz='tar -xvzf' # extract .tar.gz
-alias tbz='tar -xvjf' # extract .tar.bz2
+alias zp 'zip'
+alias zpr 'zip -r' # recursive
+alias uz 'unzip'
+alias uzd 'unzip -d' # unzip to specific dir
+alias tgz 'tar -xvzf' # extract .tar.gz
+alias tbz 'tar -xvjf' # extract .tar.bz2
 
 # system aliases()
-alias zzz='sudo shutdown -s now'
-alias reboot='sudo shutdown -r now'
-alias off='sudo shutdown -h now'
-alias tu='top -o cpu' # cpu
-alias tm='top -o vsize' # memory
+alias zzz 'sudo shutdown -s now'
+alias reboot 'sudo shutdown -r now'
+alias off 'sudo shutdown -h now'
+alias tu 'top -o cpu' # cpu
+alias tm 'top -o vsize' # memory
 
 # misc
-alias lmk="say 'Process complete.'" # pin to the tail of long commands
+alias lmk "say 'Process complete.'" # pin to the tail of long commands
 
-function wait --description "Run a command after some time: wait <minutes> <"command">"
+function wait --description "Run a command after some time: wait <minutes> <command>"
   set minutes $argv[1]
   set time_in_seconds (math "$minutes*60")
   sleep $time_in_seconds; and eval $argv[2]
@@ -186,17 +209,17 @@ end
 # Fish Shell
 ####################
 
-alias m="math" # quick calculations in the terminal
+alias m "math" # quick calculations in the terminal
 
 ####################
 # Bling
 ####################
 
 #if hash lolcat 2>/dev/null
-    #alias cat="lolcat"
+    #alias cat "lolcat"
 #end
 
-alias starwars="telnet towel.blinkenlights.nl"
+alias starwars "telnet towel.blinkenlights.nl"
 
 
 
@@ -218,10 +241,10 @@ function explain --description "Lookup command on explainshell.com"
     open "http://explainshell.com/explain?cmd=$URL_ENCODE"
 end
 
-function wait --description "Run a command after some time: wait <minutes> <"command">"
+function wait --description "Run a command after some time: wait <minutes> <command args>"
   set minutes $argv[1]
   set time_in_seconds (math "$minutes*60")
-  sleep $time_in_seconds; and eval $argv[2]
+  sleep $time_in_seconds; and eval "$argv[2..-1]"
 end
 
 # '!! sudo' will prepend sudo to your most recent command
@@ -279,14 +302,15 @@ end
 
 function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
   for file in $argv
-    # this will barf on file names with .
+    # TODO: this will barf on file names with .
     set name (echo $file|cut -d '.' -f1)
     set extension (echo $file|cut -d '.' -f2)
     set outfile (echo $name"_converted."$extension)
     echo $outfile
 
     if [ "$extension" = "jpeg" ]
-      convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
+      # 85 is effectively lossless for human eyes
+      convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -color space sRGB $outfile
     else if [ "$extension" = "jpg" ]
       convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
     else if [ "$extension" = "png" ]
@@ -306,13 +330,13 @@ end
 # Network Info
 ####################
 
-alias localip="ipconfig getifaddr en1"
-alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
-alias myip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias localip "ipconfig getifaddr en1"
+alias ips "ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ and print $1'"
+alias myip "curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
+alias sniff "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
-alias nameservers='host -t ns'
+alias nameservers 'host -t ns'
 
 function digga --description "All the dig info"
   dig +nocmd "$argv[1..-1]" any +multiline +noall +answer
@@ -323,119 +347,101 @@ end
 ####################
 
 # facebook messenger cli
-alias fbm='facebook-messenger-cli'
+alias fbm 'facebook-messenger-cli'
 
 # fzf
-alias f='fzf'
+alias f 'fzf'
 
 # URL encode/decode
-alias urlencode='python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
-alias urldecode='python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
+alias urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
+alias urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
 
 # sublime text
-alias sub='subl -n' # alias the alias
+alias sub 'subl -n' # alias the alias
 
 # todo.txt
-alias to='todo.sh'
+alias to 'todo.sh'
 
 # git-flow
-alias gfi='git flow init'
-alias gff='git flow feature'
-alias gffs='git flow feature start'
-alias gffs='git flow feature finish'
-alias gfh='git flow hotfix'
-alias gfhs='git flow hotfix finish'
+alias gfi 'git flow init'
+alias gff 'git flow feature'
+alias gffs 'git flow feature start'
+alias gffs 'git flow feature finish'
+alias gfh 'git flow hotfix'
+alias gfhs 'git flow hotfix finish'
 
 # svn
-alias s='svn'
-alias svnignore='svn propset svn:ignore'
+alias s 'svn'
+alias svnignore 'svn propset svn:ignore'
 
 # bitbucket
-alias bbcreate='bb create_from_local --private --protocol=ssh'
+alias bbcreate 'bb create_from_local --private --protocol=ssh'
 
 # homebrew
-alias bud='brew update'
-alias bug='brew upgrade'
-alias bi='brew install'
-alias get='brew install'
-alias bd='brew doctor'
-alias bs='brew search'
-alias bl='brew list'
+alias bud 'brew update'
+alias bug 'brew upgrade'
+alias bi 'brew install'
+alias get 'brew install'
+alias bd 'brew doctor'
+alias bs 'brew search'
+alias bl 'brew list'
 
-alias bci='brew cask install'
+alias bci 'brew cask install'
 function bcs --description "search the cask"
   brew cask search /$argv/
 end
-alias bcia='brew cask install --appdir="/Applications"'
-alias getapp='brew cask install --appdir="/Applications"'
+alias bcia 'brew cask install --appdir "/Applications"'
+alias getapp 'brew cask install --appdir "/Applications"'
 
 
 # Vagrant
-alias vag='vagrant'
-alias vagba='vagrant box add'
-alias vagi='vagrant init'
-alias vagu='vagrant up'
-alias vags='vagrant ssh'
-alias vagus='vagrant up; vagrant ssh'
-alias vagh='vagrant halt'
-alias vagr='vagrant reload'
-alias vagd='vagrant destroy'
+alias vag 'vagrant'
+alias vagba 'vagrant box add'
+alias vagi 'vagrant init'
+alias vagu 'vagrant up'
+alias vags 'vagrant ssh'
+alias vagus 'vagrant up; vagrant ssh'
+alias vagh 'vagrant halt'
+alias vagr 'vagrant reload'
+alias vagd 'vagrant destroy'
 
 
 # jekyll
-alias jek='jekyll'
-alias jekb='jekyll build'
-alias jekbw='jekyll build --watch'
-alias jeks='jekyll serve'
-alias jeksw='jekyll serve --watch'
+alias jek 'jekyll'
+alias jekb 'jekyll build'
+alias jekbw 'jekyll build --watch'
+alias jeks 'jekyll serve'
+alias jeksw 'jekyll serve --watch'
 
 
 # pianobar (pandora cli)
-alias pb='pianobar'
+alias pb 'pianobar'
 
 
 # youtube-dl | http://rg3.github.io/youtube-dl/
-alias ytdl='youtube-dl'
-alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
-alias ytaudio='youtube-dl --extract-audio'
+alias ytdl 'youtube-dl'
+alias ytmp3 'youtube-dl --extract-audio --audio-format mp3'
+alias ytaudio 'youtube-dl --extract-audio'
 function ytmp3liked --description "get audio from youtube vid or playlist. pass email and url."
   youtube-dl --download-archive ~/.youtube-dl-history --username $argv[1] --extract-audio --audio-format mp3 $argv[2]
 end
 
 
 # mps youtube
-alias mpsyt='youtube'
-
-
-# tmux
-alias tm='tmux'
-alias tml='tmux ls'
-alias tma='tmux attach'
-alias tmat='tmux attach -t'
-alias tmk='tmux kill-session -t'
-alias tmn='tmux new -s'
-# tmnsn() { tmux new -s $1 -n $2 }
-# tmf() { tmux -f $1 attach }
-
-# tmuxinator
-# alias mux='tmuxinator'
-# alias muxn='tmuxinator new'
-# alias muxo='tmuxinator open'
-# alias muxl='tmuxinator list'
-# alias muxc='tmuxinator copy'
+alias mpsyt 'youtube'
 
 
 # IRB
-alias irb='irb --simple-prompt'
+alias irb 'irb --simple-prompt'
 
 
 # irssi
-alias ir='irssi'
+alias ir 'irssi'
 
 
 # postgresql
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias pgstart 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop 'pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 
 # # mysql
@@ -444,82 +450,83 @@ alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 
 # grunt
-alias grus='grunt serve'
-alias grusf='grunt serve --force'
-alias grub='grunt build'
-alias grubf='grunt build --force'
+alias gr 'grunt'
+alias grus 'grunt serve'
+alias grusf 'grunt serve --force'
+alias grub 'grunt build'
+alias grubf 'grunt build --force'
 
 
 # bower
-alias bi='bower install'
+abbr --add bi 'bower install'
 function bis
   bower install "$argv[1..-1]" --save
 end
 
 
 # wp-cli
-alias wpcc="wp core config" # Generate a wp-config.php file.
-alias wpcd="wp core download" # Download core WordPress files.
-alias wpci="wp core install" # Create the WordPress tables in the database.
-alias wpcii="wp core is-installed" # Determine if the WordPress tables are installed.
-alias wpcmc="wp core multisite-convert" # Transform a single-site install into a multi-site install.
-alias wpcmi="wp core multisite-install" # Install multisite from scratch.
-alias wpcu="wp core update" # Update WordPress.
-alias wpcudb="wp core update-db" # Update the WordPress database.
-alias wpcv="wp core version" # Display the WordPress version.
+alias wpcc "wp core config" # Generate a wp-config.php file.
+alias wpcd "wp core download" # Download core WordPress files.
+alias wpci "wp core install" # Create the WordPress tables in the database.
+alias wpcii "wp core is-installed" # Determine if the WordPress tables are installed.
+alias wpcmc "wp core multisite-convert" # Transform a single-site install into a multi-site install.
+alias wpcmi "wp core multisite-install" # Install multisite from scratch.
+alias wpcu "wp core update" # Update WordPress.
+alias wpcudb "wp core update-db" # Update the WordPress database.
+alias wpcv "wp core version" # Display the WordPress version.
 
-alias wpdbcli="wp db cli" # Open a mysql console using the WordPress credentials.
-alias wpdbc="wp db create" # Create the database, as specified in wp-config.php
-alias wpdbd="wp db drop" # Delete the database.
-alias wpdbe="wp db export" # Exports the database to a file or to STDOUT.
-alias wpdbi="wp db import" # Import database from a file or from STDIN.
-alias wpdbo="wp db optimize" # Optimize the database.
-alias wpdbq="wp db query" # Execute a query against the database.
-alias wpdbrp="wp db repair" # Repair the database.
-alias wpdbrs="wp db reset" # Remove all tables from the database.
-alias wpdbt="wp db tables" # List the database tables.
+alias wpdbcli "wp db cli" # Open a mysql console using the WordPress credentials.
+alias wpdbc "wp db create" # Create the database, as specified in wp-config.php
+alias wpdbd "wp db drop" # Delete the database.
+alias wpdbe "wp db export" # Exports the database to a file or to STDOUT.
+alias wpdbi "wp db import" # Import database from a file or from STDIN.
+alias wpdbo "wp db optimize" # Optimize the database.
+alias wpdbq "wp db query" # Execute a query against the database.
+alias wpdbrp "wp db repair" # Repair the database.
+alias wpdbrs "wp db reset" # Remove all tables from the database.
+alias wpdbt "wp db tables" # List the database tables.
 
-alias wppa="wp plugin activate" # Activate a plugin.
-alias wppda="wp plugin deactivate" # Deactivate a plugin.
-alias wppd="wp plugin delete" # Delete plugin files.
-alias wppg="wp plugin get" # Get a plugin.
-alias wppi="wp plugin install" # Install a plugin.
-alias wppii="wp plugin is-installed" # Check if the plugin is installed.
-alias wppl="wp plugin list" # Get a list of plugins.
-alias wppp="wp plugin path" # Get the path to a plugin or to the plugin directory.
-alias "wppsearch"="wp plugin search" # Search the wordpress.org plugin repository.
-alias wpps="wp plugin status" # See the status of one or all plugins.
-alias wppt="wp plugin toggle" # Toggle a plugin's activation state.
-alias wppu="wp plugin uninstall" # Uninstall a plugin.
-alias wppu="wp plugin update" # Update one or more plugins.
+alias wppa "wp plugin activate" # Activate a plugin.
+alias wppda "wp plugin deactivate" # Deactivate a plugin.
+alias wppd "wp plugin delete" # Delete plugin files.
+alias wppg "wp plugin get" # Get a plugin.
+alias wppi "wp plugin install" # Install a plugin.
+alias wppii "wp plugin is-installed" # Check if the plugin is installed.
+alias wppl "wp plugin list" # Get a list of plugins.
+alias wppp "wp plugin path" # Get the path to a plugin or to the plugin directory.
+alias "wppsearch" "wp plugin search" # Search the wordpress.org plugin repository.
+alias wpps "wp plugin status" # See the status of one or all plugins.
+alias wppt "wp plugin toggle" # Toggle a plugin's activation state.
+alias wppu "wp plugin uninstall" # Uninstall a plugin.
+alias wppu "wp plugin update" # Update one or more plugins.
 
-alias wpta="wp theme activate" # Activate a theme.
-alias wptd="wp theme delete" # Delete a theme.
-alias wptda="wp theme disable" # Disable a theme in a multisite install.
-alias wpte="wp theme enable" # Enable a theme in a multisite install.
-alias wptg="wp theme get" # Get a theme
-alias wpti="wp theme install" # Install a theme.
-alias wptii="wp theme is-installed" # Check if the theme is installed.
-alias wptl="wp theme list" # Get a list of themes.
-alias wptm="wp theme mod" # Manage theme mods.
-alias wptp="wp theme path" # Get the path to a theme or to the theme directory.
-alias "wptsearch"="wp theme search" # Search the wordpress.org theme repository.
-alias wpts="wp theme status" # See the status of one or all themes.
-alias wptu="wp theme update" # Update one or more themes.
-alias wpmig="wp wpmdb migrate" # wp migrate db pro cli
-alias wpsalt="curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
+alias wpta "wp theme activate" # Activate a theme.
+alias wptd "wp theme delete" # Delete a theme.
+alias wptda "wp theme disable" # Disable a theme in a multisite install.
+alias wpte "wp theme enable" # Enable a theme in a multisite install.
+alias wptg "wp theme get" # Get a theme
+alias wpti "wp theme install" # Install a theme.
+alias wptii "wp theme is-installed" # Check if the theme is installed.
+alias wptl "wp theme list" # Get a list of themes.
+alias wptm "wp theme mod" # Manage theme mods.
+alias wptp "wp theme path" # Get the path to a theme or to the theme directory.
+alias "wptsearch" "wp theme search" # Search the wordpress.org theme repository.
+alias wpts "wp theme status" # See the status of one or all themes.
+alias wptu "wp theme update" # Update one or more themes.
+alias wpmig "wp wpmdb migrate" # wp migrate db pro cli
+alias wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
 
 # exiftool
-alias exiftime="exiftool -time:all -s" # show all time attrs
-alias exifval="exiftool -s -s -s" # just print value(s)
+alias exiftime "exiftool -time:all -s" # show all time attrs
+alias exifval "exiftool -s -s -s" # just print value(s)
 
 # ranger
-alias r="ranger"
+alias r "ranger"
 
 # terminal velocity
-alias notes="terminal_velocity"
-alias .note="terminal_velocity ."
+alias notes "terminal_velocity"
+alias .note "terminal_velocity ."
 
 # docker
-alias docker-clean-all="docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
-alias whale:bomb="docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+alias docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
+alias whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
