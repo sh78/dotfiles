@@ -132,6 +132,7 @@ npm_packages=(
   live-server
   livedown
   node-sass
+  purify-css
   sass-lint
   sass-loader
   sloc
