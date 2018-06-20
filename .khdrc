@@ -175,6 +175,7 @@ switcher + cmd - 4 : chunkc tiling::window --send-to-desktop 4
 switcher + cmd - 5 : chunkc tiling::window --send-to-desktop 5
 
 # focus monitor
+ctrl + shift - 0x27 : chunkc tiling::monitor -f next
 switcher + ctrl - tab  : chunkc tiling::monitor -f next
 switcher + ctrl + shift - tab  : chunkc tiling::monitor -f prev
 switcher - 1  : chunkc tiling::monitor -f 1
