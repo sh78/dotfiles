@@ -157,6 +157,9 @@ abbr gfhs 'git flow hotfix finish'
 
 # svn
 abbr s 'svn'
+abbr ss 'svn status'
+abbr sc 'sci commit'
+abbr sc 'sco checkout'
 abbr svnignore 'svn propset svn:ignore'
 
 # bitbucket
@@ -174,8 +177,7 @@ abbr bl 'brew list'
 # homebrew cask
 abbr bci 'brew cask install'
 abbr bcs 'brew cask search'
-abbr bcia 'brew cask install --appdir "/Applications"'
-abbr getapp 'brew cask install --appdir "/Applications"'
+abbr getapp 'brew cask install'
 
 # vagrant
 abbr vag 'vagrant'
