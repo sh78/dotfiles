@@ -74,7 +74,7 @@ abbr v 'nvim'
 
 # git
 abbr g 'git'
-abbr gs 'git status'
+abbr gs 'git s'
 abbr ga 'git add'
 abbr gaa 'git add --all'
 abbr gc 'git commit'
@@ -102,6 +102,9 @@ abbr notes "terminal_velocity"
 abbr .note "terminal_velocity ."
 
 # docker
+abbr dc docker-compose
+abbr dcu docker-compose up
+abbr dcud docker-compose up -d
 abbr docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 abbr whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 
