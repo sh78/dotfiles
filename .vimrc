@@ -582,20 +582,21 @@ let g:pymode_rope_completion = 0
 :nnoremap <Leader>dw :StripWhitespace<CR>
 
 "" Switch.vim
-let g:switch_mapping = "-"
+let g:switch_mapping = '-'
 let g:switch_custom_definitions =
   \ [
-  \   ["foo", "bar", "baz"],
-  \   ["is", "isn't"],
-  \   ["old", "new"],
-  \   ["previous", "next"],
-  \   ["first", "last"],
-  \   ["before", "after"],
-  \   ["dark", "light"],
-  \   ["opaque", "transparent"],
-  \   ["black", "white"],
-  \   ["staging", "production"],
-  \   ["http", "https"],
+  \   ['foo', 'bar', 'baz'],
+  \   ["is', 'isn't"],
+  \   ['old', 'new'],
+  \   ['previous', 'next'],
+  \   ['first', 'last'],
+  \   ['before', 'after'],
+  \   ['dark', 'light'],
+  \   ['opaque', 'transparent'],
+  \   ['black', 'white'],
+  \   ['staging', 'production'],
+  \   ['http', 'https'],
+  \   ['+', '-'],
   \ ]
 
 "" vim mustache handlebars
