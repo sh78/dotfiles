@@ -175,12 +175,10 @@ switcher + cmd - 4 : chunkc tiling::window --send-to-desktop 4
 switcher + cmd - 5 : chunkc tiling::window --send-to-desktop 5
 
 # focus monitor
-ctrl + shift - 0x27 : chunkc tiling::monitor -f next
-switcher + ctrl - tab  : chunkc tiling::monitor -f next
-switcher + ctrl + shift - tab  : chunkc tiling::monitor -f prev
-switcher - 1  : chunkc tiling::monitor -f 1
-switcher - 2  : chunkc tiling::monitor -f 2
-switcher - 3  : chunkc tiling::monitor -f 3
+ctrl + shift - 0x29 : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
+ctrl + shift - 0x27 : chunkc tiling::window --send-to-monitor next; chunkc tiling::monitor -f next
+switcher + 0x29  : chunkc tiling::monitor -f prev
+switcher + 0x27  : chunkc tiling::monitor -f next
 
 # # send window to monitor and follow focus
 # ctrl + cmd - z  : chunkc tiling::window --send-to-monitor prev; chunkc tiling::monitor -f prev
