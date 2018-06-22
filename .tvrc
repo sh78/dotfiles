@@ -1,0 +1,7 @@
+[DEFAULT]
+editor = nvim
+# The filename extension to use for new files.
+extension = .md
+# The filename extensions to recognize in the notes dir.
+extensions = .txt, .text, .md, .markdown, .mdown, .mdwn, .mkdn, .mkd, .rst
+notes_dir = ~/Drive/notes/
