@@ -12,13 +12,13 @@ abbr dots 'cd ~/Drive/dotfiles/'
 abbr dev 'cd ~/dev/'
 
 # quick edits to dot files
-abbr aliases 'vim ~/.config/omf/aliases.load'
-abbr funcs 'vim ~/.config/fish/functions/'
-abbr vr 'vim ~/.vimrc'
-abbr vt 'vim ~/.tmux.conf'
-abbr macos 'vim +Vex ~/.macos/'
-abbr vp 'vim +silent\ /add\ plugins ~/.vimrc'
-abbr fishconfig 'vim +Vex ~/.config/omf'
+abbr aliases 'eval $EDITOR ~/.config/omf/aliases.load'
+abbr funcs 'eval $EDITOR ~/.config/fish/functions/'
+abbr vr 'eval $EDITOR ~/.vimrc'
+abbr vt 'eval $EDITOR ~/.tmux.conf'
+abbr macos 'eval $EDITOR +Vex ~/.macos/'
+abbr vp 'eval $EDITOR +silent\ /add\ plugins ~/.vimrc'
+abbr fishconfig 'eval $EDITOR +Vex ~/.config/omf'
 
 #
 # System/General
@@ -99,7 +99,7 @@ abbr r "ranger"
 
 # terminal velocity
 abbr notes "terminal_velocity"
-abbr .note "terminal_velocity ."
+abbr clxnote "terminal_velocity ~/clorox/notes/"
 
 # docker
 abbr dc docker-compose
