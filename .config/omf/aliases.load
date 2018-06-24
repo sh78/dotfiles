@@ -98,7 +98,7 @@ abbr tk 'tmux kill-session -t'
 abbr r "ranger"
 
 # terminal velocity
-abbr notes "terminal_velocity"
+abbr note "terminal_velocity"
 abbr clxnote "terminal_velocity ~/clorox/notes/"
 
 # docker
