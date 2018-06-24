@@ -1,7 +1,7 @@
 " # https://github.com/1995eaton/chromium-vim#cvimrc
 
 let barposition = "bottom"
-let hintcharacters = "hujikolp"
+let hintcharacters = "uiopjklm"
 set smoothscroll
 let scrollduration = 200
 let scrollstep = 120
