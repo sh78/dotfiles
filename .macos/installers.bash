@@ -15,13 +15,15 @@ git config --global credential.helper osxkeychain
 # define app arrays
 
 brew_taps=(
+  "PX4/homebrew-px4"
   "homebrew/dupes"
-  "homebrew/services"
-  "thoughtbot/formulae"
   "homebrew/php"
-  "risidev/homebrew-chunkwm"
+  "homebrew/services"
   "koekeishiya/formulae"
+  "osx-cross/avr"
+  "risidev/homebrew-chunkwm"
   "rockyluke/devops"
+  "thoughtbot/formulae"
 )
 
 user_brews=(
@@ -30,6 +32,8 @@ user_brews=(
   "vim --with-features=huge --with-python3 --with-ruby --with-perl"
   ack
   apple-gcc42
+  avr-gcc
+  avrdude
   bash
   bradp/vv/vv
   cheat
@@ -41,6 +45,7 @@ user_brews=(
   coreutils
   cowsay
   ctags
+  dfu-programmer
   dnsmasq
   exiftool
   feh
@@ -48,6 +53,7 @@ user_brews=(
   figlet
   findutils
   fortune
+  gcc-arm-none-eabi
   gifsicle
   git
   git-flow
