@@ -89,6 +89,7 @@ user_brews=(
   speedtest_cli
   spidermonkey
   ssh-copy-id
+  teensy_loader_cli
   the_silver_searcher
   tidy-html5
   tmux
@@ -98,6 +99,7 @@ user_brews=(
   tor
   trash
   tree
+  watch
   wget
   wp-cli
   youtube-dl
