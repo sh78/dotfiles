@@ -141,6 +141,7 @@ npm_packages=(
   livedown
   node-sass
   purify-css
+  phantomjs-prebuilt
   sass-lint
   sass-loader
   sloc
