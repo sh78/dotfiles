@@ -14,6 +14,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
+  hookspath = ~/.githooks
 [credential]
 	helper = cache --timeout 64800
 [gitsh]
@@ -24,8 +25,10 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[commit]
+  template = ~/.gitmessage
 [init]
-	templatedir = ~/.git_template
+	templatedir = ~/.gittemplate
 [alias]
   find = "!grepalias() { git config --global --get-regexp alias | grep -i \"$1\" | awk -v nr=2 '{sub(/^alias\\./,\"\")};{printf \"\\033[31m%_10s\\033[1;37m\", $1};{sep=FS};{for (x=nr; x<=NF; x++) {printf \"%s%s\", sep, $x; }; print \"\\033[0;39m\"}'; }; grepalias" ; courtesy of @ttscoff
   ec = config --global -e

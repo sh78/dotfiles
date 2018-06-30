@@ -122,6 +122,7 @@ qlexts=(
 
 npm_packages=(
   bower
+  commit-msg
   css-loader
   csslint
   ember-cli
