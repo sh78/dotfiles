@@ -55,6 +55,9 @@ let searchalias hook = "hookr"
 let searchengine stackexchange = "https://stackexchange.com/search?q=%s"
 let searchalias se = "stackexchange"
 
+let searchengine devhints = "https://devhints.io/%s"
+let searchalias hint = "devhints"
+
 let searchengine stackoverflow = "https://stackoverflow.com/search?q=%s"
 let searchalias so = "stackoverflow"
 
@@ -86,7 +89,7 @@ map <Leader>x :restore<Space>
 " # Site-specific configs
 
 " blacklists prefixed by '@' act as a whitelist
-let blacklists = ["*://*shortcutfoo.com*", "*://*.google.com*", "@https://www.google.com*"]
+let blacklists = ["*://*shortcutfoo.com*", "*://mail.google.com*"]
 
 " site '*://domain.com*' {}
 
@@ -104,7 +107,7 @@ map ci :call getIP<CR>
 " default options page in chrome
 " As long as localconfig is set in the .cvimrc file. cVim will continue to read
 " settings from there
-let configpath = '/home/sean/.cvimrc'
+let configpath = '~/.cvimrc'
 set localconfig
 
 " # TODO:
