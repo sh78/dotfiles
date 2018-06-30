@@ -128,9 +128,10 @@ module.exports = {
 
     // Plugins
     solarized: {
-      lightTheme: false,
-      light: '08:00',
-      dark: '20:00',
+      background: 'light',
+      auto: true,
+      lightTime: "08:00",
+      darkTime: "20:00"
     },
     hyperTabs: {
       tabIconsColored: true,
