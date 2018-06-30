@@ -660,6 +660,7 @@ call denite#custom#map(
 :nnoremap gh :Denite help<CR> " gh (who TF uses select mode anyway)
 :nnoremap gH :DeniteCursorWord help<CR> " gH (who TF uses select line mode anyway)
 :nnoremap g; :Denite change -mode=normal<CR> " g; (don't need to go to a change from memory, and using :Denite change is nicer)
+:nnoremap g" :Denite register<CR> " g" is unmapped by default
 
 " :nnoremap <Leader><Leader>
 
