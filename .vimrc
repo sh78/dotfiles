@@ -137,6 +137,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/SearchComplete'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
 Plugin 'dag/vim-fish'
+Plugin 'heavenshell/vim-jsdoc'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -795,3 +796,5 @@ imap <expr><TAB>
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
+"" JSDoc
+nmap <silent> <Leader>jd <Plug>(jsdoc)
