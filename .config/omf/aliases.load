@@ -17,7 +17,7 @@ abbr funcs 'eval $EDITOR ~/.config/fish/functions/'
 abbr vr 'eval $EDITOR ~/.vimrc'
 abbr vt 'eval $EDITOR ~/.tmux.conf'
 abbr macos 'eval $EDITOR +Vex ~/.macos/'
-abbr vp 'eval $EDITOR +silent\ /add\ plugins ~/.vimrc'
+abbr vp 'eval $EDITOR +silent +/add ~/.vimrc'
 abbr fishconfig 'eval $EDITOR +Vex ~/.config/omf'
 
 #
@@ -99,7 +99,7 @@ abbr r "ranger"
 
 # terminal velocity
 abbr note "terminal_velocity"
-abbr clxnote "terminal_velocity ~/clorox/notes/"
+abbr clxnote "terminal_velocity ~/Drive/notes/clorox/"
 
 # docker
 abbr dc docker-compose
