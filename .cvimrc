@@ -55,6 +55,9 @@ let searchalias hook = "hookr"
 let searchengine stackexchange = "https://stackexchange.com/search?q=%s"
 let searchalias se = "stackexchange"
 
+let searchengine caniuse = "https://caniuse.com/#search=%s"
+let searchalias can = "caniuse"
+
 let searchengine devhints = "https://devhints.io/%s"
 let searchalias hint = "devhints"
 
