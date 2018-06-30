@@ -98,7 +98,7 @@ chunkc set window_use_cgs_move           0
 #
 
 chunkc set focused_border_color          0xaad33682
-chunkc set focused_border_width          4
+chunkc set focused_border_width          6
 # matches chrome:
 chunkc set focused_border_radius         0
 chunkc set focused_border_skip_floating  0

@@ -105,7 +105,7 @@
 ##
 
 # open apps
-ctrl - return : open -na /Applications/iTerm.app
+ctrl + alt - return : open -na /Applications/iTerm.app
 # ctrl + shift - return : open -na /Applications/Google\ Chrome.app
 
 # use switcher mode as a tmux-like prefix
