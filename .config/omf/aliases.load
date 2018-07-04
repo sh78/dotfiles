@@ -89,10 +89,17 @@ abbr gd 'git diff'
 abbr gl 'git log'
 
 # tmux
-abbr t 'tmux'
-abbr tl 'tmux ls'
-abbr ta 'tmux attach -t'
-abbr tk 'tmux kill-session -t'
+abbr tm 'tmux'
+abbr tml 'tmux ls'
+abbr tma 'tmux attach -t'
+abbr tmk 'tmux kill-session -t'
+
+# taskwarrior
+abbr t 'task'
+abbr ta 'task add'
+abbr tl 'task long | less -MNi'
+abbr ts 'task summary'
+abbr tt 'task tags'
 
 # ranger
 abbr r "ranger"
