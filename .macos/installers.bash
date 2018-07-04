@@ -169,6 +169,7 @@ pip_packages=(
   sass-lint
   terminal_velocity
   vim-vint
+  taskwarrior-inthe.am
 )
 
 pip3_packages=(
