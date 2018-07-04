@@ -58,3 +58,9 @@ switch $OSTYPE
   case "Darwin"
     set -gx $CLIPBOARD pbcopy
 end
+
+# sync taskwarrior
+if type -q task
+  task sync
+  clear
+end
