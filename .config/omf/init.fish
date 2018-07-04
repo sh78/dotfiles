@@ -1,7 +1,7 @@
 # custom greeting
 function fish_greeting
   if type -q fortune
-    fortune -a
+    fortune
   else
     # enjoy the silence
   end
