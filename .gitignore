@@ -23,6 +23,10 @@ plugins/ta/data/*
 .subversion/
 !.subversion/config
 .todo
+.task/*
+!.task/hooks
+.timewarrior/*
+!.timewarrior/timewarrior.cfg
 .vim/undodir
 .vim/bundle
 .vimperator
