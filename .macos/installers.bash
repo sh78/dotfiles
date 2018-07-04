@@ -89,9 +89,11 @@ user_brews=(
   speedtest_cli
   spidermonkey
   ssh-copy-id
+  tasksh
   teensy_loader_cli
   the_silver_searcher
   tidy-html5
+  timewarrior
   tmux
   tmuxinator-completion
   todo-txt
@@ -172,6 +174,7 @@ pip_packages=(
 pip3_packages=(
   mps-youtube
   neovim
+  "git+git://github.com/tbabej/tasklib@develop"
 )
 
 user_apps=(
