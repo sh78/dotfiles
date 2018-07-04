@@ -138,6 +138,10 @@ Plugin 'vim-scripts/SearchComplete'
 Plugin 'whatyouhide/vim-textobj-xmlattr'
 Plugin 'dag/vim-fish'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'vimwiki/vimwiki.git'
+Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'majutsushi/tagbar'
+Plugin 'tbabej/taskwiki'
 " add plugins here ^
 
 if iCanHazVundle == 0
@@ -799,3 +803,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 "" JSDoc
 nmap <silent> <Leader>jd <Plug>(jsdoc)
+
+"" vimwiki
+let g:vimwiki_list = [{
+  \ 'path': '~/Drive/notes/',
+  \ 'syntax': 'markdown', 'ext': '.md'
+\ }]
+
+"" tagbar
+:nnoremap <Leader>tb :TagbarToggle<CR>
+
+"" taskwiki
+" TODO: not working
+:nnoremap <Leader>td :TaskWikiDone
