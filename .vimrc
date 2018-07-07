@@ -140,7 +140,7 @@ Plugin 'dag/vim-fish'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'vimwiki/vimwiki.git'
 Plugin 'powerman/vim-plugin-AnsiEsc'
-Plugin 'majutsushi/tagbar'
+" Plugin 'majutsushi/tagbar'
 Plugin 'tbabej/taskwiki'
 " add plugins here ^
 
