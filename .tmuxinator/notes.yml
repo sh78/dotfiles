@@ -1,0 +1,16 @@
+# ~/.tmuxinator/do.yml
+
+name: notes
+root: ~/Drive/notes
+
+# Runs before everything. Use it to start daemons etc.
+pre: task sync
+
+# Runs after everything. Use it to attach to tmux with custom options etc.
+post: task sync
+
+windows:
+  - index:
+      layout: main-vertical
+      panes:
+        - vim index.md
