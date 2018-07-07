@@ -97,9 +97,16 @@ abbr tmk 'tmux kill-session -t'
 # taskwarrior
 abbr t 'task'
 abbr ta 'task add'
-abbr tl 'task long | less -MNi'
+abbr tl 'task ls | less'
+abbr tll 'task long | less'
 abbr ts 'task summary'
 abbr tt 'task tags'
+abbr tc 'task context'
+abbr inbox 'task project: -waitingFor'
+abbr waiting 'task +waitingFor'
+abbr home 'task context home'
+abbr work 'task context work'
+abbr office 'task context office'
 
 # ranger
 abbr r "ranger"
@@ -116,7 +123,7 @@ abbr docker-clean-all "docker stop (docker container ls -a -q); and docker syste
 abbr whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 
 # find and tail all logs in ./
-abbr tails "tail -F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+abbr tails "less -MNi +F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
 
 # misc
 abbr lmk "say 'Process complete.'" # pin to the tail of long commands
