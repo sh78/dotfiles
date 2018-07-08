@@ -69,8 +69,8 @@ abbr ssh 'env TERM=xterm-256color ssh'
 #
 
 # vim
-abbr vim 'nvim'
 abbr v 'nvim'
+abbr vtime 'nvim --startuptime vim-startuptime.log'
 
 # git
 abbr g 'git'

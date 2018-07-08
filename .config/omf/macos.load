@@ -102,9 +102,3 @@ function nosleep --description "Turn NoSleep app on or off for both ac and batte
   end
 end
 
-################
-###  Workflows (macOS)
-################
-
-alias gtd='open "https://drive.google.com/drive/my-drive" "https://keep.google.com/#home" "https://mail.google.com/mail/u/0/#inbox" "https://calendar.google.com/calendar/r/agenda"'
-alias perf='open "https://tools.pingdom.com/" "https://gtmetrix.com/" "https://developers.google.com/speed/pagespeed/insights/"'
