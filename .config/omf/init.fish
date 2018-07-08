@@ -60,7 +60,7 @@ switch $OSTYPE
 end
 
 # sync taskwarrior
-if type -q task
-  task sync
-  clear
-end
+# if type -q task
+#   task sync
+#   clear
+# end
