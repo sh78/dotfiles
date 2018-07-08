@@ -84,6 +84,8 @@ if dein#load_state('~/.vim/dein')
   " |______|_| \_|_____/     |_|     \____/|_|    |______| /_/    \_\_|  \_\______/_/    \_\
   "call dein#add('terryma/vim-multiple-cursors') " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
   call dein#add('AndrewRadev/switch.vim')
+  " call dein#add('christoomey/vim-quicklink')
+  call dein#add('christoomey/vim-sort-motion')
   call dein#add('MarcWeber/vim-addon-mw-utils')
   call dein#add('Shougo/denite.nvim')
   call dein#add('Shougo/deoplete-clangx')
