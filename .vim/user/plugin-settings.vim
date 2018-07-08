@@ -109,13 +109,21 @@ let g:mustache_abbreviations = 1
 
 " tabularize
 nnoremap <Leader>aa :Tabularize <CR>
+vnoremap <Leader>aa :Tabularize <CR>
 nnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:\zs<CR>
+vnoremap <Leader>a: :Tabularize /:\zs<CR>
 nnoremap <Leader>a- :Tabularize /-<CR>
+vnoremap <Leader>a- :Tabularize /-<CR>
 nnoremap <Leader>a, :Tabularize /,<CR>
+vnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a< :Tabularize /\<<CR>
+vnoremap <Leader>a< :Tabularize /\<<CR>
 nnoremap <Leader>a\| :Tabularize /\|<CR>
+vnoremap <Leader>a\| :Tabularize /\|<CR>
 nnoremap <Leader>as :Tabularize /<Space><CR>
+vnoremap <Leader>as :Tabularize /<Space><CR>
 
 " undotree - undo tree visualizer
 nnoremap <C-z> :UndotreeToggle<CR>
