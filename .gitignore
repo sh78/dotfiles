@@ -24,6 +24,7 @@ plugins/ta/data/*
 !.subversion/config
 .todo
 .task/*
+.taskrc
 !.task/hooks
 .timewarrior/*
 !.timewarrior/timewarrior.cfg
