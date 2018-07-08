@@ -30,6 +30,7 @@ plugins/ta/data/*
 !.timewarrior/timewarrior.cfg
 .vim/undodir
 .vim/bundle
+.vim/spell/en.utf-8.add.spl
 .vimperator
 .wp-cli/
 .youtube-dl-history
