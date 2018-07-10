@@ -151,6 +151,11 @@ npm_packages=(
   sloc
   spot
   standard
+  stylelint
+  stylelint-scss
+  stylelint-config-recommended
+  stylelint-config-recommended-scss
+  stylelint-config-standard
   surge
   swaglint
   tern
