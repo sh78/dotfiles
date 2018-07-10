@@ -78,10 +78,10 @@ set complete+=kspell
 " Indentation defaults
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
 set shiftround
 set expandtab
+set tabstop=4
+set shiftwidth=4
 
 " Persistent undo
 set undofile

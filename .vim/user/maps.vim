@@ -102,10 +102,14 @@ nnoremap <Leader>gq vapgq
 " quickly switch to last buffer
 nnoremap <Leader><Leader> :e#<CR>
 
+" toggle indentation spaces
+nnoremap <Leader>2 :set tabstop=2 shiftwidth=2<cr>
+nnoremap <Leader>4 :set tabstop=4 shiftwidth=4<cr>
+
 " global find/replace inside working directory
 function! FindReplace()
   " figure out which directory we're in
-	let dir = expand('%:h')
+    let dir = expand('%:h')
   " ask for patterns
   call inputsave()
   let find = input('Pattern: ')
