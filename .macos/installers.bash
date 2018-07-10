@@ -129,6 +129,7 @@ npm_packages=(
   csslint
   ember-cli
   ember-template-lint
+  eslint
   extract-loader
   fb-messenger-cli
   file-loader
@@ -149,6 +150,7 @@ npm_packages=(
   sass-loader
   sloc
   spot
+  standard
   surge
   swaglint
   tern
@@ -162,7 +164,6 @@ npm_packages=(
 pip_packages=(
   bitbucket-cli
   jedi
-  proselint
   python-dateutil
   pylint
   requests
@@ -173,6 +174,7 @@ pip_packages=(
 )
 
 pip3_packages=(
+  proselint
   mps-youtube
   neovim
   "git+git://github.com/tbabej/tasklib@develop"
