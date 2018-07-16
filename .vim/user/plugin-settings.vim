@@ -283,6 +283,7 @@ let g:ale_lint_delay = 1000"
 nmap <silent> <C-h> <Plug>(ale_previous_wrap)
 nmap <silent> <C-l> <Plug>(ale_next_wrap)
 nmap <leader>= <Plug>(ale_fix)
+nmap <leader>lt <Plug>(ale_toggle)
 
 
 " Use deoplete.
@@ -313,10 +314,23 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 nmap <silent> <Leader>jd <Plug>(jsdoc)
 
 " vimwiki
-let g:vimwiki_list = [{
-  \ 'path': '~/Drive/notes/',
-  \ 'syntax': 'markdown', 'ext': '.md'
-\ }]
+
+" Wiki settings
+let g:wiki_default = {}
+let g:wiki_default.auto_export = 0
+let g:wiki_default.auto_toc = 0
+let g:wiki_default.syntax = 'markdown'
+let g:wiki_default.ext = '.md'
+let g:wiki_default.diary_rel_path = 'log/'
+
+let g:sh_wiki = copy(g:wiki_default)
+let g:sh_wiki.path = '~/Drive/notes/'
+
+let g:clorox_wiki = copy(g:wiki_default)
+let g:clorox_wiki.path = '~/Drive/clorox/notes/'
+
+let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
+
 
 " tagbar
 nnoremap <Leader>tb :TagbarToggle<CR>
