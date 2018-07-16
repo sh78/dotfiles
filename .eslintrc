@@ -11,7 +11,7 @@
     "rules": {
         "indent": [
             "error",
-            2
+            4
         ],
         "linebreak-style": [
             "error",
@@ -25,11 +25,13 @@
             "error",
             "always"
         ],
-        "no-unused-vars": ["error", { "varsIgnorePattern": "jQuery" }]
+        "no-unused-vars": ["warn", { "varsIgnorePattern": "jQuery" }]
     },
     "globals": {
         "$": false,
         "document": false,
         "window": false
+        "casper": false,
+        "webroot": false,
     }
 }
