@@ -13,6 +13,7 @@ plugins/ta/data/*
 .config/ranger/history
 .config/nvim/.netrwhist
 .composer/
+.devtoolssnippets
 .gem/credentials
 .gist-vim
 .local/
