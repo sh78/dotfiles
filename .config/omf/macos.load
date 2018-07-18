@@ -34,6 +34,10 @@ function cleanmymac
   sudo periodic daily weekly monthly
   echo "Done!"
   echo
+  echo "Cleaning up the homebrew cellar..."
+  brew cleanup
+  echo "Done!"
+  echo
   echo "Emptying Trash..."
   sudo rm -rfv ~/.Trash
   echo "Done!"
