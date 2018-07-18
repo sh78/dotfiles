@@ -134,3 +134,17 @@ function! FindReplace()
   endif
 endfunction
 nnoremap <Leader>fr :call FindReplace()<CR>
+
+" https://stackoverflow.com/questions/10760326/merge-multiple-lines-two-blocks-in-vim#answer-10760494
+function! HorizontalConcat()
+  " prompt for ranges
+  call inputsave()
+  let start = input('Enter starting range (like 1,50): ')
+  call inputrestore()
+  let end = input('Enter range to merge in (like 51,101): ')
+  call inputrestore()
+  " let separator = input('Enter separator (optional): ')
+  " call inputrestore()
+  silent exe end . 'del | let l=split(@","\n") | ' . start . 's/$/\=remove(l,0)/'
+endfunction
+nnoremap <Leader>hc :call HorizontalConcat()<CR>
