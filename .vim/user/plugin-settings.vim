@@ -15,14 +15,18 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'bash=shell', 'javascript=js', 'php=php', 'html=html', 'css=css']
 let g:vim_markdown_new_list_item_indent = 0
 
-" vim-gitgutter
 " inherit line column color
 highlight clear SignColumn
-" prevent conflict w/ vim-textobj-css
-omap ih <Plug>GitGutterTextObjectInnerPending
-omap ah <Plug>GitGutterTextObjectOuterPending
-xmap ih <Plug>GitGutterTextObjectInnerVisual
-xmap ah <Plug>GitGutterTextObjectOuterVisual
+
+" " vim-gitgutter
+" " prevent conflict w/ vim-textobj-css
+" omap ih <Plug>GitGutterTextObjectInnerPending
+" omap ah <Plug>GitGutterTextObjectOuterPending
+" xmap ih <Plug>GitGutterTextObjectInnerVisual
+" xmap ah <Plug>GitGutterTextObjectOuterVisual
+
+" signify - VCS markers in side column
+let g:signify_vcs_list = [ 'git', 'svn' ]
 
 " Ack
 if executable('ag')
