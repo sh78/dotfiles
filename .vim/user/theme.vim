@@ -25,8 +25,9 @@ endif
 set cursorline
 set cursorcolumn
 
-let &colorcolumn="81,".join(range(100,999),",")
-"highlight ColorColumn ctermbg=0 guibg=LightGrey
+let &colorcolumn=join(range(81,999), ',')
+" let &colorcolumn="81,".join(range(100,999),",")
+" highlight ColorColumn ctermbg=0 guibg=LightGrey
 
 " italic comments
 highlight Comment cterm=italic
