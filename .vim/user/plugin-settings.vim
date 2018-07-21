@@ -102,6 +102,7 @@ let g:switch_custom_definitions =
   \   ['staging', 'production'],
   \   ['http', 'https'],
   \   ['+', '-'],
+  \   ['enabled', 'disabled'],
   \ ]
 
 " vim mustache handlebars
@@ -276,8 +277,8 @@ nmap gm :LivedownToggle<CR>
 map <C-m> <Plug>(easymotion-prefix)
 
 " Ale linter
-let g:ale_sign_error = '🚫 '
-let g:ale_sign_warning = '⚠️ '
+" let g:ale_sign_error = '🚫 '
+" let g:ale_sign_warning = '⚠️ '
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 1000"
 nmap <silent> <C-h> <Plug>(ale_previous_wrap)
@@ -336,5 +337,19 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 nnoremap <Leader>tb :TagbarToggle<CR>
 
 " taskwiki
+let g:taskwiki_syntax = 'markdown'
+
 " TODO: not working
 nnoremap <Leader>td :TaskWikiDone
+
+" vim schlepp (dragvisuals.vim)
+" TODO: not working
+vnoremap <up> <Plug>SchleppUp
+vnoremap <down> <Plug>SchleppDown
+vnoremap <left> <Plug>SchleppLeft
+vnoremap <right> <Plug>SchleppRight
+
+" gutentags (ctags)
+let g:gutentags_project_root = ['.svn']
+let g:gutentags_cache_dir = '~/.tags'
+
