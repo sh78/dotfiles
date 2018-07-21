@@ -18,13 +18,6 @@ let g:vim_markdown_new_list_item_indent = 0
 " inherit line column color
 highlight clear SignColumn
 
-" " vim-gitgutter
-" " prevent conflict w/ vim-textobj-css
-" omap ih <Plug>GitGutterTextObjectInnerPending
-" omap ah <Plug>GitGutterTextObjectOuterPending
-" xmap ih <Plug>GitGutterTextObjectInnerVisual
-" xmap ah <Plug>GitGutterTextObjectOuterVisual
-
 " signify - VCS markers in side column
 let g:signify_vcs_list = [ 'git', 'svn' ]
 
@@ -257,6 +250,7 @@ let closetag_close_shortcut = '<leader>>'
 
 " highlighted yank
 let g:highlightedyank_highlight_duration = 700
+hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " ranger.vim
 map <leader>rr :RangerEdit<cr>
