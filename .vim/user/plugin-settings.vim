@@ -351,3 +351,6 @@ vnoremap <right> <Plug>SchleppRight
 let g:gutentags_project_root = ['.svn']
 let g:gutentags_cache_dir = '~/.tags'
 
+" loupe
+nmap <leader>nh <Plug>(LoupeClearHighlight)
+
