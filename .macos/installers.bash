@@ -144,6 +144,7 @@ npm_packages=(
   live-server
   livedown
   node-sass
+  puppeteer
   purify-css
   phantomjs-prebuilt
   sass-lint
