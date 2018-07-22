@@ -103,6 +103,7 @@ Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'jasonlong/vim-textobj-css'
 Plug 'jceb/vim-textobj-uri'
 Plug 'jremmen/vim-ripgrep'
+Plug 'jreybert/vimagit'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
