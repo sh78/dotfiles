@@ -83,7 +83,7 @@ vnoremap Y "*y
 nnoremap <leader>% :source $MYVIMRC<cr>
 
 " source vimrc and install vundle plugins
-nnoremap <Leader>^ :source $MYVIMRC <BAR> :call dein#update()<CR>
+nnoremap <Leader>^ :source $MYVIMRC <BAR> :PlugUpdate<CR>
 
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
@@ -133,7 +133,8 @@ function! FindReplace()
     return
   endif
 endfunction
-nnoremap <Leader>fr :call FindReplace()<CR>
+command! FindReplace :call FindReplace()
+nnoremap <Leader>fr :FindReplace<CR>
 
 " https://stackoverflow.com/questions/10760326/merge-multiple-lines-two-blocks-in-vim#answer-10760494
 function! HorizontalConcat()
@@ -147,4 +148,5 @@ function! HorizontalConcat()
   " call inputrestore()
   silent exe end . 'del | let l=split(@","\n") | ' . start . 's/$/\=remove(l,0)/'
 endfunction
-nnoremap <Leader>hc :call HorizontalConcat()<CR>
+command! HorizontalConcat :call HorizontalConcat()
+nnoremap <Leader>hc :HorizontalConcat<CR>
