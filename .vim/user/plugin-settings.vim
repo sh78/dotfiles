@@ -3,13 +3,13 @@
 " g" is unmapped by default
 " nnoremap g;
 " gH (who TF uses select line mode anyway)
-" nnoremap gH 
+" nnoremap gH
 " gK (unmapped by default)
-" nnoremap gK 
+" nnoremap gK
 " gk (already remapped k to do gk)
-" nnoremap gk 
+" nnoremap gk
 " gn (don't need to visually select search patterns
-" nnoremap gn 
+" nnoremap gn
 " gP (don't need cursor moving after paste)
 " nnoremap gP
 " gF (unmapped by default)
@@ -251,10 +251,13 @@ map <C-m> <Plug>(easymotion-prefix)
 " let g:ale_sign_warning = '⚠️ '
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 1000"
-nmap <silent> <C-h> <Plug>(ale_previous_wrap)
-nmap <silent> <C-l> <Plug>(ale_next_wrap)
 nmap <leader>= <Plug>(ale_fix)
 nmap <leader>lt <Plug>(ale_toggle)
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous_wrap)
+nmap <silent> ]w <Plug>(ale_next_wrap)
+nmap <silent> ]W <Plug>(ale_last)
 
 
 " Use deoplete.
@@ -334,7 +337,7 @@ nnoremap <C-p> :Files<CR>
 " gp unmapped by default
 nnoremap gp :Buffers<CR>
 " gh (who TF uses select mode anyway)
-nnoremap gh :Helptags<CR> 
+nnoremap gh :Helptags<CR>
 " g; (don't need to go to a change from memory
 nnoremap g; :History:<CR>
 " gr unmapped by default
