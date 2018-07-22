@@ -34,6 +34,9 @@ nnoremap <Leader>' :let &background=(&background =~# "dark"?"light":"dark")<CR>
 " Functions / Macros
 "
 
+" run last :command
+nnoremap ;; @:<CR>
+
 " substitute all occurrences of the word under the cursor
 nnoremap <Leader>fk :%s/\<<C-r><C-w>\>//g<Left><Left>
 

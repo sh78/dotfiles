@@ -1,3 +1,19 @@
+" Map Ideas
+
+" g" is unmapped by default
+" nnoremap g;
+" gH (who TF uses select line mode anyway)
+" nnoremap gH 
+" gK (unmapped by default)
+" nnoremap gK 
+" gk (already remapped k to do gk)
+" nnoremap gk 
+" gn (don't need to visually select search patterns
+" nnoremap gn 
+" gP (don't need cursor moving after paste)
+" nnoremap gP
+" gF (unmapped by default)
+
 "
 " Plugins
 "
@@ -130,50 +146,6 @@ let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
 let g:undotree_HelpLine = 0
 
-" denite
-call denite#custom#option('default', 'prompt', '>')
-
-call denite#custom#var('file/rec', 'command',
-  \ ['ag', '--follow', '--nogroup', '-g', ''])
-
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-  \ ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-
-call denite#custom#map(
-  \ 'insert',
-  \ '<C-j>',
-  \ '<denite:move_to_next_line>',
-  \ 'noremap'
-  \)
-call denite#custom#map(
-  \ 'insert',
-  \ '<C-k>',
-  \ '<denite:move_to_previous_line>',
-  \ 'noremap'
-  \)
-
-" these are mapped to avoid the leader/ctrl for ease
-" attempting to follow vim convention of 'g' going or jumping
-nnoremap gp :Denite buffer file/rec<CR>
-nnoremap ;; :Denite command<CR> " search commands
-nnoremap gr :DeniteBufferDir grep:. -mode=normal<CR> " gr unmapped by default
-nnoremap gk :DeniteCursorWord line<CR> " gk (already remapped k to do gk)
-nnoremap gK :DeniteCursorWord grep:. -mode=normal<CR> " gK (unmapped by default)
-nnoremap gn :DeniteCursorWord tags -mode=normal<CR> " (don't need to visually select search patterns
-nnoremap gh :Denite help<CR> " gh (who TF uses select mode anyway)
-nnoremap gH :DeniteCursorWord help<CR> " gH (who TF uses select line mode anyway)
-nnoremap g; :Denite change -mode=normal<CR> " g; (don't need to go to a change from memory, and using :Denite change is nicer)
-nnoremap g" :Denite register<CR> " g" is unmapped by default
-
-
-" maybe eunuch :Find?" gF (unmapped by default)
-" gP (don't need cursor moving after paste)
-
 " Gista (snippets)
 let g:gista#command#post#default_public = 0
 let g:gista#command#post#allow_empty_description = 1
@@ -269,7 +241,7 @@ let g:ranger_replace_netrw = 0
 " nmap <leader>gT <Plug>TitlecaseLine
 
 " livedown (markdown)
-nmap gm :LivedownToggle<CR>
+nmap <Leader>m :LivedownToggle<CR>
 
 " easy motion
 map <C-m> <Plug>(easymotion-prefix)
@@ -354,3 +326,23 @@ let g:gutentags_cache_dir = '~/.tags'
 " loupe
 nmap <leader>nh <Plug>(LoupeClearHighlight)
 
+" fzf
+let g:fzf_layout = { 'down': '~40%' }
+
+" https://github.com/junegunn/fzf.vim#commands
+nnoremap <C-p> :Files<CR>
+" gp unmapped by default
+nnoremap gp :Buffers<CR>
+" gh (who TF uses select mode anyway)
+nnoremap gh :Helptags<CR> 
+" g; (don't need to go to a change from memory
+nnoremap g; :History:<CR>
+" gr unmapped by default
+nnoremap gr :Tags<CR>
+" gm unmapped by default
+nnoremap gm :Marks<CR>
+" g/ unmapped by default
+nnoremap g/ :History/<CR>
+
+" peekaboo
+let g:peekaboo_delay = 1000
