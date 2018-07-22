@@ -19,5 +19,6 @@ function! ToggleALEJavaScript()
         echom 'ALE Linter set to standard.'
     endif
 endfunction
-nnoremap <Leader>ljs :call ToggleALEJavaScript()<CR>
+command! ToggleALEJavaScript :call ToggleALEJavaScript()
+nnoremap <Leader>ljs :ToggleALEJavaScript<CR>
 
