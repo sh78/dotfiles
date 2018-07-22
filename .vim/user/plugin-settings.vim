@@ -250,7 +250,8 @@ map <C-m> <Plug>(easymotion-prefix)
 " let g:ale_sign_error = '🚫 '
 " let g:ale_sign_warning = '⚠️ '
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 1000"
+let g:ale_lint_delay = 1000
+let g:ale_sign_column_always = 1
 nmap <leader>= <Plug>(ale_fix)
 nmap <leader>lt <Plug>(ale_toggle)
 " Mappings in the style of unimpaired-next
