@@ -61,6 +61,7 @@ user_brews=(
   gitlint
   gitsh
   gtypist
+  gpg
   hadolint
   httrack
   hub
