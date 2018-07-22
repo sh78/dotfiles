@@ -21,3 +21,5 @@ zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
 source ~/.bashrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

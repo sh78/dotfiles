@@ -582,3 +582,5 @@ fi
 # }
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
