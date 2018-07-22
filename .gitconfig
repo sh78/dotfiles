@@ -50,6 +50,7 @@
   cl = clone
   d = diff -M --word-diff
   dc = diff --cached -M
+  g = grep
   au = add -u
   cm = commit -m
   cob = checkout -b
@@ -96,4 +97,6 @@
   acm = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F -; }; f"
   acmp = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
   rdone = "!f() { git add . --all && git status -sb && echo "$@" | git commit -F - && git push; }; f"
-	update = !git pull && git submodule update --init --recursive
+  update = !git pull && git submodule update --init --recursive
+  grepall = "!f() { git grep "$@" $(git rev-list --all); }; f"
+  greplog = "!f() { git log -G "$@" --color --graph --stat -p --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen%ci (%cr)%Creset %Cblue<%an>%Creset%n%B' --abbrev-commit; }; f"
