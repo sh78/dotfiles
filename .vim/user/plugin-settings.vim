@@ -336,7 +336,7 @@ let g:fzf_layout = { 'down': '~40%' }
 " https://github.com/junegunn/fzf.vim#commands
 nnoremap <C-p> :Files<CR>
 " gp unmapped by default
-nnoremap gp :Buffers<CR>
+nnoremap gb :Buffers<CR>
 " gh (who TF uses select mode anyway)
 nnoremap gh :Helptags<CR>
 " g; (don't need to go to a change from memory
