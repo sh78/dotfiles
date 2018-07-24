@@ -64,6 +64,8 @@ abbr tra 'tree -C -a -L 1' # also list hidden files (think "list all")
 # https://medium.com/@dubistkomisch/how-to-actually-get-italics-and-true-colour-to-work-in-iterm-tmux-vim-9ebe55ebc2be
 abbr ssh 'env TERM=xterm-256color ssh'
 
+abbr psg 'ps aux | grep -v grep | grep -i -e VSZ -e'
+
 #
 # Extra
 #
@@ -140,9 +142,8 @@ abbr m "math" # quick calculations in the terminal
 # Bling
 #
 
-abbr starwars "telnet towel.blinkenlights.nl"
-abbr matrix "cmatrix -a"
-
+abbr starwars 'telnet towel.blinkenlights.nl'
+abbr matrix 'cmatrix -a'
 
 #
 # Network Info
