@@ -57,9 +57,9 @@ user_brews=(
   gcc-arm-none-eabi
   gifsicle
   git
-  git-flow
   gitlint
   gitsh
+  go
   gtypist
   gpg
   hadolint

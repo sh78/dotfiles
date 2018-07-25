@@ -2,8 +2,11 @@
 # ENV
 #
 
-# OSX bin
+export GOPATH=$HOME/go
+PATH=$PATH:$GOPATH/bin
+
 PATH=~/.bin/executables:/usr/local/bin:$PATH
+export PATH
 
 # Use the new iMproved vi
 VISUAL=nvim
