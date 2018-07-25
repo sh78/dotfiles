@@ -350,3 +350,6 @@ nnoremap g/ :History/<CR>
 
 " peekaboo
 let g:peekaboo_delay = 1000
+
+" shfmt - shell formatter
+let g:shfmt_extra_args = '-i 4'
