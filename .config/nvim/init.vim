@@ -7,3 +7,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 set runtimepath^=$HOME/.vim runtimepath+=$HOME/.vim/after
 let &packpath = &runtimepath
 source $HOME/.vimrc
+
+" slightly better escape from :terminal
+tnoremap <C-n><Esc> <C-\><C-n>
