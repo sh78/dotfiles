@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Prepend creation date to file name (macOS)
+echo "Are you sure you want to rename all files in the current directory?"
+echo "(Ctrl-C to cancel)"
+read input
+echo
+for file in "$@"; do
+	new_filename="$(date -jf "%m/%d/%Y" $(GetFileInfo -d $file | cut -c 1-10) +%Y-%m-%d) $file"
+	echo "mv $file "$new_filename""
+	mv $file "$new_filename"
+done
+echo "done"

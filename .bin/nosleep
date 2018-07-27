@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+# Turn NoSleep app on or off for both ac and battery modes
+
+if test $argv
+  if test $argv[1] = "on"
+    NoSleepCtrl -a -s 1
+    NoSleepCtrl -b -s 1
+  else if test $argv[1] = "off"
+    NoSleepCtrl -a -s 0
+    NoSleepCtrl -b -s 0
+  else
+    echo "Please choose <on> or <off>"
+  end
+else
+  echo "Enter <on> or <off>"
+end

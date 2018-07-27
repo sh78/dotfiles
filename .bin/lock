@@ -1,0 +1,10 @@
+#!/bin/bash
+
+os=`uname`
+
+if [ "$os" == "Darwin" ]; then
+    /System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend
+elif [ "$os" == "Linux" ]; then
+    # do something else
+    echo
+fi

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Save $40
+
+cleanmymac () {
+  echo "Checking available disk space..."
+  before_bits=$(df -h / | tail -1 | awk '{print $4}')
+  before_percent=$(df -h / | tail -1 | awk '{print $5}')
+  echo
+  echo "Please enter your password:"
+  sudo -v
+  echo
+  echo "Clearing Caches..."
+  sudo rm -rfv ~/Library/Caches /Library/Caches
+  echo "Done!"
+  echo
+  echo "Flushing Directory Service Cache..."
+  dscacheutil -flushcache
+  echo "Done!"
+  echo "Running System Maintenance tasks..."
+  sudo periodic daily weekly monthly
+  echo "Done!"
+  echo
+  echo "Cleaning up the homebrew cellar..."
+  brew cleanup
+  echo "Done!"
+  echo
+  echo "Emptying Trash..."
+  sudo rm -rfv ~/.Trash
+  echo "Done!"
+  echo
+  echo "All clean!"
+  echo
+  after_bits=$(df -h / | tail -1 | awk '{print $4}')
+  after_percent=$(df -h / | tail -1 | awk '{print $5}')
+  echo "Before:" $before_bits "("$before_percent")" available
+  echo "After: " $after_bits "("$after_percent")" available!
+}
