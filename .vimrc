@@ -8,7 +8,7 @@
 set nocompatible
 
 " handle anyone crazy enough to use a non-POSIX compatible shell like fish
-set shell=/bin/sh
+set shell=/bin/bash
 
 "
 " User settings
@@ -40,4 +40,3 @@ source $HOME/.vim/user/plugin-settings.vim
 " nnoremap gP
 " gF (unmapped by default)
 " <C-h> and <C-L> (don't use them much)
-
