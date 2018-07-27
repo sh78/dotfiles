@@ -9,25 +9,27 @@ abbr drive "cd ~/Drive"
 abbr active "cd ~/Drive/active*"
 abbr archive "cd ~/Drive/archive*"
 abbr dots 'cd ~/Drive/dotfiles/'
-abbr dev 'cd ~/dev/'
+abbr src 'cd ~/src/'
+abbr notes 'cd ~/Drive/notes; and eval $EDITOR index.md'
+abbr clxnotes '~/Drive/clorox/notes; and eval $EDITOR index.md'
 
 # quick edits to dot files
 abbr aliases 'eval $EDITOR ~/.config/omf/aliases.load'
 abbr funcs 'eval $EDITOR ~/.config/fish/functions/'
 abbr vr 'eval $EDITOR ~/.vimrc'
 abbr vt 'eval $EDITOR ~/.tmux.conf'
-abbr macos 'eval $EDITOR +Vex ~/.macos/'
+abbr macos 'eval $EDITOR ~/.macos/'
 abbr vp 'eval $EDITOR +silent +/add ~/.vimrc'
-abbr fishconfig 'eval $EDITOR +Vex ~/.config/omf'
+abbr fishconfig 'eval $EDITOR ~/.config/omf'
 
 #
 # System/General
 #
 
-abbr h 'history'
-abbr x 'exit'
 abbr p "pwd"
+abbr h 'history'
 abbr c 'clear'
+abbr x 'exit'
 
 abbr .. 'cd ..' # up one
 abbr .... 'cd ../..' # up two
@@ -118,10 +120,6 @@ abbr office 'task context office'
 
 # ranger
 abbr r "ranger"
-
-# terminal velocity
-abbr note "terminal_velocity"
-abbr clxnote "terminal_velocity ~/Drive/notes/clorox/"
 
 # docker
 abbr dc docker-compose
