@@ -1,8 +1,0 @@
-- migrate arrays in installers.bash to lines in files
-  so then: `echo "somepackage" >> brews` to update quickly
-- check https://github.com/mathiasbynens/dotfiles/blob/master/.osx
-- add prefs for:
-  - auto arrange on desktop
-  - file type default applications such as to open all php files with sublime
-- organize prefs.bash into logical sections
-- look into defaults import/export instead of writing prefs

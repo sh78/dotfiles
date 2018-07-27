@@ -14,11 +14,13 @@ user_gems=(
 	tmuxinator
 )
 
+# check that rbenv is ok
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
 # get the lastest stable ruby build through rbenv
-rubyv=$(rbenv install -l | grep -v - | tail -1)
+rubyv=$(rbenv install -l | grep -v - | tail -1 | sed -e 's/^[ \t]*//')
 rbenv install $rubyv
 rbenv init
-# source ~/.bash_profile
 rbenv global $rubyv
 
 # install gems
