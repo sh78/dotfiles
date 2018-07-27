@@ -11,7 +11,6 @@ set pastetoggle=<Leader>sp
 nnoremap <leader>sn :set nonumber! norelativenumber!<CR>
 
 " toggle search highlights
-nnoremap <leader>si :set incsearch!<CR>
 nnoremap <leader>sh :set hlsearch!<CR>
 
 " toggle invisibles
@@ -35,7 +34,6 @@ nnoremap <Leader>' :let &background=(&background =~# "dark"?"light":"dark")<CR>
 "
 
 " run last :command
-nnoremap ;; @:<CR>
 
 " substitute all occurrences of the word under the cursor
 nnoremap <Leader>fk :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -73,6 +71,11 @@ map Q :bd
 nnoremap W :w!<CR>
 " quick no save
 nnoremap QQ :q!<CR>
+
+" start/end of line
+" replaced default of H/L moving cursor to top/bottom +/- `scrolloff`
+nnoremap H ^
+nnoremap L $
 
 " yank all the things, and persist the cursor location
 nnoremap <Leader>y ylpxggyGg;h

@@ -50,6 +50,14 @@ set hlsearch
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
+" hide highlighting in normal mode, after some time
+autocmd CursorHold,CursorHoldI * :setlocal nohlsearch
+autocmd CursorMoved * :setlocal hlsearch
+
+" TODO: show cursor highlight again if cycling through matches
+" nnoremap n :setlocal hlsearch<CR><bar>n
+" nnoremap N :setlocal hlsearch<CR><bar>N
+
 " Soft wrapping
 set wrap
 
