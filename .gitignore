@@ -10,7 +10,8 @@ plugins/ta/data/*
 .bro
 .cfcli.yml
 .config/mps-youtube/playlist_v2
-.config/omf/clorox.load
+.config/fish/functions/clorox*
+.config/fish/functions/electro*
 .config/ranger/history
 .config/nvim/.netrwhist
 .composer/

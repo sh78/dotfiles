@@ -69,7 +69,14 @@ abbr ssh 'env TERM=xterm-256color ssh'
 abbr psg 'ps aux | grep -v grep | grep -i -e VSZ -e'
 
 #
-# Extra
+# macOS
+#
+
+# Recursively delete `.DS_Store` files
+abbr rmds="find . -name '*.DS_Store' -type f -ls -delete"
+
+#
+# Programs
 #
 
 # vim
@@ -128,14 +135,6 @@ abbr dcud docker-compose up -d
 abbr docker-clean-all "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 abbr whale:bomb "docker stop (docker container ls -a -q); and docker system prune -a -f --volumes"
 
-# find and tail all logs in ./
-abbr tails "less -MNi +F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
-
-# misc
-abbr lmk "say 'Process complete.'" # pin to the tail of long commands
-
-abbr m "math" # quick calculations in the terminal
-
 #
 # Bling
 #
@@ -159,20 +158,19 @@ abbr nameservers 'host -t ns'
 # extra
 #
 
+alias backup="yes | mackup backup"
+
+# find and tail all logs in ./
+abbr tails "less -MNi +F (find . -type f -not -name '*.tar' -not -name '*.gz' -not -name '*.zip' -not -path '*.git*' -not -path '*.svn*' -not -path '*node_modules*' | grep -e '/log/' -e '/logs/' -e '\.log')"
+
+# misc
+abbr lmk "say 'Process complete.'" # pin to the tail of long commands
+
+abbr m "math" # quick calculations in the terminal
+
 # URL encode/decode
 abbr urlencode 'python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])"'
 abbr urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.argv[1])"'
-
-# todo.txt
-abbr to 'todo.sh'
-
-# git-flow
-abbr gfi 'git flow init'
-abbr gff 'git flow feature'
-abbr gffs 'git flow feature start'
-abbr gffs 'git flow feature finish'
-abbr gfh 'git flow hotfix'
-abbr gfhs 'git flow hotfix finish'
 
 # svn
 abbr s 'svn'
@@ -245,53 +243,4 @@ abbr exiftime "exiftool -time:all -s" # show all time attrs
 abbr exifval "exiftool -s -s -s" # just print value(s)
 
 # wp-cli
-abbr wpcc "wp core config" # Generate a wp-config.php file.
-abbr wpcd "wp core download" # Download core WordPress files.
-abbr wpci "wp core install" # Create the WordPress tables in the database.
-abbr wpcii "wp core is-installed" # Determine if the WordPress tables are installed.
-abbr wpcmc "wp core multisite-convert" # Transform a single-site install into a multi-site install.
-abbr wpcmi "wp core multisite-install" # Install multisite from scratch.
-abbr wpcu "wp core update" # Update WordPress.
-abbr wpcudb "wp core update-db" # Update the WordPress database.
-abbr wpcv "wp core version" # Display the WordPress version.
-
-abbr wpdbcli "wp db cli" # Open a mysql console using the WordPress credentials.
-abbr wpdbc "wp db create" # Create the database, as specified in wp-config.php
-abbr wpdbd "wp db drop" # Delete the database.
-abbr wpdbe "wp db export" # Exports the database to a file or to STDOUT.
-abbr wpdbi "wp db import" # Import database from a file or from STDIN.
-abbr wpdbo "wp db optimize" # Optimize the database.
-abbr wpdbq "wp db query" # Execute a query against the database.
-abbr wpdbrp "wp db repair" # Repair the database.
-abbr wpdbrs "wp db reset" # Remove all tables from the database.
-abbr wpdbt "wp db tables" # List the database tables.
-
-abbr wppa "wp plugin activate" # Activate a plugin.
-abbr wppda "wp plugin deactivate" # Deactivate a plugin.
-abbr wppd "wp plugin delete" # Delete plugin files.
-abbr wppg "wp plugin get" # Get a plugin.
-abbr wppi "wp plugin install" # Install a plugin.
-abbr wppii "wp plugin is-installed" # Check if the plugin is installed.
-abbr wppl "wp plugin list" # Get a list of plugins.
-abbr wppp "wp plugin path" # Get the path to a plugin or to the plugin directory.
-abbr "wppsearch" "wp plugin search" # Search the wordpress.org plugin repository.
-abbr wpps "wp plugin status" # See the status of one or all plugins.
-abbr wppt "wp plugin toggle" # Toggle a plugin's activation state.
-abbr wppu "wp plugin uninstall" # Uninstall a plugin.
-abbr wppu "wp plugin update" # Update one or more plugins.
-
-abbr wpta "wp theme activate" # Activate a theme.
-abbr wptd "wp theme delete" # Delete a theme.
-abbr wptda "wp theme disable" # Disable a theme in a multisite install.
-abbr wpte "wp theme enable" # Enable a theme in a multisite install.
-abbr wptg "wp theme get" # Get a theme
-abbr wpti "wp theme install" # Install a theme.
-abbr wptii "wp theme is-installed" # Check if the theme is installed.
-abbr wptl "wp theme list" # Get a list of themes.
-abbr wptm "wp theme mod" # Manage theme mods.
-abbr wptp "wp theme path" # Get the path to a theme or to the theme directory.
-abbr "wptsearch" "wp theme search" # Search the wordpress.org theme repository.
-abbr wpts "wp theme status" # See the status of one or all themes.
-abbr wptu "wp theme update" # Update one or more themes.
-abbr wpmig "wp wpmdb migrate" # wp migrate db pro cli
 abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"

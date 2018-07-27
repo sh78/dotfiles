@@ -1,5 +1,5 @@
 function cd --description "auto ls for each cd"
-  if [ -n $argv[1] ]
+  if count $argv > /dev/null
     builtin cd $argv[1]
     and ls -F
   else
