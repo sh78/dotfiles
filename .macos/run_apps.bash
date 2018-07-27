@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
 
+# Apps that need some manual loving
 apps=(
     "1Password"
     "Bartender 3"
-    "Chrome"
     "iTerm"
-    "mac2imgur"
-    "Utilities/NoSleep"
-    "Spectacle"
     "Sublime Text"
     "TextExpander"
-    "System Preferences"
 )
 
 for app in ${apps[@]}; do
@@ -24,9 +20,10 @@ brew services start crisidev/chunkwm/chunkwm
 brew services start koekeishiya/formulae/khd
 
 echo "Installing bundles in vim..."
-vim +BundleInstall
-nvim +BundleInstall
+vim +PlugInstall
+nvim +PlugInstall
 
 echo "Setting up phpcd linting..."
-pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
-pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd
+# TODO: change to appropriate plugin/path
+# pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
+# pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd

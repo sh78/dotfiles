@@ -15,6 +15,7 @@ git config --global credential.helper osxkeychain
 # define app arrays
 
 brew_taps=(
+  "bradp/vv"
   "PX4/homebrew-px4"
   "homebrew/dupes"
   "homebrew/php"
@@ -24,6 +25,7 @@ brew_taps=(
   "risidev/homebrew-chunkwm"
   "rockyluke/devops"
   "thoughtbot/formulae"
+  "clintmod/formulas"
 )
 
 user_brews=(
@@ -35,7 +37,7 @@ user_brews=(
   avr-gcc
   avrdude
   bash
-  bradp/vv/vv
+  vv
   cheat
   chumkwm
   cmake
@@ -68,6 +70,7 @@ user_brews=(
   imagemagick
   khd
   mackup
+  macprefs
   mercurial
   mplayer
   mysql
@@ -93,12 +96,10 @@ user_brews=(
   ssh-copy-id
   tasksh
   teensy_loader_cli
-  the_silver_searcher
   tidy-html5
   timewarrior
   tmux
   tmuxinator-completion
-  todo-txt
   tokei
   tor
   trash
@@ -141,6 +142,7 @@ npm_packages=(
   grunt-cli
   gulp
   http-server
+  js-yaml
   jshint
   lighthouse
   live-server

@@ -2,6 +2,10 @@
 
 # ~/.osx — adapted from https://mths.be/osx
 
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -18,133 +22,17 @@ sudo /usr/sbin/scutil --set HostName $1
 sudo /usr/sbin/scutil --set LocalHostName $1
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $1
 
+# Set standby delay to 24 hours (default is 1 hour)
+sudo pmset -a standbydelay 86400
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
-
-## System Preferences > Sound
-
-    ### Select an alert sound: Sosumi
-    defaults write com.apple.systemsound 'com.apple.sound.beep.sound' -string '/System/Library/Sounds/Sosumi.aiff'
-
-## System Preferences > Users & Groups
-
-    ### Login Options > Display login window as: Name and password
-    defaults write com.apple.loginwindow 'SHOWFULLNAME' -bool true
-
-## System Preferences > General
-
-	# Set Dark UI
-	#defaults write NSGlobalDomain AppleInterfaceStyle Dark
-
-	# Set highlight color to green
-	# defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
-
-	# Show scrollbars only when scrolling
-	defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-	# Possible values: `WhenScrolling`, `Automatic` and `Always`
-
-
-# Set sidebar icon size to small
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
-
-# Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
-
-# Disable opening and closing window animations
-defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-# Expand save panel by default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-# Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# Automatically quit printer app once the print jobs complete
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
-
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
-
-# Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-
-# Disable automatic termination of inactive apps
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
-
-# Disable the crash reporter
-#defaults write com.apple.CrashReporter DialogType -string "none"
-
-# Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
-
-# Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
-# Commented out, as this is known to cause problems in various Adobe apps :(
-# See https://github.com/mathiasbynens/dotfiles/issues/237
-#echo "0x08000100:0" > ~/.CFUserTextEncoding
-
-# Reveal IP address, hostname, OS version, etc. when clicking the clock
-# in the login window
-sudo defaults write com.apple.loginwindow AdminHostInfo HostName
 
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-## System Preferences > Energy Saver > Battery
-
-    ### Computer sleep: Never
-    sudo pmset -b sleep 0
-
-    ### Display sleep: 10 min
-    sudo pmset -b displaysleep 15
-
-    ### Slightly dim the display when using this power source
-    sudo pmset -b lessbright 0
-
-    ### Automatically reduce brightness before display goes to sleep
-    sudo pmset -b halfdim 0
-
-    ### Restart automatically if the computer freezes
-    sudo pmset -b panicrestart 15
-
-  ## System Preferences > Energy Saver > Power Adapter
-
-    ### Computer sleep: Never
-    sudo pmset -c sleep 0
-
-    ### Display sleep: 10 min
-    sudo pmset -c displaysleep 60
-
-    ### Wake for network access
-    sudo pmset -c womp 1
-
-    ### Automatically reduce brightness before display goes to sleep
-    sudo pmset -c halfdim 0
-
-    ### Start up automatically after a power failure
-    sudo pmset -c autorestart 1
-
-    ### Restart automatically if the computer freezes
-    sudo pmset -c panicrestart 15
-
-# Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Set a custom wallpaper image.
 # sudo cp $(basename `pwd`)/desktop.jpg ~/Pictures/desktop.jpg
