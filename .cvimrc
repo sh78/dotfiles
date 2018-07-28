@@ -81,13 +81,16 @@ let completionengines = ["google", "wikipedia", "youtube", "amazon", "github", "
 
 " # Mappings
 
-" let mapleader = "\"
+let mapleader = "<Space>"
 
 map ; :
 
-map <Leader>r reloadTabUncached
+map <Leader>r :reloadTabUncached
 map <Leader>x :restore<Space>
 
+" Bookmarks
+map <Leader>bc :bookmarks /Bookmarks Bar/electro/main<CR>
+map <Leader>bb :bookmarks /Bookmarks Bar/
 
 " # Site-specific configs
 
