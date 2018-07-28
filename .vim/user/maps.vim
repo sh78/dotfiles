@@ -75,7 +75,9 @@ nnoremap QQ :q!<CR>
 " start/end of line
 " replaced default of H/L moving cursor to top/bottom +/- `scrolloff`
 nnoremap H ^
+vnoremap H ^
 nnoremap L $
+vnoremap L $
 
 " yank all the things, and persist the cursor location
 nnoremap <Leader>y ylpxggyGg;h
