@@ -114,6 +114,9 @@ nnoremap <Leader><Leader> :e#<CR>
 nnoremap <Leader>2 :set tabstop=2 shiftwidth=2<cr>
 nnoremap <Leader>4 :set tabstop=4 shiftwidth=4<cr>
 
+" fix indentation of entire buffer
+nnoremap <Leader><Tab> gg=G''
+
 " global find/replace inside working directory
 function! FindReplace()
   " figure out which directory we're in
