@@ -393,6 +393,7 @@ let g:fzf_layout = { 'down': '~40%' }
 nnoremap <C-p> :Files<CR>
 " gp unmapped by default
 nnoremap gb :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
 " gh (who TF uses select mode anyway)
 nnoremap gh :Helptags<CR>
 " g; (don't need to go to a change from memory
