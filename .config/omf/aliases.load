@@ -175,8 +175,16 @@ abbr urldecode 'python -c "import urllib, sys; print urllib.unquote_plus(sys.arg
 # svn
 abbr s 'svn'
 abbr ss 'svn status'
-abbr sc 'sci commit'
-abbr sc 'sco checkout'
+abbr su 'svn up'
+abbr sa 'svn add'
+abbr sd 'svn diff'
+abbr sdd 'svn diff | nvim -R -'
+abbr sl 'svn log --limit 100 | nvim -R -'
+abbr sld 'svn log --diff --limit 40 | nvim -R +"set ft=diff" -'
+abbr sci 'svn commit'
+abbr sco 'svn checkout'
+abbr sr 'svn revert'
+abbr srr 'svn revert -R'
 abbr svnignore 'svn propset svn:ignore'
 
 # bitbucket
