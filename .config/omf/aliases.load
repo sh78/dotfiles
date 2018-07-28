@@ -18,9 +18,15 @@ abbr aliases 'eval $EDITOR ~/.config/omf/aliases.load'
 abbr funcs 'eval $EDITOR ~/.config/fish/functions/'
 abbr vr 'eval $EDITOR ~/.vimrc'
 abbr vt 'eval $EDITOR ~/.tmux.conf'
+<<<<<<< HEAD
 abbr macos 'eval $EDITOR ~/.macos/'
 abbr vp 'eval $EDITOR +silent +/add ~/.vimrc'
 abbr fishconfig 'eval $EDITOR ~/.config/omf'
+=======
+abbr macos 'eval $EDITOR +Vex ~/.macos/'
+abbr vp 'eval $EDITOR +silent +/add ~/.vimrc'
+abbr fishconfig 'eval $EDITOR +Vex ~/.config/omf'
+>>>>>>> 8d9dc19... shell: aliases
 
 #
 # System/General
