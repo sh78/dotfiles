@@ -1,5 +1,4 @@
 == mkdev | project:dev.mkdev +PENDING +computer ==
-* [ ] Remove all .bash extensions from scripts because they will later be node  #8f64fd80
 * [ ] Init makefile, calling relevant script for each task  #b593ca82
 * [ ] Convert installers arrays into packages.yml  #b1ae310e
 * [ ] Prefs:  #ad6086bf

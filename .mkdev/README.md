@@ -123,7 +123,6 @@ complete.
 
 - [ ] `make prep` 
 - [ ] `make config` 
-- [ ] `make system` 
 - [ ] `make files` 
 - [ ] `make packages` 
 - [ ] `make ruby` 
@@ -159,13 +158,6 @@ things are in order.
   - If it exists, validate it.
   - If it doesn't, prompt for input.
 2. Check for a valid package config and validate.
-
-## `make system`
-
-Is this needed?
-
-1. Configure host name, set password
-2. ...?
 
 ## `make files`
 
