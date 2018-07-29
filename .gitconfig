@@ -12,9 +12,9 @@
 [column]
     ui = auto,dense
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore
 	autocrlf = input
-  hookspath = ~/.githooks
+    hookspath = ~/.githooks
 [credential]
 	helper = cache --timeout 64800
 [gitsh]
