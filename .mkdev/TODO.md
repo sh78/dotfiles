@@ -1,9 +1,6 @@
 == mkdev | project:dev.mkdev +PENDING +computer ==
-* [ ] Init makefile, calling relevant script for each task  #b593ca82
 * [ ] Convert installers arrays into packages.yml  #b1ae310e
-* [ ] Prefs:  #ad6086bf
-    * [ ] Go through mathias prefs script and set everything  #7759477a
-    * [ ] Test export/import  #333e5f8f
+* [ ] Init makefile, calling relevant script for each task  #b593ca82
 * [ ] Convert or create script(s) for each task:  #97496c18
     * [ ] `make prep`  #9657ff18
     * [ ] `make config`  #e77da391
@@ -24,6 +21,5 @@
     * [ ] `make 1password`  #085b9014
     * [ ] `make chrome`  #40552d76
     * [ ] `make extra`  #e7e5aba5
-* [ ] Make task for resetting or uninstalling  #b6a7a27f
 * [ ] Save a backup with datetime for any task that's run  #e958b73d
 * [ ] record disk usage before and after install and write to log/  #8f20d240
