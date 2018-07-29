@@ -19,6 +19,7 @@ plugins/ta/data/*
 .gem/credentials
 .gist-vim
 .local/
+.mkdev/defaults-export-*
 .netrc
 .pgpass
 .pgpass
