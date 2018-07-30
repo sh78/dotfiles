@@ -56,6 +56,10 @@ endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 
+" natural cursor movement between lines
+nnoremap j gj
+nnoremap k gk
+
 " Get off my lawn (disables mouse support, which is too fancy to quit)
 nnoremap <Left> :echo "Use h"<CR>
 nnoremap <Right> :echo "Use l"<CR>
@@ -65,19 +69,21 @@ nnoremap <Down> :echo "Use j"<CR>
 " su-DOH
 cmap w!! w !sudo tee % >/dev/null
 
-" close buffer
-map Q :bd
 " quick save
 nnoremap W :w!<CR>
-" quick no save
-nnoremap QQ :q!<CR>
 
 " start/end of line
 " replaced default of H/L moving cursor to top/bottom +/- `scrolloff`
 nnoremap H ^
 vnoremap H ^
 nnoremap L $
-vnoremap L $
+vnoremap L vg_
+
+" easier paren matching
+nnoremap <Tab> %
+
+" Select (charwise) the contents of the current line, excluding indentation.
+nnoremap vv ^vg_
 
 " yank all the things, and persist the cursor location
 nnoremap <Leader>y ylpxggyGg;h
@@ -104,8 +110,16 @@ nnoremap <Leader>zp [s1z=<C-o>
 nnoremap <Leader>zgn ]szg<C-o>
 nnoremap <Leader>zgp [szg<C-o>
 
+" correct previous/current spelling error
+inoremap <C-z> <esc>mz[s1z=`za
+
 " tidy up quickly
-nnoremap <Leader>gq vapgq
+nnoremap Q gqip
+vnoremap Q gq
+inoremap <C-q> <Esc>mzgqip`za
+
+" uppercase current word
+inoremap <C-u> <esc>mzgUiw`za
 
 " quickly switch to last buffer
 nnoremap <Leader><Leader> :e#<CR>

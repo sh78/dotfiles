@@ -95,12 +95,8 @@ set shiftwidth=4
 set undofile
 set undodir=~/.vim/undodir
 
-" natural cursor movement between lines
-:nnoremap j gj
-:nnoremap k gk
-
 " characters used to denote invisible characters
-set listchars=tab:▸\ ,eol:⌐
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
 " open new panes to right/bottom
 set splitbelow

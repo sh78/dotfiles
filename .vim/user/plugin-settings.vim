@@ -134,7 +134,7 @@ vnoremap <Leader>as :Tabularize /<Space><CR>
 " undotree - undo tree visualizer
 "
 
-nnoremap <C-z> :UndotreeToggle<CR>
+nnoremap U :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
