@@ -145,12 +145,13 @@ complete.
 This is a bash script. It is run first for **any** `make` command to ensure
 things are in order.
 
-1. Check available disk space, confirm with user before proceeding if not a lot.
-2. Configure node/NPM and install self dependencies if not.
-3. Determine which type of system this is and cache that somewhere.
-4. Run `make config`
-5. Check for flag that file sync is ready. If not, confirm with user before
+1. Configure node/NPM and install self dependencies if not.
+2. Determine which type of system this is and cache that somewhere.
+3. Run `make config`
+4. Check for flag that file sync is ready. If not, confirm with user before
+5. Check available disk space, confirm with user before proceeding if not a lot.
    proceeding.
+6. Check available disk space, confirm with user before proceeding if not a lot.
 
 ## `make config`
 
