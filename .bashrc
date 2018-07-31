@@ -32,11 +32,11 @@ alias ..='cd ..' # up one
 alias ....='cd ../..' # up two
 alias cdd='cd -' # back
 # cd then ls
-cd() { builtin cd "$@"; ls -HG }
+cd() { builtin cd "$@"; ls -HG; }
 # change dir then clear output
-cc() { cd $*; clear }
+cc() { cd $*; clear; }
 # change directory, clear output, then list contents
-ccl() { cd $*; clear; ls -FG }
+ccl() { cd $*; clear; ls -FG; }
 alias l="tree -C -L 1" # show a quick tree of files
 alias la='tree -C -a -L 1' # also list hidden files (think "list all")
 alias ls="ls -FGh" # color list output with directory markers by default
@@ -50,31 +50,7 @@ alias op="open ./" # open your current dir in Finder and accept defeat
 alias rmrf="rm -rf" # as if bricking your machine wasn't easy enough
 alias rmrfp="rm -rfp" # you could say that again
 alias mkdirp='mkdir -p' # nesting
-take() { mkdir -p $1; cd $1 }
-mkdirs() { for dir in "$@"; do mkdir "$dir"; done }
-# match filenames containing given string and move into a new dir of that name
-mvm() { mkdir ./mvmtemp; mv ./*"$@"* ./mvmtemp; mv ./mvmtemp ./"$@" }
-# remove matched files recursively
-rmvm() {
-    for pattern in $@; do
-	find . -type f -name "$pattern" -exec rm -r {} \ ;
-    done
-}
-# remove unmatched files recursively
-rmvm!() {
-    for pattern in $@; do
-	find . -type f ! \( -name "$pattern" \) -exec rm -r {} \ ;
-    done
-}
-alias cpp='cp -p' # preserve attributes
-alias cpr='cp -R' # recursive
-alias cppr='cp -pR' # preserve attributes and recursive
-alias scpr='scp -r' # recursive
-alias df='df -h' # uses abbreviated size formats rather than bits
-alias duh='du -h' # list disk usage for all files in ./
-alias dush='du -sh' # list total disk usage of ./
-# list file size of all dirs inside a given dir
-dushs() { for i in $1/*; do du -sh $i; done }
+take() { mkdir -p $1; cd $1; }
 alias chx='chmod +x' # make it executable
 alias chR='chmod -R' # recursive
 
@@ -99,14 +75,9 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 #
 
 alias getwebsite="wget -r --no-parent" # download entire directory of web site
+
 # the new NValt alternate. works with all online sync services on any platform
 n() { mkdir ~/notes; touch ~/notes/first.txt; cd ~/notes/; vim ~/notes; cd - ; }
-alias getheaders="curl --head" # get http headers of a website
-# check gzip compression of a website
-gzipchk() { curl -I -H 'Accept-Encoding: gzip,deflate' "$@" | grep --color 'Content-Encoding:'; }
-# display available emacs games
-alias emacsgames='ls /usr/share/emacs/22.1/lisp/play'
-wait() { sleep $1; eval $2; }
 
 #
 # OSX - Nifties
@@ -114,8 +85,6 @@ wait() { sleep $1; eval $2; }
 
 # Quick-look a file (^C or space to close)
 alias ql='qlmanage -p 2>/dev/null'
-# open with [/Applications/App.app]
-alias opa='open -a'
 # lock screen
 alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 # Save a screen shot to current directory. 1s delay provided for app switching.
@@ -124,20 +93,6 @@ alias snap='screencapture -T 1 "Screen Shot $(date +'%Y-%m-%d') at $(date +"%I.%
 alias snapx='screencapture -T 1 -x "Screen Shot $(date +'%Y-%m-%d') at $(date +"%I.%M.%S %p").png"'
 alias mute="osascript -e 'set volume output muted true'"
 alias unmute="osascript -e 'set volume output muted false'"
-# spool a local server | thanks Paul Irish
-server() {
-  local port="${1:-8000}"
-  python -m SimpleHTTPServer "$port"
-  open "http://localhost:${port}"
-}
-# ngrok localhost server - url subdomain [user] [pass]
-serve() {
-  open "http://$2.ngrok.com/"
-  open "http://localhost:4040/"
-  ngrok -subdomain="$2" -httpauth="$3:$4" $1
-}
-# fix persmissions of local wordpress install to allow internet functions
-fixlocalwp() { sudo chown -R _www ./; sudo chmod -R g+w ./; }
 
 #
 # WEB (OSX)
@@ -191,11 +146,6 @@ tabata() {
 brushteeth() {
   open http\://e.ggtimer.com/brushteeth
   # (for healthy teeth)
-}
-
-findphone() {
-  open "https://www.icloud.com#find"
-  open "https://panel.preyproject.com/app"
 }
 
 meditate() {
