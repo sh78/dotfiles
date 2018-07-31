@@ -11,7 +11,8 @@ abbr archive "cd ~/Drive/archive*"
 abbr dots 'cd ~/Drive/dotfiles/'
 abbr src 'cd ~/src/'
 abbr notes 'cd ~/Drive/notes; and eval $EDITOR index.md'
-abbr clxnotes '~/Drive/clorox/notes; and eval $EDITOR index.md'
+abbr n 'cd ~/Drive/notes; and eval $EDITOR index.md'
+abbr clxn '~/Drive/clorox/notes; and eval $EDITOR index.md'
 
 # quick edits to dot files
 abbr aliases 'eval $EDITOR ~/.config/omf/aliases.load'
