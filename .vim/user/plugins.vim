@@ -136,6 +136,7 @@ Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks', 'Lack', 'Lacks', 'Lack!', 'Black', 'Blacks', 'Black!'] }
 Plug 'wincent/loupe'
+Plug 'Yggdroot/indentLine'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zirrostig/vim-schlepp'
