@@ -4,16 +4,13 @@
 apps=(
     "1Password"
     "Bartender 3"
-    "iTerm"
-    "Sublime Text"
+    "iTerm2"
     "TextExpander"
 )
 
 for app in ${apps[@]}; do
     open "/Applications/$app.app"
 done
-
-open "https://packagecontrol.io/installation"
 
 echo "opening chunkwm tiling window manager and khd..."
 brew services start crisidev/chunkwm/chunkwm
@@ -24,6 +21,5 @@ vim +PlugInstall
 nvim +PlugInstall
 
 echo "Setting up phpcd linting..."
-# TODO: change to appropriate plugin/path
-# pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
-# pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd
+pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
+pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd

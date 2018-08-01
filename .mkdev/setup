@@ -2,40 +2,27 @@
 
 echo "setting preferences..."
 sleep 1
-bash ./prefs.bash
-
-echo "running cleanup..."
-sleep 1
-bash ./cleanup.bash
+bash ./prefs
 
 echo "running installers..."
 sleep 1
-bash ./installers.bash
+bash ./installers
 
 echo "opening Drive, start sync process now and press [Enter] key when fully syned..."
 open /Applications/Google \ Drive.app
 
 echo "setting up fish..."
 sleep 1
-bash ./fish.bash
+bash ./fish
 
 echo "setting up ruby, rbenv, and gems..."
 sleep 1
-bash ./ruby.bash
-
-echo "setting up mysql..."
-sleep 1
-bash ./mysql.bash
+bash ./ruby
 
 read -p "restoring from mackup backup (sym links). press [Enter] to continue when Google Drive is fully synced..."
 sleep 1
-bash ./mackup.bash
+bash ./mackup
 
 echo "opening some apps for manual setup..."
 sleep 1
-bash ./run_apps.bash
-
-echo "running some miscellany..."
-sleep 1
-bash ./misc.bash
-
+bash ./run_apps

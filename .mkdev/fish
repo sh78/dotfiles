@@ -12,7 +12,7 @@ echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 
 # Set up oh-my-fish
-# curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
+# curl -L https://get.oh-my.fish | fish
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install > install_omf
 
 # remove line in success block that starts a fish shell and interrupts the remaining processes
