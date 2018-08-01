@@ -10,7 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 xcode-select --install
 
 # set up git cred caching
-git config --global credential.helper osxkeychain
+# git config --global credential.helper osxkeychain
 
 # define app arrays
 
@@ -188,12 +188,11 @@ pip3_packages=(
   proselint
   mps-youtube
   neovim
-  "git+git://github.com/tbabej/tasklib@develop"
+  tasklib
 )
 
 user_apps=(
   1password
-  airtable
   bartender3
   carbon-copy-cloner
   coconutbattery
@@ -202,7 +201,6 @@ user_apps=(
   docker
   firefox
   flash
-  franz
   gas-mask
   gifrocket
   google-chrome
@@ -263,13 +261,11 @@ pip install --upgrade setuptools
 pip install --upgrade pip
 easy_install iso8601
 
-
 # install python packages
 echo "Installing pip packages..."
 pip install ${pip_packages[@]}
 echo "Installing pip3 packages..."
 pip3 install ${pip3_packages[@]}
-
 
 # install composer packages
 composer global require "asm89/twig-lint" "@stable" # dep of SublimeLinter-twig
@@ -279,7 +275,6 @@ echo "Installing npm packages..."
 npm install -g ${npm_packages[@]}
 
 # install the cask
-# echo "Making room for the cask..."
 brew tap phinze/homebrew-cask
 brew install brew-cask
 brew tap caskroom/versions
@@ -304,20 +299,3 @@ brew tap caskroom/fonts
 # # install fonts
 echo "installing fonts..."
 brew cask install ${user_fonts[@]}
-
-
-# set up POW! | http://pow.cx/
-## Create the required host directories:
-# mkdir -p ~/Library/Application\ Support/Pow/Hosts
-#ln -s ~/Library/Application\ Support/Pow/Hosts ~/.pow
-## Setup port 80 forwarding and launchd agents:
-#sudo pow --install-system
-#pow --install-local
-## Load launchd agents:
-#sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
-#launchctl load -w ~/Library/LaunchAgents/cx.pow.powd.plist
-
-# Install vagrant & Parallels provider
-## http://parallels.github.io/vagrant-parallels/
-# brew cask install vagrant
-# vagrant plugin install vagrant-parallels
