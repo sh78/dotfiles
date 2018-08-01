@@ -2,7 +2,7 @@
 set -gx OMF_PATH "$HOME/.local/share/omf"
 
 # iTerm fish shell integration
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.(basename $SHELL)
 
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
