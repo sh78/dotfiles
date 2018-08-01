@@ -195,10 +195,10 @@ user_apps=(
   docker
   firefox
   flash-npapi
-  gas-mask
   gifrocket
   google-chrome
-  google-drive
+  google-chrome-canary
+  google-backup-and-sync
   iexplorer
   imageoptim
   iterm2
