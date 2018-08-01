@@ -15,31 +15,23 @@ xcode-select --install
 # define app arrays
 
 brew_taps=(
-  "bradp/vv"
-  "PX4/homebrew-px4"
-  "homebrew/dupes"
-  "homebrew/php"
-  "homebrew/services"
-  "koekeishiya/formulae"
-  "osx-cross/avr"
-  "risidev/homebrew-chunkwm"
-  "rockyluke/devops"
-  "thoughtbot/formulae"
-  "clintmod/formulas"
+  'PX4/homebrew-px4'
+  'osx-cross/avr'
+  'rockyluke/devops'
+  'thoughtbot/formulae'
+  'clintmod/formulas'
+  'crisidev/homebrew-chunkwm'
 )
 
 user_brews=(
-  "homebrew/dupes/grep"
-  "php72 --with-pear --with-pcntl --with-httpd --with-thread-safety"
-  "vim --with-features=huge --with-python3 --with-ruby --with-perl"
   ack
   apple-gcc42
   avr-gcc
   avrdude
   bash
-  vv
+  'bradp/vv/vv'
   cheat
-  chumkwm
+  chunkwm
   cmake
   cmatrix
   cmus
@@ -63,13 +55,14 @@ user_brews=(
   gitlint
   gitsh
   go
+  grep
   gtypist
   gpg
   hadolint
   httrack
   hub
   imagemagick
-  khd
+  'koekeishiya/formulae/khd'
   mackup
   macprefs
   mercurial
@@ -86,7 +79,7 @@ user_brews=(
   python3
   rbenv
   rename
-  rigrep
+  ripgrep
   rsync
   ruby-build
   selecta
@@ -105,6 +98,7 @@ user_brews=(
   tor
   trash
   tree
+  vim
   watch
   wget
   wp-cli
@@ -165,8 +159,8 @@ npm_packages=(
   surge
   swaglint
   tern
-  webpack-dev-server@2
-  webpack@3
+  'webpack-dev-server@2'
+  'webpack@3'
   write-good
   yarn
   yo
@@ -193,14 +187,14 @@ pip3_packages=(
 
 user_apps=(
   1password
-  bartender3
+  bartender
   carbon-copy-cloner
   coconutbattery
   cool-retro-term
   cyberduck
   docker
   firefox
-  flash
+  flash-npapi
   gas-mask
   gifrocket
   google-chrome
@@ -249,11 +243,14 @@ echo "Setting up homebrew..."
 brew doctor
 brew update
 
-# What's on tap?
-brew install ${brew_taps[@]}
+for tap in "${brew_taps[@]}"; do
+    brew tap $tap
+done
 
 echo "Installing user brews..."
-brew install ${user_brews[@]}
+for formula in "${user_brews[@]}"; do
+    brew install $formula
+done
 
 # update pip stuff for the newly installed python
 echo "Updating pip..."
@@ -263,39 +260,38 @@ easy_install iso8601
 
 # install python packages
 echo "Installing pip packages..."
-pip install ${pip_packages[@]}
+pip install "${pip_packages[@]}"
 echo "Installing pip3 packages..."
-pip3 install ${pip3_packages[@]}
+pip3 install "${pip3_packages[@]}"
 
 # install composer packages
 composer global require "asm89/twig-lint" "@stable" # dep of SublimeLinter-twig
 
 # install npm packages
 echo "Installing npm packages..."
-npm install -g ${npm_packages[@]}
+npm install -g "${npm_packages[@]}"
 
 # install the cask
-brew tap phinze/homebrew-cask
-brew install brew-cask
-brew tap caskroom/versions
+brew tap caskroom/cask
 
 # install user_apps
 echo "Installing apps..."
-brew cask install --appdir=/Applications ${user_apps[@]}
+for formula in "${user_apps[@]}"; do
+    brew cask install $formula
+done
 
 # add `subl` command
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
 
 # install Prey with API key prompt
-read -p "Enter Prey API key from https://panel.preyproject.com/settings/user-profile:" prey_api_key
-API_KEY="$prey_api_key" brew cask install --appdir="/Applications" install prey
+read -p "Set up Prey https://panel.preyproject.com/settings/user-profile:" prey_api_key
 
 # echo "installing quicklook extensions..."
-brew cask install ${qlexts[@]}
+brew cask install "${qlexts[@]}"
 
 # echo "pulling the font cask..."
 brew tap caskroom/fonts
 
 # # install fonts
 echo "installing fonts..."
-brew cask install ${user_fonts[@]}
+brew cask install "${user_fonts[@]}"
