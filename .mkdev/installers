@@ -55,6 +55,7 @@ user_brews=(
   figlet
   findutils
   fortune
+  fswatch
   fzf
   gcc-arm-none-eabi
   gifsicle
