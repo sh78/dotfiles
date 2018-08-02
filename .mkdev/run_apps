@@ -18,7 +18,7 @@ brew services start koekeishiya/formulae/khd
 
 echo "Installing bundles in vim..."
 vim +PlugInstall
-nvim +PlugInstall
+nvim +PlugInstall +UpdateRemotePlugins
 
 echo "Setting up phpcd linting..."
 pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
