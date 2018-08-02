@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# @sh78
+
+# Set the time format to 24 hour
+# https://apple.stackexchange.com/questions/75116/i-want-to-change-clock-from-12h-to-24h-mode-via-terminal
+defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d  H:mm'
+
 # ~/.macos — https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
