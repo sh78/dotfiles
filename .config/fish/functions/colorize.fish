@@ -8,6 +8,6 @@ function colorize --description "Set light/dark theme based on \$COLOR"
       end
     # TODO: else if (uname) == Linux
     else
-      echo "it2selectcolor is not installed"
+      echo "it2setcolor is not installed"
     end
 end

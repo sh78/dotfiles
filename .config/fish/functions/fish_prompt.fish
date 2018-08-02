@@ -34,7 +34,7 @@ function fish_prompt
   if [ $last_status -ne 0 ]
     set pcolor $bred
     set __fish_prompt_char "💥 ($status)"
-    if test $TERM_PROGRAM = "iTerm.app"
+    if type -q it2attention
       it2attention  fireworks
     end
   end
