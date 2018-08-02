@@ -10,12 +10,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'
 
-if !has('nvim')
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-"  _______ _____ __  __     _____   ____  _____  ______             _____  ______
-" |__   __|_   _|  \/  |   |  __ \ / __ \|  __ \|  ____|      /\   |  __ \|  ____|   /\
+"   _______ _____ __  __     _____   ____  _____  ______             _____  ______
+"  |__   __|_   _|  \/  |   |  __ \ / __ \|  __ \|  ____|      /\   |  __ \|  ____|   /\
     " | |    | | | \  / |   | |__) | |  | | |__) | |__        /  \  | |__) | |__     /  \
     " | |    | | | |\/| |   |  ___/| |  | |  ___/|  __|      / /\ \ |  _  /|  __|   / /\ \
     " | |   _| |_| |  | |   | |    | |__| | |    | |____    / ____ \| | \ \| |____ / ____ \
@@ -86,13 +89,12 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'christoomey/vim-sort-motion'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color', { 'for': ['css', 'sass'] }
-Plug 'carlitux/deoplete-ternjs'
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish', { 'for': 'fish' }
