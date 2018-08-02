@@ -22,4 +22,4 @@ nvim +PlugInstall
 
 echo "Setting up phpcd linting..."
 pushd ~/.vim/bundle/phpcd.vim/ && composer update && pushd
-pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && and composer update && pushd
+pushd ~/.vim/bundle/phpcd.vim/vendor/lvht/msgpack-rpc/ && composer update && pushd
