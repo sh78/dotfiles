@@ -29,6 +29,7 @@ chunkc core::log_level warn
 #
 
 chunkc core::plugin_dir /Users/sean/.chunkwm_plugins
+# chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
