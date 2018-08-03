@@ -16,11 +16,13 @@ xcode-select --install
 
 brew_taps=(
   'PX4/homebrew-px4'
+  'bradp/vv'
+  'clintmod/formulas'
+  'crisidev/homebrew-chunkwm'
+  'koekeishiya/formulae'
   'osx-cross/avr'
   'rockyluke/devops'
   'thoughtbot/formulae'
-  'clintmod/formulas'
-  'crisidev/homebrew-chunkwm'
 )
 
 user_brews=(
@@ -29,7 +31,7 @@ user_brews=(
   avr-gcc
   avrdude
   bash
-  'bradp/vv/vv'
+  vv
   cheat
   chunkwm
   cmake
@@ -62,7 +64,7 @@ user_brews=(
   httrack
   hub
   imagemagick
-  'koekeishiya/formulae/khd'
+  khd
   mackup
   macprefs
   mercurial
