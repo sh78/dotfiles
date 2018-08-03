@@ -110,6 +110,7 @@ abbr gsi 'git svn show-ignore >> .git/info/exclude'
 
 # tmux
 abbr tm 'tmux'
+abbr tmn 'tmux new -s'
 abbr tml 'tmux ls'
 abbr tma 'tmux attach -t'
 abbr tmk 'tmux kill-session -t'
