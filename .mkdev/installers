@@ -78,6 +78,7 @@ user_brews=(
   python
   python3
   rbenv
+  reattach-to-user-namespace
   rename
   ripgrep
   rsync
