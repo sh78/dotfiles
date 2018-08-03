@@ -849,7 +849,7 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Google Drive/dotfiles/.bin/osx/extra/iterm</string>
+	<string>~/Drive/dotfiles/.mkdev/extra/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -904,17 +904,25 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>269 197 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 289 620 392 0 0 1280 778 </string>
+	<string>410 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 126 606 469 0 0 1280 777 </string>
+	<string>333 176 606 469 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>186 228 796 473 0 0 1280 800 </string>
+	<string>913 699 918 452 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 20 1250 760 0 0 1280 800 </string>
+	<string>0 0 1010 950 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>15 20 1250 760 0 0 1280 800 </string>
+	<string>95 439 1010 687 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>15 20 620 760 0 0 1280 800 </string>
+	<string>-266 1441 1910 532 -271 900 1920 1080 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>7 237 710 202 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>7 237 710 202 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>8 237 350 202 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>645 210 146 184 0 0 1280 800 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1231,7 +1239,7 @@
 				<real>0.93333333730697632</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -2464,6 +2472,8 @@
 	<true/>
 	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
 	<integer>1</integer>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncInstallUtilitiesPackage</key>
 	<true/>
 	<key>NoSyncInstallUtilitiesPackage_selection</key>
@@ -2518,7 +2528,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/sean/Google Drive/dotfiles/.bin/osx/extra/iterm</string>
+	<string>/Users/sean/Drive/dotfiles/.mkdev/extra/iterm</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -2528,7 +2538,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-21T23:39:54Z</date>
+	<date>2018-08-01T20:39:11Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2556,7 +2566,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
