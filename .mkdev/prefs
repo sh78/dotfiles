@@ -6,6 +6,15 @@
 # https://apple.stackexchange.com/questions/75116/i-want-to-change-clock-from-12h-to-24h-mode-via-terminal
 defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d  H:mm'
 
+# Default to column view in Finder
+# http://osxdaily.com/2015/11/28/hide-show-menu-bar-mac-os-x-automatically/
+# Not working ? 2018-08-02
+defaults write com.apple.Finder FXPreferredViewStyle clmv
+
+# Auto hide menu bar
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
+
 # ~/.macos — https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
