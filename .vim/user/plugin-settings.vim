@@ -357,6 +357,7 @@ nnoremap <Leader>tb :TagbarToggle<CR>
 "
 
 let g:taskwiki_syntax = 'markdown'
+let g:taskwiki_disable_concealcursor = 'yes'
 
 " TODO: not working
 nnoremap <Leader>td :TaskWikiDone
@@ -416,3 +417,9 @@ let g:peekaboo_delay = 1000
 "
 
 let g:shfmt_extra_args = '-i 4'
+
+"
+" indentline
+"
+
+let g:indentLine_concealcursor = 'nc'
