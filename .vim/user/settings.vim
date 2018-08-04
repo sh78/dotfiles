@@ -4,10 +4,6 @@
 
 let g:mapleader=' '
 
-" make both space and backslash the <Leader> but keep visual indication that
-" <Leader> was pressed
-" :map <Space> <Leader>
-
 "" Intuitive backspacing.
 set backspace=indent,eol,start
 
