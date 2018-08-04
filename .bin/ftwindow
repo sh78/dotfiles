@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ftwind - switch window (based on @george-b)
-# https://github.com/junegunn/fzf/wiki/Examples#tmux
+# Mentioned at https://github.com/junegunn/fzf/wiki/Examples#tmux
 GREEN='\033[00;32m'
 RESTORE='\033[0m'
 
