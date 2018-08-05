@@ -422,3 +422,10 @@ let g:shfmt_extra_args = '-i 4'
 "
 
 let g:indentLine_concealcursor = 'nc'
+
+"
+" NERDTree
+"
+
+nnoremap <Leader>k :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1

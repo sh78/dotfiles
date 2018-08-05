@@ -117,7 +117,6 @@ Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'machakann/vim-highlightedyank'
-" Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree', { 'on': ['UndoTreeShow', 'UndoTreeToggle'] }
@@ -142,6 +141,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zirrostig/vim-schlepp'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ryanoasis/vim-devicons'
+
 " add plugins here ^
 
 call plug#end()
