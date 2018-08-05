@@ -145,8 +145,16 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-augroup cursor_off
+
+" focus (these should be grouped into a function and called together)
+augroup focus_bg
     autocmd!
-    autocmd WinLeave * set nocursorline nocursorcolumn
-    autocmd WinEnter * set cursorline cursorcolumn
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * let &colorcolumn=join(range(81,999), ',')
+    autocmd FocusLost,WinLeave * let &colorcolumn=join(range(1,999), ',')
+augroup END
+
+augroup focus_cursor
+    autocmd!
+    autocmd BufEnter,FocusGained,VimEnter,WinEnter * set cursorline cursorcolumn
+    autocmd FocusLost,WinLeave * set nocursorline nocursorcolumn
 augroup END
