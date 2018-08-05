@@ -1,5 +1,3 @@
-/*jshint esversion: 6 */
-
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
