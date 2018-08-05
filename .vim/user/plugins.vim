@@ -92,7 +92,7 @@ Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 Plug 'ap/vim-css-color', { 'for': ['css', 'sass'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
 Plug 'christoomey/vim-titlecase'

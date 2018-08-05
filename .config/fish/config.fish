@@ -42,5 +42,11 @@ if test (date +%H) -gt 8; and test (date +%H) -lt 18
 else
   set -gx COLOR dark
 end
-colorize
+
+# Base16 Shell
+set -gx BASE16_SHELL "$HOME/.config/base16-shell/"
+if test -e $BASE16_SHELL; and status --is-interactive
+    source "$BASE16_SHELL/profile_helper.fish"
+    colorize
+end
 
