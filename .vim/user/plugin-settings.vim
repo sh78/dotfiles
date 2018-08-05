@@ -416,3 +416,4 @@ let g:indentLine_concealcursor = 'nc'
 nnoremap <Leader>k :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
+let g:NERDTreeMinimalUI=1
