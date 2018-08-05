@@ -91,6 +91,10 @@ set shiftwidth=4
 set undofile
 set undodir=~/.vim/undodir
 
+" Keep lots of command history
+" Must come after `nocompatible`
+set history=1024
+
 " characters used to denote invisible characters
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
