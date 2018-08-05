@@ -1,0 +1,12 @@
+# /Users/sean/.tmuxinator/dotfiles.yml
+
+name: dotfiles
+root: ~/Drive/dotfiles
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim +Files
+        - git s
+  - shell:
