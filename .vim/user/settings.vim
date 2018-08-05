@@ -145,4 +145,8 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-
+augroup cursor_off
+    autocmd!
+    autocmd WinLeave * set nocursorline nocursorcolumn
+    autocmd WinEnter * set cursorline cursorcolumn
+augroup END
