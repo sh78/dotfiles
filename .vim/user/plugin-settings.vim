@@ -202,22 +202,6 @@ let g:airline#extensions#whitespace#enabled=1
 " let g:airline_symbols.linenr = ''
 
 "
-" tmuxline
-"
-
-" let g:tmuxline_preset = 'full'
-let g:tmuxline_preset = {
-  \'a'       : '#S:#I',
-  \'b disabled'       : '',
-  \'c disabled'       : '',
-  \'win'     : ['#I', '#W'],
-  \'cwin'    : ['#I', '#W'],
-  \'x'       : '#(~/.bin/executables/tmux-battery 🔋 🔌 ⚡️ 10)',
-  \'y'       : ['%a', '%Y-%m-%d', '%H:%M'],
-  \'z disabled'       : '',
-  \'options' : {'status-justify': 'left'}}
-
-"
 " closetag
 "
 
@@ -293,7 +277,7 @@ let g:deoplete#enable_at_startup = 1
 " call deoplete#custom#source('_',
 "   \ 'disabled_syntaxes', ['Comment', 'String'])
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
+" let g:deoplete#ignore_sources.php = ['omni']
 
 "
 " neosnippet

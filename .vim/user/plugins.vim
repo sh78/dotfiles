@@ -98,7 +98,6 @@ Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'edkolev/tmuxline.vim'
 Plug 'fszymanski/deoplete-emoji'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
