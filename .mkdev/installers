@@ -61,6 +61,7 @@ user_brews=(
   gtypist
   gpg
   hadolint
+  htop
   httrack
   hub
   imagemagick
