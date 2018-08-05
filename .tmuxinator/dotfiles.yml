@@ -7,6 +7,6 @@ windows:
   - editor:
       layout: main-vertical
       panes:
-        - nvim +Files
+        - nvim
         - git s
   - shell:
