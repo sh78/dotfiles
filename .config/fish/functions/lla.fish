@@ -1,5 +1,7 @@
-function lla --description "show permissions, filesize, name for all files"
-  ls -AlhFG $argv | cut -c 1-11,28-34,48-
+function lla --description "sir list-alot has secrets"
+  if test -n "$COLORLS"
+    eval colorls -lA --report --sort-dirs --git-status $argv
+  else
+    command ls -lAFGh $argv
+  end
 end
-
-

@@ -3,6 +3,7 @@
 user_gems=(
 	bropages
 	bundler
+    colorls
 	compass
 	foreman
 	lolcat

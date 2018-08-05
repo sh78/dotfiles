@@ -1,9 +1,9 @@
-function cd --description "auto ls for each cd"
+function cd --description "cd w/ auto auto (color)ls"
   if count $argv > /dev/null
     builtin cd $argv[1]
-    and ls -F
+    and l
   else
     builtin cd ~
-    and ls -F
+    and l
   end
 end

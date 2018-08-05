@@ -50,3 +50,7 @@ if test -e $BASE16_SHELL; and status --is-interactive
     colorize
 end
 
+# check for colorls
+if type -q colorls
+    set -gx COLORLS 'true'
+end
