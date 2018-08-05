@@ -29,7 +29,8 @@ abbr fishconfig 'eval $EDITOR ~/.config/omf'
 
 abbr p "pwd"
 abbr h 'history'
-abbr c 'clear'
+abbr c 'cd'
+abbr cl 'clear'
 abbr x 'exit'
 
 abbr .. 'cd ..' # up one
@@ -145,6 +146,7 @@ abbr whale:bomb "docker stop (docker container ls -a -q); and docker system prun
 
 abbr starwars 'telnet towel.blinkenlights.nl'
 abbr matrix 'cmatrix -a'
+abbr lc 'colorls'
 
 #
 # Network Info
