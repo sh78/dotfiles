@@ -94,7 +94,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'ap/vim-css-color', { 'for': ['css', 'sass'] }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish', { 'for': 'fish' }
@@ -127,7 +127,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown', { 'for': ['markdown', 'vimwiki'] }
 Plug 'tbabej/taskwiki', { 'for': ['markdown', 'vimwiki'] }
-Plug 'ternjs/tern_for_vim', { 'for': 'javascript' }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tomtom/tlib_vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
