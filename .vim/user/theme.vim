@@ -4,8 +4,11 @@
 
 syntax enable
 hi Normal ctermbg=NONE
+
+" for italic comments
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+highlight Comment cterm=italic
 
 " Base16-vim
 set termguicolors
@@ -21,6 +24,3 @@ set cursorcolumn
 let &colorcolumn=join(range(81,999), ',')
 " let &colorcolumn="81,".join(range(100,999),",")
 " highlight ColorColumn ctermbg=0 guibg=LightGrey
-
-" italic comments
-highlight Comment cterm=italic
