@@ -126,6 +126,9 @@ set wildignore+=node_modules/*,bower_components/*,*.min.*
 " look more common places for ctags file than just ./tags,tags
 set tags+=./.git/tags,./.tags
 
+" Just for funzies
+set mouse=a
+
 
 "
 " Auto Commands (Global)

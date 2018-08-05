@@ -289,6 +289,8 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
+let g:neosnippet#snippets_directory='~/src/neosnippet-snippets/neosnippets'
+
 "
 " SuperTab like snippets behavior.
 "
@@ -412,4 +414,5 @@ let g:indentLine_concealcursor = 'nc'
 "
 
 nnoremap <Leader>k :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeMouseMode=2
