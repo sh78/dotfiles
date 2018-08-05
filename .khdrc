@@ -109,7 +109,8 @@ ctrl + alt - return : open -na /Applications/iTerm.app
 # ctrl + shift - return : open -na /Applications/Google\ Chrome.app
 
 # use switcher mode as a tmux-like prefix
-ctrl - space : khd -e "mode activate switcher"
+ctrl - return : khd -e "mode activate switcher"
+
 # it's persistent until escaped
 switcher - escape : khd -e "mode activate default"
 
