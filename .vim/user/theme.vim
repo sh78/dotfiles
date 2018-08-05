@@ -24,7 +24,3 @@ let &colorcolumn=join(range(81,999), ',')
 
 " italic comments
 highlight Comment cterm=italic
-
-" inherit line column color
-highlight clear SignColumn
-
