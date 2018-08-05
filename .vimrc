@@ -10,6 +10,8 @@ set nocompatible
 " handle anyone crazy enough to use a non-POSIX compatible shell like fish
 set shell=/bin/bash
 
+set encoding=UTF-8
+
 "
 " User settings
 " There is probably a better convention for these.
