@@ -16,6 +16,7 @@ plugins/ta/data/*
 .config/nvim/.netrwhist
 .composer/
 .devtoolssnippets
+.mkdev/extra/iterm/com.googlecode.iterm2.plist
 .gem/credentials
 .gist-vim
 .local/
