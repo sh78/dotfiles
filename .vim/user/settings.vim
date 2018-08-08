@@ -7,12 +7,6 @@ let g:mapleader=' '
 " Intuitive backspacing.
 set backspace=indent,eol,start
 
-" Controversial... switch colon and semicolon for easier commands
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-
 "" Keep buffers open.
 set hidden
 
