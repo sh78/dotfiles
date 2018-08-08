@@ -206,6 +206,8 @@ nnoremap <Leader><Tab> gg=G''
 nnoremap <Leader>fr :FindReplace<CR>
 nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 
+" make directory for current file
+nnoremap <Leader>! :!mkdir -p %:h<CR>
 
 "
 " Plugins:
