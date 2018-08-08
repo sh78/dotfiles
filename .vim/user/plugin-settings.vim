@@ -27,7 +27,6 @@ let g:signify_vcs_list = [ 'git', 'svn' ]
 " Goyo
 "
 
-noremap <Leader>G :Goyo<CR>
 let g:goyo_width = 80
 let g:goyo_margin_top = 3
 let g:goyo_margin_bottom = 3
@@ -78,8 +77,6 @@ let g:user_emmet_settings = {
 " Vim Better Whitespace
 "
 
-nnoremap <Leader>tw :ToggleWhitespace<CR>
-nnoremap <Leader>dw :StripWhitespace<CR>
 
 "
 " Switch.vim
@@ -113,28 +110,10 @@ let g:mustache_abbreviations = 1
 " tabularize
 "
 
-nnoremap <Leader>aa :Tabularize <CR>
-vnoremap <Leader>aa :Tabularize <CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-vnoremap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>a: :Tabularize /:\zs<CR>
-vnoremap <Leader>a: :Tabularize /:\zs<CR>
-nnoremap <Leader>a- :Tabularize /-<CR>
-vnoremap <Leader>a- :Tabularize /-<CR>
-nnoremap <Leader>a, :Tabularize /,<CR>
-vnoremap <Leader>a, :Tabularize /,<CR>
-nnoremap <Leader>a< :Tabularize /\<<CR>
-vnoremap <Leader>a< :Tabularize /\<<CR>
-nnoremap <Leader>a\| :Tabularize /\|<CR>
-vnoremap <Leader>a\| :Tabularize /\|<CR>
-nnoremap <Leader>as :Tabularize /<Space><CR>
-vnoremap <Leader>as :Tabularize /<Space><CR>
-
 "
 " undotree - undo tree visualizer
 "
 
-nnoremap U :UndotreeToggle<CR>
 let g:undotree_WindowLayout = 4
 let g:undotree_ShortIndicators = 1
 let g:undotree_DiffpanelHeight = 12
@@ -151,14 +130,6 @@ let g:gista#command#list#default_options = {
   \ 'cache': 0,
 \}
 
-nnoremap <Leader>gl :Gista list<CR>
-nnoremap <Leader>gb :Gista browse
-nnoremap <Leader>gpr :Gista post --private<CR>
-nnoremap <Leader>gpu :Gista post --public<CR>
-nnoremap <Leader>ga :Gista post --anonymous<CR>
-nnoremap <Leader>gd :Gista --delete<CR>
-nnoremap <Leader>gs :Gista star<CR>
-nnoremap <Leader>gu :Gista unstar<CR>
 
 
 "
@@ -216,39 +187,6 @@ let closetag_close_shortcut = '<leader>>'
 let g:highlightedyank_highlight_duration = 700
 hi HighlightedyankRegion cterm=reverse gui=reverse
 
-"
-" ranger.vim
-"
-
-map <leader>rr :RangerEdit<cr>
-" map <leader>rv :RangerVSplit<cr>
-" map <leader>rs :RangerSplit<cr>
-" map <leader>rt :RangerTab<cr>
-" map <leader>ri :RangerInsert<cr>
-" map <leader>ra :RangerAppend<cr>
-" map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-let g:ranger_replace_netrw = 0
-
-"
-" titlecase
-"
-
-" let g:titlecase_map_keys = 0
-" nmap <leader>gt <Plug>Titlecase
-" vmap <leader>gt <Plug>Titlecase
-" nmap <leader>gT <Plug>TitlecaseLine
-
-"
-" livedown (markdown)
-"
-
-nmap <Leader>m :LivedownToggle<CR>
-
-"
-" easy motion
-"
-
-map <C-m> <Plug>(easymotion-prefix)
 
 "
 " Ale linter
@@ -259,13 +197,6 @@ map <C-m> <Plug>(easymotion-prefix)
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_delay = 1000
 let g:ale_sign_column_always = 1
-nmap <leader>= <Plug>(ale_fix)
-nmap <leader>lt <Plug>(ale_toggle)
-" Mappings in the style of unimpaired-next
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous_wrap)
-nmap <silent> ]w <Plug>(ale_next_wrap)
-nmap <silent> ]W <Plug>(ale_last)
 
 
 "
@@ -282,12 +213,6 @@ let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 "
 " neosnippet
 "
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
 
 let g:neosnippet#snippets_directory='~/.vim/neosnippet-snippets/neosnippets'
 
@@ -335,7 +260,6 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 " tagbar
 "
 
-nnoremap <Leader>tb :TagbarToggle<CR>
 
 "
 " taskwiki
@@ -345,17 +269,16 @@ let g:taskwiki_syntax = 'markdown'
 let g:taskwiki_disable_concealcursor = 'yes'
 
 " TODO: not working
-nnoremap <Leader>td :TaskWikiDone
 
 "
 " vim schlepp (dragvisuals.vim)
 "
 
 " TODO: not working
-vnoremap <up> <Plug>SchleppUp
-vnoremap <down> <Plug>SchleppDown
-vnoremap <left> <Plug>SchleppLeft
-vnoremap <right> <Plug>SchleppRight
+vnoremap <Up> <Plug>SchleppUp
+vnoremap <Down> <Plug>SchleppDown
+vnoremap <Left> <Plug>SchleppLeft
+vnoremap <Right> <Plug>SchleppRight
 
 "
 " gutentags (ctags)
@@ -376,20 +299,11 @@ nmap <leader>nh <Plug>(LoupeClearHighlight)
 let g:fzf_layout = { 'down': '~40%' }
 
 " https://github.com/junegunn/fzf.vim#commands
-nnoremap <C-p> :Files<CR>
-" gp unmapped by default
-nnoremap gb :Buffers<CR>
-nnoremap <C-b> :Buffers<CR>
-" gh (who TF uses select mode anyway)
-nnoremap gh :Helptags<CR>
+" gh (select mode)
 " g; (don't need to go to a change from memory
-nnoremap g; :History:<CR>
-" gr unmapped by default
-nnoremap gr :Tags<CR>
-" gm unmapped by default
-nnoremap gm :Marks<CR>
+" gr (virtual replace mode)
+" gm (go to character at middle of the screenline)
 " g/ unmapped by default
-nnoremap g/ :History/<CR>
 
 "
 " peekaboo
@@ -413,7 +327,6 @@ let g:indentLine_concealcursor = 'nc'
 " NERDTree
 "
 
-nnoremap <Leader>k :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1

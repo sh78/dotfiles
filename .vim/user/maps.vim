@@ -206,3 +206,70 @@ nnoremap <Leader><Tab> gg=G''
 nnoremap <Leader>fr :FindReplace<CR>
 nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 
+
+"
+" Plugins:
+"
+
+nmap <Leader>m :LivedownToggle<CR>
+nmap <leader>= <Plug>(ale_fix)
+nmap <leader>lt <Plug>(ale_toggle)
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous_wrap)
+nmap <silent> ]w <Plug>(ale_next_wrap)
+nmap <silent> ]W <Plug>(ale_last)
+
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap g/ :History/<CR>
+nnoremap gm :Marks<CR>
+nnoremap gr :Tags<CR>
+nnoremap g; :History:<CR>
+nnoremap gh :Helptags<CR>
+
+nnoremap <Leader>td :TaskWikiDone
+
+nnoremap <Leader>tb :TagbarToggle<CR>
+
+nnoremap <Leader>gu :Gista unstar<CR>
+nnoremap <Leader>gs :Gista star<CR>
+nnoremap <Leader>gd :Gista --delete<CR>
+nnoremap <Leader>ga :Gista post --anonymous<CR>
+nnoremap <Leader>gpu :Gista post --public<CR>
+nnoremap <Leader>gpr :Gista post --private<CR>
+nnoremap <Leader>gb :Gista browse
+nnoremap <Leader>gl :Gista list<CR>
+
+" U - undo all recent changes on one line
+nnoremap U :UndotreeToggle<CR>
+
+nnoremap <Leader>as :Tabularize /<Space><CR>
+nnoremap <Leader>a\| :Tabularize /\|<CR>
+nnoremap <Leader>a< :Tabularize /\<<CR>
+nnoremap <Leader>a, :Tabularize /,<CR>
+nnoremap <Leader>a- :Tabularize /-<CR>
+nnoremap <Leader>a: :Tabularize /:\zs<CR>
+nnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>aa :Tabularize <CR>
+
+nnoremap <Leader>dw :StripWhitespace<CR>
+nnoremap <Leader>tw :ToggleWhitespace<CR>
+
+nnoremap <Leader>k :NERDTreeToggle<CR>
+
+nnoremap <Leader>G :Goyo<CR>
+
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+vnoremap <Leader>aa :Tabularize <CR>
+vnoremap <Leader>a= :Tabularize /=<CR>
+vnoremap <Leader>a: :Tabularize /:\zs<CR>
+vnoremap <Leader>a- :Tabularize /-<CR>
+vnoremap <Leader>a, :Tabularize /,<CR>
+vnoremap <Leader>a< :Tabularize /\<<CR>
+vnoremap <Leader>a\| :Tabularize /\|<CR>
+vnoremap <Leader>as :Tabularize /<Space><CR>
+
