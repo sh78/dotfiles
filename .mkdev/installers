@@ -141,6 +141,7 @@ npm_packages=(
   generator-webapp
   grunt-cli
   gulp
+  hint
   http-server
   js-yaml
   jshint
