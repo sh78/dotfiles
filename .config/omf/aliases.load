@@ -198,7 +198,6 @@ abbr bbcreate 'bb create_from_local --private --protocol=ssh'
 
 # homebrew
 abbr bi 'brew install'
-abbr get 'brew install'
 abbr bs 'brew search'
 abbr bud 'brew update'
 abbr bug 'brew upgrade'
@@ -208,7 +207,6 @@ abbr bl 'brew list'
 # homebrew cask
 abbr bci 'brew cask install'
 abbr bcs 'brew cask search'
-abbr getapp 'brew cask install'
 
 # vagrant
 abbr vag 'vagrant'
@@ -258,3 +256,6 @@ abbr exifval "exiftool -s -s -s" # just print value(s)
 
 # wp-cli
 abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPBOARD; echo 'Keys copied to clipboard!'"
+
+# fzf
+abbr f 'fzf'
