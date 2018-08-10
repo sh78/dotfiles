@@ -83,8 +83,6 @@ let completionengines = ["google", "wikipedia", "youtube", "amazon", "github", "
 
 let mapleader = "<Space>"
 
-map ; :
-
 map <Leader>r :reloadTabUncached
 map <Leader>x :restore<Space>
 
