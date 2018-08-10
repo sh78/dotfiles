@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# fcoc - checkout git commit
+# inspired by
+# https://github.com/junegunn/fzf/wiki/examples#git
+
+commits=$(git log --pretty=oneline --abbrev-commit --reverse --color) &&
+    commit=$(echo "$commits" |
+    fzf --tac +s +m -e --ansi --preview="git show --color $(echo {+1})")
+if [ -n "$commit" ]; then
+    git checkout "$(echo "$commit" | sed "s/ .*//")" || exit 1
+else
+    exit 1
+fi

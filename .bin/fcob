@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# fcob - checkout git branch/tag, with a preview showing the commits between
+# the tag/branch and HEAD
+# adapted from
+# https://github.com/junegunn/fzf/wiki/examples#git
+
+tags=$(
+git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || exit 1
+branches=$(
+    git branch --all | grep -v HEAD |
+    sed "s/.* //" | sed "s#remotes/[^/]*/##" |
+    sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || exit 1
+target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf --no-hscroll --no-multi --delimiter="\\t" -n 2 \
+    --ansi --preview="git log -200 --pretty=format:%s $(echo {+2..} |  sed 's/$/../' )" ) || exit 1
+git checkout "$(echo "$target" | awk '{print $2}')"

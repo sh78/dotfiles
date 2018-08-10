@@ -25,7 +25,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 alias v='nvim'
 alias h='history'
 alias c="clear" # easier on the thumb vs cmd+k
-alias x='exit'
+alias x='exit 0'
 
 alias p='pwd'
 alias ..='cd ..' # up one
@@ -160,6 +160,29 @@ meditate() {
 explain() {
   CMD=$(python -c "import urllib, sys; print urllib.quote_plus(sys.argv[1])" "$*")
   open "http://explainshell.com/explain?cmd=$CMD"
+}
+
+# ff - fuzzy cd from anywhere
+# default scope is $HOME
+# USAGE: ff [NAME] [PATH]
+# inspired by
+# https://github.com/junegunn/fzf/wiki/examples#changing-directory
+ff() {
+    if [ "x$1" != "x" ]; then
+        name="$1"
+    else
+        name='*'
+    fi
+
+    if [ "x$2" != "x" ]; then
+        path="$2"
+    else
+        path="$HOME"
+    fi
+
+    dir=$(find "$HOME" -type d -name "$name" |
+        fzf --ansi --preview="ls -lAFhG $(echo {+1})" --preview-window="up:60%")
+    cd "$dir" || exit 1
 }
 
 

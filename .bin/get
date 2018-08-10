@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Pick a brew formulae to install, with a side of `brew info`
+# Pass 'cask' as first arg to search casks.
+# Select multiple packages using <Tab> as described at
+# https://github.com/junegunn/fzf#key-bindings-for-command-line
+
+if [ "$1" = "cask" ]; then
+    formulae="$(brew search --cask | fzf --ansi --multi --query="$2" --preview 'brew cask info {}')"
+else
+    formulae="$(brew search | fzf --ansi --multi --query="$1" --preview 'brew info {}')"
+fi
+
+if [ "x$formulae" != "x" ]; then
+    echo "Really install $formulae? (y/n)"
+    read -r input
+    if [ "$input" = "y" ] || [ "$input" = "Y" ]; then
+        brew install "$formulae"
+    else
+        exit 0
+    fi
+fi

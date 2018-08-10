@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# fack - open rg/grep result in $EDITOR
+# checks for rg, fallback to grep
+# passes all args to `grep_command`
+# example: fack -F 'fn write('
+# inspired by
+# https://github.com/junegunn/fzf/wiki/examples
+
+grep_command=$(command -v rg || command -v grep ||
+    echo "please install rg or grep" && exit 1)
+file="$("$grep_command" "$@" | fzf | cut -f1 -d":")"
+if [ -n "$file" ]; then
+    "${EDITOR:-vim}" "$file"
+else
+    echo "USAGE: fack [[-flags]] PATTERN [[PATH]]"
+    exit 1
+fi
