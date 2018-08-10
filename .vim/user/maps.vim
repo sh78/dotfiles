@@ -193,7 +193,7 @@ nnoremap <Leader>^ :source $MYVIMRC <BAR> :PlugUpdate<CR>
 nnoremap <leader>. !ctags -R .<CR>
 
 " quickly switch to last buffer
-nnoremap <Leader><Leader> :e#<CR>
+nnoremap <Leader><Leader> <C-^><CR>
 
 " toggle indentation spaces
 nnoremap <Leader>2 :set tabstop=2 shiftwidth=2<cr>
