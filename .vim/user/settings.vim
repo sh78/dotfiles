@@ -24,7 +24,7 @@ set smartcase
 
 "" Show line numbers.
 set nonumber!
-"" hybrid number mode
+"" Use numbers relative to cursor line.
 set relativenumber
 "" Show cursor position.
 set ruler
@@ -35,18 +35,22 @@ set numberwidth=4
 set incsearch
 "" Highlight matches.
 set hlsearch
+if has("nvim")
+    " Live preview substitutions.
+    set inccommand=nosplit
+endif
 
 " hide highlighting in insert mode
-autocmd InsertEnter * :setlocal nohlsearch
-autocmd InsertLeave * :setlocal hlsearch
+autocmd InsertEnter * setlocal nohlsearch
+autocmd InsertLeave * setlocal hlsearch
 
 " hide highlighting in normal mode, after some time
-autocmd CursorHold,CursorHoldI * :setlocal nohlsearch
-autocmd CursorMoved * :setlocal hlsearch
+autocmd CursorHold,CursorHoldI * setlocal nohlsearch
 
 " TODO: show cursor highlight again if cycling through matches
-" nnoremap n :setlocal hlsearch<CR><bar>n
-" nnoremap N :setlocal hlsearch<CR><bar>N
+" autocmd CursorMoved * :setlocal hlsearch
+" nmap n setlocal hlsearch<CR><bar>n
+" nmap N setlocal hlsearch<CR><bar>N
 
 " Soft wrapping
 set wrap
