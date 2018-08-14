@@ -9,7 +9,7 @@ hi MatchParen ctermbg=none cterm=bold guibg=none gui=bold
 " for italic comments
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-highlight Comment cterm=italic
+highlight Comment cterm=italic gui=italic
 
 " Base16-vim
 set termguicolors
