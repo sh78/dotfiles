@@ -55,3 +55,16 @@ function! HorizontalConcat()
 endfunction
 command! HorizontalConcat :call HorizontalConcat()
 nnoremap <Leader>hc :HorizontalConcat<CR>
+
+function! FocusBuffer()
+    let width = &textwidth + 1
+    let &colorcolumn=join(range(width,999), ',')
+    set cursorline cursorcolumn
+endfunction
+
+function! UnfocusBuffer()
+    if &filetype != 'nerdtree'
+        let &colorcolumn=join(range(1,999), ',')
+    endif
+    set nocursorline nocursorcolumn
+endfunction

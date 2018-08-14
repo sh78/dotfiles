@@ -20,8 +20,8 @@ set encoding=UTF-8
 " source $HOME/.vim/plugin-vundle.vim
 source $HOME/.vim/user/plugins.vim
 source $HOME/.vim/user/settings.vim
+source $HOME/.vim/user/functions.vim
 source $HOME/.vim/user/autocmds.vim
 source $HOME/.vim/user/theme.vim
-source $HOME/.vim/user/functions.vim
 source $HOME/.vim/user/maps.vim
 source $HOME/.vim/user/plugin-settings.vim

@@ -3,8 +3,8 @@
 "
 
 syntax enable
-hi Normal ctermbg=NONE
-hi MatchParen ctermbg=none cterm=bold guibg=none gui=bold
+highlight Normal ctermbg=NONE
+highlight MatchParen ctermbg=none cterm=bold guibg=none gui=bold
 
 " for italic comments
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -22,6 +22,5 @@ endif
 set cursorline
 set cursorcolumn
 
-let &colorcolumn=join(range(81,999), ',')
-" let &colorcolumn="81,".join(range(100,999),",")
-" highlight ColorColumn ctermbg=0 guibg=LightGrey
+" Fade out bg outside of textwidth using colorcolumn hack
+let &colorcolumn=join(range(&textwidth + 1,999), ',')
