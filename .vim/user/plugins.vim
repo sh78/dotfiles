@@ -17,6 +17,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+" Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
+" Plug 'christoomey/vim-quicklink' " https://github.com/christoomey/vim-quicklink/issues/16
 "   _______ _____ __  __     _____   ____  _____  ______             _____  ______
 "  |__   __|_   _|  \/  |   |  __ \ / __ \|  __ \|  ____|      /\   |  __ \|  ____|   /\
     " | |    | | | \  / |   | |__) | |  | | |__) | |__        /  \  | |__) | |__     /  \
@@ -83,18 +85,17 @@ Plug 'tpope/vim-vinegar'
 " |  __| | . ` | |  | |    |  ___/| |  | |  ___/|  __|     / /\ \ |  _  /|  __|   / /\ \
 " | |____| |\  | |__| |    | |    | |__| | |    | |____   / ____ \| | \ \| |____ / ____ \
 " |______|_| \_|_____/     |_|     \____/|_|    |______| /_/    \_\_|  \_\______/_/    \_\
-"Plug 'terryma/vim-multiple-cursors' " https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db
 Plug 'AndrewRadev/switch.vim'
-" Plug 'christoomey/vim-quicklink'
-Plug 'christoomey/vim-sort-motion'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
-Plug 'chriskempson/base16-vim'
+Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color', { 'for': ['css', 'sass'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-sort-motion'
 Plug 'christoomey/vim-titlecase'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dag/vim-fish', { 'for': 'fish' }
@@ -105,15 +106,16 @@ Plug 'jasonlong/vim-textobj-css'
 Plug 'jceb/vim-textobj-uri'
 Plug 'jremmen/vim-ripgrep'
 Plug 'jreybert/vimagit'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'luochen1990/rainbow'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'machakann/vim-highlightedyank'
 Plug 'mattn/emmet-vim'
@@ -123,6 +125,8 @@ Plug 'mhinz/vim-signify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown', { 'for': ['markdown', 'vimwiki'] }
 Plug 'tbabej/taskwiki', { 'for': ['markdown', 'vimwiki'] }
@@ -136,13 +140,9 @@ Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks', 'Lack', 'Lacks', 'Lack!', 'Black', 'Blacks', 'Black!'] }
 Plug 'wincent/loupe'
-Plug 'Yggdroot/indentLine'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zirrostig/vim-schlepp'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
-
 " add plugins here ^
 
 call plug#end()
