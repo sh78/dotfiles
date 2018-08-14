@@ -35,27 +35,20 @@ set numberwidth=4
 set incsearch
 "" Highlight matches.
 set hlsearch
+
 if has("nvim")
     " Live preview substitutions.
     set inccommand=nosplit
 endif
 
-" hide highlighting in insert mode
-autocmd InsertEnter * setlocal nohlsearch
-autocmd InsertLeave * setlocal hlsearch
-
-" hide highlighting in normal mode, after some time
-autocmd CursorHold,CursorHoldI * setlocal nohlsearch
-
-" TODO: show cursor highlight again if cycling through matches
-" autocmd CursorMoved * :setlocal hlsearch
-" nmap n setlocal hlsearch<CR><bar>n
-" nmap N setlocal hlsearch<CR><bar>N
+" Format options
+set textwidth=80
 
 " Soft wrapping
 set wrap
 
-" Show 3 lines of context around the cursor.
+
+" Show 2 lines of context around the cursor.
 set scrolloff=2
 
 " Set the terminal's title

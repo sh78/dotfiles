@@ -2,14 +2,15 @@
 " Auto Commands (Global)
 "
 
-" Disable automatic comment insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Set format options
+" :help fo-table
+autocmd FileType * setlocal formatoptions+=c formatoptions-=r formatoptions-=o
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
 " inside an event handler (happens when dropping a file on gvim).
 autocmd BufReadPost *
-  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+  \ if &ft != 'gitcommit' && &ft != 'svn' && line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
 
