@@ -98,6 +98,15 @@ let g:switch_custom_definitions =
   \   ['http', 'https'],
   \   ['+', '-'],
   \   ['enabled', 'disabled'],
+  \   ['margin', 'padding'],
+  \   ['width', 'height'],
+  \   ['top', 'bottom'],
+  \   ['right', 'left'],
+  \   ['column', 'row'],
+  \   ['x', 'y'],
+  \   ['min', 'max'],
+  \   ['minimum', 'maximum'],
+  \   ['forwards', 'backwards'],
   \ ]
 
 "
