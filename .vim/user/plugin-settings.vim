@@ -107,6 +107,7 @@ let g:switch_custom_definitions =
   \   ['min', 'max'],
   \   ['minimum', 'maximum'],
   \   ['forwards', 'backwards'],
+  \   ['off', 'on'],
   \ ]
 
 "
