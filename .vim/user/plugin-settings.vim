@@ -339,3 +339,8 @@ let g:indentLine_concealcursor = 'nc'
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
+
+"
+" Rainbow Parenthesis
+"
+let g:rainbow_active = 1

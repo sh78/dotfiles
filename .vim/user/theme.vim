@@ -4,6 +4,7 @@
 
 syntax enable
 hi Normal ctermbg=NONE
+hi MatchParen ctermbg=none cterm=bold guibg=none gui=bold
 
 " for italic comments
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
