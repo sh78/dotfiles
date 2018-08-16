@@ -3,5 +3,6 @@ setlocal textwidth=80
 setlocal conceallevel=2
 setlocal tabstop=4
 setlocal shiftwidth=4
+setlocal concealcursor=
 
 let b:ale_linters = []
