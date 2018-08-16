@@ -39,7 +39,9 @@ done <<< "$windows_raw"
 windows_nice=$(column -t <<< "$windows_update")
 
 # Run through fzf, check exit status
-target=$(echo "$windows_nice" | fzf +m --reverse --ansi)
+target=$(echo "$windows_nice" | \
+    fzf +m --reverse --ansi --preview-window down:70% \
+    --preview='tmux capture-pane -pe -t {+1}')
 res=$?
 [ "$res" -eq "130" ] && exit 0
 [ "$res" -eq "0" ] || exit $res
