@@ -8,8 +8,6 @@
 # 2. Add binding in ~/.tmux.conf, such as:
 #    bind-key "'" run "tmux new-window 'bash -c fzft'"
 
-# TODO: Determine if inside tmux already and use attach-session instead of switch-client.
-
 # TODO: Color output
 # GREEN='\033[00;32m'
 # RESTORE='\033[0m'
@@ -51,4 +49,8 @@ target_window=$(echo "$target" | awk '{print $1}')
    target_window=$(echo "$target" | cut -d' ' -f3)
 
 # Switch to window (see 'COMMANDS' > 'target-session' in `man tmux`)
-tmux switch-client -t "$target_window"
+if [ -n "$TMUX" ]; then
+    tmux switch-client -t "$target_window"
+else
+    tmux attach -t "$target_window"
+fi
