@@ -128,8 +128,8 @@ vmap Y "+y
 " format quickly
 inoremap <C-q> <Esc>mzgqip`za
 
-" uppercase current word
-inoremap <C-u> <esc>mzgUiw`za
+" toggle case of current word
+inoremap <C-u> <esc>mzvaW~`za
 
 " correct previous/current spelling error
 inoremap <C-z> <esc>mz[s1z=`za
