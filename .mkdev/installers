@@ -97,6 +97,7 @@ user_brews=(
   teensy_loader_cli
   tidy-html5
   timewarrior
+  tmate
   tmux
   tmuxinator-completion
   tokei
