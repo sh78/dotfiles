@@ -143,6 +143,7 @@ Plug 'wincent/loupe'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zirrostig/vim-schlepp'
+Plug 'jiangmiao/auto-pairs'
 " add plugins here ^
 
 call plug#end()
