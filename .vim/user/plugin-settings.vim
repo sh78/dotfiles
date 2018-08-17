@@ -36,6 +36,9 @@ function! s:goyo_enter()
   let b:quitting_bang = 0
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+  Limelight
+  set nocursorline
+  set nocursorcolumn
 endfunction
 
 function! s:goyo_leave()
@@ -47,6 +50,9 @@ function! s:goyo_leave()
       qa
     endif
   endif
+  Limelight!
+  set cursorline
+  set cursorcolumn
 endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
