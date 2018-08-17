@@ -317,12 +317,10 @@ nmap <leader>nh <Plug>(LoupeClearHighlight)
 
 let g:fzf_layout = { 'down': '~40%' }
 
-" https://github.com/junegunn/fzf.vim#commands
-" gh (select mode)
-" g; (don't need to go to a change from memory
-" gr (virtual replace mode)
-" gm (go to character at middle of the screenline)
-" g/ unmapped by default
+" Show preview window for :Files
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 
 "
 " peekaboo
