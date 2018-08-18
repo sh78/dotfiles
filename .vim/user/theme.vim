@@ -4,7 +4,7 @@
 
 syntax enable
 highlight Normal ctermbg=NONE
-highlight MatchParen ctermbg=none cterm=bold guibg=none gui=bold
+highlight MatchParen ctermbg=NONE cterm=bold guibg=NONE gui=bold
 
 " for italic comments
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
