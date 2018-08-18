@@ -63,7 +63,6 @@ nnoremap z{ [szg<C-o>
 " g<Left>
 " g<Right>
 " g<Up> same as "gk)
-" g=
 " g? Rot13 encoding operator
 " gA-C,G,K-M,O,S,W-Z
 " gH select line mode
