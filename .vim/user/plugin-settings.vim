@@ -281,6 +281,7 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 " tagbar
 "
 
+let g:airline#extensions#tagbar#enabled = 0
 
 "
 " taskwiki
