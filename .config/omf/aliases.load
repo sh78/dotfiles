@@ -187,6 +187,7 @@ abbr sd 'svn diff'
 abbr sdd 'svn diff | nvim -R -'
 abbr sl 'svn log --limit 100 | nvim -R -'
 abbr sld 'svn log --diff --limit 40 | nvim -R +"set ft=diff" -'
+abbr sb 'svn blame | nvim -R +"set ft=diff" -'
 abbr sci 'svn commit'
 abbr sco 'svn checkout'
 abbr sr 'svn revert'
@@ -259,3 +260,6 @@ abbr wpsalt "curl 'https://api.wordpress.org/secret-key/1.1/salt/' | eval $CLIPB
 
 # fzf
 abbr f 'fzf'
+
+# asciinema
+abbr 'asciinema rec'
