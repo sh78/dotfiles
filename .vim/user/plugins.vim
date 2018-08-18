@@ -119,9 +119,10 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'machakann/vim-highlightedyank'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
-Plug 'mbbill/undotree', { 'on': ['UndoTreeShow', 'UndoTreeToggle'] }
+Plug 'mbbill/undotree', { 'on': 'UndoTreeToggle' }
 Plug 'mhinz/vim-signify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
