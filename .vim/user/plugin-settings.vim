@@ -352,7 +352,7 @@ let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
 
 " Inherit bg color
-highlight NERDTreeFile guibg=cleared
+highlight NERDTreeFile guibg=NONE
 
 "
 " Rainbow Parenthesis
