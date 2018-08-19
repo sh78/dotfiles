@@ -9,6 +9,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # install command line tools
 xcode-select --install
 
+# Prompt to install the full xcode
+read -p "Install Xcode from the App Store™] and press any key to continue"
+sudo xcodebuild -license accept
+
+
 # set up git cred caching
 # git config --global credential.helper osxkeychain
 
@@ -20,8 +25,10 @@ brew_taps=(
   'clintmod/formulas'
   'crisidev/homebrew-chunkwm'
   'koekeishiya/formulae'
+  'neovim/neovim'
   'osx-cross/avr'
   'rockyluke/devops'
+  'rogual/neovim-dot-app'
   'thoughtbot/formulae'
 )
 
@@ -73,6 +80,7 @@ user_brews=(
   mysql
   neofetch
   neovim
+  neovim-dot-app
   ngrep
   nmap
   node
@@ -278,6 +286,13 @@ done
 
 # add `subl` command
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+# set up Neovim.app
+ln -s /usr/local/opt/neovim-dot-app/Neovim.app /Applications
+
+# install vim-anywhere and use Neovim.app instead
+curl -fsSL https://raw.github.com/cknadler/vim-anywhere/master/install | bash
+echo '/usr/local/opt/neovim-dot-app/bin/gnvim' > ~/.vim-anywhere/.path
 
 # install Prey with API key prompt
 read -p "Set up Prey https://panel.preyproject.com/settings/user-profile:" prey_api_key
