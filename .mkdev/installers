@@ -228,17 +228,6 @@ user_apps=(
   vlc
 )
 
-user_fonts=(
-  font-anonymous-pro
-  font-source-code-pro
-  font-source-code-pro-for-powerline
-  font-source-sans-pro
-  font-source-serif-pro
-  font-spacemono-nerd-font
-  font-hack-nerd-font
-)
-
-
 # Check for Homebrew,
 # Install if we don't have it
 if test ! $(which brew); then
@@ -295,13 +284,6 @@ read -p "Set up Prey https://panel.preyproject.com/settings/user-profile:" prey_
 
 # echo "installing quicklook extensions..."
 brew cask install "${qlexts[@]}"
-
-# echo "pulling the font cask..."
-brew tap caskroom/fonts
-
-# # install fonts
-echo "installing fonts..."
-brew cask install "${user_fonts[@]}"
 
 # fetch latest base16
 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
