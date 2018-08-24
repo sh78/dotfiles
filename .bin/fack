@@ -1,17 +1,25 @@
 #!/bin/bash
 
-# fack - open rg/grep result in $EDITOR
-# checks for rg, fallback to grep
-# passes all args to `grep_command`
+# fack - open rg result in $EDITOR and jump to line
+# requires $EDITOR set to vim or nvim, and rg (ripgrep) installed
+# passes all args to `rg`
 # example: fack -F 'fn write('
 # inspired by
 # https://github.com/junegunn/fzf/wiki/examples
+# The command substitution in the --preview only works in fish
 
-grep_command=$(command -v rg || command -v grep ||
-    echo "please install rg or grep" && exit 1)
-file="$("$grep_command" "$@" | fzf | cut -f1 -d":")"
+grep_command=$(command -v rg || echo "please install rg" && exit 1)
+grep_command+=' --no-heading --hidden --follow --line-number'
+result="$($grep_command "$@" | fzf --ansi --preview-window right:40% \
+    --preview='cat (echo {+1} | cut -f1 -d":")')"
+# TODO: preview the match +/- a few lines
+# head -62 .vim/user/plugin-settings.vim | tail -7
+
+file=$(echo "$result" | cut -f1 -d":")
+line=$(echo "$result" | cut -f2 -d":")
+
 if [ -n "$file" ]; then
-    "${EDITOR:-vim}" "$file"
+    "${EDITOR:-vim}" "$file" +"$line"
 else
     echo "USAGE: fack [[-flags]] PATTERN [[PATH]]"
     exit 1
