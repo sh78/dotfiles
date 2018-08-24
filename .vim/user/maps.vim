@@ -128,10 +128,10 @@ vmap Y "+y
 inoremap <C-q> <Esc>mzgqip`za
 
 " toggle case of current word
-inoremap <C-u> <esc>mzvaW~`za
+inoremap <C-u> <Esc>mzvaW~`za
 
 " correct previous/current spelling error
-inoremap <C-z> <esc>mz[s1z=`za
+inoremap <C-z> <Esc>mz[s1z=`za
 
 
 "
