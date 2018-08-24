@@ -17,6 +17,12 @@ set encoding=UTF-8
 " There is probably a better convention for these.
 "
 
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 " source $HOME/.vim/plugin-vundle.vim
 source $HOME/.vim/user/plugins.vim
 source $HOME/.vim/user/settings.vim
@@ -25,3 +31,4 @@ source $HOME/.vim/user/autocmds.vim
 source $HOME/.vim/user/theme.vim
 source $HOME/.vim/user/maps.vim
 source $HOME/.vim/user/plugin-settings.vim
+call SourceIfExists('$HOME/.vim/user/abbreviations.vim')
