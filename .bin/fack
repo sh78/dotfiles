@@ -11,7 +11,7 @@
 grep_command=$(command -v rg || echo "please install rg" && exit 1)
 grep_command+=' --no-heading --hidden --follow --line-number'
 result="$($grep_command "$@" | fzf --ansi --preview-window right:40% \
-    --preview='cat (echo {+1} | cut -f1 -d":")')"
+    --preview='head -(echo {+1} | cut -f2 -d":") (echo {+1} | cut -f1 -d":") | tail -10')"
 # TODO: preview the match +/- a few lines
 # head -62 .vim/user/plugin-settings.vim | tail -7
 
