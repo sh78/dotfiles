@@ -37,6 +37,7 @@ plugins/ta/data/*
 .vim/bundle
 .vim/spell/en.utf-8.add.spl
 .vim/spell/en.utf-8.add
+.vim/user/abbreviations.vim
 .vimperator
 .wp-cli/
 .youtube-dl-history
