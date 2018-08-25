@@ -11,9 +11,7 @@
 grep_command=$(command -v rg || echo "please install rg" && exit 1)
 grep_command+=' --no-heading --hidden --follow --line-number'
 result="$($grep_command "$@" | fzf --ansi --preview-window right:40% \
-    --preview='head -(echo {+1} | cut -f2 -d":") (echo {+1} | cut -f1 -d":") | tail -10')"
-# TODO: preview the match +/- a few lines
-# head -62 .vim/user/plugin-settings.vim | tail -7
+    --preview='cat -n (echo {+1} | cut -f1 -d":") | grep --context=5 (echo "^.*")(echo {+1} | cut -f2 -d":")(echo "\s")')"
 
 file=$(echo "$result" | cut -f1 -d":")
 line=$(echo "$result" | cut -f2 -d":")
