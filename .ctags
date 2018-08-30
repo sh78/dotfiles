@@ -38,6 +38,7 @@
 
 --regex-javascript=/^[ \t]*(var|let|const)[ \t]+([A-Za-z0-9_$]+)[ \t]*=[ \t]*[^\[{]*;$/\2/V,Variable,Variables/
 
+
 --langdef=less
 --langmap=less:.less
 --regex-less=/^[ \t&]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
@@ -45,7 +46,6 @@
 --regex-less=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
 --regex-less=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
 --regex-less=/^[ \t]*(@[A-Za-z0-9_-]+):/\1/v,variable,variables/
---regex-javascript=/\/\/[ \t]*(FIXME|TODO)[ \t]*\:*(.*)/\1/T,Tag,Tags/
 
 --langdef=scss
 --langmap=scss:.scss
@@ -60,7 +60,6 @@
 --regex-scss=/(^(.*, *)([A-Za-z0-9_-]+)) *[,|\{]/\3/t,tag,tags/
 --regex-scss=/(^[ \t]+([A-Za-z0-9_-]+)) *[,|\{]/\1/t,tag,tags/
 --regex-scss=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/d,media,media/
---regex-javascript=/\/\/[ \t]*(FIXME|TODO)[ \t]*\:*(.*)/\1/T,Tag,Tags/
 
 --regex-html=/id="([A-Za-z0-9_-]+)"/\1/i,id,ids/
 --regex-html=/class="([A-Za-z0-9_-]+)"/\1/c,class,classes/
@@ -100,5 +99,10 @@
 --exclude=test
 --exclude=tests
 --exclude=vendor
+--exclude=*.min.js
+--exclude=*.min.css
+--exclude=*.map
+--exclude=.backup
+--exclude=.sass-cache
 
 --sort=no
