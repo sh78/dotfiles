@@ -15,6 +15,7 @@ plugins/ta/data/*
 .config/ranger/history
 .config/nvim/.netrwhist
 .composer/
+Chrome Local Overrides/
 .devtoolssnippets
 .mkdev/extra/iterm/com.googlecode.iterm2.plist
 .gem/credentials
