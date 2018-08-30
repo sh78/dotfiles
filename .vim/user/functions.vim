@@ -65,6 +65,8 @@ endfunction
 function! UnfocusBuffer()
     if &filetype != 'nerdtree'
         let &colorcolumn=join(range(1,999), ',')
+    else
+        let &colorcolumn=join(range(0,999), ',')
     endif
     set nocursorline nocursorcolumn
 endfunction
