@@ -159,6 +159,7 @@ npm_packages=(
   lighthouse
   live-server
   livedown
+  neovim
   node-sass
   puppeteer
   purify-css

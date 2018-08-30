@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
 user_gems=(
-	bropages
-	bundler
+    bropages
+    bundler
     colorls
-	compass
-	foreman
-	lolcat
-	pg
-	pry
-	rails
-	sass
-	thin
-	tmuxinator
+    compass
+    foreman
+    lolcat
+    neovim
+    pg
+    pry
+    rails
+    sass
+    thin
+    tmuxinator
 )
 
 # check that rbenv is ok
