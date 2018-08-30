@@ -22,6 +22,7 @@ nnoremap vv ^vg_
 
 " shortcut to system clipboard
 nnoremap Y "+y
+nnoremap "" "+
 
 
 " deal with next/prev spelling error and return to position
@@ -119,6 +120,7 @@ vmap H ^
 vmap L g_
 vmap Y "+y
 
+vnoremap "" "+
 
 "
 " Insert Mode:
@@ -257,6 +259,8 @@ nnoremap <Leader>dw :StripWhitespace<CR>
 nnoremap <Leader>tw :ToggleWhitespace<CR>
 
 nnoremap <Leader>k :NERDTreeToggle<CR>
+
+nnoremap <Leader>K :TagbarToggle<CR>
 
 nnoremap <Leader>G :Goyo<CR>
 
