@@ -115,7 +115,6 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
 Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'luochen1990/rainbow'
 Plug 'lvht/phpcd.vim', { 'for': 'php' }
 Plug 'machakann/vim-highlightedyank'
@@ -136,6 +135,7 @@ Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tomtom/tlib_vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/SearchComplete'
 Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
 Plug 'w0rp/ale'

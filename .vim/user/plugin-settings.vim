@@ -92,6 +92,7 @@ let g:switch_mapping = '-'
 let g:switch_custom_definitions =
   \ [
   \   switch#NormalizedCase(['+', '-']),
+  \   switch#NormalizedCase(['add', 'remove']),
   \   switch#NormalizedCase(['before', 'after']),
   \   switch#NormalizedCase(['black', 'white']),
   \   switch#NormalizedCase(['column', 'row']),
@@ -278,10 +279,69 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 
 
 "
-" tagbar
+" tagbar (related)
 "
+" See https://github.com/majutsushi/tagbar/wiki for additional filetype support
 
-let g:airline#extensions#tagbar#enabled = 0
+let g:tagbar_compact = 1
+
+let g:airline#extensions#tagbar#enabled = 1
+
+let g:tagbar_phpctags_bin='~/.bin/phpctags'
+let g:tagbar_phpctags_memory_limit = '512M'
+
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype': 'markdown',
+    \ 'ctagsbin' : '~/.bin/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+let g:tagbar_type_ruby = {
+    \ 'kinds' : [
+        \ 'm:modules',
+        \ 'c:classes',
+        \ 'd:describes',
+        \ 'C:contexts',
+        \ 'f:methods',
+        \ 'F:singleton methods'
+    \ ]
+\ }
+
+let g:tagbar_type_scss = {
+\  'ctagstype' : 'scss',
+\  'kinds' : [
+\    'v:variables',
+\    'c:classes',
+\    'i:identities',
+\    't:tags',
+\    'm:medias'
+\  ]
+\}
+
+let g:tagbar_type_less = {
+\  'ctagstype' : 'less',
+\  'kinds' : [
+\    'v:variables',
+\    'c:classes',
+\    'i:identities',
+\    't:tags',
+\    'm:medias'
+\  ]
+\}
+
+" Inherit bg color
+highlight Tagbar guibg=NONE ctermbg=NONE
+
 
 "
 " taskwiki
@@ -301,13 +361,6 @@ vnoremap <Up> <Plug>SchleppUp
 vnoremap <Down> <Plug>SchleppDown
 vnoremap <Left> <Plug>SchleppLeft
 vnoremap <Right> <Plug>SchleppRight
-
-"
-" gutentags (ctags)
-"
-
-let g:gutentags_project_root = ['.svn'] " supplemental
-let g:gutentags_cache_dir = '~/.tags'
 
 "
 " loupe
@@ -352,7 +405,7 @@ let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
 
 " Inherit bg color
-highlight NERDTreeFile guibg=NONE
+highlight NERDTreeFile guibg=NONE ctermbg=NONE
 
 "
 " Rainbow Parenthesis
