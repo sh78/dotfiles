@@ -56,12 +56,9 @@ set title
 " No beeping.
 set visualbell
 
-"" Don't make a backup before overwriting a file.
-set nobackup
-"" And again.
-set nowritebackup
 set noswapfile
 set directory=/.vim/tmp
+set backupdir=/tmp
 
 " Spelling
 setlocal spell spelllang=en_us
