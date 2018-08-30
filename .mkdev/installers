@@ -30,6 +30,7 @@ brew_taps=(
   'rockyluke/devops'
   'rogual/neovim-dot-app'
   'thoughtbot/formulae'
+  'universal-ctags/universal-ctags'
 )
 
 user_brews=(
@@ -47,7 +48,6 @@ user_brews=(
   composer
   coreutils
   cowsay
-  ctags
   dfu-programmer
   dnsmasq
   exiftool
@@ -112,6 +112,7 @@ user_brews=(
   tor
   trash
   tree
+  '--HEAD universal-ctags/universal-ctags/universal-ctags'
   vim
   watch
   wget
@@ -154,6 +155,7 @@ npm_packages=(
   http-server
   js-yaml
   jshint
+  'git+https://github.com/ramitos/jsctags.git'
   lighthouse
   live-server
   livedown
