@@ -9,10 +9,10 @@ module.exports = {
     updateChannel: 'stable',
 
     // default font size in pixels for all tabs
-    fontSize: 18,
+    fontSize: 21,
 
     // font family with optional fallbacks
-    fontFamily: '"Dank Mono", "Fira Code", "Source Code Pro", monospace',
+    fontFamily: '"DankMono Nerd Font", "Source Code Pro", monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -125,6 +125,10 @@ module.exports = {
     // for advanced config flags please refer to https://hyper.is/#cfg
 
     // Plugins
+    base16: {
+      scheme: 'solarflare' // scheme name
+      // base00: '#000000' // manually setting the base00 value to black
+    },
     solarized: {
       background: 'light',
       auto: true,
@@ -152,7 +156,7 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hypercwd', 'hyperlinks', 'hyperdocs', 'hyper-search', "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-tab-icons", "hyperborder", "hyper-solarized"
+    'hypercwd', 'hyperlinks', 'hyperdocs', 'hyper-search', "space-pull", "hypergravity", "gitrocket", "hyper-command-gifs", "hyper-tab-icons", "hyperborder", "hypersixteen"
   ],
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
