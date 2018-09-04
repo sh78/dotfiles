@@ -43,11 +43,11 @@ chunkc core::hotload 0
 #
 
 chunkc set global_desktop_mode           bsp
-chunkc set global_desktop_offset_top     5
-chunkc set global_desktop_offset_bottom  5
-chunkc set global_desktop_offset_left    5
-chunkc set global_desktop_offset_right   5
-chunkc set global_desktop_offset_gap     1
+chunkc set global_desktop_offset_top     0
+chunkc set global_desktop_offset_bottom  0
+chunkc set global_desktop_offset_left    0
+chunkc set global_desktop_offset_right   0
+chunkc set global_desktop_offset_gap     0
 
 #
 # NOTE: syntax for desktop-specific settings
@@ -61,8 +61,8 @@ chunkc set global_desktop_offset_gap     1
 # chunkc set 3_desktop_offset_gap          30
 #
 
-chunkc set desktop_padding_step_size     5.0
-chunkc set desktop_gap_step_size         5.0
+chunkc set desktop_padding_step_size     5
+chunkc set desktop_gap_step_size         5
 
 chunkc set bsp_spawn_left                1
 chunkc set bsp_optimal_ratio             1.618
@@ -125,3 +125,5 @@ chunkc core::load tiling.so
 chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner \"App Store\" --state float &
 chunkc tiling::rule --owner Emacs --except "^$" --state tile &
+
+chunkc tiling::rule --owner \"Neovim\" --state float &
