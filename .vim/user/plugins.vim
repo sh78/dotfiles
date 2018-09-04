@@ -137,6 +137,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/SearchComplete'
+Plug 'vim-vdebug/vdebug'
 Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
 Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-textobj-xmlattr'

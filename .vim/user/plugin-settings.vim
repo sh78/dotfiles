@@ -93,6 +93,8 @@ let g:switch_custom_definitions =
   \ [
   \   switch#NormalizedCase(['+', '-']),
   \   switch#NormalizedCase(['add', 'remove']),
+  \   switch#NormalizedCase(['asc', 'desc']),
+  \   switch#NormalizedCase(['ascending', 'descending']),
   \   switch#NormalizedCase(['before', 'after']),
   \   switch#NormalizedCase(['black', 'white']),
   \   switch#NormalizedCase(['column', 'row']),
@@ -306,6 +308,21 @@ let g:tagbar_type_markdown = {
     \ 'sort': 0,
 \ }
 
+let g:tagbar_type_vimwiki = {
+    \ 'ctagstype': 'vimwiki',
+    \ 'ctagsbin' : '~/.bin/markdown2ctags.py',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
         \ 'm:modules',
@@ -411,3 +428,10 @@ highlight NERDTreeFile guibg=NONE ctermbg=NONE
 " Rainbow Parenthesis
 "
 let g:rainbow_active = 1
+
+"
+" VDebug
+"
+
+" let g:vdebug_options.path_maps = {"/site": "/Users/sean/clorox/cloroxpro.com/site"}
+
