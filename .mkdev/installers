@@ -146,6 +146,7 @@ npm_packages=(
   extract-loader
   fb-messenger-cli
   file-loader
+  fixjson
   generator-assemble
   generator-reveal
   generator-webapp
