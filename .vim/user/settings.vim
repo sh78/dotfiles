@@ -11,6 +11,7 @@ set backspace=indent,eol,start
 set hidden
 
 set encoding=utf-8
+set fileformat=unix
 
 "" Display incomplete commands.
 set showcmd
@@ -46,7 +47,6 @@ set textwidth=80
 
 " Soft wrapping
 set wrap
-
 
 " Show 2 lines of context around the cursor.
 set scrolloff=2
