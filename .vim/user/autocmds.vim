@@ -16,7 +16,7 @@ autocmd BufReadPost *
 
 
 " focus (these should be grouped into a function and called together)
-augroup focus
+augroup focus_bg
     autocmd!
     autocmd BufEnter,FocusGained,VimEnter,WinEnter * call FocusBuffer()
     autocmd FocusLost,WinLeave * call UnfocusBuffer()
