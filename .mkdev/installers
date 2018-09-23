@@ -78,6 +78,7 @@ user_brews=(
   mercurial
   mplayer
   mysql
+  ncurses
   neofetch
   neovim
   neovim-dot-app
