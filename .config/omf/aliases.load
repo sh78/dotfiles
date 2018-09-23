@@ -10,6 +10,7 @@ abbr active "cd ~/Drive/active*"
 abbr archive "cd ~/Drive/archive*"
 abbr dots 'cd ~/Drive/dotfiles/'
 abbr src 'cd ~/src/'
+abbr pub 'cd ~/Public/'
 abbr notes 'cd ~/Drive/notes; and eval $EDITOR index.md'
 abbr n 'cd ~/Drive/notes; and eval $EDITOR index.md'
 abbr clxn '~/Drive/clorox/notes; and eval $EDITOR index.md'
