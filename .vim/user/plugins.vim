@@ -92,7 +92,7 @@ Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'ap/vim-css-color', { 'for': ['css', 'sass'] }
+Plug 'ap/vim-css-color', { 'for': ['css', 'sass', 'scss'] }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-sort-motion'
