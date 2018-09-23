@@ -95,6 +95,7 @@ user_brews=(
   rename
   ripgrep
   rsync
+  rtv
   ruby-build
   selecta
   shellcheck
