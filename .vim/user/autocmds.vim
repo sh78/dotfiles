@@ -34,3 +34,4 @@ autocmd CursorHold,CursorHoldI * setlocal nohlsearch
 " nmap n setlocal hlsearch<CR><bar>n
 " nmap N setlocal hlsearch<CR><bar>N
 
+autocmd filetype crontab setlocal nobackup nowritebackup
