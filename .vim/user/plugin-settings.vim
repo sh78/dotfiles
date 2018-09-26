@@ -289,7 +289,7 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 " See https://github.com/majutsushi/tagbar/wiki for additional filetype support
 
 let g:tagbar_compact = 1
-let g:tagbar_width = 32
+let g:tagbar_width = 24
 
 let g:airline#extensions#tagbar#enabled = 1
 
@@ -424,7 +424,7 @@ let g:indentLine_concealcursor = 'nc'
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
-let g:NERDTreeWinSize=32
+let g:NERDTreeWinSize=24
 
 " Inherit bg color
 highlight NERDTreeFile guibg=NONE ctermbg=NONE
