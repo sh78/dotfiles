@@ -104,6 +104,7 @@ user_brews=(
   speedtest_cli
   spidermonkey
   ssh-copy-id
+  svn
   tasksh
   teensy_loader_cli
   tidy-html5
