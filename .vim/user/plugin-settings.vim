@@ -368,8 +368,8 @@ highlight Tagbar guibg=NONE ctermbg=NONE
 " taskwiki
 "
 
-let g:taskwiki_syntax = 'markdown'
 let g:taskwiki_disable_concealcursor = 'yes'
+let g:taskwiki_markup_syntax = 'markdown'
 
 " TODO: not working
 
