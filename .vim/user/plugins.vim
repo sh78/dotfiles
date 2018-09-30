@@ -104,6 +104,7 @@ Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'jasonlong/vim-textobj-css'
 Plug 'jceb/vim-textobj-uri'
+Plug 'jiangmiao/auto-pairs'
 Plug 'jremmen/vim-ripgrep'
 Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
@@ -138,7 +139,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/SearchComplete'
 Plug 'vim-vdebug/vdebug'
-Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
+Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'], 'branch': 'dev' }
 Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks', 'Lack', 'Lacks', 'Lack!', 'Black', 'Blacks', 'Black!'] }
@@ -146,7 +147,6 @@ Plug 'wincent/loupe'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'zirrostig/vim-schlepp'
-Plug 'jiangmiao/auto-pairs'
 " add plugins here ^
 
 call plug#end()
