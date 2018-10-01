@@ -107,6 +107,7 @@ user_brews=(
   svn
   tasksh
   teensy_loader_cli
+  thefuck
   tidy-html5
   timewarrior
   tmate
@@ -182,6 +183,7 @@ npm_packages=(
   surge
   swaglint
   tern
+  tldr
   'webpack-dev-server@2'
   'webpack@3'
   write-good
