@@ -1,3 +1,4 @@
+# See https://developers.google.com/speed/docs/insights/OptimizeImages
 function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
   for file in $argv
     # TODO: this will barf on file names with .
@@ -6,7 +7,6 @@ function strip --description "Losslessly compress a PNG, JPG, or GIF for web"
     set outfile (echo $name"_converted."$extension)
     echo $outfile
     if [ "$extension" = "jpeg" ]
-      # 85 is effectively lossless for human eyes
       convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -color space sRGB $outfile
     else if [ "$extension" = "jpg" ]
       convert $file -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB $outfile
