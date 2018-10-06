@@ -96,11 +96,13 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['asc', 'desc']),
   \   switch#NormalizedCase(['ascending', 'descending']),
   \   switch#NormalizedCase(['around', 'between']),
+  \   switch#NormalizedCase(['above', 'below']),
   \   switch#NormalizedCase(['before', 'after']),
   \   switch#NormalizedCase(['black', 'white']),
   \   switch#NormalizedCase(['column', 'row']),
   \   switch#NormalizedCase(['dark', 'light']),
   \   switch#NormalizedCase(['enabled', 'disabled']),
+  \   switch#NormalizedCase(['expand', 'collapse']),
   \   switch#NormalizedCase(['first', 'last']),
   \   switch#NormalizedCase(['foo', 'bar', 'baz']),
   \   switch#NormalizedCase(['forwards', 'backwards']),
@@ -114,6 +116,7 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['off', 'on']),
   \   switch#NormalizedCase(['old', 'new']),
   \   switch#NormalizedCase(['opaque', 'transparent']),
+  \   switch#NormalizedCase(['page', 'post']),
   \   switch#NormalizedCase(['previous', 'next']),
   \   switch#NormalizedCase(['right', 'left']),
   \   switch#NormalizedCase(['show', 'hide']),
@@ -440,3 +443,8 @@ let g:rainbow_active = 1
 
 " let g:vdebug_options.path_maps = {"/site": "/Users/sean/clorox/cloroxpro.com/site"}
 
+"
+" vim sneak
+"
+
+let g:sneak#label = 1
