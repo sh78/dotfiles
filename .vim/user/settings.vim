@@ -30,7 +30,7 @@ set relativenumber
 "" Show cursor position.
 set ruler
 "" Make some room.
-set numberwidth=4
+set numberwidth=3
 
 "" Highlight matches as you type.
 set incsearch
