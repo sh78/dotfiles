@@ -33,6 +33,7 @@ cleanmymac () {
   echo
   after_bits=$(df -h / | tail -1 | awk '{print $4}')
   after_percent=$(df -h / | tail -1 | awk '{print $5}')
-  echo "Before:" $before_bits "("$before_percent")" available
-  echo "After: " $after_bits "("$after_percent")" available!
+  echo "Before:" "$before_bits" "($before_percent)" available
+  echo "After: " "$after_bits" "($after_percent)" available!
 }
+cleanmymac
