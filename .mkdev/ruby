@@ -3,6 +3,7 @@
 user_gems=(
     bropages
     bundler
+    cocoapods
     colorls
     compass
     foreman
@@ -14,6 +15,7 @@ user_gems=(
     sass
     thin
     tmuxinator
+    xcodeproj
 )
 
 # check that rbenv is ok
@@ -28,3 +30,6 @@ rbenv global $rubyv
 # install gems
 echo "installing gems..."
 gem install "${user_gems[@]}" --no-document
+
+# setting up cocoapods...
+pod setup

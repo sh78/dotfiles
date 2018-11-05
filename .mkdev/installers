@@ -10,7 +10,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 xcode-select --install
 
 # Prompt to install the full xcode
-read -p "Install Xcode from the App Store™] and press any key to continue"
+read -p "Install Xcode from the App Store™ and press any key to continue"
 sudo xcodebuild -license accept
 
 
@@ -22,6 +22,7 @@ sudo xcodebuild -license accept
 brew_taps=(
   'PX4/homebrew-px4'
   'bradp/vv'
+  'caskroom/versions'
   'clintmod/formulas'
   'crisidev/homebrew-chunkwm'
   'koekeishiya/formulae'
@@ -148,6 +149,8 @@ npm_packages=(
   ember-cli
   ember-template-lint
   eslint
+  eslint-plugin-vue
+  expo
   extract-loader
   fb-messenger-cli
   file-loader
@@ -159,12 +162,14 @@ npm_packages=(
   gulp
   hint
   http-server
+  jest
   js-yaml
   jshint
   'git+https://github.com/ramitos/jsctags.git'
   lighthouse
   live-server
   livedown
+  nativescript
   neovim
   node-sass
   puppeteer
@@ -184,6 +189,10 @@ npm_packages=(
   swaglint
   tern
   tldr
+  typescript
+  '@vue/cli'
+  '@vue/cli-init'
+  '@vue/cli-service-global'
   'webpack-dev-server@2'
   'webpack@3'
   write-good
@@ -198,20 +207,22 @@ pip_packages=(
   pylint
   requests
   sass-lint
+  six
   terminal_velocity
   vim-vint
   taskwarrior-inthe.am
 )
 
 pip3_packages=(
-  proselint
   mps-youtube
   neovim
+  proselint
   tasklib
 )
 
 user_apps=(
   1password
+  android-sdk
   bartender
   carbon-copy-cloner
   coconutbattery
@@ -228,6 +239,7 @@ user_apps=(
   imageoptim
   iterm2
   java
+  java8
   karabiner-elements
   keyboard-maestro
   keycastr
@@ -315,3 +327,7 @@ git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shel
 
 # pull in neosnippets fork
 git clone https://github.com/sh78/neosnippet-snippets.git ~/neosnippets-snippets
+
+# set up andriod sdk stuff
+echo "Setting up Android SDK tools..."
+"$ANDROID_HOME"/tools/bin/sdkmanager "tools" "emulator" "platform-tools" "platforms;android-28" "build-tools;28.0.3" "extras;android;m2repository" "extras;google;m2repository"
