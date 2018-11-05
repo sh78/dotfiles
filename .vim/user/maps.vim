@@ -210,6 +210,9 @@ nnoremap <Leader>dc :RemoveFancyCharacters<CR>
 " make directory for current file
 nnoremap <Leader>! :!mkdir -p %:h<CR>
 
+" open/close quickfix window
+nnoremap <Leader>co :copen<CR>
+nnoremap <Leader>cc :cclose<CR>
 "
 " Plugins:
 "
