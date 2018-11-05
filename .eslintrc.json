@@ -30,7 +30,7 @@
     "globals": {
         "$": false,
         "document": false,
-        "window": false
+        "window": false,
         "casper": false,
         "webroot": false,
     }
