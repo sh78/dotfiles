@@ -86,6 +86,7 @@ Plug 'tpope/vim-vinegar'
 " | |____| |\  | |__| |    | |    | |__| | |    | |____   / ____ \| | \ \| |____ / ____ \
 " |______|_| \_|_____/     |_|     \____/|_|    |______| /_/    \_\_|  \_\______/_/    \_\
 Plug 'AndrewRadev/switch.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/neco-syntax'
@@ -124,6 +125,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree', { 'on': 'UndoTreeToggle' }
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mhinz/vim-signify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'powerman/vim-plugin-AnsiEsc'
