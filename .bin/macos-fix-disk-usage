@@ -1,0 +1,9 @@
+#!/bin/sh
+# Will take some time after completion for Finder, etc to report updated disk
+# usage.
+# https://apple.stackexchange.com/questions/304651/high-sierra-shows-wrong-disk-usage
+
+echo "Setting Spotlight indexing..."
+sudo mdutil -E /
+echo "Purging TimeMachine snapshots..."
+sudo tmutil thinLocalSnapshots / 10000000000 4
