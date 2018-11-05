@@ -93,7 +93,7 @@ map <Leader>bb :bookmarks /Bookmarks Bar/
 " # Site-specific configs
 
 " blacklists prefixed by '@' act as a whitelist
-let blacklists = ["*://*shortcutfoo.com*", "*://mail.google.com*"]
+let blacklists = ["*://*shortcutfoo.com*", "*://mail.google.com*",  "*://live.browserstack.com*"]
 
 " site '*://domain.com*' {}
 
