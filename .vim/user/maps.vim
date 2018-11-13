@@ -141,8 +141,7 @@ inoremap <C-z> <Esc>mz[s1z=`za
 "
 
 " su-DOH
-cmap w!! w !sudo tee % >/dev/null
-
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 "
 " Leader Maps:
