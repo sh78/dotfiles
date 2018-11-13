@@ -103,6 +103,7 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'fszymanski/deoplete-emoji'
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vimwiki'] }
 Plug 'jasonlong/vim-textobj-css'
 Plug 'jceb/vim-textobj-uri'
 Plug 'jiangmiao/auto-pairs'
@@ -133,7 +134,6 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
-Plug 'shime/vim-livedown', { 'for': ['markdown', 'vimwiki'] }
 Plug 'tbabej/taskwiki', { 'for': ['markdown', 'vimwiki'] }
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tomtom/tlib_vim'
