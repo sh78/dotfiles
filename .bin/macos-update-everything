@@ -1,0 +1,8 @@
+#!/bin/sh
+
+softwareupdate --install --list
+xcode-select --install
+brew update; and brew upgrade
+npm update -g
+gem update
+
