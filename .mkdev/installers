@@ -22,6 +22,7 @@ sudo xcodebuild -license accept
 brew_taps=(
   'PX4/homebrew-px4'
   'bradp/vv'
+  'browsh-org/homebrew-browsh'
   'caskroom/versions'
   'clintmod/formulas'
   'crisidev/homebrew-chunkwm'
@@ -40,6 +41,7 @@ user_brews=(
   avr-gcc
   avrdude
   bash
+  browsh
   vv
   cheat
   chunkwm
@@ -143,6 +145,7 @@ qlexts=(
 )
 
 npm_packages=(
+  axe-cli
   bower
   commit-msg
   css-loader
