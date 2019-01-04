@@ -1,6 +1,7 @@
 [user]
   name = Sean Henderson
   email = mail@sean.sh
+	signingkey = 524D965A7D1513EF
 [github]
 	user = sh78
 [push]
