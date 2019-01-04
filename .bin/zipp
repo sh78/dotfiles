@@ -1,0 +1,10 @@
+#!/bin/bash
+# Extract zip archive(s) with progress bar
+# TODO: Progress bar isn't accurate (too slow)
+
+for file in "$@"; do
+    zip -qr - "$file"  | \
+        pv -bep -s $(du -bs "$file" | \
+        awk '{print $1}') \
+        > "${file%/}".zip
+done

@@ -1,0 +1,8 @@
+#!/bin/bash
+# Extract tar archive(s) with progress bar
+
+for file in "$@"; do
+    tar cf - "$file" -P | \
+        pv -s $(du -sb "$file" | awk '{print $1}') |  \
+        gzip > "${file%/}".tar.gz
+done
