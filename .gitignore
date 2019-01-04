@@ -19,6 +19,7 @@
 .devtoolssnippets
 .gem/credentials
 .gist-vim
+.gnupg/
 .local/
 .mkdev/defaults-export-*
 .mkdev/extra/iterm/com.googlecode.iterm2.plist
