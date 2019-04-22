@@ -32,6 +32,6 @@
         "document": false,
         "window": false,
         "casper": false,
-        "webroot": false,
+        "webroot": false
     }
 }
