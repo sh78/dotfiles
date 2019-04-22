@@ -1,11 +1,20 @@
 [user]
-  name = Sean Henderson
-  email = mail@sean.sh
+    name = Sean Henderson
+    email = mail@sean.sh
 	signingkey = 524D965A7D1513EF
 [github]
 	user = sh78
+[commit]
+    gpgSign = true
+    template = ~/.gitmessage
+[includeIf "gitdir:~/clorox/"]
+    path = ~/electro/.gitconfig
+[includeIf "gitdir:~/electro/"]
+    ; no luck with more advanced globs, like:
+    ; [includeIf "gitdir:~/{electro,clorox}/"]
+    path = ~/electro/.gitconfig
 [push]
-  default = current
+    default = current
 [color]
     ui = auto
 [diff]
@@ -26,8 +35,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-  template = ~/.gitmessage
 [init]
 	templatedir = ~/.gittemplate
 [alias]
