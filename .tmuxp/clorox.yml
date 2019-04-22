@@ -1,0 +1,36 @@
+session_name: foo
+start_directory: "${PWD}"
+before_script: ~/.tmuxp/clorox-before.sh
+windows:
+- window_name: edit
+  focus: true
+  start_directory: www/wp-content/themes/
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  shell_command_before:
+    - cd electro; or cd ccl-default
+  panes:
+    - shell_command:
+      - nvim functions.php +NERDTreeToggle +"wincmd l" +"Files"
+      focus: true
+    - svn status
+    - npm run build && npm run watch || npm run build:watch
+- window_name: serve
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  panes:
+    - docker-compose up -d; and docker-compose logs -f
+    - nvim docker-compose.yml
+    - sleep 3; docker-compose exec web bash
+    - sleep 3; docker exec -it docker-mysql_db_1 mysql -uroot -p
+- window_name: log
+  layout: even-vertical
+  panes:
+    - less +F log/site.log
+    - less +F log/wordpress.log
+- window_name: test
+  layout: even-vertical
+  panes:
+    - cd casperjs/; and ./test
