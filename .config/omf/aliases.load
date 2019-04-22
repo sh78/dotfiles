@@ -6,14 +6,14 @@
 abbr desk "cd ~/Desktop"
 abbr down "cd ~/Downloads"
 abbr drive "cd ~/Drive"
-abbr active "cd ~/Drive/active*"
-abbr archive "cd ~/Drive/archive*"
-abbr dots 'cd ~/Drive/dotfiles/'
+abbr active "cd ~/active"
+abbr archive "cd ~/archive"
+abbr dots 'cd ~/dotfiles/'
 abbr src 'cd ~/src/'
 abbr pub 'cd ~/Public/'
-abbr notes 'cd ~/Drive/notes; and eval $EDITOR index.md'
-abbr n 'cd ~/Drive/notes; and eval $EDITOR index.md'
-abbr clxn '~/Drive/clorox/notes; and eval $EDITOR index.md'
+abbr notes 'cd ~/notes; and eval $EDITOR index.md'
+abbr n 'cd ~/notes; and eval $EDITOR index.md'
+abbr clxn '~/electro/notes; and eval $EDITOR index.md'
 
 # quick edits to dot files
 abbr aliases 'eval $EDITOR ~/.config/omf/aliases.load'
@@ -71,6 +71,8 @@ abbr ssh 'env TERM=xterm-256color ssh'
 
 abbr psg 'ps aux | grep -v grep | grep -i -e VSZ -e'
 
+abbr xo xdg-open
+
 #
 # macOS
 #
@@ -81,6 +83,10 @@ abbr rmds="find . -name '*.DS_Store' -type f -ls -delete"
 #
 # Programs
 #
+
+abbr ai "sudo apt install"
+abbr aud "sudo apt update"
+abbr aug "sudo apt upgrade"
 
 # vim
 abbr v 'nvim'
