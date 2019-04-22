@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$COLOR" = 'light' ]; then
-  sed -i "" 's/dark/light/g' ~/.taskrc
-else
-  sed -i "" 's/light/dark/g' ~/.taskrc
-fi
