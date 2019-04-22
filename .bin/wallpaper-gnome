@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]] ; then
+    echo "USAGE: wallpaper-gnome /absolute/path/to/image"
+    exit 0
+fi
+
+gsettings set org.gnome.desktop.background picture-uri "file://$1"
