@@ -2,13 +2,13 @@
 # Heuristically extract compressed archives with progress bar and ETA
 # TODO: support more than tar
 
-VERBOSE=0
+VERBOSE=''
 if [ "$1" = "-v" ]; then
     VERBOSE=1
     shift
 fi
 
-HASPV=0
+HASPV=''
 if command -v pv >/dev/null ; then
     HASPV=1
 else
