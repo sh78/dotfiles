@@ -23,3 +23,4 @@ bindkey "^I" expand-or-complete-with-dots
 source ~/.bashrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /home/sean/.config/cani/completions/_cani.zsh ] && source /home/sean/.config/cani/completions/_cani.zsh
