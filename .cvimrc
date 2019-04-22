@@ -1,7 +1,7 @@
 " # https://github.com/1995eaton/chromium-vim#cvimrc
 
 let barposition = "bottom"
-let hintcharacters = "uiopjklm"
+let hintcharacters = "jklhmuioyn"
 set smoothscroll
 let scrollduration = 200
 let scrollstep = 120
@@ -93,7 +93,7 @@ map <Leader>bb :bookmarks /Bookmarks Bar/
 " # Site-specific configs
 
 " blacklists prefixed by '@' act as a whitelist
-let blacklists = ["*://*shortcutfoo.com*", "*://mail.google.com*",  "*://live.browserstack.com*"]
+let blacklists = ["*://*shortcutfoo.com*", "*://mail.google.com*",  "*://live.browserstack.com*", "https://mixpanel.com/*", "https://labc01.macincloud.com/*"]
 
 " site '*://domain.com*' {}
 
@@ -111,7 +111,8 @@ map ci :call getIP<CR>
 " default options page in chrome
 " As long as localconfig is set in the .cvimrc file. cVim will continue to read
 " settings from there
-let configpath = '~/.cvimrc'
+" let configpath = '~/.cvimrc'
+let configpath = '/home/sean/.cvimrc'
 set localconfig
 
 " # TODO:
