@@ -9,6 +9,7 @@
 *~
 .DS_Store
 .Xmodmap.orig
+.Xresources
 .bro
 .cfcli.yml
 .composer/
@@ -16,6 +17,8 @@
 .config/fish/completions/cani.fish
 .config/fish/functions/clorox*
 .config/fish/functions/electro*
+.config/inkscape/
+.config/libreoffice/
 .config/monitors.xml
 .config/mps-youtube/playlist_v2
 .config/nvim/.netrwhist
@@ -24,6 +27,7 @@
 .config/rtv.cfg
 .dconf/
 .devtoolssnippets
+.fonts/
 .gem/credentials
 .gist-vim
 .gnupg/
