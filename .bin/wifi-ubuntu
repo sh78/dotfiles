@@ -1,0 +1,3 @@
+#!/bin/bash
+# Idea: fuzzy find a wifi network and connect to it using nmcli
+nmcli dev wifi | tail -n +2 | fzf --ansi | awk '{print $2}'
