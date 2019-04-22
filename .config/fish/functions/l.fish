@@ -1,6 +1,6 @@
-function l --description "ls w/ color output and indicators"
+function l --description "ls w/ color output and git indicators"
   if test -n "$COLORLS"
-    eval colorls --sort-dirs --git-status $argv
+    eval colorls -1 --git-status $argv
   else
     command ls -F $argv
   end
