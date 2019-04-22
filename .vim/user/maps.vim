@@ -266,6 +266,8 @@ nnoremap <Leader>K :TagbarToggle<CR>
 
 nnoremap <Leader>G :Goyo<CR>
 
+nnoremap <buffer> <Leader>pd :call pdv#DocumentCurrentLine()<CR>
+
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)

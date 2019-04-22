@@ -108,11 +108,14 @@ set wildmenu
 
 " Don't offer to open certain files/directories
 " respected by :Denite file/rec
-set wildignore+=.git,.svn,.DS_Store,.npm,.vagrant,*.zip,*.tgz,*.pdf,*.psd,*.ai,*.mp3,*.mp4,*.bmp,*.ico,*.jpg,*.png,*.gif,*.epub,.hg,.dropbox,.config,.cache,*.pyc
-set wildignore+=node_modules/*,bower_components/*,*.min.*
+set wildignore+=.git,.svn,.DS_Store,.npm,.vagrant,*.zip,*.tgz,*.pdf,*.psd,*.ai,*.mp3,*.mp4,*.bmp,*.ico,*.jpg,*.png,*.gif,*.epub,.hg,.dropbox,.config,.cache,*.pyc,*.min*
+" set wildignore+=**/node_modules/**,**/bower_components/**,*.min*,**/min
 
 " look more common places for ctags file than just ./tags,tags
 set tags+=./.git/tags,./.tags
+
+" include hyphens in the word text-object
+set iskeyword+=-
 
 " Just for funzies
 set mouse=a

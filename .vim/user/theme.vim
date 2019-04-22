@@ -19,8 +19,8 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 " crosshair cursor
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 " Fade out bg outside of textwidth using colorcolumn hack
 let &colorcolumn=join(range(&textwidth + 1,999), ',')

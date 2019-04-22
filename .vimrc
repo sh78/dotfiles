@@ -8,7 +8,7 @@
 set nocompatible
 
 " handle anyone crazy enough to use a non-POSIX compatible shell like fish
-set shell=/bin/bash
+set shell=/bin/sh
 
 set encoding=UTF-8
 
@@ -23,7 +23,6 @@ function! SourceIfExists(file)
   endif
 endfunction
 
-" source $HOME/.vim/plugin-vundle.vim
 source $HOME/.vim/user/plugins.vim
 source $HOME/.vim/user/settings.vim
 source $HOME/.vim/user/functions.vim

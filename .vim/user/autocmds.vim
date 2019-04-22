@@ -35,3 +35,6 @@ autocmd CursorHold,CursorHoldI * setlocal nohlsearch
 " nmap N setlocal hlsearch<CR><bar>N
 
 autocmd FileType crontab setlocal nowritebackup
+
+" To enter |Terminal-mode| automatically:
+autocmd TermOpen * startinsert
