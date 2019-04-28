@@ -73,6 +73,8 @@ abbr psg 'ps aux | grep -v grep | grep -i -e VSZ -e'
 
 abbr xo xdg-open
 
+abbr gr grep
+
 #
 # macOS
 #
@@ -244,11 +246,6 @@ abbr jeksw 'jekyll serve --watch'
 # npm & the gang
 abbr npr 'npm run'
 abbr yar 'yarn run'
-
-# grunt
-abbr gr 'grunt'
-abbr grus 'grunt serve'
-abbr grub 'grunt build'
 
 # pianobar (pandora cli)
 abbr pandora 'pianobar'
