@@ -137,7 +137,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'sheerun/vim-polyglot'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'tobyS/pdv', { 'for': 'php' }
 Plug 'tobyS/vmustache', { 'for': 'php' }
 Plug 'tomtom/tlib_vim'
