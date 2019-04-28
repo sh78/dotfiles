@@ -402,6 +402,13 @@ vmap Dh <Plug>SchleppDupLeft
 vmap Dl <Plug>SchleppDupRight
 
 "
+" Ferret (:Ack)
+"
+let g:FerretExecutableArguments = {
+  \   'rg': '--vimgrep --no-heading --no-config --max-columns 4096 --glob=!{.git,.svn,*.map,*.min*,**/min/**,**js/build/**,**/node_modules/**,**/bower_components/**}'
+  \ }
+
+"
 " loupe
 "
 nmap <leader>nh <Plug>(LoupeClearHighlight)
