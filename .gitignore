@@ -38,6 +38,7 @@
 .npmrc
 .pgpass
 .pgpass
+.qutebrowser/
 .ssh/
 .subversion/
 .task/*
