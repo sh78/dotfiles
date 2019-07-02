@@ -235,8 +235,8 @@ let g:ale_set_balloons = 1
 
 " Do not lint or fix minified files.
 let g:ale_pattern_options = {
-\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\ '*\.min.*': {'ale_enabled': 0},
+\ '*min\/.*': {'ale_enabled': 0},
 \}
 
 " If you configure g:ale_pattern_options outside of vimrc, you need this.
