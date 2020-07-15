@@ -12,3 +12,5 @@ fi
 # remap control to escape if pressed once
 xcape -e 'Control_L=Escape'
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
