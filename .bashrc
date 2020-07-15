@@ -130,4 +130,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
 [ -f /home/sean/.config/cani/completions/_cani.bash ] && source /home/sean/.config/cani/completions/_cani.bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
