@@ -1,7 +1,6 @@
 setlocal tabstop=2
 setlocal shiftwidth=2
 
-" Default to https://standardjs.com/
 let b:ale_linters = ['eslint']
 let b:ale_fixers = ['eslint']
 let g:javascript_linter = 'eslint'

@@ -23,11 +23,11 @@ function! SourceIfExists(file)
   endif
 endfunction
 
-source $HOME/.vim/user/plugins.vim
-source $HOME/.vim/user/settings.vim
-source $HOME/.vim/user/functions.vim
-source $HOME/.vim/user/autocmds.vim
-source $HOME/.vim/user/theme.vim
-source $HOME/.vim/user/maps.vim
-source $HOME/.vim/user/plugin-settings.vim
+call SourceIfExists('$HOME/.vim/user/plugins.vim')
+call SourceIfExists('$HOME/.vim/user/settings.vim')
+call SourceIfExists('$HOME/.vim/user/functions.vim')
+call SourceIfExists('$HOME/.vim/user/autocmds.vim')
+call SourceIfExists('$HOME/.vim/user/theme.vim')
+call SourceIfExists('$HOME/.vim/user/plugin-settings.vim')
+call SourceIfExists('$HOME/.vim/user/maps.vim')
 call SourceIfExists('$HOME/.vim/user/abbreviations.vim')

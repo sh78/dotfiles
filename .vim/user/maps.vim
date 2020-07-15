@@ -144,6 +144,19 @@ inoremap <C-z> <Esc>mz[s1z=`za
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 "
+" Terminal Mode:
+"
+
+if has('nvim')
+  " exit terminal mode with Meta-[
+  tnoremap <M-[> <C-\><C-n>
+
+  " tnoremap <Esc> <C-\><C-n>
+  " tnoremap <M-[> <Esc>
+  " tnoremap <C-v><Esc> <Esc>
+endif
+
+"
 " Leader Maps:
 " Use mnemonics where possible, i.e. >sp = `:set paste`.
 "
@@ -193,14 +206,14 @@ nnoremap <Leader>^ :source $MYVIMRC <BAR> :PlugUpdate<CR>
 nnoremap <leader>. !ctags -R .<CR>
 
 " quickly switch to last buffer
-nnoremap <Leader><Leader> <C-^><CR>
+nnoremap <Leader><Tab> <C-^><CR>
 
 " toggle indentation spaces
 nnoremap <Leader>2 :set tabstop=2 shiftwidth=2<cr>
 nnoremap <Leader>4 :set tabstop=4 shiftwidth=4<cr>
 
 " format of entire buffer
-nnoremap <Leader><Tab> gg=G''
+nnoremap <Leader>gw gggwG<C-O>
 
 " Custom Functions
 nnoremap <Leader>fr :FindReplace<CR>
@@ -217,68 +230,73 @@ nnoremap <Leader>cc :cclose<CR>
 "
 
 nmap <Leader>m :LivedownToggle<CR>
-nmap <leader>= <Plug>(ale_fix)
-nmap <leader>lt <Plug>(ale_toggle)
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous_wrap)
-nmap <silent> ]w <Plug>(ale_next_wrap)
-nmap <silent> ]W <Plug>(ale_last)
+" nmap <leader>= <Plug>(ale_fix)
+" nmap <leader>lt <Plug>(ale_toggle)
+" nmap <silent> [W <Plug>(ale_first)
+" nmap <silent> [w <Plug>(ale_previous_wrap)
+" nmap <silent> ]w <Plug>(ale_next_wrap)
+" nmap <silent> ]W <Plug>(ale_last)
 
+" FZF
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-p> :Files<CR>
-nnoremap g/ :History/<CR>
-nnoremap gm :Marks<CR>
-nnoremap gr :Tags<CR>
-nnoremap g; :History:<CR>
-nnoremap gh :Helptags<CR>
-
-nnoremap <Leader>td :TaskWikiDone
+nnoremap z/ :History/<CR>
+nnoremap zm :Marks<CR>
+nnoremap zr :Tags<CR>
+nnoremap z; :History:<CR>
+nnoremap zh :Helptags<CR>
 
 nnoremap <Leader>tb :TagbarToggle<CR>
 
-nnoremap <Leader>gu :Gista unstar<CR>
-nnoremap <Leader>gs :Gista star<CR>
-nnoremap <Leader>gd :Gista --delete<CR>
-nnoremap <Leader>ga :Gista post --anonymous<CR>
-nnoremap <Leader>gpu :Gista post --public<CR>
-nnoremap <Leader>gpr :Gista post --private<CR>
-nnoremap <Leader>gb :Gista browse
-nnoremap <Leader>gl :Gista list<CR>
+" nnoremap <Leader>gu :Gista unstar<CR>
+" nnoremap <Leader>gs :Gista star<CR>
+" nnoremap <Leader>gd :Gista --delete<CR>
+" nnoremap <Leader>ga :Gista post --anonymous<CR>
+" nnoremap <Leader>gpu :Gista post --public<CR>
+" nnoremap <Leader>gpr :Gista post --private<CR>
+" nnoremap <Leader>gb :Gista browse
+" nnoremap <Leader>gl :Gista list<CR>
 
-" U - undo all recent changes on one line
+
+nnoremap <Leader>g :Git
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gpl :Gpull<CR>
+nnoremap <Leader>gpu :Gpush<CR>
+
 nnoremap U :UndotreeToggle<CR>
 
-nnoremap <Leader>as :Tabularize /<Space><CR>
-nnoremap <Leader>a\| :Tabularize /\|<CR>
-nnoremap <Leader>a< :Tabularize /\<<CR>
-nnoremap <Leader>a, :Tabularize /,<CR>
-nnoremap <Leader>a- :Tabularize /-<CR>
-nnoremap <Leader>a: :Tabularize /:\zs<CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-nnoremap <Leader>aa :Tabularize <CR>
+nnoremap <Leader>ts :Tabularize /<Space><CR>
+nnoremap <Leader>t\| :Tabularize /\|<CR>
+nnoremap <Leader>t< :Tabularize /\<<CR>
+nnoremap <Leader>t, :Tabularize /,<CR>
+nnoremap <Leader>t- :Tabularize /-<CR>
+nnoremap <Leader>t: :Tabularize /:\zs<CR>
+nnoremap <Leader>t= :Tabularize /=<CR>
+nnoremap <Leader>ta :Tabularize <CR>
 
 nnoremap <Leader>dw :StripWhitespace<CR>
 nnoremap <Leader>tw :ToggleWhitespace<CR>
 
-nnoremap <Leader>k :NERDTreeToggle<CR>
+nnoremap <Leader>a :NERDTreeToggle<CR>
 
-nnoremap <Leader>K :TagbarToggle<CR>
+nnoremap <Leader>A :TagbarToggle<CR>
 
-nnoremap <Leader>G :Goyo<CR>
+nnoremap <Leader><CR> :Goyo<CR>
 
 nnoremap <buffer> <Leader>pd :call pdv#DocumentCurrentLine()<CR>
 
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
 
-vnoremap <Leader>aa :Tabularize <CR>
-vnoremap <Leader>a= :Tabularize /=<CR>
-vnoremap <Leader>a: :Tabularize /:\zs<CR>
-vnoremap <Leader>a- :Tabularize /-<CR>
-vnoremap <Leader>a, :Tabularize /,<CR>
-vnoremap <Leader>a< :Tabularize /\<<CR>
-vnoremap <Leader>a\| :Tabularize /\|<CR>
-vnoremap <Leader>as :Tabularize /<Space><CR>
-
+vnoremap <Leader>ta :Tabularize <CR>
+vnoremap <Leader>t= :Tabularize /=<CR>
+vnoremap <Leader>t: :Tabularize /:\zs<CR>
+vnoremap <Leader>t- :Tabularize /-<CR>
+vnoremap <Leader>t, :Tabularize /,<CR>
+vnoremap <Leader>t< :Tabularize /\<<CR>
+vnoremap <Leader>t\| :Tabularize /\|<CR>
+vnoremap <Leader>ts :Tabularize /<Space><CR>

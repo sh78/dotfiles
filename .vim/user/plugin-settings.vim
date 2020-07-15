@@ -4,9 +4,9 @@
 
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
+let g:netrw_altv=1          " openlits to the right
 let g:netrw_liststyle=3     " tree view
-let g:netrw_winsize = 25    " set width like a standard file drawer
+let g:netrw_winsize = 36    " set width like a standard file drawer
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
@@ -18,7 +18,30 @@ let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=do
 let g:vim_markdown_new_list_item_indent = 0
 
 "
-" signify - VCS markers in side column
+" Markdown Preview
+"
+let g:mkdp_command_for_global = 1
+let g:mkdp_echo_preview_url = 1
+
+"
+" Instant Markdown Preview
+"
+let g:instant_markdown_autostart = 0
+
+"
+" Vim Markdown Preview
+"
+" let vim_markdown_preview_github=1
+" let vim_markdown_preview_hotkey='<Leader>m'
+
+"
+" Vim Livedown
+"
+nmap gm :LivedownToggle<CR>
+
+
+"
+" signify - VCS marker in side column
 "
 
 let g:signify_vcs_list = [ 'git', 'svn' ]
@@ -96,6 +119,7 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['<=', '>=']),
   \   switch#NormalizedCase(['1', '0']),
   \   switch#NormalizedCase(['add', 'remove']),
+  \   switch#NormalizedCase(['and', 'or']),
   \   switch#NormalizedCase(['asc', 'desc']),
   \   switch#NormalizedCase(['ascending', 'descending']),
   \   switch#NormalizedCase(['around', 'between']),
@@ -105,18 +129,22 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['class', 'id']),
   \   switch#NormalizedCase(['column', 'row']),
   \   switch#NormalizedCase(['dark', 'light']),
-  \   switch#NormalizedCase(['enabled', 'disabled']),
+  \   switch#NormalizedCase(['enable', 'disable']),
   \   switch#NormalizedCase(['error', 'warning', 'success']),
   \   switch#NormalizedCase(['expand', 'collapse']),
   \   switch#NormalizedCase(['first', 'last']),
+  \   switch#NormalizedCase(['fill', 'stroke']),
   \   switch#NormalizedCase(['foo', 'bar', 'baz']),
   \   switch#NormalizedCase(['forward', 'backward']),
   \   switch#NormalizedCase(['flex', 'block']),
+  \   switch#NormalizedCase(['get', 'set']),
+  \   switch#NormalizedCase(['grow', 'shrink']),
   \   switch#NormalizedCase(['hey', 'hi', 'hello']),
   \   switch#NormalizedCase(['http', 'https']),
   \   switch#NormalizedCase(['is', "isn't"]),
   \   switch#NormalizedCase(['jpg', 'png', 'gif']),
   \   switch#NormalizedCase(['login', 'register']),
+  \   switch#NormalizedCase(['log', 'dir', 'info', 'error']),
   \   switch#NormalizedCase(['margin', 'padding']),
   \   switch#NormalizedCase(['min', 'max']),
   \   switch#NormalizedCase(['minimum', 'maximum']),
@@ -128,15 +156,19 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['out', 'in']),
   \   switch#NormalizedCase(['page', 'post']),
   \   switch#NormalizedCase(['previous', 'next']),
+  \   switch#NormalizedCase(['question', 'answer']),
   \   switch#NormalizedCase(['right', 'left']),
+  \   switch#NormalizedCase(['start', 'end']),
   \   switch#NormalizedCase(['show', 'hide']),
   \   switch#NormalizedCase(['sm', 'md', 'lg', 'xl', 'xxl']),
   \   switch#NormalizedCase(['staging', 'production']),
   \   switch#NormalizedCase(['top', 'bottom']),
+  \   switch#NormalizedCase(['to', 'from']),
   \   switch#NormalizedCase(['this', 'that']),
   \   switch#NormalizedCase(['up', 'down']),
   \   switch#NormalizedCase(['vertical', 'horizontal']),
   \   switch#NormalizedCase(['width', 'height']),
+  \   switch#NormalizedCase(['window', 'document']),
   \   switch#NormalizedCase(['x', 'y']),
   \   switch#NormalizedCase(['yes', 'no']),
   \ ]
@@ -306,7 +338,7 @@ let g:vimwiki_list = [g:sh_wiki, g:clorox_wiki]
 " See https://github.com/majutsushi/tagbar/wiki for additional filetype support
 
 let g:tagbar_compact = 1
-let g:tagbar_width = 32
+let g:tagbar_width = 40
 
 let g:airline#extensions#tagbar#enabled = 1
 
@@ -355,6 +387,21 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
+
+let g:tagbar_type_typescript = {
+  \ 'ctagstype': 'typescript',
+  \ 'kinds': [
+    \ 'c:classes',
+    \ 'n:modules',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'v:varlambdas',
+    \ 'm:members',
+    \ 'i:interfaces',
+    \ 'e:enums',
+  \ ]
+\ }
+
 let g:tagbar_type_scss = {
 \  'ctagstype' : 'scss',
 \  'kinds' : [
@@ -376,6 +423,15 @@ let g:tagbar_type_less = {
 \    'm:medias'
 \  ]
 \}
+
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
 
 " Inherit bg color
 highlight Tagbar guibg=NONE ctermbg=NONE
@@ -422,13 +478,16 @@ let g:fzf_layout = { 'down': '~40%' }
 " Show preview window for :Files
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" TODO: file not found
+command! -bang -nargs=? -complete=dir Buffers
+  \ call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 
 " Custom :Rg command with ignores
 " While :Files respects $FZF_DEFAULT_COMMAND, seems like :Rg does not
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{.git,.svn,*.map,*.min*,**/min/**,**/node_modules/**,**/bower_components/**}"'.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --smart-case --glob "!{.git,.svn,*.map,*.min*,**/concat/**,**/min/**,**/node_modules/**,**/bower_components/**}"'.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -460,7 +519,7 @@ let g:indentLine_char = '│'
 let g:NERDTreeShowHidden=1
 let g:NERDTreeMouseMode=2
 let g:NERDTreeMinimalUI=1
-let g:NERDTreeWinSize=24
+let g:NERDTreeWinSize=40
 
 " Inherit bg color
 highlight NERDTreeFile guibg=NONE ctermbg=NONE
@@ -503,3 +562,66 @@ let g:Illuminate_delay = 150
 "
 
 let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates"
+
+"
+" Which Key
+"
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+
+"
+" CoC (Completion)
+"
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-eslint',
+  \ 'coc-json',
+  \ ]
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  <Plug>(coc-format-selected)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" and for ESLint
+command! -nargs=0 ESLint :CocCommand eslint.executeAutofix
+
+" and for Prettier
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+"
+" Colorizer.lua
+"
+" https://github.com/norcalli/nvim-colorizer.lua/tree/35f1aad99c4d03217bcc80a2e16efe3ba74379a4#installation-and-usage
+" lua require'colorizer'.setup()
+

@@ -42,6 +42,11 @@ if has("nvim")
     set inccommand=nosplit
 endif
 
+" Historgram diffs
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
+endif
+
 " Format options
 set textwidth=80
 
@@ -119,3 +124,8 @@ set iskeyword+=-
 
 " Just for funzies
 set mouse=a
+
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
