@@ -53,3 +53,16 @@ end
 if type -q colorls
     set -gx COLORLS 'true'
 end
+
+set -gx GPG_TTY (tty)
+
+# map trick escape key if needed
+# TODO: it starts xcape, but doesn't work for the session. Maybe because not
+# interactive.
+# if type -q xcape
+#     set xcapep (ps aux | grep xcape | wc -l)
+#     if test $xcapep -lt 2
+#         xcape -e 'Control_L=Escape'
+#     end
+# end
+set -g fish_user_paths "/usr/local/opt/ruby/bin" $fish_user_paths
