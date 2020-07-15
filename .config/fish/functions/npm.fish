@@ -1,3 +1,3 @@
-function npm -d "javascript package manager" -w npm
-    __fnm_run_bin_as "npm" $argv
+function npm -d "node package manager" -w npm
+  __nvm_run "npm" $argv
 end
