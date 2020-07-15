@@ -1,0 +1,8 @@
+#!/bin/sh
+# https://github.com/jbarlow83/OCRmyPDF/blob/master/docs/cookbook.rst#ocr-images-not-pdfs
+
+PATH=$1
+OUT=$2
+
+# TODO: check for dependencies
+img2pdf $PATH | ocrmypdf - $OUT.pdf | pdftotext - $OUT.txt && cat $OUT.txt
