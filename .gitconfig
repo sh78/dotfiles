@@ -7,12 +7,6 @@
 [commit]
     gpgSign = true
     template = ~/.gitmessage
-[includeIf "gitdir:~/clorox/"]
-    path = ~/electro/.gitconfig
-[includeIf "gitdir:~/electro/"]
-    ; no luck with more advanced globs, like:
-    ; [includeIf "gitdir:~/{electro,clorox}/"]
-    path = ~/electro/.gitconfig
 [push]
     default = current
 [color]
