@@ -1,8 +1,11 @@
 #!/bin/sh
 
+sudo -v
+
 softwareupdate --install --list
-xcode-select --install
-brew update; and brew upgrade
+
+brew update && brew upgrade
 npm update -g
 gem update
 
+nvim +PlugUpdate
