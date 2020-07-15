@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# DRAFT: Not working.
+# Make an array of base16 commands and pass to FZF.
+# Use --preview to run the base16 command and show a color palette preview.
+# TODO: Check $SHELL first to know which sourcing we'll need to do
+# (https://github.com/chriskempson/base16-shell#configuration).
+# TODO: If the shell is bash/zsh; load the bash config and parse bash aliases
+# TODO: If the shell is fish; load the fish config and parse fish aliases
+
+# base16 generates its commands on the fly, we can't just call them as regular
+# executables. So, eval base16 first as if we're interactive
+# https://github.com/chriskempson/base16-shell/issues/126
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -s $BASE16_SHELL/profile_helper.sh ] && \
+              eval "$($BASE16_SHELL/profile_helper.sh)"
+
+# base16_scripts=$(ls -1 $HOME/.config/base16-shell/scripts/*.sh)
+base16_alias_values=$(alias | grep base16_ | cut -d "=" -f 2- | cut -d "'" -f 2)
+
+IFS=$'\n'
+base16_commands=()
+for command in "$base16_alias_values"; do
+    base16_commands+=("$command")
+done
+
+# We now have an array of the commands from aliases set by base16
+# profile_helper to change the colorscheme.
+
+# FIXME: this is just a print of the final command for debugging.
+printf '%s\n' "${base16_commands[@]}" | fzf --ansi  \
+    --preview-window right:40% \
+    --preview='bash -c "[ -s $BASE16_SHELL/profile_helper.sh ] &&
+                eval "$($BASE16_SHELL/profile_helper.sh)" &&
+                {}"'
+
