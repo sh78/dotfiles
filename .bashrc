@@ -33,6 +33,7 @@ export TERM=xterm-256color-italic
 export GOPATH=$HOME/go
 PATH=$PATH:$GOPATH/bin
 PATH=~/.bin:/usr/local/bin:$PATH
+PATH=~/snap/bin:$PATH
 PATH=~/.terminus/vendor/bin:$PATH
 export PATH
 
