@@ -1,0 +1,16 @@
+#!/bin/sh
+# USAGE: pdfunlock IN_FILE
+# Unlocked PDF is placed in current directory
+
+# Pick file paths
+IN="$1"
+OUT="$(basename "$1" '.pdf')-unlocked.pdf"
+
+# POSIX Read password
+stty -echo
+printf "PDF Password: "
+read PASSWORD
+stty echo
+printf "\n"
+
+pdftk "$IN" input_pw "$PASSWORD" output "$OUT"
