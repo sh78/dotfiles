@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+snfs ~/Notes --ext='.md'
+cd ~/Notes
+nvim ~/Notes +NERDTreeToggle +"wincmd l"
