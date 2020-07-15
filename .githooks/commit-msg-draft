@@ -1,4 +1,0 @@
-#!/bin/bash
-# TODO: this breaks commits due to node exception
-PATH=$PATH:/usr/local/bin
-commit-msg file $1

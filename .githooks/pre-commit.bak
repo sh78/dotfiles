@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# pre-commit hook to check syntax on every PHP file that changed
+
+# Ask git for a list of PHP files that changed
+scripts=$(git diff-index --cached HEAD --name-only | grep ".php");
+
+# Note version of PHP used to check against
+echo "Checking PHP syntax..."
+php --version | head -1
+echo "-------------------------------------------------------------------------"
+
+# Lint each file, producing both pass and fail text
+hasErrors=0
+for script in $scripts
+do
+    # Skip anything in a vendor folder
+    if [[ $script =~ "/vendor/" ]]
+    then
+        continue
+    fi
+    # Skip files that were deleted
+    if [ ! -f "$script" ]
+    then
+        continue
+    fi
+    # Check syntax
+    php --syntax-check $script
+    RETVAL=$?
+    if [[ $RETVAL != 0 ]]
+    then
+        hasErrors=1
+    fi
+done
+
+echo "-------------------------------------------------------------------------"
+
+# Return non-zero value if any check failed, blocking the commit
+if [[ $hasErrors == 1 ]]
+then
+    echo "Commit aborted!"
+    exit 1
+else
+    exit 0
+fi
