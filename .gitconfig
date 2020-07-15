@@ -102,3 +102,8 @@
   update = !git pull && git submodule update --init --recursive
   grepall = "!f() { git grep "$@" $(git rev-list --all); }; f"
   greplog = "!f() { git log -G "$@" --color --graph --stat -p --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %Cgreen%ci (%cr)%Creset %Cblue<%an>%Creset%n%B' --abbrev-commit; }; f"
+	recommit = !git commit -eF $(git rev-parse --git-dir)/COMMIT_EDITMSG
+[gpg]
+	program = gpg
+[advice]
+	ignoredHook = true
