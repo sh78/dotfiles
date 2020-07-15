@@ -1,0 +1,17 @@
+#!/bin/bash
+
+sudo -v
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt autoremove -y
+
+sudo npm update -g
+
+sudo gem update
+
+nvim +PlugUpdate
+
+# Now check for an OS release
+sudo apt full-upgrade
+sudo pop-upgrade release upgrade
