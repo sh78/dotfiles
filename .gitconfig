@@ -16,7 +16,7 @@
 [column]
     ui = auto,dense
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
     hookspath = ~/.githooks
 [credential]
