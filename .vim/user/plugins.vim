@@ -136,6 +136,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'mattn/emmet-vim', { 'for': ['css', 'sass', 'scss', 'less', 'html', 'html.twig', 'html.handlebars', 'eruby', 'javascript.jsx', 'php'] }
 Plug 'mattn/webapi-vim'
 Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
+Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'

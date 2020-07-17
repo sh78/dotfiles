@@ -511,6 +511,7 @@ let g:shfmt_extra_args = '-i 4'
 let g:indentLine_concealcursor = 'nc'
 let g:indentLine_color_gui = '#333333'
 let g:indentLine_char = '│'
+let g:indentLine_fileTypeExclude = ['codi']
 
 "
 " NERDTree
