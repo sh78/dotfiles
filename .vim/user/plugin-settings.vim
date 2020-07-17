@@ -45,6 +45,7 @@ nmap gm :LivedownToggle<CR>
 "
 
 let g:signify_vcs_list = [ 'git', 'svn' ]
+" set updatetime=100
 
 "
 " Goyo
