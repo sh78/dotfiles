@@ -11,3 +11,5 @@ if [[ "`uname`" == 'Linux' ]]; then
 elif [[ "`uname`" == 'Darwin' ]]; then
     export RBENV_ROOT=/usr/local/var/rbenv
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
