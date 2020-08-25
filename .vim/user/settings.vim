@@ -125,7 +125,8 @@ set iskeyword+=-
 " Just for funzies
 set mouse=a
 
-set updatetime=300
+" Make a variety of things faster
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c

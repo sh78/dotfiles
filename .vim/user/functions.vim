@@ -70,3 +70,18 @@ function! UnfocusBuffer()
     endif
     set nocursorline nocursorcolumn
 endfunction
+
+" Auto Make
+function! Make()
+    if filereadable(expand('Makefile'))
+        " There's already a Makefile, run :make and open results in quickfix
+        :make | copen
+    else
+        " Make a Makefile, silly!
+        :e Makefile
+        " TODO: Prepopulate a simple template... Does vim script have HEREDOC?
+        " https://patrickheneise.com/2018/01/makefile-for-node-js-developers/
+    endif
+endfunction
+command! Make :call Make()
+nnoremap <Leader>q :Make<CR>

@@ -45,7 +45,10 @@ nmap gm :LivedownToggle<CR>
 "
 
 let g:signify_vcs_list = [ 'git', 'svn' ]
-" set updatetime=100
+let g:signify_sign_add               = '\ +'
+let g:signify_sign_delete            = '\×'
+let g:signify_sign_delete_first_line = '\‾'
+let g:signify_sign_change            = '\ ~'
 
 "
 " Goyo
@@ -127,6 +130,7 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['above', 'below']),
   \   switch#NormalizedCase(['before', 'after']),
   \   switch#NormalizedCase(['black', 'white']),
+  \   switch#NormalizedCase(['buy', 'sell']),
   \   switch#NormalizedCase(['class', 'id']),
   \   switch#NormalizedCase(['column', 'row']),
   \   switch#NormalizedCase(['dark', 'light']),
@@ -161,6 +165,7 @@ let g:switch_custom_definitions =
   \   switch#NormalizedCase(['open', 'close']),
   \   switch#NormalizedCase(['out', 'in']),
   \   switch#NormalizedCase(['page', 'post']),
+  \   switch#NormalizedCase(['pass', 'fail']),
   \   switch#NormalizedCase(['previous', 'next']),
   \   switch#NormalizedCase(['question', 'answer']),
   \   switch#NormalizedCase(['right', 'left']),
@@ -580,17 +585,39 @@ nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 "
 
 let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
+  \ 'coc-css',
+  \ 'coc-emmet',
   \ 'coc-eslint',
+  \ 'coc-html',
   \ 'coc-json',
+  \ 'coc-pairs',
+  \ 'coc-phpls',
+  \ 'coc-prettier',
+  \ 'coc-python',
+  \ 'coc-sh',
+  \ 'coc-snippets',
+  \ 'coc-tabnine',
+  \ 'coc-tsserver',
+  \ 'coc-vimlsp',
+  \ 'coc-yaml',
+  \ 'coc-svg',
   \ ]
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <C-k> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
+" Remap keys for go-tos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -611,20 +638,23 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>=  <Plug>(coc-format-selected)
-nmap <leader>=  <Plug>(coc-format-selected)
+xmap g= <Plug>(coc-format-selected)
+nmap g= <Plug>(coc-format-selected)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
+nmap <leader>F :Format<CR>
 
 " and for ESLint
 command! -nargs=0 ESLint :CocCommand eslint.executeAutofix
+nmap <leader>E :ESLint<CR>
 
 " and for Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+nmap <leader>P :Prettier<CR>
 
 "
 " Colorizer.lua

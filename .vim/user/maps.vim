@@ -206,7 +206,7 @@ nnoremap <Leader>^ :source $MYVIMRC <BAR> :PlugUpdate<CR>
 nnoremap <leader>. !ctags -R .<CR>
 
 " quickly switch to last buffer
-nnoremap <Leader><Tab> <C-^><CR>
+nnoremap <Tab> <C-^><CR>
 
 " toggle indentation spaces
 nnoremap <Leader>2 :set tabstop=2 shiftwidth=2<cr>
@@ -225,6 +225,9 @@ nnoremap <Leader>! :!mkdir -p %:h<CR>
 " open/close quickfix window
 nnoremap <Leader>co :copen<CR>
 nnoremap <Leader>cc :cclose<CR>
+
+nnoremap <Leader>C :Codi<CR>
+
 "
 " Plugins:
 "
