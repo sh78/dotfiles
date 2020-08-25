@@ -6,7 +6,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-sudo npm update -g
+npm update -g
 
 sudo gem update
 
