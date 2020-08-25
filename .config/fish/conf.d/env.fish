@@ -1,4 +1,4 @@
-# set -g TERM xterm-256color-italic
+set -g TERM xterm-256color-italic
 
 # Language Default
 set -x LC_ALL en_US.UTF-8
@@ -9,6 +9,7 @@ set -gx PATH $HOME/.composer/vendor/bin $PATH
 set -gx PATH $GOPATH/bin $PATH
 set -gx PATH .local/bin $PATH
 set -gx PATH /snap/bin $PATH
+set -gx PATH /usr/local/opt/ruby/bin $PATH
 
 set -gx PATH $HOME/.bin $PATH
 set -gx PATH $HOME/.terminus/vendor/bin $PATH
