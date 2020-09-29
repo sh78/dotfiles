@@ -1,22 +1,3 @@
-# Build Systems
+A hot mess a dotfiles, by a software developer who uses macOS, Windows, and various Linuxes.
 
-## macOS
-
-## Fedora
-
-
-# Terminal
-
-iTerm
-
-# Shell
-
-## Fish
-
-## Maintaining Parity With Bash 
-
-# $EDITOR
-
-# Git
-
-# Ranger
+Development efforts are underway to rework this into what will likely be an overly complex Ansible build system, supporting deployments unix-like and Windows systems.
